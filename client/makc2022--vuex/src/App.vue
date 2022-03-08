@@ -7,6 +7,7 @@
     </nav>
     <router-view />
     <Messages />
+    <HelloI18n />
   </div>
 </template>
 
@@ -15,6 +16,7 @@ import { provide } from 'vue';
 import { moduleKey } from './injectors';
 import { Module } from './Module';
 import Messages from '@/components/Messages/index.vue';
+import HelloI18n from '@/components/HelloI18n.vue';
 
 provide(moduleKey, new Module());
 

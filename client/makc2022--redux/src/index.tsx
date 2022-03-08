@@ -13,19 +13,21 @@ import { store } from './app/store';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<App />}>
-            <Route index element={<Dashboard />} />
-            <Route path='dashboard' element={<Dashboard />} />
-            <Route path='heroes' element={<Heroes />} />
-            <Route path='detail/:id' element={<HeroDetail />} />
-            <Route path='*' element={<NotFound />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </Provider>
+    <React.Suspense fallback={<h1>Loading...</h1>}>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<App />}>
+              <Route index element={<Dashboard />} />
+              <Route path='dashboard' element={<Dashboard />} />
+              <Route path='heroes' element={<Heroes />} />
+              <Route path='detail/:id' element={<HeroDetail />} />
+              <Route path='*' element={<NotFound />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </Provider>
+    </React.Suspense>
   </React.StrictMode>,
   document.getElementById('root')
 );
