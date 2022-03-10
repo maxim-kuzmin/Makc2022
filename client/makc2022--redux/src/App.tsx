@@ -12,7 +12,7 @@ function App(): React.ReactElement {
   return (
     <ModuleContext.Provider value={defaultModule}>
       <div className={styles.app}>
-        <h1>{t('title')}</h1>
+        <h1>{t('@@title')}</h1>
         <nav>
           <Link to='dashboard'>Dashboard</Link>
           <Link to='heroes'>Heroes</Link>

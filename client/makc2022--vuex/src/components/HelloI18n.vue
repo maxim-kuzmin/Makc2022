@@ -1,6 +1,6 @@
 <template>
-  <p>{{ t('hello') }}</p>
-  <p>{{ t('message') }}</p>
+  <p>{{ t('@@hello') }}</p>
+  <p>{{ t('@@message') }}</p>
 </template>
 
 <script lang="ts" setup>
@@ -15,7 +15,7 @@ const { t } = useI18n({
 <i18n>
 {
   "en": {
-    "hello": "Hello i18n in SFC!"
+    "@@hello": "Hello i18n in SFC!"
   }
 }
 </i18n>

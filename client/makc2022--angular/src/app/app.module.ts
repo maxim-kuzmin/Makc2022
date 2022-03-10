@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +19,12 @@ import { HeroesEffects } from './views/heroes/heroes.slice';
 import { HeroDetailEffects } from './views/hero-detail/hero-detail.slice';
 import { DasboardEffects } from './views/dashboard/dashboard.slice';
 import { HeroSearchEffects } from './components/hero-search/hero-search.slice';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function createTranslateLoader(http: HttpClient): TranslateLoader {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -39,6 +45,7 @@ import { HeroSearchEffects } from './components/hero-search/hero-search.slice';
     // Remove it when a real server is ready to receive requests.
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
       dataEncapsulation: false,
+      passThruUnknownUrl: true,
     }),
     AppRoutingModule,
     StoreModule.forRoot(reducers),
@@ -48,6 +55,13 @@ import { HeroSearchEffects } from './components/hero-search/hero-search.slice';
       HeroesEffects,
       HeroSearchEffects,
     ]),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

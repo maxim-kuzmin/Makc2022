@@ -6,7 +6,7 @@ export function NotFound(): React.ReactElement {
 
   return (
     <>
-      <h2>{t('title')}</h2>
+      <h2>{t('@@title')}</h2>
       <div />
     </>
   );
