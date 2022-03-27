@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,12 +19,8 @@ import { HeroesEffects } from './views/heroes/heroes.slice';
 import { HeroDetailEffects } from './views/hero-detail/hero-detail.slice';
 import { DasboardEffects } from './views/dashboard/dashboard.slice';
 import { HeroSearchEffects } from './components/hero-search/hero-search.slice';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
-export function createTranslateLoader(http: HttpClient): TranslateLoader {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
+import { I18NextModule } from 'angular-i18next';
+import { I18N_PROVIDERS } from './i18n';
 
 @NgModule({
   declarations: [
@@ -55,15 +51,9 @@ export function createTranslateLoader(http: HttpClient): TranslateLoader {
       HeroesEffects,
       HeroSearchEffects,
     ]),
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: createTranslateLoader,
-        deps: [HttpClient],
-      },
-    }),
+    I18NextModule.forRoot(),
   ],
-  providers: [],
+  providers: [I18N_PROVIDERS],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
