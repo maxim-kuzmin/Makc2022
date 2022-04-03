@@ -1,7 +1,18 @@
-<h1>{{ title }}</h1>
-<nav>
-  <a routerLink="/dashboard">Dashboard</a>
-  <a routerLink="/heroes">Heroes</a>
-</nav>
+<h1>{{ title | i18nextCap }}</h1>
+<div class="top-menu">
+  <nav>
+    <a routerLink="/dashboard">Dashboard</a>
+    <a routerLink="/heroes">Heroes</a>
+  </nav>
+  <select (change)="onLanguageChange($event)">
+    <option
+      *ngFor="let language of languages"
+      [value]="language.value"
+      [selected]="language.selected"
+    >
+      {{ language.text }}
+    </option>
+  </select>
+</div>
 <router-outlet></router-outlet>
 <app-messages></app-messages>

@@ -1,4 +1,3 @@
-/* AppComponent's private CSS styles */
 h1 {
   margin-bottom: 0;
 }
@@ -26,8 +25,12 @@ nav a.active {
   background-color: black;
 }
 
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/
+.top-menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-menu select {
+  padding: 1rem;
+  margin: 10px 0 0 0;
+}
