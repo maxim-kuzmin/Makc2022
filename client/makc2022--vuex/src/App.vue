@@ -1,13 +1,18 @@
 <template>
   <div :class="styles.app">
-    <h1>{{ title }}</h1>
-    <nav>
-      <router-link to="/dashboard">Dashboard</router-link>
-      <router-link to="/heroes">Heroes</router-link>
-    </nav>
+    <h1>{{ t('@@title') }}</h1>
+    <div :class="styles['top-menu']">
+      <nav>
+        <router-link to="/dashboard">Dashboard</router-link>
+        <router-link to="/heroes">Heroes</router-link>
+      </nav>
+      <select v-model="locale">
+        <option value="ru">Русский</option>
+        <option value="en">English</option>
+      </select>
+    </div>
     <router-view />
     <Messages />
-    <HelloI18n />
   </div>
 </template>
 
@@ -16,15 +21,17 @@ import { provide } from 'vue';
 import { moduleKey } from './injectors';
 import { Module } from './Module';
 import Messages from '@/components/Messages/index.vue';
-import HelloI18n from '@/components/HelloI18n.vue';
+import { useI18n } from 'vue-i18n';
+
+const { t, locale } = useI18n({
+  inheritLocale: true,
+  useScope: 'local',
+});
 
 provide(moduleKey, new Module());
-
-const title = 'Tour of Heroes';
 </script>
 
 <style>
-/* Global Styles */
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -108,16 +115,9 @@ input[type='text'] {
   width: 100%;
   padding: 0.5rem;
 }
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/
 </style>
 
 <style module="styles">
-/* AppComponent's private CSS styles */
 .app {
   display: block;
 }
@@ -147,9 +147,24 @@ nav a.active {
   background-color: black;
 }
 
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/
+.top-menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-menu select {
+  padding: 1rem;
+  margin: 10px 0 0 0;
+}
 </style>
+
+<i18n>
+{
+  "en": {
+    "@@title": "Tour of Heroes"
+  },
+  "ru": {
+    "@@title": "Тур героев"
+  }
+}
+</i18n>
