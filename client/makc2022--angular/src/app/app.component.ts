@@ -19,8 +19,6 @@ import { Subscription } from 'rxjs';
   ],
 })
 export class AppComponent implements OnDestroy {
-  title = '@@title';
-
   languages: { text: string; value: string; selected: boolean }[] = [];
 
   private languageEventSubscription: Subscription;

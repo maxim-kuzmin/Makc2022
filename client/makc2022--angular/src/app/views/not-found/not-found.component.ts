@@ -12,6 +12,4 @@ import { I18NEXT_NAMESPACE } from 'angular-i18next';
     },
   ],
 })
-export class NotFoundComponent {
-  title = '@@title';
-}
+export class NotFoundComponent {}

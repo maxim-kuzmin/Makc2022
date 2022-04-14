@@ -1,6 +1,6 @@
 <template>
   <div :class="styles.dashboard">
-    <h2>Top Heroes</h2>
+    <h2>{{ t('@@title') }}</h2>
     <div :class="styles['heroes-menu']">
       <router-link
         v-for="hero of heroes"
@@ -21,6 +21,12 @@ import { injectModule } from '@/injectors';
 import { useStore } from '@/store';
 import { DashboardActionType } from './store/actions';
 import { DashboardMutationType } from './store/mutations';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n({
+  inheritLocale: true,
+  useScope: 'local',
+});
 
 const { heroService } = injectModule();
 
@@ -102,3 +108,14 @@ Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
 */
 </style>
+
+<i18n>
+{
+  "en": {
+    "@@title": "Top Heroes"
+  },
+  "ru": {
+    "@@title": "Лучшие герои"
+  }
+}
+</i18n>

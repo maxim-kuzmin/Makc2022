@@ -19,5 +19,5 @@ i18n
     backend: {
       loadPath: '/i18n/{{ns}}/{{lng}}.json',
     },
-    ns: ['App', 'views/NotFound'],
+    ns: ['App', 'views/NotFound', 'views/Dashboard'],
   });

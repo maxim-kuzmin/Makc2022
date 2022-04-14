@@ -6,9 +6,14 @@
         <router-link to="/dashboard">Dashboard</router-link>
         <router-link to="/heroes">Heroes</router-link>
       </nav>
-      <select v-model="locale">
-        <option value="ru">Русский</option>
-        <option value="en">English</option>
+      <select v-model="$i18n.locale">
+        <option
+          v-for="language in languages"
+          :key="language.value"
+          :value="language.value"
+        >
+          {{ language.text }}
+        </option>
       </select>
     </div>
     <router-view />
@@ -23,12 +28,31 @@ import { Module } from './Module';
 import Messages from '@/components/Messages/index.vue';
 import { useI18n } from 'vue-i18n';
 
-const { t, locale } = useI18n({
+const { t, availableLocales } = useI18n({
   inheritLocale: true,
   useScope: 'local',
 });
 
 provide(moduleKey, new Module());
+
+const languages: { text: string; value: string }[] = [];
+
+availableLocales.forEach((locale) => {
+  let text = '';
+
+  switch (locale) {
+    case 'en':
+      text = 'English';
+      break;
+    case 'ru':
+      text = 'Русский';
+      break;
+    default:
+      return;
+  }
+
+  languages.push({ text, value: locale });
+});
 </script>
 
 <style>
