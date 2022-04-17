@@ -1,8 +1,8 @@
 <template>
   <div v-if="messages.length" :class="styles.messages">
-    <h2>Messages</h2>
+    <h2>{{ t('@@title') }}</h2>
     <button :class="styles.clear" @click="messageService.clear()">
-      Clear messages
+      {{ t('@@action-clear-messages') }}
     </button>
     <div v-for="(message, index) of messages" :key="index">
       {{ message }}
@@ -15,6 +15,12 @@ import { computed, onMounted, onUnmounted } from 'vue';
 import { injectModule } from '@/injectors';
 import { useStore } from '@/store';
 import { MessagesMutationType } from './store/mutations';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n({
+  inheritLocale: true,
+  useScope: 'local',
+});
 
 const { messageService } = injectModule();
 
@@ -64,3 +70,16 @@ Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
 */
 </style>
+
+<i18n>
+{
+  "en": {
+    "@@action-clear-messages": "Clear messages",
+    "@@title": "Messages"
+  },
+  "ru": {
+    "@@action-clear-messages": "Очистить сообщения",
+    "@@title": "Сообщения"
+  }
+}
+</i18n>

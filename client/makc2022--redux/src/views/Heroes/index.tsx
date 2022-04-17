@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { createHero, Hero } from '../../models/Hero';
 import { useModuleContext } from '../../contexts';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
@@ -14,6 +15,8 @@ import {
 
 export function Heroes(): React.ReactElement {
   const { heroService } = useModuleContext();
+
+  const { t } = useTranslation(['views/Heroes']);
 
   const heroes = useAppSelector(selectHeroes);
 
@@ -61,9 +64,9 @@ export function Heroes(): React.ReactElement {
 
   return (
     <div className={styles.heroes}>
-      <h2>My Heroes</h2>
+      <h2>{t('@@title')}</h2>
       <div>
-        <label htmlFor={inputs.newHeroName.id}>Hero name: </label>
+        <label htmlFor={inputs.newHeroName.id}>{t('@@hero-name')}: </label>
         <input
           id={inputs.newHeroName.id}
           name={inputs.newHeroName.name}
@@ -75,7 +78,7 @@ export function Heroes(): React.ReactElement {
           type='button'
           onClick={addNewHero}
         >
-          Add hero
+          {t('@@action-add-hero')}
         </button>
       </div>
       <ul>
@@ -87,7 +90,7 @@ export function Heroes(): React.ReactElement {
             <button
               className={styles.delete}
               type='button'
-              title='delete hero'
+              title={t('@@action-delete-hero')}
               onClick={() => deleteHero(hero)}
             >
               x

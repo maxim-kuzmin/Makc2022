@@ -1,0 +1,6 @@
+{
+  "@@action-add-hero": "Add hero",
+  "@@action-delete-hero": "delete hero",
+  "@@hero-name": "Hero name",
+  "@@title": "My Heroes"
+}

@@ -1,6 +1,6 @@
 <template>
   <div id="search-component" :class="styles['hero-search']">
-    <label :for="inputs.term.id">Hero Search</label>
+    <label :for="inputs.term.id">{{ t('@@title') }}</label>
     <input :id="inputs.term.id" v-debounce="handleSearchInput" />
     <ul :class="styles['search-result']">
       <li v-for="hero in heroes" :key="hero.id">
@@ -19,6 +19,12 @@ import { getDirective } from 'vue-debounce';
 import { useStore } from '@/store';
 import { HeroSearchActionType } from './store/actions';
 import { HeroSearchMutationType } from './store/mutations';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n({
+  inheritLocale: true,
+  useScope: 'local',
+});
 
 const { heroService } = injectModule();
 
@@ -95,3 +101,14 @@ Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
 */
 </style>
+
+<i18n>
+{
+  "en": {
+    "@@title": "Hero Search"
+  },
+  "ru": {
+    "@@title": "Поиск героя"
+  }
+}
+</i18n>

@@ -52,8 +52,8 @@ function App(): React.ReactElement {
         <h1>{t('@@title')}</h1>
         <div className={styles['top-menu']}>
           <nav>
-            <Link to='dashboard'>Dashboard</Link>
-            <Link to='heroes'>Heroes</Link>
+            <Link to='dashboard'>{t('@@menu-dashboard')}</Link>
+            <Link to='heroes'>{t('@@menu-heroes')}</Link>
           </nav>
           <select onChange={handleLanguageChange} defaultValue={i18n.language}>
             {languages.map((language) => (

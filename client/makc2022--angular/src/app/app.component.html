@@ -1,8 +1,8 @@
 <h1>{{ "@@title" | i18nextCap }}</h1>
 <div class="top-menu">
   <nav>
-    <a routerLink="/dashboard">Dashboard</a>
-    <a routerLink="/heroes">Heroes</a>
+    <a routerLink="/dashboard">{{ "@@menu-dashboard" | i18nextCap }}</a>
+    <a routerLink="/heroes">{{ "@@menu-heroes" | i18nextCap }}</a>
   </nav>
   <select (change)="onLanguageChange($event)">
     <option

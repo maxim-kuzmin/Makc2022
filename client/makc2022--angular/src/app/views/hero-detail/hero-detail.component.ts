@@ -5,11 +5,18 @@ import { Location } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { clear, getHero, selectHero, updateHero } from './hero-detail.slice';
 import { Subject, takeUntil } from 'rxjs';
+import { I18NEXT_NAMESPACE } from 'angular-i18next';
 
 @Component({
   selector: 'app-hero-detail',
   templateUrl: './hero-detail.component.html',
   styleUrls: ['./hero-detail.component.css'],
+  providers: [
+    {
+      provide: I18NEXT_NAMESPACE,
+      useValue: 'views/hero-detail',
+    },
+  ],
 })
 export class HeroDetailComponent implements OnDestroy, OnInit {
   private hero$ = this.store.select(selectHero);

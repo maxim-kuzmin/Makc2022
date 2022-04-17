@@ -1,11 +1,13 @@
-<h2>My Heroes</h2>
+<h2>{{ "@@title" | i18nextCap }}</h2>
 <div>
-  <label [for]="inputs.newHeroName.id">Hero name: </label>
+  <label [for]="inputs.newHeroName.id"
+    >{{ "@@hero-name" | i18nextCap }}:
+  </label>
   <input [id]="inputs.newHeroName.id" #heroName />
 
   <!-- (click) passes input value to add() and then clears the input -->
   <button class="add-button" (click)="add(heroName.value); heroName.value = ''">
-    Add hero
+    {{ "@@action-add-hero" | i18next }}
   </button>
 </div>
 <ul class="heroes">
@@ -13,6 +15,12 @@
     <a routerLink="/detail/{{ hero.id }}">
       <span class="badge">{{ hero.id }}</span> {{ hero.name }}
     </a>
-    <button class="delete" title="delete hero" (click)="delete(hero)">x</button>
+    <button
+      class="delete"
+      title="{{ '@@action-delete-hero' | i18next }}"
+      (click)="delete(hero)"
+    >
+      x
+    </button>
   </li>
 </ul>

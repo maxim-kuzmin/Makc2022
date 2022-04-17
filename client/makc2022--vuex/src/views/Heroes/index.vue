@@ -1,11 +1,11 @@
 <template>
   <div :class="styles.heroes">
-    <h2>My Heroes</h2>
+    <h2>{{ t('@@title') }}</h2>
     <div>
-      <label :for="inputs.newHeroName.id">Hero name: </label>
+      <label :for="inputs.newHeroName.id">{{ t('@@hero-name') }}: </label>
       <input :id="inputs.newHeroName.id" v-model="newHero.name" />
       <button :class="styles['add-button']" @click="addNewHero">
-        Add hero
+        {{ t('@@action-add-hero') }}
       </button>
     </div>
     <ul>
@@ -15,7 +15,7 @@
         </router-link>
         <button
           :class="styles.delete"
-          title="delete hero"
+          :title="t('@@action-delete-hero')"
           @click="() => deleteHero(hero)"
         >
           x
@@ -32,6 +32,12 @@ import { injectModule } from '@/injectors';
 import { HeroesActionType } from './store/actions';
 import { useStore } from '@/store';
 import { HeroesMutationType } from './store/mutations';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n({
+  inheritLocale: true,
+  useScope: 'local',
+});
 
 const { heroService } = injectModule();
 
@@ -190,3 +196,20 @@ Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
 */
 </style>
+
+<i18n>
+{
+  "en": {
+    "@@action-add-hero": "Add hero",
+    "@@action-delete-hero": "delete hero",
+    "@@hero-name": "Hero name",
+    "@@title": "My Heroes"
+  },
+  "ru": {
+    "@@action-add-hero": "Добавить героя",
+    "@@action-delete-hero": "удалить героя",
+    "@@hero-name": "Имя героя",
+    "@@title": "Мои герои"
+  }
+}
+</i18n>

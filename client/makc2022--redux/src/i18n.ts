@@ -19,5 +19,13 @@ i18n
     backend: {
       loadPath: '/i18n/{{ns}}/{{lng}}.json',
     },
-    ns: ['App', 'views/NotFound', 'views/Dashboard'],
+    ns: [
+      'App',
+      'components/HeroSearch',
+      'components/Messages',
+      'views/NotFound',
+      'views/Dashboard',
+      'views/HeroDetail',
+      'views/Heroes',
+    ],
   });

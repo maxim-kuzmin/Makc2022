@@ -1,5 +1,7 @@
 <div *ngIf="messagesLength">
-  <h2>Messages</h2>
-  <button class="clear" (click)="clearMessages()">Clear messages</button>
+  <h2>{{ "@@title" | i18nextCap }}</h2>
+  <button class="clear" (click)="clearMessages()">
+    {{ "@@action-clear-messages" | i18nextCap }}
+  </button>
   <div *ngFor="let message of messages$ | async">{{ message }}</div>
 </div>

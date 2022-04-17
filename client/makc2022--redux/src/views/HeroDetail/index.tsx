@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useModuleContext } from '../../contexts';
 import styles from './HeroDetail.module.css';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
@@ -12,6 +13,8 @@ import {
 
 export function HeroDetail(): React.ReactElement {
   const { heroService } = useModuleContext();
+
+  const { t } = useTranslation(['views/HeroDetail']);
 
   const hero = useAppSelector(selectHero);
 
@@ -55,13 +58,15 @@ export function HeroDetail(): React.ReactElement {
     <div className={styles['hero-detail']}>
       {hero.id > 0 && (
         <div>
-          <h2>{hero.name.toUpperCase()} Details</h2>
+          <h2>
+            {hero.name.toUpperCase()} . {t('@@title')}
+          </h2>
           <div>
-            <span>id: </span>
+            <span>{t('@@hero-id')}: </span>
             {hero.id}
           </div>
           <div>
-            <label htmlFor={inputs.heroName.id}>Hero name: </label>
+            <label htmlFor={inputs.heroName.id}>{t('@@hero-name')}: </label>
             <input
               id={inputs.heroName.id}
               name={inputs.heroName.name}
@@ -73,10 +78,10 @@ export function HeroDetail(): React.ReactElement {
         </div>
       )}
       <button type='button' onClick={goBack}>
-        go back
+        {t('@@action-go-back')}
       </button>
       <button type='button' onClick={save}>
-        save
+        {t('@@action-save')}
       </button>
     </div>
   );

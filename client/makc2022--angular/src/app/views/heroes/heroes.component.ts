@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { I18NEXT_NAMESPACE } from 'angular-i18next';
 import { Hero } from '../../models/hero';
 import { HeroService } from '../../services/hero.service';
 import {
@@ -19,6 +20,12 @@ import {
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.css'],
+  providers: [
+    {
+      provide: I18NEXT_NAMESPACE,
+      useValue: 'views/heroes',
+    },
+  ],
 })
 export class HeroesComponent implements OnDestroy, OnInit {
   addeedHero$ = this.store.select(selectAddedHero);

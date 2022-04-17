@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { DebounceInput } from 'react-debounce-input';
+import { useTranslation } from 'react-i18next';
 import { useModuleContext } from '../../contexts';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import styles from './HeroSearch.module.css';
@@ -8,6 +9,8 @@ import { clear, getHeroesAsync, selectHeroes } from './heroSearchSlice';
 
 export function HeroSearch(): React.ReactElement {
   const { heroService } = useModuleContext();
+
+  const { t } = useTranslation(['components/HeroSearch']);
 
   const heroes = useAppSelector(selectHeroes);
 
@@ -36,7 +39,7 @@ export function HeroSearch(): React.ReactElement {
 
   return (
     <div id='search-component' className={styles['hero-search']}>
-      <label htmlFor={inputs.term.id}>Hero Search</label>
+      <label htmlFor={inputs.term.id}>{t('@@title')}</label>
       <DebounceInput
         id={inputs.term.id}
         name={inputs.term.name}

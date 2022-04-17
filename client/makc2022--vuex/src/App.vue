@@ -3,8 +3,8 @@
     <h1>{{ t('@@title') }}</h1>
     <div :class="styles['top-menu']">
       <nav>
-        <router-link to="/dashboard">Dashboard</router-link>
-        <router-link to="/heroes">Heroes</router-link>
+        <router-link to="/dashboard">{{ t('@@menu-dashboard') }}</router-link>
+        <router-link to="/heroes">{{ t('@@menu-heroes') }}</router-link>
       </nav>
       <select v-model="$i18n.locale">
         <option
@@ -185,10 +185,14 @@ nav a.active {
 <i18n>
 {
   "en": {
-    "@@title": "Tour of Heroes"
+    "@@title": "Tour of Heroes",
+    "@@menu-dashboard": "Dashboard",
+    "@@menu-heroes": "Heroes"
   },
   "ru": {
-    "@@title": "Тур героев"
+    "@@title": "Тур героев",
+    "@@menu-dashboard": "Информация",
+    "@@menu-heroes": "Герои"
   }
 }
 </i18n>

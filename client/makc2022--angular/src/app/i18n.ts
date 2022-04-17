@@ -25,7 +25,15 @@ export function appInit(i18next: ITranslationService) {
         backend: {
           loadPath: '/assets/i18n/{{ns}}/{{lng}}.json',
         },
-        ns: ['app', 'views/not-found', 'views/dashboard'],
+        ns: [
+          'app',
+          'components/hero-search',
+          'components/messages',
+          'views/not-found',
+          'views/dashboard',
+          'views/hero-detail',
+          'views/heroes',
+        ],
       });
 }
 

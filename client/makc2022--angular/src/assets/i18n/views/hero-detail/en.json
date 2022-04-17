@@ -1,0 +1,7 @@
+{
+  "@@action-go-back": "go back",
+  "@@action-save": "save",
+  "@@hero-id": "Identifier",
+  "@@hero-name": "Hero name",
+  "@@title": "Details"
+}

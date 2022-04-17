@@ -1,10 +1,12 @@
 <template>
   <div :class="styles['hero-detail']">
     <div v-if="hero.id > 0">
-      <h2>{{ heroName }} Details</h2>
-      <div><span>id: </span>{{ hero.id }}</div>
+      <h2>{{ heroName }}. {{ t('@@title') }}</h2>
       <div>
-        <label :for="inputs.heroName.id">Hero name: </label>
+        <span>{{ t('@@hero-id') }}: </span>{{ hero.id }}
+      </div>
+      <div>
+        <label :for="inputs.heroName.id">{{ t('@@hero-name') }}: </label>
         <input
           :id="inputs.heroName.id"
           v-model="hero.name"
@@ -12,8 +14,8 @@
         />
       </div>
     </div>
-    <button @click="goBack">go back</button>
-    <button @click="save">save</button>
+    <button @click="goBack">{{ t('@@action-go-back') }}</button>
+    <button @click="save">{{ t('@@action-save') }}</button>
   </div>
 </template>
 
@@ -24,6 +26,12 @@ import { injectModule } from '@/injectors';
 import { useStore } from '@/store';
 import { HeroDetailActionType } from './store/actions';
 import { HeroDetailMutationType } from './store/mutations';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n({
+  inheritLocale: true,
+  useScope: 'local',
+});
 
 const { heroService } = injectModule();
 
@@ -104,3 +112,22 @@ Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
 */
 </style>
+
+<i18n>
+{
+  "en": {
+    "@@action-go-back": "go back",
+    "@@action-save": "save",
+    "@@hero-id": "Identifier",
+    "@@hero-name": "Hero name",
+    "@@title": "Details"
+  },
+  "ru": {
+    "@@action-go-back": "назад",
+    "@@action-save": "сохранить",
+    "@@hero-id": "Идентификатор",
+    "@@hero-name": "Имя героя",
+    "@@title": "Подробности"
+  }
+}
+</i18n>

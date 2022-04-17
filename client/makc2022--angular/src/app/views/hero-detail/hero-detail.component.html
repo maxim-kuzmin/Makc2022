@@ -1,8 +1,10 @@
 <div *ngIf="hero.id > 0">
-  <h2>{{ hero.name | uppercase }} Details</h2>
-  <div><span>id: </span>{{ hero.id }}</div>
+  <h2>{{ hero.name | uppercase }}. {{ "@@title" | i18nextCap }}</h2>
   <div>
-    <label [for]="inputs.heroName.id">Hero name: </label>
+    <span>{{ "@@hero-id" | i18nextCap }}: </span>{{ hero.id }}
+  </div>
+  <div>
+    <label [for]="inputs.heroName.id">{{ "@@hero-name" | i18nextCap }}: </label>
     <input
       [id]="inputs.heroName.id"
       [(ngModel)]="hero.name"
@@ -10,5 +12,5 @@
     />
   </div>
 </div>
-<button (click)="goBack()">go back</button>
-<button (click)="save()">save</button>
+<button (click)="goBack()">{{ "@@action-go-back" | i18next }}</button>
+<button (click)="save()">{{ "@@action-save" | i18next }}</button>
