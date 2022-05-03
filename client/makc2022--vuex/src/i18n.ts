@@ -1,4 +1,10 @@
 import { createI18n, LocaleMessages, VueMessageType } from 'vue-i18n';
+import { parse } from 'query-string';
+
+export const loacaleLocalStorageKey = 'i18nLng';
+export const loacaleQueryParamName = 'lng';
+
+const availableLocales = ['en', 'ru'];
 
 /**
  * Load locale messages
@@ -23,10 +29,62 @@ function loadLocaleMessages(): LocaleMessages<VueMessageType> {
   return messages;
 }
 
+function getLocale() {
+  const search = parse(window.location.search);
+  const loacaleQueryParamValue = search[loacaleQueryParamName];
+  let locale = '';
+
+  if (loacaleQueryParamValue != null) {
+    locale = loacaleQueryParamValue as string;
+
+    if (availableLocales.includes(locale)) {
+      return locale;
+    }
+  }
+
+  const loacaleLocalStorageValue = localStorage.getItem(loacaleLocalStorageKey);
+
+  if (loacaleLocalStorageValue != null) {
+    locale = loacaleLocalStorageValue as string;
+
+    if (availableLocales.includes(locale)) {
+      return locale;
+    }
+  }
+
+  const environmentValue = process.env.VUE_APP_I18N_LOCALE;
+
+  if (environmentValue) {
+    locale = environmentValue as string;
+
+    if (availableLocales.includes(locale)) {
+      return locale;
+    }
+  }
+
+  return availableLocales[0];
+}
+
+function getFallbackLocale() {
+  let locale = '';
+
+  const environmentValue = process.env.VUE_APP_I18N_FALLBACK_LOCALE;
+
+  if (environmentValue) {
+    locale = environmentValue as string;
+
+    if (availableLocales.includes(locale)) {
+      return locale;
+    }
+  }
+
+  return availableLocales[0];
+}
+
 export default createI18n({
   legacy: false,
   globalInjection: true,
-  locale: process.env.VUE_APP_I18N_LOCALE || 'en',
-  fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'en',
+  locale: getLocale(),
+  fallbackLocale: getFallbackLocale(),
   messages: loadLocaleMessages(),
 });

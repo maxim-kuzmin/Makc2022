@@ -22,13 +22,18 @@
 </template>
 
 <script lang="ts" setup>
-import { provide } from 'vue';
+import { provide, watch } from 'vue';
 import { moduleKey } from './injectors';
 import { Module } from './Module';
 import Messages from '@/components/Messages/index.vue';
 import { useI18n } from 'vue-i18n';
+import { loacaleLocalStorageKey, loacaleQueryParamName } from './i18n';
+import { useRouter, useRoute } from 'vue-router';
 
-const { t, availableLocales } = useI18n({
+const router = useRouter();
+const route = useRoute();
+
+const { t, availableLocales, locale } = useI18n({
   inheritLocale: true,
   useScope: 'local',
 });
@@ -52,6 +57,19 @@ availableLocales.forEach((locale) => {
   }
 
   languages.push({ text, value: locale });
+});
+
+watch(locale, (newVal, oldVal) => {
+  if (newVal !== oldVal) {
+    localStorage.setItem(loacaleLocalStorageKey, newVal);
+
+    router.push({
+      query: {
+        ...route.query,
+        [loacaleQueryParamName]: newVal,
+      },
+    });
+  }
 });
 </script>
 
