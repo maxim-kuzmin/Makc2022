@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Makc2022.WebApi.Controllers
+namespace Makc2022.Layer6.WebHttpServer.Controllers
 {
     [ApiController]
     [Route("[controller]")]

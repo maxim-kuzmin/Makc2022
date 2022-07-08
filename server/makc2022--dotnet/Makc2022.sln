@@ -3,10 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32602.291
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.WebApi", "Makc2022.WebApi\Makc2022.WebApi.csproj", "{15BE0379-B2CB-4A29-A05B-3EF4081BF4EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer6.WebHttpServer", "Makc2022.Layer6.WebHttpServer\Makc2022.Layer6.WebHttpServer.csproj", "{15BE0379-B2CB-4A29-A05B-3EF4081BF4EB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A1762641-701A-4994-A9CA-FC6398E24B47}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
