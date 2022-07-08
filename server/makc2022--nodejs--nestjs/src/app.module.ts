@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { DummyMainListPageController } from './layer6/web-http-server/controllers/pages/dummy-main/list/dummy-main-list-page.controller';
-import { DummyMainItemPageController } from './layer6/web-http-server/controllers/pages/dummy-main/item/dummy-main-item-page.controller';
+import { WebHttpServerModule } from './layer6/web-http-server/web-http-server.module';
+import { ServerModule } from './layer5/server/server.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController, DummyMainListPageController, DummyMainItemPageController],
+  imports: [WebHttpServerModule, ServerModule],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
