@@ -1,0 +1,22 @@
+version: "3"
+services:
+  mongo:
+    image: mongo:4.4.6
+    container_name: mongo
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-db:/data/db
+      - mongo-configdb:/data/configdb
+    networks:
+      - backend
+    command: --wiredTigerCacheSizeGB 1.5
+volumes:
+  mongo-db:
+  mongo-configdb:
+networks:
+  backend:
