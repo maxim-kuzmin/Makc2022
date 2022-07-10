@@ -1,8 +1,8 @@
 /** Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License. */
 
-import { ItemGetQueryInput } from './../../../../../../layer2/queries/item/get/item-get-query-input';
+import { MapperItemGetQueryInput } from 'src/layer3/sample/mappers/typegoose/queries/item/get/mapper-item-get-query-input';
 
-export class DomainItemGetQueryInput extends ItemGetQueryInput {
+export class DomainItemGetQueryInput extends MapperItemGetQueryInput {
   /** Имя сущности. */
   entityName: string;
 
@@ -10,7 +10,7 @@ export class DomainItemGetQueryInput extends ItemGetQueryInput {
   override normalize(): void {
     super.normalize();
 
-    if (this.entityId > 0) {
+    if (this.entityId) {
       this.entityName = null;
     }
   }

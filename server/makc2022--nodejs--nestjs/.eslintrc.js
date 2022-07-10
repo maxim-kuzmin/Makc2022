@@ -20,12 +20,13 @@ module.exports = {
     "@typescript-eslint/interface-name-prefix": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-empty-interface": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "prettier/prettier": [
       "error",
       {
         endOfLine: "auto",
-        printWidth: 80,
+        printWidth: 100,
         trailingComma: "es5",
         semi: true,
         jsxSingleQuote: true,

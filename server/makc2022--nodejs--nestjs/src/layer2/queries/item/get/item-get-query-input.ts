@@ -2,26 +2,13 @@
 
 import { QueryInput } from './../../../query/query-input';
 
-/** Входные данные запроса на получение элемента. */
-export class ItemGetQueryInput extends QueryInput {
+/** Входные данные запроса на получение элемента.
+ * @template TID Тип идентификатора.
+ */
+export abstract class ItemGetQueryInput<TID> extends QueryInput {
   /** Идентификатор сущности. */
-  entityId: number;
+  entityId: TID;
 
   /** Нормализовать. */
-  normalize(): void {
-    if (this.entityId < 0) {
-      this.entityId = 0;
-    }
-  }
-
-  /**@inheritdoc */
-  override getInvalidProperties(): string[] {
-    const result = super.getInvalidProperties();
-
-    if (this.entityId < 1) {
-      result.push('entityId');
-    }
-
-    return result;
-  }
+  abstract normalize(): void;
 }

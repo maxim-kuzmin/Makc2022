@@ -1,9 +1,11 @@
 /** Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License. */
 
-/** Объект сущности "DummyMain". */
-export class DummyMainEntityObject {
+/** Интерфейс объекта сущности "DummyMain".
+ * @template TID Тип идентификатора.
+ */
+export interface IDummyMainEntityObject<TID> {
   /** Идентификатор. */
-  id: number;
+  id: TID;
 
   /** Имя. */
   name: string;

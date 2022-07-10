@@ -1,15 +1,17 @@
 /** Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License. */
 
-/** Объект сущности "DummyTree". */
-export class DummyTreeEntityObject {
+/** Интерфейс объекта сущности "DummyTree".
+ * @template TID Тип идентификатора.
+ */
+export interface IDummyTreeEntityObject<TID> {
   /** Идентификатор. */
-  id: number;
+  id: TID;
 
   /** Имя. */
   name: string;
 
   /** Идентификатор родителя. */
-  parentId?: number;
+  parentId?: TID;
 
   /** Число детей в дереве. */
   treeChildCount: number;

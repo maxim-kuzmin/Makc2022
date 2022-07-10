@@ -10,7 +10,7 @@
       "files": ["*.ts", "*.tsx"],
       "options": {
         "endOfLine": "auto",
-        "printWidth": 80,
+        "printWidth": 100,
         "trailingComma": "es5",
         "semi": true,
         "jsxSingleQuote": true,
