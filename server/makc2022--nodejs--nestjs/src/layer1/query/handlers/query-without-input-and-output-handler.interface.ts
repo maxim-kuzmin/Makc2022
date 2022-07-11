@@ -13,8 +13,11 @@ export interface IQueryWithoutInputAndOutputHandler extends IQueryHandler {
    */
   onStart(queryCode?: string): void;
 
-  /** Обработать успешное выполнение запроса.
+  /** Обработать успешное выполнение запроса. */
+  onSuccess(): void;
+
+  /** Обработать успешное выполнение запроса с результатом.
    * @param queryResult Результат запроса.
    */
-  onSuccess(queryResult?: QueryResult): void;
+  onSuccessWithResult(queryResult?: QueryResult): void;
 }

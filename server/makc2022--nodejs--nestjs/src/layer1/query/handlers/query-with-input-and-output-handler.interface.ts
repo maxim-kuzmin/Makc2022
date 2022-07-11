@@ -25,8 +25,8 @@ export interface IQueryWithInputAndOutputHandler<TQueryInput, TQueryOutput> exte
    */
   onSuccess(queryOutput: TQueryOutput): void;
 
-  /** Обработать успешное выполнение запроса.
+  /** Обработать успешное выполнение запроса с результатом.
    * @param queryResult Результат запроса.
    */
-  onSuccess(queryResult: QueryResultWithOutput<TQueryOutput>): void;
+  onSuccessWithResult(queryResult: QueryResultWithOutput<TQueryOutput>): void;
 }

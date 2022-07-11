@@ -5,8 +5,9 @@ import { QueryResult } from '../query-result';
 
 /** Интерфейс обработчика запроса с входными данными.
  * @template TQueryInput Тип входных данных запроса.
+ * @template TQueryOutput Тип выходных данных запроса.
  */
-export interface IQueryWithInputAndOutputHandler<TQueryInput> extends IQueryHandler {
+export interface IQueryWithInputHandler<TQueryInput> extends IQueryHandler {
   /** Входные данные запроса. */
   queryInput: TQueryInput;
 
@@ -22,8 +23,8 @@ export interface IQueryWithInputAndOutputHandler<TQueryInput> extends IQueryHand
   /** Обработать успешное выполнение запроса. */
   onSuccess(): void;
 
-  /** Обработать успешное выполнение запроса.
+  /** Обработать успешное выполнение запроса с результатом.
    * @param queryResult Результат запроса.
    */
-  onSuccess(queryResult: QueryResult): void;
+  onSuccessWithResult(queryResult: QueryResult): void;
 }

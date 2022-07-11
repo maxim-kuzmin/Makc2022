@@ -5,20 +5,28 @@ import { CommonEnvironment } from 'src/layer1/common/common-environment';
 import { QueryHandler } from '../query-handler';
 import { IQueryResource } from '../query-resource.interface';
 import { QueryResult } from '../query-result';
-import { IQueryWithoutInputAndOutputHandler } from './query-without-input-and-output-handler.interface';
+import { IQueryWithInputHandler } from './query-with-input-handler.interface';
 
-/** Обработчик запроса без входных и выходных данных. */
-export class QueryWithoutInputAndOutputHandler
+/** Интерфейс обработчика запроса с входными данными.
+ * @template TQueryInput Тип входных данных запроса.
+ */
+export class QueryWithInputHandler<TQueryInput>
   extends QueryHandler
-  implements IQueryWithoutInputAndOutputHandler
+  implements IQueryWithInputHandler<TQueryInput>
 {
+  /** Функция преобразования ввода запроса. */
+  protected functionToTransformQueryInput: (queryInput: TQueryInput) => TQueryInput;
+
   /** Функция получения сообщений об успехах. */
-  protected functionToGetSuccessMessages: () => string[];
+  protected functionToGetSuccessMessages: (queryInput: TQueryInput) => string[];
 
   /** Функция получения сообщений о предупреждениях. */
-  protected functionToGetWarningMessages: () => string[];
+  protected functionToGetWarningMessages: (queryInput: TQueryInput) => string[];
 
-  /** Результат выполнения запроса. */
+  /** @inheritdoc */
+  queryInput: TQueryInput;
+
+  /** @inheritdoc */
   queryResult: QueryResult;
 
   /** @inheritdoc */
@@ -32,7 +40,11 @@ export class QueryWithoutInputAndOutputHandler
   }
 
   /** @inheritdoc */
-  onStart(queryCode?: string): void {
+  onStart(queryInput: TQueryInput, queryCode?: string): void {
+    this.queryInput = this.functionToTransformQueryInput
+      ? this.functionToTransformQueryInput(queryInput)
+      : queryInput;
+
     this.doOnStart(queryCode);
   }
 
@@ -40,7 +52,19 @@ export class QueryWithoutInputAndOutputHandler
   onSuccess(): void {
     this.initQueryResult(true);
 
-    this.doOnSuccess(this.functionToGetSuccessMessages, this.functionToGetWarningMessages);
+    let functionToGetSuccessMessages: () => string[];
+
+    if (this.functionToGetSuccessMessages) {
+      functionToGetSuccessMessages = () => this.functionToGetSuccessMessages(this.queryInput);
+    }
+
+    let functionToGetWarningMessages: () => string[];
+
+    if (this.functionToGetWarningMessages) {
+      functionToGetWarningMessages = () => this.functionToGetWarningMessages(this.queryInput);
+    }
+
+    this.doOnSuccess(functionToGetSuccessMessages, functionToGetWarningMessages);
   }
 
   /** @inheritdoc */
@@ -52,7 +76,7 @@ export class QueryWithoutInputAndOutputHandler
 
   /** @inheritdoc */
   protected override getQueryInput(): unknown {
-    return null;
+    return this.queryInput;
   }
 
   /** @inheritdoc */
