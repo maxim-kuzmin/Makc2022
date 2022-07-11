@@ -1,0 +1,11 @@
+{
+  "@@TitleForErrorCode": "Код ошибки",
+  "@@ErrorMessageForDefault": "Неизвестная ошибка",
+  "@@ErrorMessageForInvalidInput": "Входные данные запроса содержит недопустимые значения в свойствах: {properties}",
+  "@@TitleForError": "Ошибка",
+  "@@TitleForInput": "Входные данные",
+  "@@TitleForQueryCode": "Код запроса",
+  "@@TitleForStart": "Начало",
+  "@@TitleForResult": "Результат",
+  "@@TitleForSuccess": "Успех"
+}

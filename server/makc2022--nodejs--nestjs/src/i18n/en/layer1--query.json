@@ -1,0 +1,11 @@
+{
+  "@@TitleForErrorCode": "Error code",
+  "@@ErrorMessageForDefault": "Unknown error",
+  "@@ErrorMessageForInvalidInput": "The query input has invalid values in its properties: {properties}",
+  "@@TitleForError": "Error",
+  "@@TitleForInput": "Input",
+  "@@TitleForQueryCode": "Query code",
+  "@@TitleForStart": "Start",
+  "@@TitleForResult": "Result",
+  "@@TitleForSuccess": "Success"
+}

@@ -1,6 +1,6 @@
 /** Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License. */
 
-import { nameof } from 'src/layer1/common/commonExtension';
+import { nameof } from 'src/layer1/common/common-functions';
 import { MapperItemGetQueryInput } from 'src/layer3/sample/mappers/typegoose/queries/item/get/mapper-item-get-query-input';
 
 export class DomainItemGetQueryInput extends MapperItemGetQueryInput {
