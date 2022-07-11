@@ -4,7 +4,7 @@ import { prop } from '@typegoose/typegoose';
 import { Base, TimeStamps } from '@typegoose/typegoose/lib/defaultClasses';
 import { IMapperDummyMainEntityObject } from './mapper-dummy-main-entity-object.interface';
 
-export interface MapperDummyMainEntityObject extends Base {}
+export interface MapperDummyMainEntityObject extends Base<string> {}
 
 export interface MapperDummyMainEntityObject extends TimeStamps {}
 

@@ -1,5 +1,6 @@
 /** Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License. */
 
+import { nameof } from 'src/layer1/common/commonExtension';
 import { ItemGetQueryInput } from 'src/layer2/queries/item/get/item-get-query-input';
 
 /** Входные данные запроса сопоставителя на получение элемента.
@@ -18,7 +19,7 @@ export class MapperItemGetQueryInput extends ItemGetQueryInput<string> {
     const result = super.getInvalidProperties();
 
     if (this.entityId === '') {
-      result.push('entityId');
+      result.push(nameof<MapperItemGetQueryInput>('entityId'));
     }
 
     return result;

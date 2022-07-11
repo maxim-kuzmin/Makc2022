@@ -1,6 +1,6 @@
 /** Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License. */
 
-import { QueryInput } from './../../../query/query-input';
+import { QueryInput } from 'src/layer2/query/query-input';
 
 /** Входные данные запроса на получение элемента.
  * @template TID Тип идентификатора.
