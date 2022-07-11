@@ -31,7 +31,7 @@ export abstract class QueryHandler implements IQueryHandler {
     protected readonly environment: CommonEnvironment
   ) {}
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   onError(error?: Error): void {
     if (error) {
       this.initQueryResult(false);
@@ -84,8 +84,8 @@ export abstract class QueryHandler implements IQueryHandler {
    * @param functionToGetWarningMessages Функция получения сообщений о предупреждениях.
    */
   protected doOnSuccess(
-    functionToGetSuccessMessages: () => string[],
-    functionToGetWarningMessages: () => string[]
+    functionToGetSuccessMessages?: () => string[],
+    functionToGetWarningMessages?: () => string[]
   ): void {
     const queryResult = this.getQueryResult();
 

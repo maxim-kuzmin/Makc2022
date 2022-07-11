@@ -10,67 +10,67 @@ export interface MapperDummyMainEntityObject extends TimeStamps {}
 
 /** Объект сущности "DummyMain" сопоставителя. */
 export class MapperDummyMainEntityObject implements IMapperDummyMainEntityObject {
-  /**@inheritdoc */
+  /** @inheritdoc */
   @prop({ unique: true, required: true })
   name: string;
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   @prop({ required: true })
   idOfDummyOneToManyEntity: number;
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   @prop({ required: true })
   propBoolean: boolean;
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   @prop()
   propBooleanNullable?: boolean;
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   @prop({ required: true })
   propDate: Date;
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   @prop()
   propDateNullable?: Date;
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   @prop({ required: true })
   propDateTimeOffset: Date;
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   @prop()
   propDateTimeOffsetNullable?: Date;
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   @prop({ required: true })
   propDecimal: number;
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   @prop()
   propDecimalNullable?: number;
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   @prop({ required: true })
   propInt32: number;
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   @prop()
   propInt32Nullable?: number;
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   @prop({ required: true })
   propInt64: number;
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   @prop()
   propInt64Nullable?: number;
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   @prop({ required: true })
   propString: string;
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   @prop()
   propStringNullable?: string;
 }

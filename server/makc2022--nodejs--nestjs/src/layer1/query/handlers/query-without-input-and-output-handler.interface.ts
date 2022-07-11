@@ -3,7 +3,7 @@
 import { IQueryHandler } from '../query-handler.interface';
 import { QueryResult } from '../query-result';
 
-/** Интерфейс обработчика запроса с входными и выходными данными. */
+/** Интерфейс обработчика запроса без входных и выходных данных. */
 export interface IQueryWithoutInputAndOutputHandler extends IQueryHandler {
   /** Результат выполнения запроса. */
   queryResult: QueryResult;
@@ -13,11 +13,8 @@ export interface IQueryWithoutInputAndOutputHandler extends IQueryHandler {
    */
   onStart(queryCode?: string): void;
 
-  /** Обработать успешное выполнение запроса. */
-  onSuccess(): void;
-
   /** Обработать успешное выполнение запроса.
    * @param queryResult Результат запроса.
    */
-  onSuccess(queryResult: QueryResult): void;
+  onSuccess(queryResult?: QueryResult): void;
 }

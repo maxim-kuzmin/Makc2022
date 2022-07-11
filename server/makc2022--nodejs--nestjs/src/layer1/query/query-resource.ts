@@ -12,44 +12,44 @@ export class QueryResource implements IQueryResource {
    */
   constructor(private readonly i18n: I18nContext) {}
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   getErrorMessageForDefault(): string {
     return this.i18n.t(`${this.path}.@@ErrorMessageForDefault`);
   }
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   getErrorMessageForInvalidInput(invalidProperties: string[]): string {
     return this.i18n.t(`${this.path}.@@ErrorMessageForInvalidInput`, {
       args: { properties: invalidProperties.join(', ') },
     });
   }
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   getTitleForError(): string {
     return this.i18n.t(`${this.path}.@@TitleForError`);
   }
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   getTitleForInput(): string {
     return this.i18n.t(`${this.path}.@@TitleForInput`);
   }
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   getTitleForQueryCode(): string {
     return this.i18n.t(`${this.path}.@@TitleForQueryCode`);
   }
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   getTitleForResult(): string {
     return this.i18n.t(`${this.path}.@@TitleForResult`);
   }
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   getTitleForStart(): string {
     return this.i18n.t(`${this.path}.@@TitleForStart`);
   }
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   getTitleForSuccess(): string {
     return this.i18n.t(`${this.path}.@@TitleForSuccess`);
   }

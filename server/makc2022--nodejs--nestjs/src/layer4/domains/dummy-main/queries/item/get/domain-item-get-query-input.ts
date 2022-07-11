@@ -7,7 +7,7 @@ export class DomainItemGetQueryInput extends MapperItemGetQueryInput {
   /** Имя сущности. */
   entityName: string;
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   override normalize(): void {
     super.normalize();
 
@@ -16,7 +16,7 @@ export class DomainItemGetQueryInput extends MapperItemGetQueryInput {
     }
   }
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   override getInvalidProperties(): string[] {
     const result = super.getInvalidProperties();
 

@@ -14,7 +14,7 @@ export class MapperItemGetQueryInput extends ItemGetQueryInput<string> {
     }
   }
 
-  /**@inheritdoc */
+  /** @inheritdoc */
   override getInvalidProperties(): string[] {
     const result = super.getInvalidProperties();
 
