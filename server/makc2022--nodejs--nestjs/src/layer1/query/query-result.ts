@@ -5,7 +5,7 @@ import { QueryHelper } from './query-helper';
 /** Результат запроса. */
 export class QueryResult {
   /** Признак успешности выполнения. */
-  isOk: boolean;
+  isOk = false;
 
   /** Сообщения об ошибках. */
   errorMessages = new Set<string>();
