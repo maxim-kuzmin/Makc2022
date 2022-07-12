@@ -1,17 +1,15 @@
 /** Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License. */
 
-/** Интерфейс объекта сущности "DummyMain".
- * @template TID Тип идентификатора.
- */
-export interface IDummyMainEntityObject<TID> {
+/** Объект сущности "DummyMain". */
+export interface DummyMainEntityObject {
   /** Идентификатор. */
-  id: TID;
+  id: string;
 
   /** Имя. */
   name: string;
 
   /** Идентификатор сущности "DummyOneToMany". */
-  idOfDummyOneToManyEntity: number;
+  idOfDummyOneToManyEntity: string;
 
   /** Свойство, содержащее логическое значение. */
   propBoolean: boolean;
@@ -24,12 +22,6 @@ export interface IDummyMainEntityObject<TID> {
 
   /** Свойство, содержащее дату или NULL. */
   propDateNullable?: Date;
-
-  /** Свойство, содержащее дату и время с часовым поясом. */
-  propDateTimeOffset: Date;
-
-  /** Свойство, содержащее дату и время с часовым поясом или NULL. */
-  propDateTimeOffsetNullable?: Date;
 
   /** Свойство, содержащее десятичную дробь. */
   propDecimal: number;

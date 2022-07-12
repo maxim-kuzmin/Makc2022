@@ -1,26 +1,29 @@
 /** Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License. */
 
-import { prop } from '@typegoose/typegoose';
-import { Base, TimeStamps } from '@typegoose/typegoose/lib/defaultClasses';
-import { IMapperDummyMainEntityObject } from './mapper-dummy-main-entity-object.interface';
+import { prop, Ref } from '@typegoose/typegoose';
+import { Base } from '@typegoose/typegoose/lib/defaultClasses';
+import { DummyMainEntityObject } from 'src/layer3/nosql-mongo/sample/entities/dummy-main/dummy-main-entity.object';
+import { MapperDummyOneToManyEntityObject } from '../dummy-one-to-many/mapper-dummy-one-to-many-entity.object';
 
 export interface MapperDummyMainEntityObject extends Base<string> {}
 
-export interface MapperDummyMainEntityObject extends TimeStamps {}
-
 /** Объект сущности "DummyMain" сопоставителя. */
-export class MapperDummyMainEntityObject implements IMapperDummyMainEntityObject {
+export class MapperDummyMainEntityObject implements DummyMainEntityObject {
   /** @inheritdoc */
   @prop({ unique: true, required: true })
-  name: string;
+  name!: string;
+
+  /** @inheritdoc */
+  get idOfDummyOneToManyEntity(): string {
+    return this.refToDummyOneToManyEntity.valueOf() as string;
+  }
+  set idOfDummyOneToManyEntity(value: string) {
+    this.refToDummyOneToManyEntity = value;
+  }
 
   /** @inheritdoc */
   @prop({ required: true })
-  idOfDummyOneToManyEntity: number;
-
-  /** @inheritdoc */
-  @prop({ required: true })
-  propBoolean: boolean;
+  propBoolean!: boolean;
 
   /** @inheritdoc */
   @prop()
@@ -28,19 +31,11 @@ export class MapperDummyMainEntityObject implements IMapperDummyMainEntityObject
 
   /** @inheritdoc */
   @prop({ required: true })
-  propDate: Date;
+  propDate!: Date;
 
   /** @inheritdoc */
   @prop()
   propDateNullable?: Date;
-
-  /** @inheritdoc */
-  @prop({ required: true })
-  propDateTimeOffset: Date;
-
-  /** @inheritdoc */
-  @prop()
-  propDateTimeOffsetNullable?: Date;
 
   /** @inheritdoc */
   @prop({ required: true })
@@ -52,7 +47,7 @@ export class MapperDummyMainEntityObject implements IMapperDummyMainEntityObject
 
   /** @inheritdoc */
   @prop({ required: true })
-  propInt32: number;
+  propInt32!: number;
 
   /** @inheritdoc */
   @prop()
@@ -60,7 +55,7 @@ export class MapperDummyMainEntityObject implements IMapperDummyMainEntityObject
 
   /** @inheritdoc */
   @prop({ required: true })
-  propInt64: number;
+  propInt64!: number;
 
   /** @inheritdoc */
   @prop()
@@ -68,9 +63,13 @@ export class MapperDummyMainEntityObject implements IMapperDummyMainEntityObject
 
   /** @inheritdoc */
   @prop({ required: true })
-  propString: string;
+  propString!: string;
 
   /** @inheritdoc */
   @prop()
   propStringNullable?: string;
+
+  /** Ссылка на объект сущности "DummyOneToMany". */
+  @prop({ required: true, ref: () => MapperDummyOneToManyEntityObject, type: () => String })
+  refToDummyOneToManyEntity!: Ref<MapperDummyOneToManyEntityObject, string>;
 }
