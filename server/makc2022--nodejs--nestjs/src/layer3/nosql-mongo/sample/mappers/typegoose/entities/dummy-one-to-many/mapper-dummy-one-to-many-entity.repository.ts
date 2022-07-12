@@ -3,6 +3,7 @@
 import { Injectable } from '@nestjs/common';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { InjectModel } from 'nestjs-typegoose';
+import { DummyOneToManyEntityLoader } from 'src/layer3/nosql-mongo/sample/entities/dummy-one-to-many/dummy-one-to-many-entity.loader';
 import { DummyOneToManyEntityObject } from 'src/layer3/nosql-mongo/sample/entities/dummy-one-to-many/dummy-one-to-many-entity.object';
 import { MapperDummyOneToManyEntityObject } from './mapper-dummy-one-to-many-entity.object';
 
@@ -15,28 +16,41 @@ export class MapperDummyOneToManyEntityRepository {
     >
   ) {}
 
-  async create(inputObject: DummyOneToManyEntityObject): Promise<DummyOneToManyEntityObject> {
-    const model = new this.mapperDummyOneToManyEntityModel(inputObject);
+  async create(entityObject: DummyOneToManyEntityObject): Promise<DummyOneToManyEntityObject> {
+    let mapperObject = this.convertFromEntityToMapperObject(entityObject);
 
-    const mapperObject = await model.save();
+    const model = new this.mapperDummyOneToManyEntityModel(mapperObject);
 
-    return this.convertToObject(mapperObject);
+    mapperObject = await model.save();
+
+    return this.convertFromMapperToEntityObject(mapperObject);
   }
 
   async getByName(name: string): Promise<DummyOneToManyEntityObject | null> {
     const mapperObject = await this.mapperDummyOneToManyEntityModel.findOne({ name }).exec();
 
-    return mapperObject && this.convertToObject(mapperObject);
+    return mapperObject && this.convertFromMapperToEntityObject(mapperObject);
   }
 
-  private convertToObject(
+  private convertFromEntityToMapperObject(
+    entityObject: DummyOneToManyEntityObject
+  ): MapperDummyOneToManyEntityObject {
+    const result = new MapperDummyOneToManyEntityObject();
+
+    const loader = new DummyOneToManyEntityLoader(result);
+
+    loader.load(entityObject);
+
+    return result;
+  }
+
+  private convertFromMapperToEntityObject(
     mapperObject: MapperDummyOneToManyEntityObject
   ): DummyOneToManyEntityObject {
-    const { id, name } = mapperObject;
+    const loader = new DummyOneToManyEntityLoader();
 
-    return {
-      id,
-      name,
-    } as DummyOneToManyEntityObject;
+    loader.load(mapperObject);
+
+    return loader.entityObject;
   }
 }
