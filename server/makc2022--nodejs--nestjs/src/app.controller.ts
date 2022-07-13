@@ -23,13 +23,11 @@ export class AppController {
 
   @Get('dummy-main/create')
   async createDummyMain(): Promise<string> {
-    const objectOfDummyOneToManyEntity = await this.appService.getDummyOneToManyEntityByName(
-      'Name-2'
-    );
+    const outputOfDummyOneToMany = await this.appService.getDummyOneToManyEntityByName('Name-1');
 
-    const inputObject = {
-      idOfDummyOneToManyEntity: objectOfDummyOneToManyEntity.id,
-      name: 'Name-5',
+    const entityObject = {
+      idOfDummyOneToManyEntity: outputOfDummyOneToMany.objectOfDummyOneToManyEntity.id,
+      name: 'Name-1',
       propBoolean: true,
       propDate: new Date(),
       propDecimal: 1.123,
@@ -38,24 +36,31 @@ export class AppController {
       propString: 'mncxanajlk',
     } as DummyMainEntityObject;
 
-    const outputObject = await this.appService.createDummyMainEntity(inputObject);
+    const output = await this.appService.createDummyMainEntity(entityObject);
 
-    return JSON.stringify(outputObject);
+    return JSON.stringify(output);
+  }
+
+  @Get('dummy-main/get-by-name')
+  async getDummyMainByName(): Promise<string> {
+    const output = await this.appService.getDummyMainEntityByName('Name-1');
+
+    return JSON.stringify(output);
   }
 
   @Get('dummy-one-to-many/create')
   async createDummyOneToMany(): Promise<string> {
-    const inputObject = { name: 'Name-7' } as DummyOneToManyEntityObject;
+    const entityObject = { name: 'Name-1' } as DummyOneToManyEntityObject;
 
-    const outputObject = await this.appService.createDummyOneToManyEntity(inputObject);
+    const output = await this.appService.createDummyOneToManyEntity(entityObject);
 
-    return JSON.stringify(outputObject);
+    return JSON.stringify(output);
   }
 
   @Get('dummy-one-to-many/get-by-name')
   async getDummyOneToManyByName(): Promise<string> {
-    const outputObject = await this.appService.getDummyOneToManyEntityByName('Name-2');
+    const output = await this.appService.getDummyOneToManyEntityByName('Name-1');
 
-    return JSON.stringify(outputObject);
+    return JSON.stringify(output);
   }
 }

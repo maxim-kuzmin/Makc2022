@@ -1,11 +1,9 @@
 /** Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License. */
 
 import { Injectable } from '@nestjs/common';
-import { DummyMainEntityObject } from 'src/layer3/nosql-mongo/sample/entities/dummy-main/dummy-main-entity.object';
-import { MapperDummyMainEntityExtension } from 'src/layer3/nosql-mongo/sample/mappers/typegoose/entities/dummy-main/mapper-dummy-main-entity.extension';
-import { MapperDummyMainEntityObject } from 'src/layer3/nosql-mongo/sample/mappers/typegoose/entities/dummy-main/mapper-dummy-main-entity.object';
-import { MapperDummyMainEntityRepository } from 'src/layer3/nosql-mongo/sample/mappers/typegoose/entities/dummy-main/mapper-dummy-main-entity.repository';
+import { DummyOneToManyEntityObject } from 'src/layer3/nosql-mongo/sample/entities/dummy-one-to-many/dummy-one-to-many-entity.object';
 import { MapperDummyOneToManyEntityExtension } from 'src/layer3/nosql-mongo/sample/mappers/typegoose/entities/dummy-one-to-many/mapper-dummy-one-to-many-entity.extension';
+import { MapperDummyOneToManyEntityObject } from 'src/layer3/nosql-mongo/sample/mappers/typegoose/entities/dummy-one-to-many/mapper-dummy-one-to-many-entity.object';
 import { MapperDummyOneToManyEntityRepository } from 'src/layer3/nosql-mongo/sample/mappers/typegoose/entities/dummy-one-to-many/mapper-dummy-one-to-many-entity.repository';
 import { DomainItemGetQueryInput } from './queries/item/get/domain-item-get-query-input';
 import { DomainItemGetQueryOutput } from './queries/item/get/domain-item-get-query-output';
@@ -13,19 +11,18 @@ import { DomainItemGetQueryOutput } from './queries/item/get/domain-item-get-que
 @Injectable()
 export class DomainService {
   constructor(
-    private readonly repositioryOfDummyMainEntity: MapperDummyMainEntityRepository,
     private readonly repositioryOfDummyOneToManyEntity: MapperDummyOneToManyEntityRepository
   ) {}
 
   async getItem(input: DomainItemGetQueryInput): Promise<DomainItemGetQueryOutput> {
     const result = new DomainItemGetQueryOutput();
 
-    let mapperObject: MapperDummyMainEntityObject;
+    let mapperObject: MapperDummyOneToManyEntityObject;
 
     if (input.entityId) {
-      mapperObject = await this.repositioryOfDummyMainEntity.findOneById(input.entityId);
+      mapperObject = await this.repositioryOfDummyOneToManyEntity.findOneById(input.entityId);
     } else if (input.entityName) {
-      mapperObject = await this.repositioryOfDummyMainEntity.findOneByName(input.entityName);
+      mapperObject = await this.repositioryOfDummyOneToManyEntity.findOneByName(input.entityName);
     }
 
     if (mapperObject) {
@@ -39,10 +36,10 @@ export class DomainService {
     return null;
   }
 
-  async save(entityObject: DummyMainEntityObject): Promise<DomainItemGetQueryOutput> {
+  async save(entityObject: DummyOneToManyEntityObject): Promise<DomainItemGetQueryOutput> {
     const result = new DomainItemGetQueryOutput();
 
-    const mapperObject = await this.repositioryOfDummyMainEntity.save(entityObject);
+    const mapperObject = await this.repositioryOfDummyOneToManyEntity.save(entityObject);
 
     if (mapperObject) {
       this.initItemGetQueryOutput(result, mapperObject);
@@ -53,17 +50,10 @@ export class DomainService {
 
   private initItemGetQueryOutput(
     output: DomainItemGetQueryOutput,
-    mapperObject: MapperDummyMainEntityObject
+    mapperObject: MapperDummyOneToManyEntityObject
   ) {
-    const mapperObjectExtOfDummyMainEntity =
-      MapperDummyMainEntityExtension.extMapperObject(mapperObject);
-
-    output.objectOfDummyMainEntity = mapperObjectExtOfDummyMainEntity.fromMapperToEntityObject();
-
     const mapperObjectExtOfDummyOneToManyEntity =
-      MapperDummyOneToManyEntityExtension.extMapperObject(
-        mapperObject.objectOfDummyOneToManyEntity
-      );
+      MapperDummyOneToManyEntityExtension.extMapperObject(mapperObject);
 
     output.objectOfDummyOneToManyEntity =
       mapperObjectExtOfDummyOneToManyEntity.fromMapperToEntityObject();

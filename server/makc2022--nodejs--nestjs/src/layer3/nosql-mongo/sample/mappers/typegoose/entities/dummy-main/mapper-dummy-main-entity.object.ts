@@ -1,6 +1,6 @@
 /** Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License. */
 
-import { prop, Ref } from '@typegoose/typegoose';
+import { modelOptions, prop, Ref } from '@typegoose/typegoose';
 import { Base } from '@typegoose/typegoose/lib/defaultClasses';
 import { DummyMainEntityObject } from 'src/layer3/nosql-mongo/sample/entities/dummy-main/dummy-main-entity.object';
 import { MapperDummyOneToManyEntityObject } from '../dummy-one-to-many/mapper-dummy-one-to-many-entity.object';
@@ -8,18 +8,11 @@ import { MapperDummyOneToManyEntityObject } from '../dummy-one-to-many/mapper-du
 export interface MapperDummyMainEntityObject extends Base<string> {}
 
 /** Объект сущности "DummyMain" сопоставителя. */
+@modelOptions({ schemaOptions: { collection: 'dummy-main' } })
 export class MapperDummyMainEntityObject implements DummyMainEntityObject {
   /** @inheritdoc */
   @prop({ unique: true, required: true })
   name!: string;
-
-  /** @inheritdoc */
-  get idOfDummyOneToManyEntity(): string {
-    return this.refToDummyOneToManyEntity.valueOf() as string;
-  }
-  set idOfDummyOneToManyEntity(value: string) {
-    this.refToDummyOneToManyEntity = value;
-  }
 
   /** @inheritdoc */
   @prop({ required: true })
@@ -72,4 +65,20 @@ export class MapperDummyMainEntityObject implements DummyMainEntityObject {
   /** Ссылка на объект сущности "DummyOneToMany". */
   @prop({ required: true, ref: () => MapperDummyOneToManyEntityObject, type: () => String })
   refToDummyOneToManyEntity!: Ref<MapperDummyOneToManyEntityObject, string>;
+
+  /** @inheritdoc */
+  get idOfDummyOneToManyEntity(): string {
+    return this.objectOfDummyOneToManyEntity.id;
+  }
+  set idOfDummyOneToManyEntity(value: string) {
+    this.refToDummyOneToManyEntity = value;
+  }
+
+  /** Объект сущности "DummyOneToMany". */
+  get objectOfDummyOneToManyEntity() {
+    return this.refToDummyOneToManyEntity as MapperDummyOneToManyEntityObject;
+  }
+  set objectOfDummyOneToManyEntity(value: MapperDummyOneToManyEntityObject) {
+    this.refToDummyOneToManyEntity = value;
+  }
 }

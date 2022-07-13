@@ -3,10 +3,12 @@
 import { Injectable } from '@nestjs/common';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { InjectModel } from 'nestjs-typegoose';
-import { DummyMainEntityLoader } from 'src/layer3/nosql-mongo/sample/entities/dummy-main/dummy-main-entity.loader';
+import { nameof } from 'src/layer1/common/common-functions';
 import { DummyMainEntityObject } from 'src/layer3/nosql-mongo/sample/entities/dummy-main/dummy-main-entity.object';
+import { MapperDummyMainEntityExtension } from './mapper-dummy-main-entity.extension';
 import { MapperDummyMainEntityObject } from './mapper-dummy-main-entity.object';
 
+/** Репозиторий сущности "DummyMain" сопоставителя. */
 @Injectable()
 export class MapperDummyMainEntityRepository {
   constructor(
@@ -14,41 +16,37 @@ export class MapperDummyMainEntityRepository {
     private readonly mapperDummyMainEntityModel: ReturnModelType<typeof MapperDummyMainEntityObject>
   ) {}
 
-  async create(entityObject: DummyMainEntityObject): Promise<DummyMainEntityObject> {
-    let mapperObject = this.convertFromEntityToMapperObject(entityObject);
-
-    const model = new this.mapperDummyMainEntityModel(mapperObject);
-
-    mapperObject = await model.save();
-
-    return this.convertFromMapperToEntityObject(mapperObject);
+  async findOneById(id: string): Promise<MapperDummyMainEntityObject> {
+    return await this.mapperDummyMainEntityModel
+      .findById(id)
+      .populate(this.getPathsToPopulate())
+      .exec();
   }
 
-  async getByName(name: string): Promise<DummyMainEntityObject | null> {
-    const mapperObject = await this.mapperDummyMainEntityModel.findOne({ name }).exec();
-
-    return mapperObject && this.convertFromMapperToEntityObject(mapperObject);
+  async findOneByName(name: string): Promise<MapperDummyMainEntityObject> {
+    return await this.mapperDummyMainEntityModel
+      .findOne({ name })
+      .populate(this.getPathsToPopulate())
+      .exec();
   }
 
-  private convertFromEntityToMapperObject(
-    entityObject: DummyMainEntityObject
-  ): MapperDummyMainEntityObject {
-    const result = new MapperDummyMainEntityObject();
+  async save(entityObject: DummyMainEntityObject): Promise<MapperDummyMainEntityObject> {
+    let result: MapperDummyMainEntityObject;
 
-    const loader = new DummyMainEntityLoader(result);
+    const entityObjectExt = MapperDummyMainEntityExtension.extEntityObject(entityObject);
 
-    loader.load(entityObject);
+    result = entityObjectExt.fromEntityToMapperObject();
+
+    const model = new this.mapperDummyMainEntityModel(result);
+
+    result = await model.save();
+
+    result = await this.findOneById(result.id);
 
     return result;
   }
 
-  private convertFromMapperToEntityObject(
-    mapperObject: MapperDummyMainEntityObject
-  ): DummyMainEntityObject {
-    const loader = new DummyMainEntityLoader();
-
-    loader.load(mapperObject);
-
-    return loader.entityObject;
+  private getPathsToPopulate() {
+    return [nameof<MapperDummyMainEntityObject>('refToDummyOneToManyEntity')];
   }
 }

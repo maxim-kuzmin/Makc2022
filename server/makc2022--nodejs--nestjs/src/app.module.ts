@@ -10,11 +10,13 @@ import { AppService } from './app.service';
 import { Module as Layer1Module } from './layer1/module';
 import { WebHttpServerModule } from './layer6/web-http-server/web-http-server.module';
 import { getMongoConfig } from './configs/mongo.config';
-import { MapperModule } from './layer3/nosql-mongo/sample/mappers/typegoose/mapper.module';
+import { DomainModule as DummyMainDomainModule } from './layer4/domains/dummy-main/domain.module';
+import { DomainModule as DummyOneToManyDomainModule } from './layer4/domains/dummy-one-to-many/domain.module';
 
 @Module({
   imports: [
-    MapperModule,
+    DummyMainDomainModule,
+    DummyOneToManyDomainModule,
     Layer1Module,
     I18nModule.forRoot({
       fallbackLanguage: 'en',
