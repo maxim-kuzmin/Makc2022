@@ -1,56 +1,45 @@
 /** Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License. */
 
-import { I18nContext } from 'nestjs-i18n';
-import { IQueryResource } from './query-resource.interface';
-
 /** Ресурс запроса. */
-export class QueryResource implements IQueryResource {
-  private path = 'layer1--query';
-
-  /** Конструктор.
-   * @param i18n Контекст интернационализации.
+export interface QueryResource {
+  /** Получить сообщение об ошибке по умолчанию.
+   * @returns Сообщение об ошибке.
    */
-  constructor(private readonly i18n: I18nContext) {}
+  getErrorMessageForDefault(): string;
 
-  /** @inheritdoc */
-  getErrorMessageForDefault(): string {
-    return this.i18n.t(`${this.path}.@@ErrorMessageForDefault`);
-  }
+  /** Получить сообщение об ошибке для недействительных входных данных.
+   * @param invalidProperties Недействительные свойства.
+   * @returns Сообщение об ошибке.
+   */
+  getErrorMessageForInvalidInput(invalidProperties: string[]): string;
 
-  /** @inheritdoc */
-  getErrorMessageForInvalidInput(invalidProperties: string[]): string {
-    return this.i18n.t(`${this.path}.@@ErrorMessageForInvalidInput`, {
-      args: { properties: invalidProperties.join(', ') },
-    });
-  }
+  /** Получить заголовок для ошибки.
+   * @returns Заголовок.
+   */
+  getTitleForError(): string;
 
-  /** @inheritdoc */
-  getTitleForError(): string {
-    return this.i18n.t(`${this.path}.@@TitleForError`);
-  }
+  /** Получить заголовок для входных данных.
+   * @returns Заголовок.
+   */
+  getTitleForInput(): string;
 
-  /** @inheritdoc */
-  getTitleForInput(): string {
-    return this.i18n.t(`${this.path}.@@TitleForInput`);
-  }
+  /** Получить заголовок для кода запроса.
+   * @returns Заголовок.
+   */
+  getTitleForQueryCode(): string;
 
-  /** @inheritdoc */
-  getTitleForQueryCode(): string {
-    return this.i18n.t(`${this.path}.@@TitleForQueryCode`);
-  }
+  /** Получить заголовок для результата.
+   * @returns Заголовок.
+   */
+  getTitleForResult(): string;
 
-  /** @inheritdoc */
-  getTitleForResult(): string {
-    return this.i18n.t(`${this.path}.@@TitleForResult`);
-  }
+  /**  Получить заголовок для начала.
+   * @returns Заголовок.
+   */
+  getTitleForStart(): string;
 
-  /** @inheritdoc */
-  getTitleForStart(): string {
-    return this.i18n.t(`${this.path}.@@TitleForStart`);
-  }
-
-  /** @inheritdoc */
-  getTitleForSuccess(): string {
-    return this.i18n.t(`${this.path}.@@TitleForSuccess`);
-  }
+  /** Получить заголовок для успеха.
+   * @returns Заголовок.
+   */
+  getTitleForSuccess(): string;
 }

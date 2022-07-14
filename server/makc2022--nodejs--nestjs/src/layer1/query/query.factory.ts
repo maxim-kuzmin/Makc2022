@@ -2,8 +2,8 @@
 
 import { Injectable } from '@nestjs/common';
 import { I18nContext } from 'nestjs-i18n';
-import { IQueryResource } from './query-resource.interface';
 import { QueryResource } from './query-resource';
+import { QueryResourceImpl } from './query-resource.impl';
 
 /** Фабрика запроса. */
 @Injectable()
@@ -12,7 +12,7 @@ export class QueryFactory {
    * @param i18n Контекст интернационализации.
    * @returns Ресурс.
    */
-  createResource(i18n: I18nContext): IQueryResource {
-    return new QueryResource(i18n);
+  createResource(i18n: I18nContext): QueryResource {
+    return new QueryResourceImpl(i18n);
   }
 }

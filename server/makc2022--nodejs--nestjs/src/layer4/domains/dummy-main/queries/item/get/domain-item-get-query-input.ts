@@ -3,6 +3,7 @@
 import { nameof } from 'src/layer1/common/common-functions';
 import { ItemGetQueryInput } from 'src/layer2/nosql-mongo/queries/item/get/item-get-query-input';
 
+/** Входные данные запроса на получение элемента в домене. */
 export class DomainItemGetQueryInput extends ItemGetQueryInput {
   /** Имя сущности. */
   entityName: string;

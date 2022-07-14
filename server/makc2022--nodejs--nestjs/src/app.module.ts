@@ -7,7 +7,6 @@ import { TypegooseModule } from 'nestjs-typegoose';
 import * as path from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { Module as Layer1Module } from './layer1/module';
 import { WebHttpServerModule } from './layer6/web-http-server/web-http-server.module';
 import { getMongoConfig } from './configs/mongo.config';
 import { DomainModule as DummyMainDomainModule } from './layer4/domains/dummy-main/domain.module';
@@ -17,7 +16,6 @@ import { DomainModule as DummyOneToManyDomainModule } from './layer4/domains/dum
   imports: [
     DummyMainDomainModule,
     DummyOneToManyDomainModule,
-    Layer1Module,
     I18nModule.forRoot({
       fallbackLanguage: 'en',
       loaderOptions: {

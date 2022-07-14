@@ -1,69 +1,23 @@
 /** Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License. */
 
-import { LoggerService } from '@nestjs/common';
-import { CommonEnvironment } from 'src/layer1/common/common-environment';
 import { QueryHandler } from '../query-handler';
-import { IQueryResource } from '../query-resource.interface';
 import { QueryResult } from '../query-result';
-import { IQueryWithoutInputAndOutputHandler } from './query-without-input-and-output-handler.interface';
 
 /** Обработчик запроса без входных и выходных данных. */
-export class QueryWithoutInputAndOutputHandler
-  extends QueryHandler
-  implements IQueryWithoutInputAndOutputHandler
-{
-  /** Функция получения сообщений об успехах. */
-  protected functionToGetSuccessMessages: () => string[];
-
-  /** Функция получения сообщений о предупреждениях. */
-  protected functionToGetWarningMessages: () => string[];
-
+export interface QueryWithoutInputAndOutputHandler extends QueryHandler {
   /** Результат выполнения запроса. */
   queryResult: QueryResult;
 
-  /** @inheritdoc */
-  constructor(
-    queryName: string,
-    queryResource: IQueryResource,
-    logger: LoggerService,
-    environment: CommonEnvironment
-  ) {
-    super(queryName, queryResource, logger, environment);
-  }
+  /** Обработать начало запроса.
+   * @param queryCode Код запроса.
+   */
+  onStart(queryCode?: string): void;
 
-  /** @inheritdoc */
-  onStart(queryCode?: string): void {
-    this.doOnStart(queryCode);
-  }
+  /** Обработать успешное выполнение запроса. */
+  onSuccess(): void;
 
-  /** @inheritdoc */
-  onSuccess(): void {
-    this.initQueryResult(true);
-
-    this.doOnSuccess(this.functionToGetSuccessMessages, this.functionToGetWarningMessages);
-  }
-
-  /** @inheritdoc */
-  onSuccessWithResult(queryResult: QueryResult): void {
-    this.queryResult = queryResult;
-
-    this.doOnSuccess();
-  }
-
-  /** @inheritdoc */
-  protected override getQueryInput(): unknown {
-    return null;
-  }
-
-  /** @inheritdoc */
-  protected override getQueryResult(): QueryResult {
-    return this.queryResult;
-  }
-
-  /** @inheritdoc */
-  protected override initQueryResult(isOk: boolean): void {
-    this.queryResult = new QueryResult();
-    this.queryResult.isOk = isOk;
-    this.queryCode = this.queryCode;
-  }
+  /** Обработать успешное выполнение запроса с результатом.
+   * @param queryResult Результат запроса.
+   */
+  onSuccessWithResult(queryResult?: QueryResult): void;
 }

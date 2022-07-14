@@ -9,7 +9,10 @@ import { MapperDummyOneToManyEntityExtension } from 'src/layer3/nosql-mongo/samp
 import { MapperDummyOneToManyEntityRepository } from 'src/layer3/nosql-mongo/sample/mappers/typegoose/entities/dummy-one-to-many/mapper-dummy-one-to-many-entity.repository';
 import { DomainItemGetQueryInput } from './queries/item/get/domain-item-get-query-input';
 import { DomainItemGetQueryOutput } from './queries/item/get/domain-item-get-query-output';
+import { DomainListGetQueryInput } from './queries/list/get/domain-list-get-query-input';
+import { DomainListGetQueryOutput } from './queries/list/get/domain-list-get-query-output';
 
+/** Сервис домена. */
 @Injectable()
 export class DomainService {
   constructor(
@@ -17,6 +20,10 @@ export class DomainService {
     private readonly repositioryOfDummyOneToManyEntity: MapperDummyOneToManyEntityRepository
   ) {}
 
+  /** Получить элемент.
+   * @param input Входные данные.
+   * @returns Обещание выполнения запроса с выходными данными.
+   */
   async getItem(input: DomainItemGetQueryInput): Promise<DomainItemGetQueryOutput> {
     const result = new DomainItemGetQueryOutput();
 
@@ -35,10 +42,20 @@ export class DomainService {
     return result;
   }
 
-  async getList() {
-    return null;
+  /** Получить список.
+   * @param input Входные данные.
+   * @returns Обещание выполнения запроса с выходными данными.
+   */
+  async getList(input: DomainListGetQueryInput): Promise<DomainListGetQueryOutput> {
+    const result = new DomainListGetQueryOutput();
+
+    return result;
   }
 
+  /** Сохранить.
+   * @param entityObject Объект сущности.
+   * @returns Обещание выполнения запроса с выходными данными.
+   */
   async save(entityObject: DummyMainEntityObject): Promise<DomainItemGetQueryOutput> {
     const result = new DomainItemGetQueryOutput();
 

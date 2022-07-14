@@ -3,7 +3,8 @@
 /** Получить имя свойства с гарантией его существования в типе.
  * @template T Тип.
  * @param name Имя свойства.
+ * @returns Ключ типа.
  */
-export function nameof<T>(name: keyof T) {
+export function nameof<T>(name: keyof T): keyof T {
   return name;
 }

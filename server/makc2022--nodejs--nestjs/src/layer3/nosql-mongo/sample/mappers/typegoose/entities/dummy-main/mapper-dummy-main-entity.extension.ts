@@ -16,14 +16,16 @@ export class MapperDummyMainEntityExtension {
   /** Расширить объект сущности.
    * @param entityObject Объект сущности.
    */
-  static extEntityObject(entityObject: DummyMainEntityObject) {
+  static extEntityObject(entityObject: DummyMainEntityObject): MapperDummyMainEntityExtension {
     return new MapperDummyMainEntityExtension({ entityObject });
   }
 
   /** Расширить объект сопоставителя.
    * @param mapperObject Объект сопоставителя.
    */
-  static extMapperObject(mapperObject: MapperDummyMainEntityObject) {
+  static extMapperObject(
+    mapperObject: MapperDummyMainEntityObject
+  ): MapperDummyMainEntityExtension {
     return new MapperDummyMainEntityExtension({ mapperObject });
   }
 

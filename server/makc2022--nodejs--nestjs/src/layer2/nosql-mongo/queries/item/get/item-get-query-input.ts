@@ -9,13 +9,6 @@ export abstract class ItemGetQueryInput extends QueryInput {
   /** Идентификатор сущности. */
   entityId: string;
 
-  /** Нормализовать. */
-  normalize(): void {
-    if (!this.entityId) {
-      this.entityId = '';
-    }
-  }
-
   /** @inheritdoc */
   override getInvalidProperties(): string[] {
     const result = super.getInvalidProperties();
@@ -25,5 +18,12 @@ export abstract class ItemGetQueryInput extends QueryInput {
     }
 
     return result;
+  }
+
+  /** Нормализовать. */
+  normalize(): void {
+    if (!this.entityId) {
+      this.entityId = '';
+    }
   }
 }
