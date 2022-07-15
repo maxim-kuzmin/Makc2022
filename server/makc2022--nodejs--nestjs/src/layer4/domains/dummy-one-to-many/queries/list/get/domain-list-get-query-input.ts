@@ -17,18 +17,6 @@ export class DomainListGetQueryInput extends ListGetQueryInput {
   /** Имя сущности. */
   entityName: string;
 
-  /** Идентификатор сущности "DummyOneToMany". */
-  idOfDummyOneToManyEntity: string;
-
-  /** Идентификаторы сущности "DummyOneToMany". */
-  idsOfDummyOneToManyEntity: string[];
-
-  /** Строка идентификаторов сущности "DummyOneToMany". */
-  idsStringOfDummyOneToManyEntity: string;
-
-  /** Имя сущности "DummyOneToMany". */
-  nameOfDummyOneToManyEntity: string;
-
   /** @inheritdoc */
   override normalize(): void {
     super.normalize();
@@ -45,16 +33,6 @@ export class DomainListGetQueryInput extends ListGetQueryInput {
       const idsExt = ConvertingExtension.extString(this.entityIdsString);
 
       this.entityIds = idsExt.fromStringToStringArray();
-    }
-
-    const isOk =
-      this.idsStringOfDummyOneToManyEntity &&
-      (!this.idsOfDummyOneToManyEntity || this.idsOfDummyOneToManyEntity.length === 0);
-
-    if (isOk) {
-      const idsExt = ConvertingExtension.extString(this.idsStringOfDummyOneToManyEntity);
-
-      this.idsOfDummyOneToManyEntity = idsExt.fromStringToStringArray();
     }
   }
 }

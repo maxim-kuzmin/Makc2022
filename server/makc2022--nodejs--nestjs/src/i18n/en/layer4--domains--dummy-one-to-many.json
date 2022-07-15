@@ -1,0 +1,4 @@
+{
+  "@@ItemGetQueryName": "The query to get an item",
+  "@@ListGetQueryName": "The query to get a list"
+}
