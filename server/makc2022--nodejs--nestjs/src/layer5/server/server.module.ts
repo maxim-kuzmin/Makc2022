@@ -8,5 +8,6 @@ import { DummyMainItemPageService } from './pages/dummy-main/item/dummy-main-ite
 @Module({
   imports: [DummyMainDomainModule],
   providers: [CommonEnvironment, DummyMainItemPageService],
+  exports: [DummyMainItemPageService],
 })
 export class ServerModule {}
