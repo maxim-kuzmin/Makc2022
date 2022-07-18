@@ -1,6 +1,6 @@
 /** Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License. */
 
-import * as moment from 'moment';
+import { format } from 'date-fns';
 import { ConvertingResource } from './converting-resource';
 
 /** Расширение преобразования. */
@@ -31,7 +31,7 @@ export class ConvertingExtension {
    * @returns Строковое представление даты.
    */
   fromDateToString(resource: ConvertingResource): string {
-    return moment(this.self.dateValue).format(resource.getFormatForDate());
+    return format(this.self.dateValue, resource.getFormatForDate());
   }
 
   /** Преобразовать из строки в массив целых чисел.

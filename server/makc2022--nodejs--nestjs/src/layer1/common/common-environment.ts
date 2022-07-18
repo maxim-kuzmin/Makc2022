@@ -1,12 +1,13 @@
 /** Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License. */
 
 import { Injectable } from '@nestjs/common';
+import { path } from 'app-root-path';
 
 /** Общее окружение. */
 @Injectable()
 export class CommonEnvironment {
   /** Базовый путь: абсолютный путь к папке, относительно которой указываются пути к файлам. */
-  basePath = __dirname;
+  basePath = path;
 
   /** Имя. */
   name = process.env.NODE_ENV ?? 'development';
