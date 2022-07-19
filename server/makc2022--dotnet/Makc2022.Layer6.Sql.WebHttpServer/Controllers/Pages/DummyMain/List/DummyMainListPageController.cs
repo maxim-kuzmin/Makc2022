@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace Makc2022.Layer6.WebHttpServer.Controllers.Pages.DummyMain.List
+namespace Makc2022.Layer6.Sql.WebHttpServer.Controllers.Pages.DummyMain.List
 {
     [Route("api/[controller]")]
     [ApiController]

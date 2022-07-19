@@ -1,4 +1,8 @@
+using Makc2022.Layer5.Sql.Server.Setting;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAppServices(builder.Configuration);
 
 // Add services to the container.
 
@@ -8,6 +12,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.Services.UseAppServices();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

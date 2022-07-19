@@ -2,7 +2,7 @@
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace Makc2022.Layer6.WebHttpServer.Controllers.Pages.DummyMain.Item
+namespace Makc2022.Layer6.Sql.WebHttpServer.Controllers.Pages.DummyMain.Item
 {
     [Route("api/[controller]")]
     [ApiController]

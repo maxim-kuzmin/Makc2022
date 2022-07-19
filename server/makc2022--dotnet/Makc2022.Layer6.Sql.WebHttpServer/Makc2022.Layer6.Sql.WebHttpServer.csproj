@@ -14,4 +14,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Makc2022.Layer5.Sql.Server\Makc2022.Layer5.Sql.Server.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,4 @@
-namespace Makc2022.Layer6.WebHttpServer
+namespace Makc2022.Layer6.Sql.WebHttpServer
 {
     public class WeatherForecast
     {

@@ -1,15 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32602.291
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer6.WebHttpServer", "Makc2022.Layer6.WebHttpServer\Makc2022.Layer6.WebHttpServer.csproj", "{15BE0379-B2CB-4A29-A05B-3EF4081BF4EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer6.Sql.WebHttpServer", "Makc2022.Layer6.Sql.WebHttpServer\Makc2022.Layer6.Sql.WebHttpServer.csproj", "{15BE0379-B2CB-4A29-A05B-3EF4081BF4EB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A1762641-701A-4994-A9CA-FC6398E24B47}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer1", "Makc2022.Layer1\Makc2022.Layer1.csproj", "{51864CA8-C01F-4DB1-A304-49264A0C8F02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer5.Sql.Server", "Makc2022.Layer5.Sql.Server\Makc2022.Layer5.Sql.Server.csproj", "{BE32CDD8-3670-4C1D-9C13-6209A4A6A0EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer2.Sql", "Makc2022.Layer2.Sql\Makc2022.Layer2.Sql.csproj", "{7CD0151E-CB95-4463-84A8-EB249429C8DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{15BE0379-B2CB-4A29-A05B-3EF4081BF4EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15BE0379-B2CB-4A29-A05B-3EF4081BF4EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15BE0379-B2CB-4A29-A05B-3EF4081BF4EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51864CA8-C01F-4DB1-A304-49264A0C8F02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51864CA8-C01F-4DB1-A304-49264A0C8F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51864CA8-C01F-4DB1-A304-49264A0C8F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51864CA8-C01F-4DB1-A304-49264A0C8F02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE32CDD8-3670-4C1D-9C13-6209A4A6A0EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE32CDD8-3670-4C1D-9C13-6209A4A6A0EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE32CDD8-3670-4C1D-9C13-6209A4A6A0EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE32CDD8-3670-4C1D-9C13-6209A4A6A0EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CD0151E-CB95-4463-84A8-EB249429C8DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CD0151E-CB95-4463-84A8-EB249429C8DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CD0151E-CB95-4463-84A8-EB249429C8DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CD0151E-CB95-4463-84A8-EB249429C8DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
