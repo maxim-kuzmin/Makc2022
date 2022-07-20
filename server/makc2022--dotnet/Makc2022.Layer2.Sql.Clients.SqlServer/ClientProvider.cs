@@ -77,7 +77,7 @@ namespace Makc2022.Layer2.Sql.Clients.SqlServer
         }
 
         /// <inheritdoc/>   
-        public DbConnection CreateDbConnection(string connectionString, Func<string, string> transformConnectionString = null)
+        public DbConnection CreateDbConnection(string connectionString, Func<string, string>? transformConnectionString = null)
         {
             if (transformConnectionString != null)
             {
