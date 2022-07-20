@@ -3,7 +3,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging.Abstractions;
-using OptionsFactory = Microsoft.Extensions.Options.Options;
+using Microsoft.Extensions.Options;
 
 namespace Makc2022.Layer1.Common
 {
@@ -79,7 +79,7 @@ namespace Makc2022.Layer1.Common
 
             localizationOptions.ConfigureLocalization();
 
-            var options = OptionsFactory.Create(localizationOptions);
+            var options = Options.Create(localizationOptions);
 
             var factory = new ResourceManagerStringLocalizerFactory(options, NullLoggerFactory.Instance);
 
