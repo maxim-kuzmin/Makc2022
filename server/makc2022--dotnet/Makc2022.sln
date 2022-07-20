@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer2.Sql.Clients
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer2.Sql.Mappers.EF", "Makc2022.Layer2.Sql.Mappers.EF\Makc2022.Layer2.Sql.Mappers.EF.csproj", "{EF831C94-5B33-433E-AB23-AB72FC4E1CAA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer3.Sql.Sample", "Makc2022.Layer3.Sql.Sample\Makc2022.Layer3.Sql.Sample.csproj", "{D83D1463-DC39-4790-A02D-2942D7796859}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{EF831C94-5B33-433E-AB23-AB72FC4E1CAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF831C94-5B33-433E-AB23-AB72FC4E1CAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF831C94-5B33-433E-AB23-AB72FC4E1CAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D83D1463-DC39-4790-A02D-2942D7796859}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D83D1463-DC39-4790-A02D-2942D7796859}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D83D1463-DC39-4790-A02D-2942D7796859}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D83D1463-DC39-4790-A02D-2942D7796859}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,6 +108,7 @@ Global
 		{538D2A18-B963-465C-B7AC-4FB71AB77C4A} = {51DA2578-B1E2-4616-B28C-469072D45E98}
 		{ACAF440C-A593-42BD-8E30-3431B6AADBF8} = {51DA2578-B1E2-4616-B28C-469072D45E98}
 		{EF831C94-5B33-433E-AB23-AB72FC4E1CAA} = {51DA2578-B1E2-4616-B28C-469072D45E98}
+		{D83D1463-DC39-4790-A02D-2942D7796859} = {DB31A8D0-1758-4ECF-8309-30B8E813FDF2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3D0EA2B3-12D7-4161-8AB3-62B0025BF3E9}

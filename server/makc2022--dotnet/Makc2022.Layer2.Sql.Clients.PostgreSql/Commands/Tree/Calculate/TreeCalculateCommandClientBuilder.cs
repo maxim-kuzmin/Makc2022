@@ -189,7 +189,7 @@ begin
                     ?
                     string.Join(", ", parIds.Select(x => x.ParameterName))
                     :
-                    SqlForIdsSelectQuery ?? string.Empty;
+                    SqlForIdsSelectQuery ?? throw new NullReferenceException(nameof(SqlForIdsSelectQuery));
 
                 result.Append($@"
 		and

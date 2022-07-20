@@ -57,7 +57,7 @@ namespace Makc2022.Layer2.Sql.Clients.SqlServer.Commands.Tree.Trigger
                 }
                 else
                 {
-                    sqlForIdsSelectQuery = SqlForIdsSelectQuery ?? string.Empty;
+                    sqlForIdsSelectQuery = SqlForIdsSelectQuery ?? throw new NullReferenceException(nameof(SqlForIdsSelectQuery));
                 }
             }
             else

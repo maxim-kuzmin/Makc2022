@@ -191,7 +191,7 @@ update {cte} set
                     ?
                     string.Join(", ", parIds.Select(x => x.ParameterName))
                     :
-                    SqlForIdsSelectQuery ?? string.Empty;
+                    SqlForIdsSelectQuery ?? throw new NullReferenceException(nameof(SqlForIdsSelectQuery));
 
                 result.Append($@"
 where
