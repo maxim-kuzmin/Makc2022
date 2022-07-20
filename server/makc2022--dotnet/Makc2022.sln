@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer2.Sql.Clients
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer2.Sql.Clients.Oracle", "Makc2022.Layer2.Sql.Clients.Oracle\Makc2022.Layer2.Sql.Clients.Oracle.csproj", "{538D2A18-B963-465C-B7AC-4FB71AB77C4A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer2.Sql.Clients.SqlServer", "Makc2022.Layer2.Sql.Clients.SqlServer\Makc2022.Layer2.Sql.Clients.SqlServer.csproj", "{ACAF440C-A593-42BD-8E30-3431B6AADBF8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{538D2A18-B963-465C-B7AC-4FB71AB77C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{538D2A18-B963-465C-B7AC-4FB71AB77C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{538D2A18-B963-465C-B7AC-4FB71AB77C4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACAF440C-A593-42BD-8E30-3431B6AADBF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACAF440C-A593-42BD-8E30-3431B6AADBF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACAF440C-A593-42BD-8E30-3431B6AADBF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACAF440C-A593-42BD-8E30-3431B6AADBF8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,6 +94,7 @@ Global
 		{74FF9895-A662-400A-B5FF-DEB388E4F638} = {EA9A7F33-9986-462E-81AA-1D900561DF82}
 		{E352BF19-A31C-4C62-B6F9-AD7E0298D2D6} = {51DA2578-B1E2-4616-B28C-469072D45E98}
 		{538D2A18-B963-465C-B7AC-4FB71AB77C4A} = {51DA2578-B1E2-4616-B28C-469072D45E98}
+		{ACAF440C-A593-42BD-8E30-3431B6AADBF8} = {51DA2578-B1E2-4616-B28C-469072D45E98}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3D0EA2B3-12D7-4161-8AB3-62B0025BF3E9}

@@ -26,7 +26,7 @@ namespace Makc2022.Layer2.Sql.Common
         /// <param name="connection">Подключение к базе данных.</param>
         /// <param name="parameters">Параметры команды.</param>
         /// <returns>Команда базы данных.</returns>
-        DbCommand CreateDbCommand(DbConnection connection, DbParameter[] parameters);
+        DbCommand? CreateDbCommand(DbConnection connection, DbParameter[] parameters);
 
         /// <summary>
         /// Создать подключение к базе данных.
