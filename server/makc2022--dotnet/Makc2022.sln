@@ -33,6 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Layer5-Application", "Layer
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Layer6-Presentation", "Layer6-Presentation", "{12EB6762-5BD3-4861-80E3-29C6BF20537A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer2.Sql.Clients.PostgreSql", "Makc2022.Layer2.Sql.Clients.PostgreSql\Makc2022.Layer2.Sql.Clients.PostgreSql.csproj", "{E352BF19-A31C-4C62-B6F9-AD7E0298D2D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{74FF9895-A662-400A-B5FF-DEB388E4F638}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74FF9895-A662-400A-B5FF-DEB388E4F638}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74FF9895-A662-400A-B5FF-DEB388E4F638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E352BF19-A31C-4C62-B6F9-AD7E0298D2D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E352BF19-A31C-4C62-B6F9-AD7E0298D2D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E352BF19-A31C-4C62-B6F9-AD7E0298D2D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E352BF19-A31C-4C62-B6F9-AD7E0298D2D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +80,7 @@ Global
 		{7CD0151E-CB95-4463-84A8-EB249429C8DD} = {51DA2578-B1E2-4616-B28C-469072D45E98}
 		{90D8A93F-FDBB-4BE9-AFBD-CFA3A75E8213} = {EA9A7F33-9986-462E-81AA-1D900561DF82}
 		{74FF9895-A662-400A-B5FF-DEB388E4F638} = {EA9A7F33-9986-462E-81AA-1D900561DF82}
+		{E352BF19-A31C-4C62-B6F9-AD7E0298D2D6} = {51DA2578-B1E2-4616-B28C-469072D45E98}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3D0EA2B3-12D7-4161-8AB3-62B0025BF3E9}
