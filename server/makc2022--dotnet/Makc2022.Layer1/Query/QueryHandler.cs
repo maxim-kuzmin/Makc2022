@@ -139,9 +139,9 @@ namespace Makc2022.Layer1.Query
 
             Title = $"{QueryName}. {titleForQueryCode}: {QueryCode}. ";
 
-            var settingOptions = SettingOptions.CurrentValue;
+            var currentSettingOptions = SettingOptions.CurrentValue;
 
-            if (settingOptions.LogLevel == LogLevel.Debug)
+            if (currentSettingOptions.LogLevel == LogLevel.Debug)
             {
                 LogDebugOnStart();
             }
@@ -181,9 +181,9 @@ namespace Makc2022.Layer1.Query
                     }
                 }
 
-                var settingOptions = SettingOptions.CurrentValue;
+                var currentSettingOptions = SettingOptions.CurrentValue;
 
-                if (settingOptions.LogLevel == LogLevel.Debug)
+                if (currentSettingOptions.LogLevel == LogLevel.Debug)
                 {
                     LogDebugOnSuccess();
                 }

@@ -1,19 +1,16 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
 using Makc2022.Layer1.Common;
-using Makc2022.Layer1.Converting;
-using Makc2022.Layer1.Query;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
 
-namespace Makc2022.Layer1.Setting
+namespace Makc2022.Layer2.Sql.Clients.Oracle.Setting
 {
     /// <summary>
-    /// Модуль настройки.
+    /// Модуль клиента.
     /// </summary>
-    public class SettingModule : CommonModule
+    public class ClientSettingModule : CommonModule
     {
         #region Properties
 
@@ -27,7 +24,7 @@ namespace Makc2022.Layer1.Setting
         /// Конструктор.
         /// </summary>
         /// <param name="configurationSection">Раздел конфигурации.</param>
-        public SettingModule(IConfigurationSection configurationSection)
+        public ClientSettingModule(IConfigurationSection configurationSection)
         {
             ConfigurationSection = configurationSection;
         }
@@ -39,19 +36,11 @@ namespace Makc2022.Layer1.Setting
         /// <inheritdoc/>
         public sealed override void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<SettingOptions>(ConfigurationSection);
+            services.Configure<ClientSettingOptions>(ConfigurationSection);
 
-            services.AddSingleton<ICommonResource>(x => new CommonResource(
-                x.GetRequiredService<IStringLocalizer<CommonResource>>()
-                ));
-
-            services.AddSingleton<IConvertingResource>(x => new ConvertingResource(
-                x.GetRequiredService<IStringLocalizer<ConvertingResource>>()
-                ));
-
-            services.AddSingleton<IQueryResource>(x => new QueryResource(
-                x.GetRequiredService<IStringLocalizer<QueryResource>>()
-                ));
+            services.AddSingleton<IClientService>(x => new ClientService(
+                x.GetRequiredService<IOptionsMonitor<ClientSettingOptions>>()
+                ));            
         }
 
         /// <inheritdoc/>
@@ -59,13 +48,24 @@ namespace Makc2022.Layer1.Setting
         {
             return new[]
             {
-                typeof(ICommonResource),
-                typeof(IConvertingResource),
-                typeof(IQueryResource),
-                typeof(IOptionsMonitor<SettingOptions>),
+                typeof(IClientService),
+                typeof(IOptionsMonitor<ClientSettingOptions>)
             };
         }
 
         #endregion Public methods
+
+        #region Protected methods
+
+        /// <inheritdoc/>
+        protected sealed override IEnumerable<Type> GetImports()
+        {
+            return new[]
+            {
+                typeof(IOptionsMonitor<ClientSettingOptions>)
+            };
+        }
+
+        #endregion Protected methods
     }
 }
