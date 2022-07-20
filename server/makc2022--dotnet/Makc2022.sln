@@ -17,9 +17,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer5.Sql.Server"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer2.Sql", "Makc2022.Layer2.Sql\Makc2022.Layer2.Sql.csproj", "{7CD0151E-CB95-4463-84A8-EB249429C8DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer1.Apps.WebApp", "Makc2022.Layer1.Apps.WebApp\Makc2022.Layer1.Apps.WebApp.csproj", "{90D8A93F-FDBB-4BE9-AFBD-CFA3A75E8213}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer1.Apps.WebApp", "Makc2022.Layer1.Apps.WebApp\Makc2022.Layer1.Apps.WebApp.csproj", "{90D8A93F-FDBB-4BE9-AFBD-CFA3A75E8213}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer1.Apps.ConsoleApp", "Makc2022.Layer1.Apps.ConsoleApp\Makc2022.Layer1.Apps.ConsoleApp.csproj", "{74FF9895-A662-400A-B5FF-DEB388E4F638}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer1.Apps.ConsoleApp", "Makc2022.Layer1.Apps.ConsoleApp\Makc2022.Layer1.Apps.ConsoleApp.csproj", "{74FF9895-A662-400A-B5FF-DEB388E4F638}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Layer1-Infrastructure", "Layer1-Infrastructure", "{EA9A7F33-9986-462E-81AA-1D900561DF82}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Layer2-Data", "Layer2-Data", "{51DA2578-B1E2-4616-B28C-469072D45E98}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Layer3-Data Access", "Layer3-Data Access", "{DB31A8D0-1758-4ECF-8309-30B8E813FDF2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Layer4-Domain", "Layer4-Domain", "{86B93C1E-3A6A-45F2-B5E5-603DDB6EEA4A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Layer5-Application", "Layer5-Application", "{CB81282C-62BA-4EEC-895F-47167DF866FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Layer6-Presentation", "Layer6-Presentation", "{12EB6762-5BD3-4861-80E3-29C6BF20537A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,6 +66,14 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{15BE0379-B2CB-4A29-A05B-3EF4081BF4EB} = {12EB6762-5BD3-4861-80E3-29C6BF20537A}
+		{51864CA8-C01F-4DB1-A304-49264A0C8F02} = {EA9A7F33-9986-462E-81AA-1D900561DF82}
+		{BE32CDD8-3670-4C1D-9C13-6209A4A6A0EC} = {CB81282C-62BA-4EEC-895F-47167DF866FA}
+		{7CD0151E-CB95-4463-84A8-EB249429C8DD} = {51DA2578-B1E2-4616-B28C-469072D45E98}
+		{90D8A93F-FDBB-4BE9-AFBD-CFA3A75E8213} = {EA9A7F33-9986-462E-81AA-1D900561DF82}
+		{74FF9895-A662-400A-B5FF-DEB388E4F638} = {EA9A7F33-9986-462E-81AA-1D900561DF82}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3D0EA2B3-12D7-4161-8AB3-62B0025BF3E9}
