@@ -8,15 +8,15 @@ export interface QueryWithoutInputAndOutputHandler extends QueryHandler {
   /** Результат выполнения запроса. */
   queryResult: QueryResult;
 
-  /** Обработать начало запроса.
+  /** Обработать начало.
    * @param queryCode Код запроса.
    */
   onStart(queryCode?: string): void;
 
-  /** Обработать успешное выполнение запроса. */
+  /** Обработать успех. */
   onSuccess(): void;
 
-  /** Обработать успешное выполнение запроса с результатом.
+  /** Обработать успех с результатом.
    * @param queryResult Результат запроса.
    */
   onSuccessWithResult(queryResult?: QueryResult): void;

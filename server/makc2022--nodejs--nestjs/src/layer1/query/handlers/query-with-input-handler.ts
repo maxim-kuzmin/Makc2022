@@ -14,16 +14,16 @@ export interface QueryWithInputHandler<TQueryInput> extends QueryHandler {
   /** Результат выполнения запроса. */
   queryResult: QueryResult;
 
-  /** Обработать начало запроса.
+  /** Обработать начало.
    * @param queryInput Входные данные запроса.
    * @param queryCode Код запроса.
    */
   onStart(queryInput: TQueryInput, queryCode?: string): void;
 
-  /** Обработать успешное выполнение запроса. */
+  /** Обработать успех. */
   onSuccess(): void;
 
-  /** Обработать успешное выполнение запроса с результатом.
+  /** Обработать успех с результатом.
    * @param queryResult Результат запроса.
    */
   onSuccessWithResult(queryResult: QueryResult): void;

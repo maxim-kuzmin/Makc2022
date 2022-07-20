@@ -14,18 +14,18 @@ export interface QueryWithInputAndOutputHandler<TQueryInput, TQueryOutput> exten
   /** Результат выполнения запроса. */
   queryResult: QueryResultWithOutput<TQueryOutput>;
 
-  /** Обработать начало запроса.
+  /** Обработать начало.
    * @param queryInput Входные данные запроса.
    * @param queryCode Код запроса.
    */
   onStart(queryInput: TQueryInput, queryCode?: string): void;
 
-  /** Обработать успешное выполнение запроса.
+  /** Обработать успех.
    * @param queryOutput Выходные данные запроса.
    */
   onSuccess(queryOutput: TQueryOutput): void;
 
-  /** Обработать успешное выполнение запроса с результатом.
+  /** Обработать успех с результатом.
    * @param queryResult Результат запроса.
    */
   onSuccessWithResult(queryResult: QueryResultWithOutput<TQueryOutput>): void;

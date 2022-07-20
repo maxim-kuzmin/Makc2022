@@ -2,7 +2,7 @@
 
 /** Обработчик запроса. */
 export interface QueryHandler {
-  /** Обработать ошибку запроса.
+  /** Обработать ошибку.
    * @param Ошибка.
    */
   onError(error: Error): void;

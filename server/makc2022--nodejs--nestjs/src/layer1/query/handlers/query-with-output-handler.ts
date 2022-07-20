@@ -10,17 +10,17 @@ export interface QueryWithOutputHandler<TQueryOutput> extends QueryHandler {
   /** Результат выполнения запроса. */
   queryResult: QueryResultWithOutput<TQueryOutput>;
 
-  /** Обработать начало запроса.
+  /** Обработать начало.
    * @param queryCode Код запроса.
    */
   onStart(queryCode?: string): void;
 
-  /** Обработать успешное выполнение запроса.
+  /** Обработать успех.
    * @param queryOutput Выходные данные запроса.
    */
   onSuccess(queryOutput: TQueryOutput): void;
 
-  /** Обработать успешное выполнение запроса с результатом.
+  /** Обработать успех с результатом.
    * @param queryResult Результат запроса.
    */
   onSuccessWithResult(queryResult: QueryResultWithOutput<TQueryOutput>);
