@@ -12,7 +12,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyManyToMany
         #region Constructors
 
         /// <inheritdoc/>
-        public DummyManyToManyEntityLoader(DummyManyToManyEntityObject entityObject = null)
+        public DummyManyToManyEntityLoader(DummyManyToManyEntityObject? entityObject = null)
             : base(entityObject ?? new DummyManyToManyEntityObject())
         {
         }

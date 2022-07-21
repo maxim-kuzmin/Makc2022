@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Makc2022.Layer2.Sql.Mappers.EF\Makc2022.Layer2.Sql.Mappers.EF.csproj" />
+    <ProjectReference Include="..\Makc2022.Layer3.Sql.Sample\Makc2022.Layer3.Sql.Sample.csproj" />
+  </ItemGroup>
+
+</Project>
