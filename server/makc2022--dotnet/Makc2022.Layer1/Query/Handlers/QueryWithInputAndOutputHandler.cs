@@ -24,17 +24,17 @@ namespace Makc2022.Layer1.Query.Handlers
         /// <summary>
         /// Функция преобразования вывода запроса.
         /// </summary>
-        protected Func<TQueryOutput, TQueryOutput>? FunctionToTransformQueryOutput { get; set; }
+        protected Func<TQueryOutput, TQueryOutput?>? FunctionToTransformQueryOutput { get; set; }
 
         /// <summary>
         /// Функция получения сообщений об успехах.
         /// </summary>
-        protected Func<TQueryInput, TQueryOutput, IEnumerable<string>>? FunctionToGetSuccessMessages { get; set; }
+        protected Func<TQueryInput, TQueryOutput?, IEnumerable<string>>? FunctionToGetSuccessMessages { get; set; }
 
         /// <summary>
         /// Функция получения сообщений о предупреждениях.
         /// </summary>
-        protected Func<TQueryInput, TQueryOutput, IEnumerable<string>>? FunctionToGetWarningMessages { get; set; }
+        protected Func<TQueryInput, TQueryOutput?, IEnumerable<string>>? FunctionToGetWarningMessages { get; set; }
 
         /// <inheritdoc/>
         public TQueryInput? QueryInput { get; private set; }
@@ -71,16 +71,16 @@ namespace Makc2022.Layer1.Query.Handlers
         }
 
         /// <inheritdoc/>
-        public void OnSuccess(TQueryOutput queryOutput)
+        public void OnSuccess(TQueryOutput? queryOutput)
         {
             InitQueryResult(true);
 
-            if (FunctionToTransformQueryOutput != null)
+            if (FunctionToTransformQueryOutput != null && queryOutput != null)
             {
                 queryOutput = FunctionToTransformQueryOutput.Invoke(queryOutput);
             }
 
-            if (QueryResult != null)
+            if (QueryResult != null && queryOutput != null)
             {
                 QueryResult.Output = queryOutput;
             }

@@ -1,6 +1,5 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-using Makc2022.Layer1.Exceptions;
 using Makc2022.Layer2.Sql.Commands.Tree.Trigger;
 using Makc2022.Layer2.Sql.Commands.Trigger;
 using Makc2022.Layer2.Sql.Common;
@@ -70,39 +69,19 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
 
             using var transaction = await dbContext.Database.BeginTransactionAsync();
 
-            if (dbContext.DummyMain is null)
-            {
-                throw new NullVariableException(nameof(dbContext), nameof(dbContext.DummyMain));
-            }
-
-            bool isOk = await dbContext.DummyMain.AnyAsync();
+            bool isOk = await dbContext.DummyMain!.AnyAsync();
 
             if (!isOk)
             {
-                if (dbContext.DummyOneToMany is null)
-                {
-                    throw new NullVariableException(nameof(dbContext), nameof(dbContext.DummyOneToMany));
-                }
+                var itemsOfDummyOneToMany = await SeedTestDataForDummyOneToMany(dbContext);
 
-                var itemsOfDummyOneToMany = await SeedTestDataForDummyOneToMany(dbContext, dbContext.DummyOneToMany);
+                var itemsOfDummyMain = await SeedTestDataForDummyMain(dbContext, itemsOfDummyOneToMany);
 
-                var itemsOfDummyMain = await SeedTestDataForDummyMain(dbContext, dbContext.DummyMain, itemsOfDummyOneToMany);
-
-                if (dbContext.DummyManyToMany is null)
-                {
-                    throw new NullVariableException(nameof(dbContext), nameof(dbContext.DummyManyToMany));
-                }
-
-                var itemsOfDummyManyToMany = await SeedTestDataForDummyManyToMany(dbContext, dbContext.DummyManyToMany);
+                var itemsOfDummyManyToMany = await SeedTestDataForDummyManyToMany(dbContext);
 
                 await SeedTestDataForDummyMainDummyManyToMany(dbContext, itemsOfDummyMain, itemsOfDummyManyToMany);
 
-                if (dbContext.DummyTree is null)
-                {
-                    throw new NullVariableException(nameof(dbContext), nameof(dbContext.DummyTree));
-                }
-
-                await SeedTestDataForDummyTree(dbContext, dbContext.DummyTree);
+                await SeedTestDataForDummyTree(dbContext);
             }
 
             await transaction.CommitAsync();
@@ -271,7 +250,6 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
 
         private async Task SaveTestDataListForDummyTree(
             MapperDbContext dbContext,
-            DbSet<MapperDummyTreeEntityObject> setOfDummyTree,
             List<MapperDummyTreeEntityObject> list,
             List<int> parentIndexes,
             long? parentId
@@ -297,11 +275,11 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
 
                 list.Add(item);
 
-                setOfDummyTree.Add(item);
+                dbContext.DummyTree!.Add(item);
 
                 await dbContext.SaveChangesAsync();
 
-                await SaveTestDataListForDummyTree(dbContext, setOfDummyTree, list, indexes, item.Id);
+                await SaveTestDataListForDummyTree(dbContext, list, indexes, item.Id);
 
                 indexes.RemoveAt(indexes.Count - 1);
             }
@@ -309,7 +287,6 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
 
         private static async Task<IEnumerable<MapperDummyMainEntityObject>> SeedTestDataForDummyMain(
             MapperDbContext dbContext,
-            DbSet<MapperDummyMainEntityObject> setOfDummyMain,
             IEnumerable<MapperDummyOneToManyEntityObject> itemsOfDummyOneToMany
             )
         {
@@ -317,7 +294,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
                 .Select(index => CreateTestDataItemForDummyMain(index, itemsOfDummyOneToMany))
                 .ToArray();
 
-            setOfDummyMain.AddRange(result);
+            dbContext.DummyMain!.AddRange(result);
 
             await dbContext.SaveChangesAsync();
 
@@ -353,15 +330,14 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
         }
 
         private static async Task<IEnumerable<MapperDummyManyToManyEntityObject>> SeedTestDataForDummyManyToMany(
-            MapperDbContext dbContext,
-            DbSet<MapperDummyManyToManyEntityObject> setOfDummyManyToMany
+            MapperDbContext dbContext
             )
         {
             var result = Enumerable.Range(1, 10)
                 .Select(index => CreateTestDataItemForDummyManyToMany(index))
                 .ToArray();
 
-            setOfDummyManyToMany.AddRange(result);
+            dbContext.DummyManyToMany!.AddRange(result);
 
             await dbContext.SaveChangesAsync();
 
@@ -369,15 +345,13 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
         }
 
         private static async Task<IEnumerable<MapperDummyOneToManyEntityObject>> SeedTestDataForDummyOneToMany(
-            MapperDbContext dbContext,
-            DbSet<MapperDummyOneToManyEntityObject> setOfDummyOneToMany
-            )
+            MapperDbContext dbContext)
         {
             var result = Enumerable.Range(1, 10)
                 .Select(index => CreateTestDataItemForDummyOneToMany(index))
                 .ToArray();
 
-            setOfDummyOneToMany.AddRange(result);
+            dbContext.DummyOneToMany!.AddRange(result);
 
             await dbContext.SaveChangesAsync();
 
@@ -385,13 +359,12 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
         }
 
         private async Task<IEnumerable<MapperDummyTreeEntityObject>> SeedTestDataForDummyTree(
-            MapperDbContext dbContext,
-            DbSet<MapperDummyTreeEntityObject> setOfDummyTree
+            MapperDbContext dbContext
             )
         {
             var result = new List<MapperDummyTreeEntityObject>();
 
-            await SaveTestDataListForDummyTree(dbContext, setOfDummyTree, result, new List<int>(), null);
+            await SaveTestDataListForDummyTree(dbContext, result, new List<int>(), null);
 
             var queryTreeTriggerBuilder = CreateQueryTreeTriggerBuilder(TriggerCommandAction.None);
 

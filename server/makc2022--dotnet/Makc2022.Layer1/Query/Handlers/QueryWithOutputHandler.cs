@@ -17,7 +17,7 @@ namespace Makc2022.Layer1.Query.Handlers
         /// <summary>
         /// Функция преобразования вывода запроса.
         /// </summary>
-        protected Func<TQueryOutput, TQueryOutput>? FunctionToTransformQueryOutput { get; set; }
+        protected Func<TQueryOutput, TQueryOutput?>? FunctionToTransformQueryOutput { get; set; }
 
         /// <summary>
         /// Функция получения сообщений об успехах.
@@ -57,30 +57,30 @@ namespace Makc2022.Layer1.Query.Handlers
         }
 
         /// <inheritdoc/>
-        public void OnSuccess(TQueryOutput queryOutput)
+        public void OnSuccess(TQueryOutput? queryOutput)
         {
             InitQueryResult(true);
 
-            if (FunctionToTransformQueryOutput != null)
+            if (FunctionToTransformQueryOutput != null && queryOutput != null)
             {
                 queryOutput = FunctionToTransformQueryOutput.Invoke(queryOutput);
             }
 
-            if (QueryResult != null)
+            if (QueryResult != null && queryOutput != null)
             {
                 QueryResult.Output = queryOutput;
             }
 
             Func<IEnumerable<string>>? functionToGetSuccessMessages = null;
 
-            if (FunctionToGetSuccessMessages != null)
+            if (FunctionToGetSuccessMessages != null && queryOutput != null)
             {
                 functionToGetSuccessMessages = () => FunctionToGetSuccessMessages.Invoke(queryOutput);
             }
 
             Func<IEnumerable<string>>? functionToGetWarningMessages = null;
 
-            if (FunctionToGetWarningMessages != null)
+            if (FunctionToGetWarningMessages != null && queryOutput != null)
             {
                 functionToGetWarningMessages = () => FunctionToGetWarningMessages.Invoke(queryOutput);
             }
