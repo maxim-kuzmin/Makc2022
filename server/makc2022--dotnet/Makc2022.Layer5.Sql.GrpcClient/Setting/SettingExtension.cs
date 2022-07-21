@@ -3,6 +3,7 @@
 using Makc2022.Layer1.Common;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Layer1Module = Makc2022.Layer1.Setting.SettingModule;
 using Layer5SqlModuleForGrpcClient = Makc2022.Layer5.Sql.GrpcClient.Setting.SettingModule;
 
 namespace Makc2022.Layer5.Sql.GrpcClient.Setting
@@ -25,6 +26,7 @@ namespace Makc2022.Layer5.Sql.GrpcClient.Setting
 
             services.AddAppModules(new CommonModule[]
             {
+                new Layer1Module(configuration.GetRequiredSection($"{root}:Layer1")),
                 new Layer5SqlModuleForGrpcClient(configuration.GetRequiredSection($"{root}:Layer5:Sql:GrpcClient"))
             });
         }

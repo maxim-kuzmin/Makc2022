@@ -7,16 +7,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["Makc2022.WebApi/Makc2022.WebApi.csproj", "Makc2022.WebApi/"]
-RUN dotnet restore "Makc2022.WebApi/Makc2022.WebApi.csproj"
+COPY ["Makc2022.Layer6.Sql.WebHttpServer/Makc2022.Layer6.Sql.WebHttpServer.csproj", "Makc2022.Layer6.Sql.WebHttpServer/"]
+RUN dotnet restore "Makc2022.Layer6.Sql.WebHttpServer/Makc2022.Layer6.Sql.WebHttpServer.csproj"
 COPY . .
-WORKDIR "/src/Makc2022.WebApi"
-RUN dotnet build "Makc2022.WebApi.csproj" -c Release -o /app/build
+WORKDIR "/src/Makc2022.Layer6.Sql.WebHttpServer"
+RUN dotnet build "Makc2022.Layer6.Sql.WebHttpServer.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Makc2022.WebApi.csproj" -c Release -o /app/publish
+RUN dotnet publish "Makc2022.Layer6.Sql.WebHttpServer.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Makc2022.WebApi.dll"]
+ENTRYPOINT ["dotnet", "Makc2022.Layer6.Sql.WebHttpServer.dll"]

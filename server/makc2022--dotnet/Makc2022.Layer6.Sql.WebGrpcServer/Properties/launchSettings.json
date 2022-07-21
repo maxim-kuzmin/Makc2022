@@ -4,19 +4,19 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:52389",
-      "sslPort": 44378
+      "applicationUrl": "http://localhost:52369",
+      "sslPort": 44358
     }
   },
   "profiles": {
-    "Makc2022.Layer6.Sql.WebHttpServer": {
+    "Makc2022.Layer6.Sql.WebGrpcClient": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://localhost:7238;http://localhost:5238",
+      "applicationUrl": "https://localhost:7218;http://localhost:5218",
       "dotnetRunMessages": true
     },
     "IIS Express": {

@@ -1,7 +1,7 @@
 // Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
 using Makc2022.Layer1.Apps.WebApp.Logging;
-using Makc2022.Layer5.Sql.Server.Setting;
+using Makc2022.Layer5.Sql.GrpcClient.Setting;
 
 using var loggingSetting = new WebAppLoggingSetting();
 
@@ -23,8 +23,6 @@ try
     builder.Services.AddSwaggerGen();
 
     var app = builder.Build();
-
-    app.Services.UseAppServices();
 
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
