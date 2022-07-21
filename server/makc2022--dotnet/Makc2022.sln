@@ -33,15 +33,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Layer5-Application", "Layer
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Layer6-Presentation", "Layer6-Presentation", "{12EB6762-5BD3-4861-80E3-29C6BF20537A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer2.Sql.Clients.PostgreSql", "Makc2022.Layer2.Sql.Clients.PostgreSql\Makc2022.Layer2.Sql.Clients.PostgreSql.csproj", "{E352BF19-A31C-4C62-B6F9-AD7E0298D2D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer2.Sql.Clients.PostgreSql", "Makc2022.Layer2.Sql.Clients.PostgreSql\Makc2022.Layer2.Sql.Clients.PostgreSql.csproj", "{E352BF19-A31C-4C62-B6F9-AD7E0298D2D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer2.Sql.Clients.Oracle", "Makc2022.Layer2.Sql.Clients.Oracle\Makc2022.Layer2.Sql.Clients.Oracle.csproj", "{538D2A18-B963-465C-B7AC-4FB71AB77C4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer2.Sql.Clients.Oracle", "Makc2022.Layer2.Sql.Clients.Oracle\Makc2022.Layer2.Sql.Clients.Oracle.csproj", "{538D2A18-B963-465C-B7AC-4FB71AB77C4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer2.Sql.Clients.SqlServer", "Makc2022.Layer2.Sql.Clients.SqlServer\Makc2022.Layer2.Sql.Clients.SqlServer.csproj", "{ACAF440C-A593-42BD-8E30-3431B6AADBF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer2.Sql.Clients.SqlServer", "Makc2022.Layer2.Sql.Clients.SqlServer\Makc2022.Layer2.Sql.Clients.SqlServer.csproj", "{ACAF440C-A593-42BD-8E30-3431B6AADBF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer2.Sql.Mappers.EF", "Makc2022.Layer2.Sql.Mappers.EF\Makc2022.Layer2.Sql.Mappers.EF.csproj", "{EF831C94-5B33-433E-AB23-AB72FC4E1CAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer2.Sql.Mappers.EF", "Makc2022.Layer2.Sql.Mappers.EF\Makc2022.Layer2.Sql.Mappers.EF.csproj", "{EF831C94-5B33-433E-AB23-AB72FC4E1CAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer3.Sql.Sample", "Makc2022.Layer3.Sql.Sample\Makc2022.Layer3.Sql.Sample.csproj", "{D83D1463-DC39-4790-A02D-2942D7796859}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer3.Sql.Sample", "Makc2022.Layer3.Sql.Sample\Makc2022.Layer3.Sql.Sample.csproj", "{D83D1463-DC39-4790-A02D-2942D7796859}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer3.Sql.Sample.Clients.SqlServer", "Makc2022.Layer3.Sql.Sample.Clients.SqlServer\Makc2022.Layer3.Sql.Sample.Clients.SqlServer.csproj", "{B45EEA8B-83B4-40D0-9ECE-39265BE7DE22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +95,10 @@ Global
 		{D83D1463-DC39-4790-A02D-2942D7796859}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D83D1463-DC39-4790-A02D-2942D7796859}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D83D1463-DC39-4790-A02D-2942D7796859}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B45EEA8B-83B4-40D0-9ECE-39265BE7DE22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B45EEA8B-83B4-40D0-9ECE-39265BE7DE22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B45EEA8B-83B4-40D0-9ECE-39265BE7DE22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B45EEA8B-83B4-40D0-9ECE-39265BE7DE22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -109,6 +115,7 @@ Global
 		{ACAF440C-A593-42BD-8E30-3431B6AADBF8} = {51DA2578-B1E2-4616-B28C-469072D45E98}
 		{EF831C94-5B33-433E-AB23-AB72FC4E1CAA} = {51DA2578-B1E2-4616-B28C-469072D45E98}
 		{D83D1463-DC39-4790-A02D-2942D7796859} = {DB31A8D0-1758-4ECF-8309-30B8E813FDF2}
+		{B45EEA8B-83B4-40D0-9ECE-39265BE7DE22} = {DB31A8D0-1758-4ECF-8309-30B8E813FDF2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3D0EA2B3-12D7-4161-8AB3-62B0025BF3E9}

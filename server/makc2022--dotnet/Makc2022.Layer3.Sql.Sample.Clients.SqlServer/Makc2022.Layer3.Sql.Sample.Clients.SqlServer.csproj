@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Makc2022.Layer2.Sql.Clients.SqlServer\Makc2022.Layer2.Sql.Clients.SqlServer.csproj" />
+    <ProjectReference Include="..\Makc2022.Layer3.Sql.Sample\Makc2022.Layer3.Sql.Sample.csproj" />
+  </ItemGroup>
+
+</Project>
