@@ -1,6 +1,5 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-using System.Collections.Generic;
 using Makc2022.Layer3.Sql.Sample.Entity;
 
 namespace Makc2022.Layer3.Sql.Sample.Entities.DummyOneToMany
@@ -13,7 +12,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyOneToMany
         #region Constructors
 
         /// <inheritdoc/>
-        public DummyOneToManyEntityLoader(DummyOneToManyEntityObject entityObject = null)
+        public DummyOneToManyEntityLoader(DummyOneToManyEntityObject? entityObject = null)
             : base(entityObject ?? new DummyOneToManyEntityObject())
         {
         }
@@ -23,7 +22,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyOneToMany
         #region Public methods
 
         /// <inheritdoc/>
-        public sealed override HashSet<string> Load(DummyOneToManyEntityObject entityObject, HashSet<string> loadableProperties = null)
+        public sealed override HashSet<string> Load(DummyOneToManyEntityObject entityObject, HashSet<string>? loadableProperties = null)
         {
             var result = base.Load(entityObject, loadableProperties);
 

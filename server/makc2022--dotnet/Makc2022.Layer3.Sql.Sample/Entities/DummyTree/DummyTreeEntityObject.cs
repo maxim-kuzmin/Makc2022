@@ -17,7 +17,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyTree
         /// <summary>
         /// Имя.
         /// </summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Идентификатор родителя.
@@ -42,7 +42,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyTree
         /// <summary>
         /// Путь в дереве.
         /// </summary>
-        public string TreePath { get; set; }
+        public string? TreePath { get; set; }
 
         /// <summary>
         /// Позиция в дереве.
@@ -52,7 +52,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyTree
         /// <summary>
         /// Сортировка в дереве.
         /// </summary>
-        public string TreeSort { get; set; }
+        public string? TreeSort { get; set; }
 
         #endregion Properties
     }

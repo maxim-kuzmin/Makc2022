@@ -1,5 +1,6 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
+using Makc2022.Layer1.Exceptions;
 using Makc2022.Layer3.Sql.Sample.Db;
 using Makc2022.Layer3.Sql.Sample.Entity;
 
@@ -15,12 +16,12 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyOneToMany
         /// <summary>
         /// Колонка в базе данных для поля "Id".
         /// </summary>
-        public string DbColumnForId { get; set; }
+        public string? DbColumnForId { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля "Name".
         /// </summary>
-        public string DbColumnForName { get; set; }
+        public string? DbColumnForName { get; set; }
 
         /// <summary>
         /// Максимальная длина в базе данных для поля "Name".
@@ -30,12 +31,12 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyOneToMany
         /// <summary>
         /// Первичный ключ в базе данных.
         /// </summary>
-        public string DbPrimaryKey { get; set; }
+        public string? DbPrimaryKey { get; set; }
 
         /// <summary>
         /// Уникальный индекс в базе данных для поля "Name".
         /// </summary>
-        public string DbUniqueIndexForName { get; set; }
+        public string? DbUniqueIndexForName { get; set; }
 
         #endregion Properties
 
@@ -44,18 +45,26 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyOneToMany
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="dbDefaults">Значения по умолчанию в базе данных.</param>
+        /// <param name="defaults">Значения по умолчанию.</param>
         /// <param name="dbTable">Таблица в базе данных.</param>
         /// <param name="dbSchema">Схема в базе данных.</param>
         public DummyOneToManyEntityOptions(
-            DbDefaults dbDefaults,
+            DbDefaults defaults,
             string dbTable,
-            string dbSchema = null
+            string? dbSchema = null
             )
-            : base(dbDefaults, dbTable, dbSchema)
+            : base(defaults, dbTable, dbSchema)
         {
-            DbColumnForId = dbDefaults.DbColumnForId;
-            DbColumnForName = dbDefaults.DbColumnForName;
+            DbColumnForId = defaults.DbColumnForId;
+
+            if (string.IsNullOrWhiteSpace(defaults.DbColumnForName))
+            {
+                throw new NullOrWhiteSpaceStringException(
+                    nameof(defaults),
+                    nameof(defaults.DbColumnForName));
+            }
+
+            DbColumnForName = defaults.DbColumnForName;
 
             DbMaxLengthForName = 256;
 

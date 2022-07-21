@@ -47,18 +47,15 @@ namespace Makc2022.Layer2.Sql.Clients.PostgreSql.Commands.Tree.Trigger
 
             var parIds = Parameters.Ids;
 
-            if (parIds.Any() || !string.IsNullOrWhiteSpace(SqlForIdsSelectQuery))
+            if (parIds.Any())
             {
-                if (parIds.Any())
-                {
-                    string values = string.Join("), (", parIds.Select(x => x.ParameterName));
+                string values = string.Join("), (", parIds.Select(x => x.ParameterName));
 
-                    sqlForIdsSelectQuery = $"values ({values})";
-                }
-                else
-                {
-                    sqlForIdsSelectQuery = SqlForIdsSelectQuery ?? throw new NullReferenceException(nameof(SqlForIdsSelectQuery));
-                }
+                sqlForIdsSelectQuery = $"values ({values})";                   
+            }
+            else if (!string.IsNullOrWhiteSpace(SqlForIdsSelectQuery))
+            {
+                sqlForIdsSelectQuery = SqlForIdsSelectQuery;
             }
             else
             {

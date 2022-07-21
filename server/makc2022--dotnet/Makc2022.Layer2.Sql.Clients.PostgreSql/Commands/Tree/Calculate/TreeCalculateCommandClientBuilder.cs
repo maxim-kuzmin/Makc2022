@@ -183,14 +183,12 @@ begin
 ");
             var parIds = Parameters.Ids;
 
-            if (parIds.Any() || !string.IsNullOrWhiteSpace(SqlForIdsSelectQuery))
-            {
-                string sqlForIdsSelectQuery = parIds.Any()
-                    ?
-                    string.Join(", ", parIds.Select(x => x.ParameterName))
-                    :
-                    SqlForIdsSelectQuery ?? throw new NullReferenceException(nameof(SqlForIdsSelectQuery));
+            string? sqlForIdsSelectQuery = parIds.Any()
+                ? string.Join(", ", parIds.Select(x => x.ParameterName))
+                : SqlForIdsSelectQuery;
 
+            if (!string.IsNullOrWhiteSpace(sqlForIdsSelectQuery))
+            {
                 result.Append($@"
 		and
 		{cte}.{treeTableFieldNameForId} in
@@ -199,10 +197,12 @@ begin
 		)
 	;
 ");
-                result.Append($@"
+            }
+
+            result.Append($@"
 end $$;
 ");
-            }
+
 
             return result.ToString();
         }

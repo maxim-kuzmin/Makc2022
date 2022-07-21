@@ -3,6 +3,7 @@
 using Makc2022.Layer3.Sql.Sample.Entity;
 using Makc2022.Layer3.Sql.Sample.Entities.DummyOneToMany;
 using Makc2022.Layer3.Sql.Sample.Db;
+using Makc2022.Layer1.Exceptions;
 
 namespace Makc2022.Layer3.Sql.Sample.Entities.DummyMain
 {
@@ -130,71 +131,49 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyMain
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="settingOfDummyOneToManyEntity">Настройка сущности "DummyOneToMany".</param>
-        /// <param name="dbDefaults">Значения по умолчанию  в базе данных.</param>
+        /// <param name="optionsOfDummyOneToManyEntity">Параметры сущности "DummyOneToMany".</param>
+        /// <param name="defaults">Значения по умолчанию.</param>
         /// <param name="dbTable">Таблица в базе данных.</param>
         /// <param name="dbSchema">Схема в базе данных.</param>
         public DummyMainEntityOptions(
-            DummyOneToManyEntityOptions settingOfDummyOneToManyEntity,
-            DbDefaults dbDefaults,
+            DummyOneToManyEntityOptions optionsOfDummyOneToManyEntity,
+            DbDefaults defaults,
             string dbTable,
             string? dbSchema = null
             )
-            : base(dbDefaults, dbTable, dbSchema)
+            : base(defaults, dbTable, dbSchema)
         {
-            DbColumnForId = dbDefaults.DbColumnForId;
+            DbColumnForId = defaults.DbColumnForId;
 
-            if (string.IsNullOrWhiteSpace(DbColumnForId))
+            if (string.IsNullOrWhiteSpace(defaults.DbColumnForName))
             {
-                throw new NullReferenceException(nameof(DbColumnForId));
+                throw new NullOrWhiteSpaceStringException(
+                    nameof(defaults),
+                    nameof(defaults.DbColumnForName));
             }
 
-            DbColumnForName = dbDefaults.DbColumnForName;
+            DbColumnForName = defaults.DbColumnForName;
 
-            if (string.IsNullOrWhiteSpace(DbColumnForName))
+            if (string.IsNullOrWhiteSpace(optionsOfDummyOneToManyEntity.DbColumnForId))
             {
-                throw new NullReferenceException(nameof(DbColumnForName));
+                throw new NullOrWhiteSpaceStringException(
+                    nameof(optionsOfDummyOneToManyEntity),
+                    nameof(optionsOfDummyOneToManyEntity.DbColumnForId));
             }
 
             DbColumnForDummyOneToManyEntityId = CreateDbColumnName(
-                settingOfDummyOneToManyEntity.DbTable,
-                settingOfDummyOneToManyEntity.DbColumnForId
-                );
+                optionsOfDummyOneToManyEntity.DbTable,
+                optionsOfDummyOneToManyEntity.DbColumnForId);
 
-            if (string.IsNullOrWhiteSpace(DbColumnForDummyOneToManyEntityId))
-            {
-                throw new NullReferenceException(nameof(DbColumnForDummyOneToManyEntityId));
-            }
-
-            DbForeignKeyToDummyOneToManyEntity = CreateDbForeignKeyName(DbTable, settingOfDummyOneToManyEntity.DbTable);
-
-            if (string.IsNullOrWhiteSpace(DbForeignKeyToDummyOneToManyEntity))
-            {
-                throw new NullReferenceException(nameof(DbForeignKeyToDummyOneToManyEntity));
-            }
+            DbForeignKeyToDummyOneToManyEntity = CreateDbForeignKeyName(DbTable, optionsOfDummyOneToManyEntity.DbTable);
 
             DbIndexForDummyOneToManyEntityId = CreateDbIndexName(DbTable, DbColumnForDummyOneToManyEntityId);
-
-            if (string.IsNullOrWhiteSpace(DbIndexForDummyOneToManyEntityId))
-            {
-                throw new NullReferenceException(nameof(DbIndexForDummyOneToManyEntityId));
-            }
 
             DbMaxLengthForName = 256;
 
             DbPrimaryKey = CreateDbPrimaryKeyName(DbTable);
 
-            if (string.IsNullOrWhiteSpace(DbPrimaryKey))
-            {
-                throw new NullReferenceException(nameof(DbPrimaryKey));
-            }
-
             DbUniqueIndexForName = CreateDbUniqueIndexName(DbTable, DbColumnForName);
-
-            if (string.IsNullOrWhiteSpace(DbUniqueIndexForName))
-            {
-                throw new NullReferenceException(nameof(DbUniqueIndexForName));
-            }
         }
 
         #endregion Constructors

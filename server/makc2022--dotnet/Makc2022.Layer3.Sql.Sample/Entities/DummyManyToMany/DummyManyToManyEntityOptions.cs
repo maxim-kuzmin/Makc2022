@@ -1,5 +1,6 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
+using Makc2022.Layer1.Exceptions;
 using Makc2022.Layer3.Sql.Sample.Db;
 using Makc2022.Layer3.Sql.Sample.Entity;
 
@@ -56,26 +57,18 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyManyToMany
         {
             DbColumnForId = defaults.DbColumnForId;
 
-            if (string.IsNullOrWhiteSpace(DbColumnForId))
+            if (string.IsNullOrWhiteSpace(defaults.DbColumnForName))
             {
-                throw new NullReferenceException(nameof(DbColumnForId));
+                throw new NullOrWhiteSpaceStringException(
+                    nameof(defaults),
+                    nameof(defaults.DbColumnForName));
             }
 
             DbColumnForName = defaults.DbColumnForName;
 
-            if (string.IsNullOrWhiteSpace(DbColumnForName))
-            {
-                throw new NullReferenceException(nameof(DbColumnForName));
-            }
-
             DbMaxLengthForName = 256;
 
             DbPrimaryKey = CreateDbPrimaryKeyName(DbTable);
-
-            if (string.IsNullOrWhiteSpace(DbPrimaryKey))
-            {
-                throw new NullReferenceException(nameof(DbPrimaryKey));
-            }
 
             DbUniqueIndexForName = CreateDbUniqueIndexName(DbTable, DbColumnForName);
         }

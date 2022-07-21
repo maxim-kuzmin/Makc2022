@@ -17,7 +17,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyOneToMany
         /// <summary>
         /// Имя.
         /// </summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         #endregion Properties
     }
