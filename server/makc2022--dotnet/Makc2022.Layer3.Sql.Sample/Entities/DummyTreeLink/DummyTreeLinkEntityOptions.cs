@@ -16,22 +16,22 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyTreeLink
         /// <summary>
         /// Колонка в базе данных для поля "Id".
         /// </summary>
-        public string DbColumnForId { get; set; }
+        public string? DbColumnForId { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля идентификатора родителя сущности "DummyTreeEntity".
         /// </summary>
-        public string DbColumnForDummyTreeEntityParentId { get; set; }
+        public string? DbColumnForDummyTreeEntityParentId { get; set; }
 
         /// <summary>
         /// Внешний ключ в базе данных к сущности "DummyTree".
         /// </summary>
-        public string DbForeignKeyToDummyTreeEntity { get; set; }
+        public string? DbForeignKeyToDummyTreeEntity { get; set; }
 
         /// <summary>
         /// Первичный ключ в базе данных.
         /// </summary>
-        public string DbPrimaryKey { get; set; }
+        public string? DbPrimaryKey { get; set; }
 
         #endregion Properties
 
@@ -40,22 +40,23 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyTreeLink
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="settingOfDummyTreeEntity">Настройка сущности "DummyTree".</param>
-        /// <param name="dbDefaults">Значения по умолчанию в базе данных.</param>
+        /// <param name="optionsOfDummyTreeEntity">Параметры сущности "DummyTree".</param>
+        /// <param name="defaults">Значения по умолчанию в базе данных.</param>
         /// <param name="dbTable">Таблица в базе данных.</param>
         /// <param name="dbSchema">Схема в базе данных.</param>
         public DummyTreeLinkEntityOptions(
-            DummyTreeEntityOptions settingOfDummyTreeEntity,
-            DbDefaults dbDefaults,
+            DummyTreeEntityOptions optionsOfDummyTreeEntity,
+            DbDefaults defaults,
             string dbTable,
-            string dbSchema = null
+            string? dbSchema = null
             )
-            : base(dbDefaults, dbTable, dbSchema)
+            : base(defaults, dbTable, dbSchema)
         {
-            DbColumnForId = dbDefaults.DbColumnForId;
-            DbColumnForDummyTreeEntityParentId = dbDefaults.DbColumnForParentId;
+            DbColumnForId = defaults.DbColumnForId;
 
-            DbForeignKeyToDummyTreeEntity = CreateDbForeignKeyName(DbTable, settingOfDummyTreeEntity.DbTable);
+            DbColumnForDummyTreeEntityParentId = defaults.DbColumnForParentId;
+
+            DbForeignKeyToDummyTreeEntity = CreateDbForeignKeyName(DbTable, optionsOfDummyTreeEntity.DbTable);
 
             DbPrimaryKey = CreateDbPrimaryKeyName(DbTable);
         }

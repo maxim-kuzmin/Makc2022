@@ -13,7 +13,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyMain
 
         /// <inheritdoc/>
         public DummyMainEntityLoader(DummyMainEntityObject? entityObject = null)
-                : base(entityObject ?? new DummyMainEntityObject())
+            : base(entityObject ?? new DummyMainEntityObject())
         {
         }
 
@@ -22,7 +22,9 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyMain
         #region Public methods
 
         /// <inheritdoc/>
-        public sealed override HashSet<string> Load(DummyMainEntityObject entityObject, HashSet<string>? loadableProperties = null)
+        public sealed override HashSet<string> Load(
+            DummyMainEntityObject entityObject,
+            HashSet<string>? loadableProperties = null)
         {
             var result = base.Load(entityObject, loadableProperties);
 

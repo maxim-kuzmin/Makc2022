@@ -14,7 +14,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.User
         /// <summary>
         /// Полное имя.
         /// </summary>
-        public string FullName { get; set; }
+        public string? FullName { get; set; }
 
         #endregion Properties
     }

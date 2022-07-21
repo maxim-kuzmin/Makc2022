@@ -16,32 +16,32 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.UserToken
         /// <summary>
         /// Колонка в базе данных для поля "LoginProvider".
         /// </summary>
-        public string DbColumnForLoginProvider { get; set; }
+        public string? DbColumnForLoginProvider { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля "Name".
         /// </summary>
-        public string DbColumnForName { get; set; }
+        public string? DbColumnForName { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля идентификатора сущности "User".
         /// </summary>
-        public string DbColumnForUserEntityId { get; set; }
+        public string? DbColumnForUserEntityId { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля "Value".
         /// </summary>
-        public string DbColumnForValue { get; set; }
+        public string? DbColumnForValue { get; set; }
 
         /// <summary>
         /// Внешний ключ в базе данных к сущности "User".
         /// </summary>
-        public string DbForeignKeyToUserEntity { get; set; }
+        public string? DbForeignKeyToUserEntity { get; set; }
 
         /// <summary>
         /// Первичный ключ в базе данных.
         /// </summary>
-        public string DbPrimaryKey { get; set; }
+        public string? DbPrimaryKey { get; set; }
 
         #endregion Properties
 
@@ -58,7 +58,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.UserToken
             UserEntityOptions settingOfUserEntity,
             DbDefaults dbDefaults,
             string dbTable,
-            string dbSchema = null
+            string? dbSchema = null
             )
             : base(dbDefaults, dbTable, dbSchema)
         {

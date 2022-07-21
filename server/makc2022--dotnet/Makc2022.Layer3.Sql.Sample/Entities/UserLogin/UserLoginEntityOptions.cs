@@ -16,37 +16,37 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.UserLogin
         /// <summary>
         /// Колонка в базе данных для поля "LoginProvider".
         /// </summary>
-        public string DbColumnForLoginProvider { get; set; }
+        public string? DbColumnForLoginProvider { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля "ProviderKey".
         /// </summary>
-        public string DbColumnForProviderKey { get; set; }
+        public string? DbColumnForProviderKey { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля "ProviderDisplayName".
         /// </summary>
-        public string DbColumnForProviderDisplayName { get; set; }
+        public string? DbColumnForProviderDisplayName { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля идентификатора сущности "User".
         /// </summary>
-        public string DbColumnForUserEntityId { get; set; }
+        public string? DbColumnForUserEntityId { get; set; }
 
         /// <summary>
         /// Внешний ключ в базе данных к сущности "User".
         /// </summary>
-        public string DbForeignKeyToUserEntity { get; set; }
+        public string? DbForeignKeyToUserEntity { get; set; }
 
         /// <summary>
         /// Индекс в базе данных для поля идентификатора сущности "User".
         /// </summary>
-        public string DbIndexForUserEntityId { get; set; }
+        public string? DbIndexForUserEntityId { get; set; }
 
         /// <summary>
         /// Первичный ключ в базе данных.
         /// </summary>
-        public string DbPrimaryKey { get; set; }
+        public string? DbPrimaryKey { get; set; }
 
         #endregion Properties
 
@@ -55,22 +55,22 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.UserLogin
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="settingOfUserEntity">Настройка сущности "User".</param>
-        /// <param name="dbDefaults">Значения по умолчанию в базе данных.</param>
+        /// <param name="optionsOfUserEntity">Параметры сущности "User".</param>
+        /// <param name="defaults">Значения по умолчанию.</param>
         /// <param name="dbTable">Таблица в базе данных.</param>
         /// <param name="dbSchema">Схема в базе данных.</param>
         public UserLoginEntityOptions(
-            UserEntityOptions settingOfUserEntity,
-            DbDefaults dbDefaults,
+            UserEntityOptions optionsOfUserEntity,
+            DbDefaults defaults,
             string dbTable,
-            string dbSchema = null,
-            string dbColumnNameForUserId = null
+            string? dbSchema = null,
+            string? dbColumnNameForUserId = null
             )
-            : base(dbDefaults, dbTable, dbSchema)
+            : base(defaults, dbTable, dbSchema)
         {
             DbColumnForUserEntityId = dbColumnNameForUserId ?? nameof(UserLoginEntityObject.UserId);
 
-            DbForeignKeyToUserEntity = CreateDbForeignKeyName(DbTable, settingOfUserEntity.DbTable);
+            DbForeignKeyToUserEntity = CreateDbForeignKeyName(DbTable, optionsOfUserEntity.DbTable);
 
             DbIndexForUserEntityId = CreateDbIndexName(DbTable, DbColumnForUserEntityId);
 

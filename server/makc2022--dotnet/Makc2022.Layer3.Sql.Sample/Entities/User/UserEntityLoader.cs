@@ -1,6 +1,5 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-using System.Collections.Generic;
 using Makc2022.Layer3.Sql.Sample.Entity;
 
 namespace Makc2022.Layer3.Sql.Sample.Entities.User
@@ -13,7 +12,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.User
         #region Constructors
 
         /// <inheritdoc/>
-        public UserEntityLoader(UserEntityObject entityObject = null)
+        public UserEntityLoader(UserEntityObject? entityObject = null)
             : base(entityObject ?? new UserEntityObject())
         {
         }
@@ -23,7 +22,9 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.User
         #region Public methods
 
         /// <inheritdoc/>
-        public sealed override HashSet<string> Load(UserEntityObject entityObject, HashSet<string> loadableProperties = null)
+        public sealed override HashSet<string> Load(
+            UserEntityObject entityObject,
+            HashSet<string>? loadableProperties = null)
         {
             var result = base.Load(entityObject, loadableProperties);
 

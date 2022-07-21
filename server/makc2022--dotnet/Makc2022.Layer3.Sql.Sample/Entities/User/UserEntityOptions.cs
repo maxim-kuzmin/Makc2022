@@ -15,97 +15,97 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.User
         /// <summary>
         /// Колонка в базе данных для поля "AccessFailedCount".
         /// </summary>
-        public string DbColumnForAccessFailedCount { get; set; }
+        public string? DbColumnForAccessFailedCount { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля "ConcurrencyStamp".
         /// </summary>
-        public string DbColumnForConcurrencyStamp { get; set; }
+        public string? DbColumnForConcurrencyStamp { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля "Email".
         /// </summary>
-        public string DbColumnForEmail { get; set; }
+        public string? DbColumnForEmail { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля "EmailConfirmed".
         /// </summary>
-        public string DbColumnForEmailConfirmed { get; set; }
+        public string? DbColumnForEmailConfirmed { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля "FullName".
         /// </summary>
-        public string DbColumnForFullName { get; set; }
+        public string? DbColumnForFullName { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля "Id".
         /// </summary>
-        public string DbColumnForId { get; set; }
+        public string? DbColumnForId { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля "NormalizedEmail".
         /// </summary>
-        public string DbColumnForNormalizedEmail { get; set; }
+        public string? DbColumnForNormalizedEmail { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля "LockoutEnabled".
         /// </summary>
-        public string DbColumnForLockoutEnabled { get; set; }
+        public string? DbColumnForLockoutEnabled { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля "LockoutEnd".
         /// </summary>
-        public string DbColumnForLockoutEnd { get; set; }
+        public string? DbColumnForLockoutEnd { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля "NormalizedUserName".
         /// </summary>
-        public string DbColumnForNormalizedUserName { get; set; }
+        public string? DbColumnForNormalizedUserName { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля "PasswordHash".
         /// </summary>
-        public string DbColumnForPasswordHash { get; set; }
+        public string? DbColumnForPasswordHash { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля "PhoneNumber".
         /// </summary>
-        public string DbColumnForPhoneNumber { get; set; }
+        public string? DbColumnForPhoneNumber { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля "PhoneNumberConfirmed".
         /// </summary>
-        public string DbColumnForPhoneNumberConfirmed { get; set; }
+        public string? DbColumnForPhoneNumberConfirmed { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля "SecurityStamp".
         /// </summary>
-        public string DbColumnForSecurityStamp { get; set; }
+        public string? DbColumnForSecurityStamp { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля "TwoFactorEnabled".
         /// </summary>
-        public string DbColumnForTwoFactorEnabled { get; set; }
+        public string? DbColumnForTwoFactorEnabled { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля "UserName".
         /// </summary>
-        public string DbColumnForUserName { get; set; }
+        public string? DbColumnForUserName { get; set; }
 
         /// <summary>
         /// Индекс в базе данных для поля "NormalizedEmail".
         /// </summary>
-        public string DbIndexForNormalizedEmail { get; set; }
+        public string? DbIndexForNormalizedEmail { get; set; }
 
         /// <summary>
         /// Первичный ключ в базе данных.
         /// </summary>
-        public string DbPrimaryKey { get; set; }
+        public string? DbPrimaryKey { get; set; }
 
         /// <summary>
         /// Уникальный индекс в базе данных для поля "NormalizedUserName".
         /// </summary>
-        public string DbUniqueIndexForNormalizedUserName { get; set; }
+        public string? DbUniqueIndexForNormalizedUserName { get; set; }
 
         #endregion Properties
 
@@ -114,21 +114,21 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.User
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="dbDefaults">Значения по умолчанию в базе данных.</param>
+        /// <param name="defaults">Значения по умолчанию.</param>
         /// <param name="dbTable">Таблица в базе данных.</param>
         /// <param name="dbSchema">Схема в базе данных.</param>
         /// <param name="dbColumnNameForNormalizedEmail">Колонка в базе данных для поля "NormalizedEmail".</param>
         /// <param name="dbColumnNameForNormalizedUserName">Колонка в базе данных для поля "NormalizedUserName".</param>
         public UserEntityOptions(
-            DbDefaults dbDefaults,
+            DbDefaults defaults,
             string dbTable,
-            string dbSchema = null,
-            string dbColumnNameForNormalizedEmail = null,
-            string dbColumnNameForNormalizedUserName = null
+            string? dbSchema = null,
+            string? dbColumnNameForNormalizedEmail = null,
+            string? dbColumnNameForNormalizedUserName = null
             )
-            : base(dbDefaults, dbTable, dbSchema)
+            : base(defaults, dbTable, dbSchema)
         {
-            DbColumnForId = dbDefaults.DbColumnForId;
+            DbColumnForId = defaults.DbColumnForId;
 
             DbColumnForNormalizedEmail = dbColumnNameForNormalizedEmail
                 ?? nameof(UserEntityObject.NormalizedEmail);

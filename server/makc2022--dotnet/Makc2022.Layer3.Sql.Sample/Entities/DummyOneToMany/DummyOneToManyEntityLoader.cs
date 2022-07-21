@@ -22,7 +22,9 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyOneToMany
         #region Public methods
 
         /// <inheritdoc/>
-        public sealed override HashSet<string> Load(DummyOneToManyEntityObject entityObject, HashSet<string>? loadableProperties = null)
+        public sealed override HashSet<string> Load(
+            DummyOneToManyEntityObject entityObject,
+            HashSet<string>? loadableProperties = null)
         {
             var result = base.Load(entityObject, loadableProperties);
 

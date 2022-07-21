@@ -1,6 +1,5 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-using System.Collections.Generic;
 using Makc2022.Layer3.Sql.Sample.Entity;
 
 namespace Makc2022.Layer3.Sql.Sample.Entities.RoleClaim
@@ -13,7 +12,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.RoleClaim
         #region Constructors
 
         /// <inheritdoc/>
-        public RoleClaimEntityLoader(RoleClaimEntityObject entityObject = null)
+        public RoleClaimEntityLoader(RoleClaimEntityObject? entityObject = null)
             : base(entityObject ?? new RoleClaimEntityObject())
         {
         }
@@ -23,7 +22,9 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.RoleClaim
         #region Public methods
 
         /// <inheritdoc/>
-        public sealed override HashSet<string> Load(RoleClaimEntityObject entityObject, HashSet<string> loadableProperties = null)
+        public sealed override HashSet<string> Load(
+            RoleClaimEntityObject entityObject,
+            HashSet<string>? loadableProperties = null)
         {
             var result = base.Load(entityObject, loadableProperties);
 

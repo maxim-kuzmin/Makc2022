@@ -22,7 +22,9 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyTree
         #region Public methods
 
         /// <inheritdoc/>
-        public sealed override HashSet<string> Load(DummyTreeEntityObject entityObject, HashSet<string>? loadableProperties = null)
+        public sealed override HashSet<string> Load(
+            DummyTreeEntityObject entityObject,
+            HashSet<string>? loadableProperties = null)
         {
             var result = base.Load(entityObject, loadableProperties);
 

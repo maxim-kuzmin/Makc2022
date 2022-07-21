@@ -1,6 +1,5 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-using System.Collections.Generic;
 using Makc2022.Layer3.Sql.Sample.Entity;
 
 namespace Makc2022.Layer3.Sql.Sample.Entities.DummyTreeLink
@@ -13,7 +12,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyTreeLink
         #region Constructors
 
         /// <inheritdoc/>
-        public DummyTreeLinkEntityLoader(DummyTreeLinkEntityObject entityObject = null)
+        public DummyTreeLinkEntityLoader(DummyTreeLinkEntityObject? entityObject = null)
             : base(entityObject ?? new DummyTreeLinkEntityObject())
         {
         }
@@ -23,7 +22,9 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyTreeLink
         #region Public methods
 
         /// <inheritdoc/>
-        public sealed override HashSet<string> Load(DummyTreeLinkEntityObject entityObject, HashSet<string> loadableProperties = null)
+        public sealed override HashSet<string> Load(
+            DummyTreeLinkEntityObject entityObject,
+            HashSet<string>? loadableProperties = null)
         {
             var result = base.Load(entityObject, loadableProperties);
 
