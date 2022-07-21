@@ -64,9 +64,9 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain.Setting
             return new[]
             {
                 typeof(ILogger),
-                typeof(IMapperDbFactoryForSample),
-                typeof(IOptionsMonitor<SettingOptions>),
-                typeof(IStringLocalizer),                
+                typeof(IMapperDbFactoryForSample),                
+                typeof(IStringLocalizer),
+                typeof(SettingOptions),
             };
         }
 

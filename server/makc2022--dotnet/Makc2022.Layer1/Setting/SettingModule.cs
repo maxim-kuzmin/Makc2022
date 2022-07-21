@@ -62,7 +62,7 @@ namespace Makc2022.Layer1.Setting
                 typeof(ICommonResource),
                 typeof(IConvertingResource),
                 typeof(IQueryResource),
-                typeof(IOptionsMonitor<SettingOptions>),
+                typeof(SettingOptions),
             };
         }
 

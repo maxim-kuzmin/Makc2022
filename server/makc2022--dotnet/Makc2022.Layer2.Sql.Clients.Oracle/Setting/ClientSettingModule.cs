@@ -49,7 +49,7 @@ namespace Makc2022.Layer2.Sql.Clients.Oracle.Setting
             return new[]
             {
                 typeof(IClientService),
-                typeof(IOptionsMonitor<ClientSettingOptions>)
+                typeof(ClientSettingOptions)
             };
         }
 
@@ -62,7 +62,7 @@ namespace Makc2022.Layer2.Sql.Clients.Oracle.Setting
         {
             return new[]
             {
-                typeof(IOptionsMonitor<ClientSettingOptions>)
+                typeof(ClientSettingOptions)
             };
         }
 

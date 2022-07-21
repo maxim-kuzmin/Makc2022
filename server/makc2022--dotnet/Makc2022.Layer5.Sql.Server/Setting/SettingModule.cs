@@ -4,10 +4,11 @@ using Makc2022.Layer1.Common;
 using Makc2022.Layer2.Sql.Common;
 using Makc2022.Layer5.Sql.Server.Pages.DummyMain.Item;
 using Makc2022.Layer5.Sql.Server.Pages.DummyMain.List;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
-using IClientProviderForSqlServer = Makc2022.Layer2.Sql.Clients.SqlServer.ClientProvider;
+using IClientProviderForSqlServer = Makc2022.Layer2.Sql.Clients.SqlServer.IClientProvider;
 using IDummyMainDomainItemGetQueryHandler = Makc2022.Layer4.Sql.Domains.DummyMain.Queries.Item.Get.IDomainItemGetQueryHandler;
 using IDummyMainDomainListGetQueryHandler = Makc2022.Layer4.Sql.Domains.DummyMain.Queries.List.Get.IDomainListGetQueryHandler;
 using IDummyMainDomainService = Makc2022.Layer4.Sql.Domains.DummyMain.IDomainService;
@@ -48,6 +49,7 @@ namespace Makc2022.Layer5.Sql.Server.Setting
             {
                 typeof(CommonEnvironment),
                 typeof(ICommonProvider),
+                typeof(IConfiguration),
                 typeof(IDummyMainItemPageService),
                 typeof(IDummyMainListPageService),
                 typeof(ILogger),

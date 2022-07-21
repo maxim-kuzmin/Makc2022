@@ -64,10 +64,10 @@ namespace Makc2022.Layer5.Sql.GrpcClient.Setting
             {
                 typeof(CommonEnvironment),                
                 typeof(DummyMainItemPage.DummyMainItemPageClient),
-                typeof(DummyMainListPage.DummyMainListPageClient),
-                typeof(IOptions<SettingOptions>),
+                typeof(DummyMainListPage.DummyMainListPageClient),                
                 typeof(ILogger),
                 typeof(IStringLocalizer),
+                typeof(SettingOptions),
             };
         }
 
@@ -80,7 +80,7 @@ namespace Makc2022.Layer5.Sql.GrpcClient.Setting
         {
             return new[]
             {
-                typeof(IOptions<SettingOptions>),
+                typeof(SettingOptions),
             };
         }
 

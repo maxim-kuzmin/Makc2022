@@ -44,7 +44,7 @@ namespace Makc2022.Layer2.Sql.Setting
         {
             return new[]
             {
-                typeof(IOptionsMonitor<SettingOptions>)
+                typeof(SettingOptions)
             };
         }
 

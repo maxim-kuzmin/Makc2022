@@ -33,7 +33,7 @@ namespace Makc2022.Layer1.Common
         /// <inheritdoc/>
         public string GetErrorMessageForNotImportedTypes(IEnumerable<Type> types)
         {
-            return Localizer["@@ErrorMessageForNotImportedTypes", string.Join("', '", types)];
+            return Localizer["@@ErrorMessageForNotImportedTypes", string.Join(", ", types)];
         }
 
         #endregion Public methods

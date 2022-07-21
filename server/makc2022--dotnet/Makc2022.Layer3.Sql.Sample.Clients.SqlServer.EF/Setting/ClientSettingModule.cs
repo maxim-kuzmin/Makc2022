@@ -54,10 +54,10 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Setting
         {
             return new[]
             {                
+                typeof(DbSettingOptions),
+                typeof(DbSettingOptionsForSample),
                 typeof(IConfiguration),
                 typeof(ILogger),
-                typeof(IOptions<DbSettingOptionsForSample>),
-                typeof(IOptionsMonitor<DbSettingOptions>),
             };
         }
 

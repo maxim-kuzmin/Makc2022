@@ -44,7 +44,7 @@ namespace Makc2022.Layer3.Sql.Sample.Setting
         {
             return new[]
             {
-                typeof(IOptionsMonitor<SettingOptions>),
+                typeof(SettingOptions),
             };
         }
 
