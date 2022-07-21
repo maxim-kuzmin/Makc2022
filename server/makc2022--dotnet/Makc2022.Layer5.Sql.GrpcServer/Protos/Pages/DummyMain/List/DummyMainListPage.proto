@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package DummyMainListPage;
+
+import "google/protobuf/wrappers.proto";
+
+option csharp_namespace = "Makc2022.Layer5.Sql.GrpcServer.Protos.Pages.DummyMain.List";
+
+service DummyMainListPage {
+	rpc Get (DummyMainListPageGetRequest) returns (DummyMainListPageGetReply);
+}
+
+message DummyMainListPageGetRequest {
+	string query_code = 1;
+	DummyMainDomainListGetQueryInput list = 2;
+}
+
+message DummyMainListPageGetReply {
+	bool is_ok = 1;
+	repeated string error_messages = 2;
+	string query_code = 3;
+	repeated string warning_messages = 4;
+	repeated string success_messages = 5;
+	DummyMainListPageGetReplyOutput output = 6;
+}
+
+message DummyMainListPageGetReplyOutput {
+	DummyMainDomainListGetQueryOutput list = 1;
+}
+
+message DummyMainDomainListGetQueryInput {
+	int32 page_number = 1;
+    int32 page_size = 2;
+    google.protobuf.StringValue sort_direction = 3;
+    google.protobuf.StringValue sort_field = 4;
+    google.protobuf.StringValue entity_name = 5;
+}
+
+message DummyMainEntityObject {
+	int64 id = 1;
+	string name = 2;
+}
+
+message DummyMainDomainItemGetQueryOutput {
+	DummyMainEntityObject object_of_dummy_main_entity = 1;	
+}
+
+message DummyMainDomainListGetQueryOutput {
+	repeated DummyMainDomainItemGetQueryOutput items = 1;
+	int64 total_count = 2;		
+}

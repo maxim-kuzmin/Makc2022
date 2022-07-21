@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Protobuf Include="..\Makc2022.Layer5.Sql.GrpcServer\Protos\Pages\DummyMain\Item\DummyMainItemPage.proto" GrpcServices="Client">
+			<Link>Protos\Pages\DummyMain\Item\DummyMainItemPage.proto</Link>
+		</Protobuf>
+		<Protobuf Include="..\Makc2022.Layer5.Sql.GrpcServer\Protos\Pages\DummyMain\List\DummyMainListPage.proto" GrpcServices="Client">
+			<Link>Protos\Pages\DummyMain\List\DummyMainListPage.proto</Link>
+		</Protobuf>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Google.Protobuf" Version="3.21.3" />
+		<PackageReference Include="Grpc.Net.Client" Version="2.47.0" />
+		<PackageReference Include="Grpc.Net.ClientFactory" Version="2.47.0" />
+		<PackageReference Include="Grpc.Tools" Version="2.47.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Makc2022.Layer1\Makc2022.Layer1.csproj" />
+	</ItemGroup>
+
+</Project>

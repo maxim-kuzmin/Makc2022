@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package DummyMainItemPage;
+
+option csharp_namespace = "Makc2022.Layer5.Sql.GrpcServer.Protos.Pages.DummyMain.Item";
+
+service DummyMainItemPage {
+	rpc Get (DummyMainItemPageGetRequest) returns (DummyMainItemPageGetReply);
+}
+
+message DummyMainItemPageGetRequest {
+	string query_code = 1;
+	DummyMainDomainItemGetQueryInput item = 2;
+}
+
+message DummyMainItemPageGetReply {
+	bool is_ok = 1;
+	repeated string error_messages = 2;
+	string query_code = 3;
+	repeated string warning_messages = 4;
+	repeated string success_messages = 5;
+	DummyMainItemPageGetReplyOutput output = 6;
+}
+
+message DummyMainItemPageGetReplyOutput {
+	DummyMainDomainItemGetQueryOutput item = 1;	
+}
+
+message DummyMainEntityObject {
+	int64 id = 1;
+	string name = 2;
+}
+
+message DummyMainDomainItemGetQueryInput {
+	int64 entity_id = 1;	
+}
+
+message DummyMainDomainItemGetQueryOutput {
+	DummyMainEntityObject object_of_dummy_main_entity = 1;	
+}
