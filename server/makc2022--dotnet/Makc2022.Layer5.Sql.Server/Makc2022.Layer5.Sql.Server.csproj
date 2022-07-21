@@ -11,6 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Makc2022.Layer2.Sql.Clients.SqlServer\Makc2022.Layer2.Sql.Clients.SqlServer.csproj" />
+    <ProjectReference Include="..\Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF\Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.csproj" />
     <ProjectReference Include="..\Makc2022.Layer4.Sql.Domains.DummyMain\Makc2022.Layer4.Sql.Domains.DummyMain.csproj" />
   </ItemGroup>
 
