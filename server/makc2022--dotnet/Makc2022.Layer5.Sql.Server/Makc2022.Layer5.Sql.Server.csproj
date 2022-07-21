@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Makc2022.Layer2.Sql\Makc2022.Layer2.Sql.csproj" />
+    <ProjectReference Include="..\Makc2022.Layer4.Sql.Domains.DummyMain\Makc2022.Layer4.Sql.Domains.DummyMain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -36,7 +36,7 @@ namespace Makc2022.Layer1.Query.Handlers
         /// Обработать успех.
         /// </summary>
         /// <param name="queryOutput">Выходные данные запроса.</param>
-        void OnSuccess(TQueryOutput queryOutput);
+        void OnSuccess(TQueryOutput? queryOutput);
 
         /// <summary>
         /// Обработать успех с результатом.

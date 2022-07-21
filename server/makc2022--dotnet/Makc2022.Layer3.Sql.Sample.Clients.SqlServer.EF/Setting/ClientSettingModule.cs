@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using DbSettingOptions = Makc2022.Layer2.Sql.Setting.SettingOptions;
+using DbSettingOptionsForSample = Makc2022.Layer3.Sql.Sample.Setting.SettingOptions;
 
 namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Setting
 {
@@ -24,7 +25,8 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Setting
         {
             services.AddDbContextFactory<ClientDbContext>((x, options) => ClientDbFactory.Configure(
                 options,
-                x.GetRequiredService<IConfiguration>().GetConnectionString("Sample"),
+                x.GetRequiredService<IConfiguration>().GetConnectionString(
+                    x.GetRequiredService<IOptions<DbSettingOptionsForSample>>().Value.ConnectionStringName),
                 x.GetRequiredService<ILogger<ClientDbFactory>>(),
                 x.GetRequiredService<IOptionsMonitor<DbSettingOptions>>()));
 
@@ -54,6 +56,7 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Setting
             {                
                 typeof(IConfiguration),
                 typeof(ILogger),
+                typeof(IOptions<DbSettingOptionsForSample>),
                 typeof(IOptionsMonitor<DbSettingOptions>),
             };
         }
