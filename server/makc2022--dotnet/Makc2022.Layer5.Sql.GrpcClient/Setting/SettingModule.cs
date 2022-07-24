@@ -40,8 +40,6 @@ namespace Makc2022.Layer5.Sql.GrpcClient.Setting
         /// <inheritdoc/>
         public sealed override void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton(new CommonEnvironment());
-
             services.AddLocalization(x => x.ConfigureLocalization());
 
             services.Configure<SettingOptions>(ConfigurationSection);
@@ -62,7 +60,6 @@ namespace Makc2022.Layer5.Sql.GrpcClient.Setting
         {
             return new[]
             {
-                typeof(CommonEnvironment),                
                 typeof(DummyMainItemPage.DummyMainItemPageClient),
                 typeof(DummyMainListPage.DummyMainListPageClient),                
                 typeof(ILogger),

@@ -40,21 +40,23 @@ export class QueryWithOutputHandlerImpl<TQueryOutput>
   onSuccess(queryOutput: TQueryOutput): void {
     this.initQueryResult(true);
 
-    if (this.functionToTransformQueryOutput) {
+    if (this.functionToTransformQueryOutput && queryOutput) {
       queryOutput = this.functionToTransformQueryOutput(queryOutput);
     }
 
-    this.queryResult.output = queryOutput;
+    if (this.queryResult && queryOutput) {
+      this.queryResult.output = queryOutput;
+    }
 
     let functionToGetSuccessMessages: () => string[];
 
-    if (this.functionToGetSuccessMessages) {
+    if (this.functionToGetSuccessMessages && queryOutput) {
       functionToGetSuccessMessages = () => this.functionToGetSuccessMessages(queryOutput);
     }
 
     let functionToGetWarningMessages: () => string[];
 
-    if (this.functionToGetWarningMessages) {
+    if (this.functionToGetWarningMessages && queryOutput) {
       functionToGetWarningMessages = () => this.functionToGetWarningMessages(queryOutput);
     }
 
@@ -81,7 +83,11 @@ export class QueryWithOutputHandlerImpl<TQueryOutput>
   /** @inheritdoc */
   protected override initQueryResult(isOk: boolean): void {
     this.queryResult = new QueryResultWithOutput<TQueryOutput>();
+
     this.queryResult.isOk = isOk;
-    this.queryCode = this.queryCode;
+
+    if (this.queryCode) {
+      this.queryResult.queryCode = this.queryCode;
+    }
   }
 }

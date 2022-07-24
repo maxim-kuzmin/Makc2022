@@ -57,22 +57,24 @@ export class QueryWithInputAndOutputHandlerImpl<TQueryInput, TQueryOutput>
   onSuccess(queryOutput: TQueryOutput): void {
     this.initQueryResult(true);
 
-    if (this.functionToTransformQueryOutput) {
+    if (this.functionToTransformQueryOutput && queryOutput) {
       queryOutput = this.functionToTransformQueryOutput(queryOutput);
     }
 
-    this.queryResult.output = queryOutput;
+    if (this.queryResult && queryOutput) {
+      this.queryResult.output = queryOutput;
+    }
 
     let functionToGetSuccessMessages: () => string[];
 
-    if (this.functionToGetSuccessMessages) {
+    if (this.functionToGetSuccessMessages && this.queryInput) {
       functionToGetSuccessMessages = () =>
         this.functionToGetSuccessMessages(this.queryInput, queryOutput);
     }
 
     let functionToGetWarningMessages: () => string[];
 
-    if (this.functionToGetWarningMessages) {
+    if (this.functionToGetWarningMessages && this.queryInput) {
       functionToGetWarningMessages = () =>
         this.functionToGetWarningMessages(this.queryInput, queryOutput);
     }
@@ -100,7 +102,11 @@ export class QueryWithInputAndOutputHandlerImpl<TQueryInput, TQueryOutput>
   /** @inheritdoc */
   protected override initQueryResult(isOk: boolean): void {
     this.queryResult = new QueryResultWithOutput<TQueryOutput>();
+
     this.queryResult.isOk = isOk;
-    this.queryCode = this.queryCode;
+
+    if (this.queryCode) {
+      this.queryResult.queryCode = this.queryCode;
+    }
   }
 }

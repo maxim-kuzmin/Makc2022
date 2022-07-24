@@ -48,13 +48,13 @@ export class QueryWithInputHandlerImpl<TQueryInput>
 
     let functionToGetSuccessMessages: () => string[];
 
-    if (this.functionToGetSuccessMessages) {
+    if (this.functionToGetSuccessMessages && this.queryInput) {
       functionToGetSuccessMessages = () => this.functionToGetSuccessMessages(this.queryInput);
     }
 
     let functionToGetWarningMessages: () => string[];
 
-    if (this.functionToGetWarningMessages) {
+    if (this.functionToGetWarningMessages && this.queryInput) {
       functionToGetWarningMessages = () => this.functionToGetWarningMessages(this.queryInput);
     }
 
@@ -81,7 +81,11 @@ export class QueryWithInputHandlerImpl<TQueryInput>
   /** @inheritdoc */
   protected override initQueryResult(isOk: boolean): void {
     this.queryResult = new QueryResult();
+
     this.queryResult.isOk = isOk;
-    this.queryCode = this.queryCode;
+
+    if (this.queryCode) {
+      this.queryResult.queryCode = this.queryCode;
+    }
   }
 }

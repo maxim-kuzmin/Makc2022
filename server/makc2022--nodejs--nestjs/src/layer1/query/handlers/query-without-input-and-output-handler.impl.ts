@@ -57,7 +57,11 @@ export class QueryWithoutInputAndOutputHandlerImpl
   /** @inheritdoc */
   protected override initQueryResult(isOk: boolean): void {
     this.queryResult = new QueryResult();
+
     this.queryResult.isOk = isOk;
-    this.queryCode = this.queryCode;
+
+    if (this.queryCode) {
+      this.queryResult.queryCode = this.queryCode;
+    }
   }
 }

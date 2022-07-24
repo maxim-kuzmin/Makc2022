@@ -25,8 +25,6 @@ namespace Makc2022.Layer5.Sql.Server.Setting
         /// <inheritdoc/>
         public sealed override void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton(new CommonEnvironment());
-
             services.AddLocalization(x => x.ConfigureLocalization());
 
             services.AddSingleton<ICommonProvider>(x => x.GetRequiredService<IClientProviderForSqlServer>());
@@ -47,7 +45,6 @@ namespace Makc2022.Layer5.Sql.Server.Setting
         {
             return new[]
             {
-                typeof(CommonEnvironment),
                 typeof(ICommonProvider),
                 typeof(IConfiguration),
                 typeof(IDummyMainItemPageService),
