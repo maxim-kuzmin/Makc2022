@@ -1,7 +1,7 @@
 /** Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License. */
 
-import { nameof } from 'src/layer1/common/common-functions';
-import { ItemGetQueryInput } from 'src/layer2/nosql-mongo/queries/item/get/item-get-query-input';
+import { nameof } from '../../../../../../layer1/common/common-functions';
+import { ItemGetQueryInput } from '../../../../../../layer2/nosql-mongo/queries/item/get/item-get-query-input';
 
 /** Входные данные запроса на получение элемента в домене. */
 export class DomainItemGetQueryInput extends ItemGetQueryInput {

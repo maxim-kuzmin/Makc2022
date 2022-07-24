@@ -3,7 +3,7 @@
 import { Injectable } from '@nestjs/common';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { InjectModel } from 'nestjs-typegoose';
-import { DummyOneToManyEntityObject } from 'src/layer3/nosql-mongo/sample/entities/dummy-one-to-many/dummy-one-to-many-entity.object';
+import { DummyOneToManyEntityObject } from '../../../../entities/dummy-one-to-many/dummy-one-to-many-entity.object';
 import { MapperDummyOneToManyEntityExtension } from './mapper-dummy-one-to-many-entity.extension';
 import { MapperDummyOneToManyEntityObject } from './mapper-dummy-one-to-many-entity.object';
 

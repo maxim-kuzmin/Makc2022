@@ -3,8 +3,8 @@
 import { Injectable } from '@nestjs/common';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { InjectModel } from 'nestjs-typegoose';
-import { nameof } from 'src/layer1/common/common-functions';
-import { DummyMainEntityObject } from 'src/layer3/nosql-mongo/sample/entities/dummy-main/dummy-main-entity.object';
+import { nameof } from '../../../../../../../layer1/common/common-functions';
+import { DummyMainEntityObject } from '../../../../entities/dummy-main/dummy-main-entity.object';
 import { MapperDummyMainEntityExtension } from './mapper-dummy-main-entity.extension';
 import { MapperDummyMainEntityObject } from './mapper-dummy-main-entity.object';
 

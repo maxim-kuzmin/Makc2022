@@ -1,7 +1,7 @@
 /** Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License. */
 
-import { nameof } from 'src/layer1/common/common-functions';
-import { QueryInput } from 'src/layer1/query/query-input';
+import { nameof } from '../../../../../layer1/common/common-functions';
+import { QueryInput } from '../../../../../layer1/query/query-input';
 
 /** Входные данные запроса на получение элемента.
  */

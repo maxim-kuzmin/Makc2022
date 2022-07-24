@@ -2,7 +2,7 @@
 
 import { Injectable, LoggerService } from '@nestjs/common';
 import { I18nContext } from 'nestjs-i18n';
-import { QueryFactory } from 'src/layer1/query/query.factory';
+import { QueryFactory } from '../../../layer1/query/query.factory';
 import { DomainResource } from './domain-resource';
 import { DomainResourceImpl } from './domain-resource.impl';
 import { DomainItemGetQueryHandler } from './queries/item/get/domain-item-get-query-handler';

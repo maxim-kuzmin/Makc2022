@@ -1,12 +1,12 @@
 /** Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License. */
 
 import { Injectable } from '@nestjs/common';
-import { DummyMainEntityObject } from 'src/layer3/nosql-mongo/sample/entities/dummy-main/dummy-main-entity.object';
-import { MapperDummyMainEntityExtension } from 'src/layer3/nosql-mongo/sample/mappers/typegoose/entities/dummy-main/mapper-dummy-main-entity.extension';
-import { MapperDummyMainEntityObject } from 'src/layer3/nosql-mongo/sample/mappers/typegoose/entities/dummy-main/mapper-dummy-main-entity.object';
-import { MapperDummyMainEntityRepository } from 'src/layer3/nosql-mongo/sample/mappers/typegoose/entities/dummy-main/mapper-dummy-main-entity.repository';
-import { MapperDummyOneToManyEntityExtension } from 'src/layer3/nosql-mongo/sample/mappers/typegoose/entities/dummy-one-to-many/mapper-dummy-one-to-many-entity.extension';
-import { MapperDummyOneToManyEntityRepository } from 'src/layer3/nosql-mongo/sample/mappers/typegoose/entities/dummy-one-to-many/mapper-dummy-one-to-many-entity.repository';
+import { DummyMainEntityObject } from '../../../layer3/nosql-mongo/sample/entities/dummy-main/dummy-main-entity.object';
+import { MapperDummyMainEntityExtension } from '../../../layer3/nosql-mongo/sample/mappers/typegoose/entities/dummy-main/mapper-dummy-main-entity.extension';
+import { MapperDummyMainEntityObject } from '../../../layer3/nosql-mongo/sample/mappers/typegoose/entities/dummy-main/mapper-dummy-main-entity.object';
+import { MapperDummyMainEntityRepository } from '../../../layer3/nosql-mongo/sample/mappers/typegoose/entities/dummy-main/mapper-dummy-main-entity.repository';
+import { MapperDummyOneToManyEntityExtension } from '../../../layer3/nosql-mongo/sample/mappers/typegoose/entities/dummy-one-to-many/mapper-dummy-one-to-many-entity.extension';
+import { MapperDummyOneToManyEntityRepository } from '../../../layer3/nosql-mongo/sample/mappers/typegoose/entities/dummy-one-to-many/mapper-dummy-one-to-many-entity.repository';
 import { DomainItemGetQueryInput } from './queries/item/get/domain-item-get-query-input';
 import { DomainItemGetQueryOutput } from './queries/item/get/domain-item-get-query-output';
 import { DomainListGetQueryInput } from './queries/list/get/domain-list-get-query-input';

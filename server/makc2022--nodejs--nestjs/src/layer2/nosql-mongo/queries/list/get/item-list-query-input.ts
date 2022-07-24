@@ -1,8 +1,8 @@
 /** Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License. */
 
-import { nameof } from 'src/layer1/common/common-functions';
-import { QueryInput } from 'src/layer1/query/query-input';
-import { QuerySettings } from 'src/layer1/query/query-settings';
+import { nameof } from '../../../../../layer1/common/common-functions';
+import { QueryInput } from '../../../../../layer1/query/query-input';
+import { QuerySettings } from '../../../../../layer1/query/query-settings';
 
 /** Входные данные запроса на получение списка. */
 export abstract class ListGetQueryInput extends QueryInput {

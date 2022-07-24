@@ -1,9 +1,10 @@
 /** Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License. */
 
-import { nameof } from 'src/layer1/common/common-functions';
-import { EntityLoader } from 'src/layer1/entity/entity-loader';
+import { nameof } from '../../../../../layer1/common/common-functions';
+import { EntityLoader } from '../../../../../layer1/entity/entity-loader';
 import { DummyTreeEntityObject } from './dummy-tree-entity.object';
 
+/** Загрузчик сущности "DummyTree". */
 export class DummyTreeEntityLoader extends EntityLoader<DummyTreeEntityObject> {
   /** @inheritdoc */
   constructor(entityObject?: DummyTreeEntityObject) {

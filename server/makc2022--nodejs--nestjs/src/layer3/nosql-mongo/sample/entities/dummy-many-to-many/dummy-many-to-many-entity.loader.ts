@@ -1,9 +1,10 @@
 /** Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License. */
 
-import { nameof } from 'src/layer1/common/common-functions';
-import { EntityLoader } from 'src/layer1/entity/entity-loader';
+import { nameof } from '../../../../../layer1/common/common-functions';
+import { EntityLoader } from '../../../../../layer1/entity/entity-loader';
 import { DummyManyToManyEntityObject } from './dummy-many-to-many-entity.object';
 
+/** Загрузчик сущности "DummyManyToMany". */
 export class DummyManyToManyEntityLoader extends EntityLoader<DummyManyToManyEntityObject> {
   /** @inheritdoc */
   constructor(entityObject?: DummyManyToManyEntityObject) {

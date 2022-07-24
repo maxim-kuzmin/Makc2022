@@ -1,7 +1,7 @@
 /** Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License. */
 
-import { DummyOneToManyEntityLoader } from 'src/layer3/nosql-mongo/sample/entities/dummy-one-to-many/dummy-one-to-many-entity.loader';
-import { DummyOneToManyEntityObject } from 'src/layer3/nosql-mongo/sample/entities/dummy-one-to-many/dummy-one-to-many-entity.object';
+import { DummyOneToManyEntityLoader } from '../../../../entities/dummy-one-to-many/dummy-one-to-many-entity.loader';
+import { DummyOneToManyEntityObject } from '../../../../entities/dummy-one-to-many/dummy-one-to-many-entity.object';
 import { MapperDummyOneToManyEntityObject } from './mapper-dummy-one-to-many-entity.object';
 
 /** Расширение сущности "DummyOneToMany" сопоставителя. */

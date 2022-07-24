@@ -1,7 +1,7 @@
 /** Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License. */
 
-import { DummyMainEntityLoader } from 'src/layer3/nosql-mongo/sample/entities/dummy-main/dummy-main-entity.loader';
-import { DummyMainEntityObject } from 'src/layer3/nosql-mongo/sample/entities/dummy-main/dummy-main-entity.object';
+import { DummyMainEntityLoader } from '../../../../entities/dummy-main/dummy-main-entity.loader';
+import { DummyMainEntityObject } from '../../../../entities/dummy-main/dummy-main-entity.object';
 import { MapperDummyMainEntityObject } from './mapper-dummy-main-entity.object';
 
 /** Расширение сущности "DummyMain" сопоставителя. */

@@ -2,7 +2,7 @@
 
 import { modelOptions, prop, Ref } from '@typegoose/typegoose';
 import { Base } from '@typegoose/typegoose/lib/defaultClasses';
-import { DummyMainEntityObject } from 'src/layer3/nosql-mongo/sample/entities/dummy-main/dummy-main-entity.object';
+import { DummyMainEntityObject } from '../../../../entities/dummy-main/dummy-main-entity.object';
 import { MapperDummyOneToManyEntityObject } from '../dummy-one-to-many/mapper-dummy-one-to-many-entity.object';
 
 export interface MapperDummyMainEntityObject extends Base<string> {}

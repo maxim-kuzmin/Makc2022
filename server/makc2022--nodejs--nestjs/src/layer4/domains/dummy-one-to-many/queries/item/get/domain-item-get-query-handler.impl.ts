@@ -1,9 +1,9 @@
 /** Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License. */
 
 import { LoggerService } from '@nestjs/common';
-import { CommonError } from 'src/layer1/common/common-error';
-import { QueryWithInputAndOutputHandlerImpl } from 'src/layer1/query/handlers/query-with-input-and-output-handler.impl';
-import { QueryResource } from 'src/layer1/query/query-resource';
+import { CommonError } from '../../../../../../layer1/common/common-error';
+import { QueryWithInputAndOutputHandlerImpl } from '../../../../../../layer1/query/handlers/query-with-input-and-output-handler.impl';
+import { QueryResource } from '../../../../../../layer1/query/query-resource';
 import { DomainResource } from '../../../domain-resource';
 import { DomainItemGetQueryHandler } from './domain-item-get-query-handler';
 import { DomainItemGetQueryInput } from './domain-item-get-query-input';
