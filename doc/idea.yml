@@ -1,0 +1,285 @@
+# Ресурсы
+---
+resources:
+  Identity:
+    name: Идентичность
+    description: >
+      Регистрация пользователей.
+
+      Аутентификация по технологии единого входа (SSO) в соответствии со стандартом "OpenID Connect":
+      https://habr.com/ru/company/nixys/blog/566910/.
+    source: >
+      Постащик услуг SSO "Keycloak": https://www.keycloak.org/.
+
+  SqlDatbaseServer:
+    name: Сервер баз данных SQL
+    description: >
+      Управление реляционными базами данных.
+    source: >
+      СУБД "PostgreSQL": https://www.postgresql.org/.
+
+# Сервисы
+---
+services:
+
+  Security:    
+    id: 1
+    name: Безопасность
+    description: >
+      Управление пользователями и ролями.
+      
+      Загрузка из сервисов их внутренних объектов и предназначенных для них внутренних разрешений.
+
+      Под внутренними объктами сервисов понимаются все возможные части их бизнес-логики,
+      на действия с которой пользователю требуются разрешения.
+
+      Под внутренними разрешениями понимаются все возможные разрешения,
+      которые выделяются сервисами для их внутренних объектов.
+
+      Назначение ролям разрешений.
+
+      Назначение ролей пользователям.
+    entities:
+
+      InternalSubject:
+        name: Внутренний объект
+        description: >
+          Часть бизнес-логики сервиса, на действия с которой пользователю требуются разрешения.
+        Properties:
+          Id:
+            name: Идентификатор
+            type: int
+          Name:
+            name: Имя
+            type: string
+
+      InternalPermission:
+        name: Внутреннее разрешение
+        description: >
+          Разрешение внутри сервиса на действие с внутренним объектом.
+        properties:
+          Id:
+            name: Идентификатор
+            type: int
+          Name:
+            name: Имя
+            type: string                                        
+          InternalSubjectId:
+            name: Идентификатор внутреннего сервиса
+            type: int       
+
+      Service:
+        name: Сервис
+        description: >
+          Часть приложения, которая реализует функциональность одной из его доменных областей.
+        properties:
+          Id:
+            name: Идентификатор
+            type: int
+          Name:
+            name: Имя
+            type: string
+
+      Subject:
+        name: Объект
+        description: >
+          Часть бизнес-логики приложения, на действия с которой пользователю требуются разрешения.
+
+          Связывает сервис с его внутренним объектом.
+        Properties:
+          Id:
+            name: Идентификатор
+            type: int
+          ServiceId:
+            name: Идентификатор сервиса
+            type: int
+          InternalSubjectId:
+            name: Идентификатор внутреннего объекта
+            type: int
+          InternalSubjectName:
+            name: Имя внутреннего объекта
+            type: string
+
+      Permission:
+        name: Объект
+        description: >
+          Разрешение внутри приложения на действие с объектом.
+
+          Связывает объект с его внутренним разрешением.
+        Properties:
+          Id:
+            name: Идентификатор
+            type: int
+          SubjectId:
+            name: Идентификатор объекта
+            type: int
+          InternalPermissionId:
+            name: Идентификатор внутреннего разрешения
+            type: int
+          InternalPermissionName:
+            name: Имя внутреннего разрешения
+            type: string
+
+      Role:
+        name: Роль
+        description: >
+          Совокупность разрешений.
+        properties:
+          Id:
+            name: Идентификатор
+            type: int
+          Name:
+            name: Имя
+            type: string
+
+      RolePermission:
+        name: Разрешение роли
+        description: >
+          Связывает роль с разрешением.
+        properties:
+          RoleId:
+            name: Идентификатор роли
+            type: int
+          PermissionId:
+            name: Идентификатор разрешения
+            type: int
+
+      LoginProvider:
+        name: Поставщик входа
+        description: >
+          Поставщик услуги обеспечения входа в приложение.
+          
+          Проверяет пароль пользователя и генерирует JWT-токен доступа.
+        properties:
+          Id:
+            name: Идентификатор
+            type: int
+          Name:
+            name: Имя
+            type: string
+
+      User:
+        name: Пользователь
+        description: >
+          Учётная запись, используемая приложением для проверки идентичности.
+        properties:
+          Id:
+            name: Идентификатор
+            type: int
+          Name:
+            name: Имя
+            type: string
+          Email:
+            name: Адрес электронной почты
+            type: string
+          IsBlocked:
+            name: Признак блокировки
+            type: boolean
+
+      UserRole:
+        name: Роль пользователя
+        description: >
+          Связывает пользователя с ролью.
+        properties:
+          UserId:
+            name: Идентификатор пользователя
+            type: int
+          RoleId:
+            name: Идентификатор роли
+            type: int
+
+      UserLogin:
+        name: Вход пользователя
+        description: >
+          Связывает пользователя с ключом, предоставляемым поставщиком для входа в приложение.
+        properties:
+          UserId:
+            name: Идентификатор пользователя
+            type: int
+          LoginProviderId:
+            name: Идентификатор поставщика входа
+            type: int
+          ProviderKey:
+            name: Ключ поставщика
+            type: string
+
+      UserInternalPermission:
+        name: Внутреннее разрешение пользователя
+        description: >
+          Связывает пользователя с внутренним разрешением.
+
+          Используется для разграничения прав доступа к объектам внутри сервиса.
+        properties:
+          UserId:
+            name: Идентификатор пользователя
+            type: int
+          InternalPermissionId:
+            name: Идентификатор внутреннего разрешения
+            type: int
+
+  Dummy:    
+    id: 2
+    name: Макет
+    description: >
+      Демонстрация объектов различных типов и разграничения прав доступа к ним.
+    entities:
+
+      InternalSubject:
+        name: Внутренний объект
+        description: >
+          Часть бизнес-логики сервиса, на действия с которой пользователю требуются разрешения.
+        Properties:
+          Id:
+            name: Идентификатор
+            type: int
+          Name:
+            name: Имя
+            type: string
+
+      InternalPermission:
+        name: Внутреннее разрешение
+        description: >
+          Разрешение внутри сервиса на действие с внутренним объектом.
+        properties:
+          Id:
+            name: Идентификатор
+            type: int
+          Name:
+            name: Имя
+            type: string                                        
+          InternalSubjectId:
+            name: Идентификатор внутреннего сервиса
+            type: int       
+
+      User:
+        name: Пользователь
+        description: >
+          Учётная запись, используемая приложением для проверки идентичности.
+        properties:
+          Id:
+            name: Идентификатор
+            type: int
+          Name:
+            name: Имя
+            type: string
+          Email:
+            name: Адрес электронной почты
+            type: string
+          IsBlocked:
+            name: Признак блокировки
+            type: boolean
+
+      UserInternalPermission:
+        name: Внутреннее разрешение пользователя
+        description: >
+          Связывает пользователя с внутренним разрешением.
+
+          Используется для разграничения прав доступа к объектам внутри сервиса.
+        properties:
+          UserId:
+            name: Идентификатор пользователя
+            type: int
+          InternalPermissionId:
+            name: Идентификатор внутреннего разрешения
+            type: int            
+...
