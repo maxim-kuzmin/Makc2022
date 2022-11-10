@@ -1,6 +1,14 @@
-# Ресурсы
+# Инфраструктура
 ---
-resources:
+infrastructure:
+
+  Cashe:
+    name: Кэш
+    description: >
+      Кэширование данных.
+    implementation: >
+      Хранилище данных в памяти "Redis": https://redis.io/.
+
   Identity:
     name: Идентичность
     description: >
@@ -8,37 +16,32 @@ resources:
 
       Аутентификация по технологии единого входа (SSO) в соответствии со стандартом "OpenID Connect":
       https://habr.com/ru/company/nixys/blog/566910/.
-    source: >
+    implementation: >
       Постащик услуг SSO "Keycloak": https://www.keycloak.org/.
+
+  MessageBrocker:
+    name: Брокер сообщений
+    description: >
+      Обмен сообщениями в очереди.
+    implementation: >
+      Брокер сообщений "RabbitMQ": https://rabbitmq.com/.
 
   SqlDatbaseServer:
     name: Сервер баз данных SQL
     description: >
       Управление реляционными базами данных.
-    source: >
+    implementation: >
       СУБД "PostgreSQL": https://www.postgresql.org/.
 
 # Сервисы
 ---
 services:
 
-  Security:    
-    id: 1
-    name: Безопасность
+  Gateway:
+    id: 3
+    name: Шлюз
     description: >
-      Управление пользователями и ролями.
-      
-      Загрузка из сервисов их внутренних доменов и предназначенных для них внутренних разрешений.
-
-      Под внутренними доменами сервисов понимаются все возможные части их бизнес-логики,
-      на действия с которыми пользователю требуются разрешения.
-
-      Под внутренними разрешениями понимаются все возможные разрешения,
-      которые выделяются сервисами для действий в их внутренних доменах.
-
-      Назначение ролям разрешений.
-
-      Назначение ролей пользователям.
+      Предназначен для соединения частей функциональности других сервисов.
     entities:
 
       InternalDomain:
@@ -68,96 +71,6 @@ services:
             name: Идентификатор внутреннего сервиса
             type: int       
 
-      Service:
-        name: Сервис
-        description: >
-          Часть приложения, которая реализует функциональность одной из частей бизнес логики приложения.
-        properties:
-          Id:
-            name: Идентификатор
-            type: int
-          Name:
-            name: Имя
-            type: string
-
-      Domain:
-        name: Домен
-        description: >
-          Часть бизнес-логики приложения, на действия с которой пользователю требуются разрешения.
-
-          Связывает сервис с его внутренним доменом.
-        Properties:
-          Id:
-            name: Идентификатор
-            type: int
-          ServiceId:
-            name: Идентификатор сервиса
-            type: int
-          InternalDomainId:
-            name: Идентификатор внутреннего домена
-            type: int
-          InternalDomainName:
-            name: Имя внутреннего домена
-            type: string
-
-      Permission:
-        name: Разрешение
-        description: >
-          Разрешение внутри приложения на действие в домене.
-
-          Связывает домен с его внутренним разрешением.
-        Properties:
-          Id:
-            name: Идентификатор
-            type: int
-          DomainId:
-            name: Идентификатор домена
-            type: int
-          InternalPermissionId:
-            name: Идентификатор внутреннего разрешения
-            type: int
-          InternalPermissionName:
-            name: Имя внутреннего разрешения
-            type: string
-
-      Role:
-        name: Роль
-        description: >
-          Совокупность разрешений.
-        properties:
-          Id:
-            name: Идентификатор
-            type: int
-          Name:
-            name: Имя
-            type: string
-
-      RolePermission:
-        name: Разрешение роли
-        description: >
-          Связывает роль с разрешением.
-        properties:
-          RoleId:
-            name: Идентификатор роли
-            type: int
-          PermissionId:
-            name: Идентификатор разрешения
-            type: int
-
-      LoginProvider:
-        name: Поставщик входа
-        description: >
-          Поставщик услуги обеспечения входа в приложение.
-          
-          Проверяет пароль пользователя и генерирует JWT-токен доступа.
-        properties:
-          Id:
-            name: Идентификатор
-            type: int
-          Name:
-            name: Имя
-            type: string
-
       User:
         name: Пользователь
         description: >
@@ -175,33 +88,6 @@ services:
           IsBlocked:
             name: Признак блокировки
             type: bool
-
-      UserRole:
-        name: Роль пользователя
-        description: >
-          Связывает пользователя с ролью.
-        properties:
-          UserId:
-            name: Идентификатор пользователя
-            type: int
-          RoleId:
-            name: Идентификатор роли
-            type: int
-
-      UserLogin:
-        name: Вход пользователя
-        description: >
-          Связывает пользователя с ключом, предоставляемым поставщиком для входа в приложение.
-        properties:
-          UserId:
-            name: Идентификатор пользователя
-            type: int
-          LoginProviderId:
-            name: Идентификатор поставщика входа
-            type: int
-          ProviderKey:
-            name: Ключ поставщика
-            type: string
 
       UserInternalPermission:
         name: Внутреннее разрешение пользователя
@@ -421,11 +307,23 @@ services:
             name: Идентификатор родителя
             type: int
 
-  Gateway:
-    id: 3
-    name: Шлюз
+  Security:    
+    id: 1
+    name: Безопасность
     description: >
-      Предназначен для соединения частей функциональности других сервисов.
+      Управление пользователями и ролями.
+      
+      Загрузка из сервисов их внутренних доменов и предназначенных для них внутренних разрешений.
+
+      Под внутренними доменами сервисов понимаются все возможные части их бизнес-логики,
+      на действия с которыми пользователю требуются разрешения.
+
+      Под внутренними разрешениями понимаются все возможные разрешения,
+      которые выделяются сервисами для действий в их внутренних доменах.
+
+      Назначение ролям разрешений.
+
+      Назначение ролей пользователям.
     entities:
 
       InternalDomain:
@@ -455,6 +353,96 @@ services:
             name: Идентификатор внутреннего сервиса
             type: int       
 
+      Service:
+        name: Сервис
+        description: >
+          Часть приложения, которая реализует функциональность одной из частей бизнес логики приложения.
+        properties:
+          Id:
+            name: Идентификатор
+            type: int
+          Name:
+            name: Имя
+            type: string
+
+      Domain:
+        name: Домен
+        description: >
+          Часть бизнес-логики приложения, на действия с которой пользователю требуются разрешения.
+
+          Связывает сервис с его внутренним доменом.
+        Properties:
+          Id:
+            name: Идентификатор
+            type: int
+          ServiceId:
+            name: Идентификатор сервиса
+            type: int
+          InternalDomainId:
+            name: Идентификатор внутреннего домена
+            type: int
+          InternalDomainName:
+            name: Имя внутреннего домена
+            type: string
+
+      Permission:
+        name: Разрешение
+        description: >
+          Разрешение внутри приложения на действие в домене.
+
+          Связывает домен с его внутренним разрешением.
+        Properties:
+          Id:
+            name: Идентификатор
+            type: int
+          DomainId:
+            name: Идентификатор домена
+            type: int
+          InternalPermissionId:
+            name: Идентификатор внутреннего разрешения
+            type: int
+          InternalPermissionName:
+            name: Имя внутреннего разрешения
+            type: string
+
+      Role:
+        name: Роль
+        description: >
+          Совокупность разрешений.
+        properties:
+          Id:
+            name: Идентификатор
+            type: int
+          Name:
+            name: Имя
+            type: string
+
+      RolePermission:
+        name: Разрешение роли
+        description: >
+          Связывает роль с разрешением.
+        properties:
+          RoleId:
+            name: Идентификатор роли
+            type: int
+          PermissionId:
+            name: Идентификатор разрешения
+            type: int
+
+      LoginProvider:
+        name: Поставщик входа
+        description: >
+          Поставщик услуги обеспечения входа в приложение.
+          
+          Проверяет пароль пользователя и генерирует JWT-токен доступа.
+        properties:
+          Id:
+            name: Идентификатор
+            type: int
+          Name:
+            name: Имя
+            type: string
+
       User:
         name: Пользователь
         description: >
@@ -472,6 +460,33 @@ services:
           IsBlocked:
             name: Признак блокировки
             type: bool
+
+      UserRole:
+        name: Роль пользователя
+        description: >
+          Связывает пользователя с ролью.
+        properties:
+          UserId:
+            name: Идентификатор пользователя
+            type: int
+          RoleId:
+            name: Идентификатор роли
+            type: int
+
+      UserLogin:
+        name: Вход пользователя
+        description: >
+          Связывает пользователя с ключом, предоставляемым поставщиком для входа в приложение.
+        properties:
+          UserId:
+            name: Идентификатор пользователя
+            type: int
+          LoginProviderId:
+            name: Идентификатор поставщика входа
+            type: int
+          ProviderKey:
+            name: Ключ поставщика
+            type: string
 
       UserInternalPermission:
         name: Внутреннее разрешение пользователя
