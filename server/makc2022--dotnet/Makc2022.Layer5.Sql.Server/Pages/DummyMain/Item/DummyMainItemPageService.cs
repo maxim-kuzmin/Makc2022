@@ -1,10 +1,10 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-using Makc2022.Layer1.Query;
-using Makc2022.Layer5.Sql.Server.Pages.DummyMain.Item.Queries.Get;
-using DummyMainDomainItemGetQueryInput = Makc2022.Layer4.Sql.Domains.DummyMain.Queries.Item.Get.DomainItemGetQueryInput;
-using DummyMainDomainItemGetQueryOutput = Makc2022.Layer4.Sql.Domains.DummyMain.Queries.Item.Get.DomainItemGetQueryOutput;
-using IDummyMainDomainItemGetQueryHandler = Makc2022.Layer4.Sql.Domains.DummyMain.Queries.Item.Get.IDomainItemGetQueryHandler;
+using Makc2022.Layer1.Operation;
+using Makc2022.Layer5.Sql.Server.Pages.DummyMain.Item.Operations.Get;
+using DummyMainDomainItemGetOperationInput = Makc2022.Layer4.Sql.Domains.DummyMain.Operations.Item.Get.DomainItemGetOperationInput;
+using DummyMainDomainItemGetOperationOutput = Makc2022.Layer4.Sql.Domains.DummyMain.Operations.Item.Get.DomainItemGetOperationOutput;
+using IDummyMainDomainItemGetOperationHandler = Makc2022.Layer4.Sql.Domains.DummyMain.Operations.Item.Get.IDomainItemGetOperationHandler;
 using IDummyMainDomainService = Makc2022.Layer4.Sql.Domains.DummyMain.IDomainService;
 
 namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.Item
@@ -16,7 +16,7 @@ namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.Item
     {
         #region Properties
 
-        private IDummyMainDomainItemGetQueryHandler HandlerOfDummyMainDomainItemGetQuery { get; }
+        private IDummyMainDomainItemGetOperationHandler HandlerOfDummyMainDomainItemGetOperation { get; }
 
         private IDummyMainDomainService ServiceOfDummyMainDomain { get; }
 
@@ -27,15 +27,15 @@ namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.Item
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="handlerOfDummyMainDomainItemGetQueryHandler">Обработчик запроса на получение элемента в домене "DummyMain".</param>
-        /// <param name="serviceOfDummyMainDomainService">Сервис домена "DummyMain".</param>
+        /// <param name="handlerOfDummyMainDomainItemGetOperation">Обработчик операции получения элемента в домене "DummyMain".</param>
+        /// <param name="serviceOfDummyMainDomain">Сервис домена "DummyMain".</param>
         public DummyMainItemPageService(
-            IDummyMainDomainItemGetQueryHandler handlerOfDummyMainDomainItemGetQueryHandler,
-            IDummyMainDomainService serviceOfDummyMainDomainService
+            IDummyMainDomainItemGetOperationHandler handlerOfDummyMainDomainItemGetOperation,
+            IDummyMainDomainService serviceOfDummyMainDomain
             )
         {
-            HandlerOfDummyMainDomainItemGetQuery = handlerOfDummyMainDomainItemGetQueryHandler;
-            ServiceOfDummyMainDomain = serviceOfDummyMainDomainService;
+            HandlerOfDummyMainDomainItemGetOperation = handlerOfDummyMainDomainItemGetOperation;
+            ServiceOfDummyMainDomain = serviceOfDummyMainDomain;
         }
 
         #endregion Constructors
@@ -43,37 +43,37 @@ namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.Item
         #region Public methods
 
         /// <inheritdoc/>
-        public async Task<QueryResultWithOutput<DummyMainItemPageGetQueryOutput>> Get(
-            DummyMainItemPageGetQueryInput input,
-            string? queryCode = null
+        public async Task<OperationResultWithOutput<DummyMainItemPageGetOperationOutput>> Get(
+            DummyMainItemPageGetOperationInput input,
+            string? operationCode = null
             )
         {
-            QueryResultWithOutput<DummyMainItemPageGetQueryOutput> result = new();
+            OperationResultWithOutput<DummyMainItemPageGetOperationOutput> result = new();
 
-            if (string.IsNullOrWhiteSpace(queryCode))
+            if (string.IsNullOrWhiteSpace(operationCode))
             {
-                queryCode = result.QueryCode;
+                operationCode = result.OperationCode;
             }
             else
             {
-                result.QueryCode = queryCode;
+                result.OperationCode = operationCode;
             }
 
-            DummyMainItemPageGetQueryOutput output = new();
+            DummyMainItemPageGetOperationOutput output = new();
 
-            List<QueryResult> queryResults = new();
+            List<OperationResult> queryResults = new();
 
-            var item = input.InputOfDummyMainDomainItemGetQuery;
+            var item = input.InputOfDummyMainDomainItemGetOperation;
 
             await queryResults.AddWithOutputAsync(
-                () => GetItemGetQueryResult(
-                    new DummyMainDomainItemGetQueryInput
+                () => GetItemGetOperationResult(
+                    new DummyMainDomainItemGetOperationInput
                     {
                         EntityId = item.EntityId
                     },
-                    queryCode
+                    operationCode
                     ),
-                queryOutput => output.OutputOfDummyMainDomainItemGetQuery = queryOutput);
+                queryOutput => output.OutputOfDummyMainDomainItemGetOperation = queryOutput);
 
             result.Load(queryResults);
 
@@ -89,18 +89,18 @@ namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.Item
 
         #region Private methods
 
-        private async Task<QueryResultWithOutput<DummyMainDomainItemGetQueryOutput>> GetItemGetQueryResult(
-            DummyMainDomainItemGetQueryInput input,
-            string queryCode
+        private async Task<OperationResultWithOutput<DummyMainDomainItemGetOperationOutput>> GetItemGetOperationResult(
+            DummyMainDomainItemGetOperationInput input,
+            string operationCode
             )
         {
-            var queryHandler = HandlerOfDummyMainDomainItemGetQuery;
+            var queryHandler = HandlerOfDummyMainDomainItemGetOperation;
 
             try
             {
-                queryHandler.OnStart(input, queryCode);
+                queryHandler.OnStart(input, operationCode);
 
-                var queryOutput = await ServiceOfDummyMainDomain.GetItem(queryHandler.QueryInput!);
+                var queryOutput = await ServiceOfDummyMainDomain.GetItem(queryHandler.OperationInput!);
 
                 queryHandler.OnSuccess(queryOutput);
             }
@@ -109,7 +109,7 @@ namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.Item
                 queryHandler.OnError(ex);
             }
 
-            return queryHandler.QueryResult!;
+            return queryHandler.OperationResult!;
         }
 
         #endregion Private methods

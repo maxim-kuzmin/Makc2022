@@ -3,7 +3,7 @@
 namespace Makc2022.Layer1.Logging
 {
     /// <summary>
-    /// Расширение логирования.
+    /// Расширение ведения журнала.
     /// </summary>
     public static class LoggingExtension
     {

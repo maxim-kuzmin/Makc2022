@@ -1,10 +1,10 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
 using Makc2022.Layer1.Exceptions;
-using Makc2022.Layer1.Query;
+using Makc2022.Layer1.Operation;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.DummyMain;
-using Makc2022.Layer4.Sql.Domains.DummyMain.Queries.Item.Get;
-using Makc2022.Layer4.Sql.Domains.DummyMain.Queries.List.Get;
+using Makc2022.Layer4.Sql.Domains.DummyMain.Operations.Item.Get;
+using Makc2022.Layer4.Sql.Domains.DummyMain.Operations.List.Get;
 
 namespace Makc2022.Layer4.Sql.Domains.DummyMain
 {
@@ -23,7 +23,7 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
         /// <returns>Запрос с учётом фильтрации.</returns>
         public static IQueryable<MapperDummyMainEntityObject> ApplyFiltering(
             this IQueryable<MapperDummyMainEntityObject> query,
-            DomainItemGetQueryInput input
+            DomainItemGetOperationInput input
             )
         {
             if (input.EntityId > 0)
@@ -47,7 +47,7 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
         /// <returns>Запрос с учётом фильтрации.</returns>
         public static IQueryable<MapperDummyMainEntityObject> ApplyFiltering(
             this IQueryable<MapperDummyMainEntityObject> query,
-            DomainListGetQueryInput input
+            DomainListGetOperationInput input
             )
         {
             if (!string.IsNullOrWhiteSpace(input.EntityName))
@@ -104,7 +104,7 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
         /// <returns>Запрос с учётом сортировки.</returns>
         public static IQueryable<MapperDummyMainEntityObject> ApplySorting(
             this IQueryable<MapperDummyMainEntityObject> query,
-            DomainListGetQueryInput input
+            DomainListGetOperationInput input
             )
         {
             if (string.IsNullOrWhiteSpace(input.SortField))
@@ -133,10 +133,10 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
             {
                 switch (sortDirection)
                 {
-                    case QueryOptions.SORT_DIRECTION_ASC:
+                    case OperationOptions.SORT_DIRECTION_ASC:
                         query = query.OrderBy(x => x.Id);
                         break;
-                    case QueryOptions.SORT_DIRECTION_DESC:
+                    case OperationOptions.SORT_DIRECTION_DESC:
                         query = query.OrderByDescending(x => x.Id);
                         break;
                 }
@@ -145,10 +145,10 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
             {
                 switch (sortDirection)
                 {
-                    case QueryOptions.SORT_DIRECTION_ASC:
+                    case OperationOptions.SORT_DIRECTION_ASC:
                         query = query.OrderBy(x => x.Name);
                         break;
-                    case QueryOptions.SORT_DIRECTION_DESC:
+                    case OperationOptions.SORT_DIRECTION_DESC:
                         query = query.OrderByDescending(x => x.Name);
                         break;
                 }
@@ -157,10 +157,10 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
             {
                 switch (sortDirection)
                 {
-                    case QueryOptions.SORT_DIRECTION_ASC:
+                    case OperationOptions.SORT_DIRECTION_ASC:
                         query = query.OrderBy(x => x.ObjectOfDummyOneToManyEntity!.Name);
                         break;
-                    case QueryOptions.SORT_DIRECTION_DESC:
+                    case OperationOptions.SORT_DIRECTION_DESC:
                         query = query.OrderByDescending(x => x.ObjectOfDummyOneToManyEntity!.Name);
                         break;
                 }
@@ -169,10 +169,10 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
             {
                 switch (sortDirection)
                 {
-                    case QueryOptions.SORT_DIRECTION_ASC:
+                    case OperationOptions.SORT_DIRECTION_ASC:
                         query = query.OrderBy(x => x.PropDate);
                         break;
-                    case QueryOptions.SORT_DIRECTION_DESC:
+                    case OperationOptions.SORT_DIRECTION_DESC:
                         query = query.OrderByDescending(x => x.PropDate);
                         break;
                 }
@@ -181,10 +181,10 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
             {
                 switch (sortDirection)
                 {
-                    case QueryOptions.SORT_DIRECTION_ASC:
+                    case OperationOptions.SORT_DIRECTION_ASC:
                         query = query.OrderBy(x => x.PropBoolean);
                         break;
-                    case QueryOptions.SORT_DIRECTION_DESC:
+                    case OperationOptions.SORT_DIRECTION_DESC:
                         query = query.OrderByDescending(x => x.PropBoolean);
                         break;
                 }

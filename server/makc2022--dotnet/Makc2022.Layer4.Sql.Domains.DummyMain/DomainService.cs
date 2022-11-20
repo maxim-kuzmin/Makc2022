@@ -1,12 +1,12 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-using Makc2022.Layer2.Sql.Queries.List.Get;
+using Makc2022.Layer2.Sql.Operations.List.Get;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.DummyMain;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.DummyMainDummyManyToMany;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.DummyManyToMany;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.DummyOneToMany;
-using Makc2022.Layer4.Sql.Domains.DummyMain.Queries.Item.Get;
-using Makc2022.Layer4.Sql.Domains.DummyMain.Queries.List.Get;
+using Makc2022.Layer4.Sql.Domains.DummyMain.Operations.Item.Get;
+using Makc2022.Layer4.Sql.Domains.DummyMain.Operations.List.Get;
 using Microsoft.EntityFrameworkCore;
 using IMapperDbFactoryForSample = Makc2022.Layer3.Sql.Sample.Mappers.EF.Db.IMapperDbFactory;
 
@@ -39,9 +39,9 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
         #region Public methods
 
         /// <inheritdoc/>
-        public async Task<DomainItemGetQueryOutput?> GetItem(DomainItemGetQueryInput input)
+        public async Task<DomainItemGetOperationOutput?> GetItem(DomainItemGetOperationInput input)
         {
-            DomainItemGetQueryOutput? result = null;
+            DomainItemGetOperationOutput? result = null;
 
             using var dbContext = MapperDbFactoryForSample.CreateDbContext();
 
@@ -79,9 +79,9 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
         }
 
         /// <inheritdoc/>
-        public async Task<DomainListGetQueryOutput> GetList(DomainListGetQueryInput input)
+        public async Task<DomainListGetOperationOutput> GetList(DomainListGetOperationInput input)
         {
-            var result = new DomainListGetQueryOutput();
+            var result = new DomainListGetOperationOutput();
 
             using var dbContext = MapperDbFactoryForSample.CreateDbContext();
             using var dbContextForTotalCount = MapperDbFactoryForSample.CreateDbContext();
@@ -139,9 +139,9 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
 
         #region Private methods
 
-        private static DomainItemGetQueryOutput CreateItem(MapperDummyMainEntityObject entity)
+        private static DomainItemGetOperationOutput CreateItem(MapperDummyMainEntityObject entity)
         {
-            var result = new DomainItemGetQueryOutput
+            var result = new DomainItemGetOperationOutput
             {
                 ObjectOfDummyMainEntity = entity.FromMapperToEntityObject(),
                 ObjectOfDummyOneToManyEntity = entity.ObjectOfDummyOneToManyEntity!.FromMapperToEntityObject()
@@ -158,7 +158,7 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
         }
 
         private static void InitItemDummyManyToMany(
-            DomainItemGetQueryOutput item,
+            DomainItemGetOperationOutput item,
             IEnumerable<MapperDummyManyToManyEntityObject> enities
             )
         {
@@ -170,7 +170,7 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
         }
 
         private static void InitItemDummyManyToMany(
-            DomainItemGetQueryOutput item,
+            DomainItemGetOperationOutput item,
             IDictionary<long, MapperDummyManyToManyEntityObject> lookup
             )
         {

@@ -106,37 +106,37 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
 
         private static void InitQueryBuilder(
             TreeTriggerCommandBuilder builder,
-            DummyTreeLinkEntityOptions? linkSettings,
-            DummyTreeEntityOptions? treeSettings
+            DummyTreeLinkEntityOptions? linkOptions,
+            DummyTreeEntityOptions? treeOptions
             )
         {
-            if (linkSettings is null)
+            if (linkOptions is null)
             {
-                throw new ArgumentNullException(nameof(linkSettings));
+                throw new ArgumentNullException(nameof(linkOptions));
             }
 
-            if (treeSettings is null)
+            if (treeOptions is null)
             {
-                throw new ArgumentNullException(nameof(treeSettings));
+                throw new ArgumentNullException(nameof(treeOptions));
             }
 
-            builder.LinkTableFieldNameForId = linkSettings.DbColumnForId;
-            builder.LinkTableFieldNameForParentId = linkSettings.DbColumnForDummyTreeEntityParentId;
+            builder.LinkTableFieldNameForId = linkOptions.DbColumnForId;
+            builder.LinkTableFieldNameForParentId = linkOptions.DbColumnForDummyTreeEntityParentId;
 
-            builder.LinkTableNameWithoutSchema = linkSettings.DbTable;
-            builder.LinkTableSchema = linkSettings.DbSchema;
+            builder.LinkTableNameWithoutSchema = linkOptions.DbTable;
+            builder.LinkTableSchema = linkOptions.DbSchema;
 
-            builder.TreeTableFieldNameForId = treeSettings.DbColumnForId;
-            builder.TreeTableFieldNameForParentId = treeSettings.DbColumnForDummyTreeEntityParentId;
-            builder.TreeTableFieldNameForTreeChildCount = treeSettings.DbColumnForTreeChildCount;
-            builder.TreeTableFieldNameForTreeDescendantCount = treeSettings.DbColumnForTreeDescendantCount;
-            builder.TreeTableFieldNameForTreeLevel = treeSettings.DbColumnForTreeLevel;
-            builder.TreeTableFieldNameForTreePath = treeSettings.DbColumnForTreePath;
-            builder.TreeTableFieldNameForTreePosition = treeSettings.DbColumnForTreePosition;
-            builder.TreeTableFieldNameForTreeSort = treeSettings.DbColumnForTreeSort;
+            builder.TreeTableFieldNameForId = treeOptions.DbColumnForId;
+            builder.TreeTableFieldNameForParentId = treeOptions.DbColumnForDummyTreeEntityParentId;
+            builder.TreeTableFieldNameForTreeChildCount = treeOptions.DbColumnForTreeChildCount;
+            builder.TreeTableFieldNameForTreeDescendantCount = treeOptions.DbColumnForTreeDescendantCount;
+            builder.TreeTableFieldNameForTreeLevel = treeOptions.DbColumnForTreeLevel;
+            builder.TreeTableFieldNameForTreePath = treeOptions.DbColumnForTreePath;
+            builder.TreeTableFieldNameForTreePosition = treeOptions.DbColumnForTreePosition;
+            builder.TreeTableFieldNameForTreeSort = treeOptions.DbColumnForTreeSort;
 
-            builder.TreeTableNameWithoutSchema = treeSettings.DbTable;
-            builder.TreeTableSchema = treeSettings.DbSchema;
+            builder.TreeTableNameWithoutSchema = treeOptions.DbTable;
+            builder.TreeTableSchema = treeOptions.DbSchema;
         }
 
         private static MapperDummyMainEntityObject CreateTestDataItemForDummyMain(

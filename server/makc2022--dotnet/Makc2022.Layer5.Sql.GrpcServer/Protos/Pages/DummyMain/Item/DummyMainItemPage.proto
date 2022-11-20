@@ -9,21 +9,21 @@ service DummyMainItemPage {
 }
 
 message DummyMainItemPageGetRequest {
-	string query_code = 1;
-	DummyMainDomainItemGetQueryInput item = 2;
+	string operation_code = 1;
+	DummyMainDomainItemGetOperationInput item = 2;
 }
 
 message DummyMainItemPageGetReply {
 	bool is_ok = 1;
 	repeated string error_messages = 2;
-	string query_code = 3;
+	string operation_code = 3;
 	repeated string warning_messages = 4;
 	repeated string success_messages = 5;
 	DummyMainItemPageGetReplyOutput output = 6;
 }
 
 message DummyMainItemPageGetReplyOutput {
-	DummyMainDomainItemGetQueryOutput item = 1;	
+	DummyMainDomainItemGetOperationOutput item = 1;	
 }
 
 message DummyMainEntityObject {
@@ -31,10 +31,10 @@ message DummyMainEntityObject {
 	string name = 2;
 }
 
-message DummyMainDomainItemGetQueryInput {
+message DummyMainDomainItemGetOperationInput {
 	int64 entity_id = 1;	
 }
 
-message DummyMainDomainItemGetQueryOutput {
+message DummyMainDomainItemGetOperationOutput {
 	DummyMainEntityObject object_of_dummy_main_entity = 1;	
 }

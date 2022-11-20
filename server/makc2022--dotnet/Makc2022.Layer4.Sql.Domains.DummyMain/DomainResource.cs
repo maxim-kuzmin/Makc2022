@@ -31,15 +31,15 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
         #region Public methods
 
         /// <inheritdoc/>
-        public string GetItemGetQueryName()
+        public string GetItemGetOperationName()
         {
-            return Localizer["@@ItemGetQueryName"];
+            return Localizer["@@ItemGetOperationName"];
         }
 
         /// <inheritdoc/>
-        public string GetListGetQueryName()
+        public string GetListGetOperationName()
         {
-            return Localizer["@@ListGetQueryName"];
+            return Localizer["@@ListGetOperationName"];
         }
 
         #endregion Public methods

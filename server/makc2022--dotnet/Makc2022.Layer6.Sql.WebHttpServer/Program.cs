@@ -1,17 +1,17 @@
 // Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
 using Makc2022.Layer1.Apps.WebApp.Logging;
-using Makc2022.Layer5.Sql.Server.Setting;
+using Makc2022.Layer5.Sql.Server.Setup;
 
-using var loggingSetting = new WebAppLoggingSetting();
+using var loggingSetup = new WebAppLoggingSetup();
 
-loggingSetting.OnStart();
+loggingSetup.OnStart();
 
 try
 {
     var builder = WebApplication.CreateBuilder(args);
 
-    loggingSetting.Configure(builder);
+    loggingSetup.Configure(builder);
 
     builder.Services.AddAppServices(builder.Configuration);
 
@@ -43,7 +43,7 @@ try
 }
 catch(Exception exception)
 {
-    loggingSetting.OnError(exception);
+    loggingSetup.OnError(exception);
 
     throw;
 }

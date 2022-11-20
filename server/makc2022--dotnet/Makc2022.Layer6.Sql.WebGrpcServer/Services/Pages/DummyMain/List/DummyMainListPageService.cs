@@ -3,7 +3,7 @@
 using Grpc.Core;
 using Makc2022.Layer5.Sql.GrpcServer.Protos.Pages.DummyMain.List;
 using Makc2022.Layer5.Sql.Server.Pages.DummyMain.List;
-using Makc2022.Layer5.Sql.Server.Pages.DummyMain.List.Queries.Get;
+using Makc2022.Layer5.Sql.Server.Pages.DummyMain.List.Operations.Get;
 
 namespace Makc2022.Layer6.Sql.WebGrpcServer.Services.Pages.DummyMain.List
 {
@@ -41,7 +41,7 @@ namespace Makc2022.Layer6.Sql.WebGrpcServer.Services.Pages.DummyMain.List
             ServerCallContext context
             )
         {
-            DummyMainListPageGetQueryInput input = new();
+            DummyMainListPageGetOperationInput input = new();
 
             input.List.PageNumber = request.List.PageNumber;
             input.List.PageSize = request.List.PageSize;
@@ -49,7 +49,7 @@ namespace Makc2022.Layer6.Sql.WebGrpcServer.Services.Pages.DummyMain.List
             input.List.SortField = request.List.SortField;
             input.List.EntityName = request.List.EntityName;
 
-            var queryResult = await Service.Get(input, request.QueryCode);
+            var queryResult = await Service.Get(input, request.OperationCode);
 
             var list = queryResult.Output?.List;
 
@@ -63,7 +63,7 @@ namespace Makc2022.Layer6.Sql.WebGrpcServer.Services.Pages.DummyMain.List
                         TotalCount = list.TotalCount
                     } : null
                 },
-                QueryCode = queryResult.QueryCode
+                OperationCode = queryResult.OperationCode
             };
 
             result.ErrorMessages.AddRange(queryResult.ErrorMessages);            
@@ -72,7 +72,7 @@ namespace Makc2022.Layer6.Sql.WebGrpcServer.Services.Pages.DummyMain.List
 
             result.Output.List?.Items.AddRange(
                 list?.Items?.Select(x =>
-                    new DummyMainDomainItemGetQueryOutput
+                    new DummyMainDomainItemGetOperationOutput
                     {
                         ObjectOfDummyMainEntity = x.ObjectOfDummyMainEntity != null ? new()
                         {

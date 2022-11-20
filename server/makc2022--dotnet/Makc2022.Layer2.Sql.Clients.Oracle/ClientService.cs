@@ -1,6 +1,6 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-using Makc2022.Layer2.Sql.Clients.Oracle.Setting;
+using Makc2022.Layer2.Sql.Clients.Oracle.Setup;
 using Microsoft.Extensions.Options;
 using Oracle.ManagedDataAccess.Client;
 
@@ -13,7 +13,7 @@ namespace Makc2022.Layer2.Sql.Clients.Oracle
     {
         #region Properties
 
-        private IOptionsMonitor<ClientSettingOptions> СlientSettingOptions { get; }
+        private IOptionsMonitor<ClientSetupOptions> СlientSetupOptions { get; }
 
         #endregion Properties
 
@@ -22,10 +22,10 @@ namespace Makc2022.Layer2.Sql.Clients.Oracle
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="clientSettingOptions">Параметры настройки клиента.</param>
-        public ClientService(IOptionsMonitor<ClientSettingOptions> clientSettingOptions)
+        /// <param name="clientSetupOptions">Параметры настройки клиента.</param>
+        public ClientService(IOptionsMonitor<ClientSetupOptions> clientSetupOptions)
         {
-            СlientSettingOptions = clientSettingOptions;
+            СlientSetupOptions = clientSetupOptions;
         }
 
         #endregion Constructors
@@ -35,9 +35,9 @@ namespace Makc2022.Layer2.Sql.Clients.Oracle
         /// <inheritdoc/>
         public void Configure()
         {
-            var currentClientSettingOptions = СlientSettingOptions.CurrentValue;
+            var currentClientSetupOptions = СlientSetupOptions.CurrentValue;
 
-            OracleConfiguration.TnsAdmin = currentClientSettingOptions.TnsAdmin;
+            OracleConfiguration.TnsAdmin = currentClientSetupOptions.TnsAdmin;
         }
 
         #endregion Public methods

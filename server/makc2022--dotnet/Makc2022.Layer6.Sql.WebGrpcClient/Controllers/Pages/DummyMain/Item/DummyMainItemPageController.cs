@@ -11,7 +11,7 @@ namespace Makc2022.Layer6.Sql.WebGrpcClient.Controllers.Pages.DummyMain.Item
     /// </summary>
     [Authorize]
     [ApiController]
-    [Route("api/pages/dummy-main/item/{queryCode}")]
+    [Route("api/pages/dummy-main/item/{operationCode}")]
     public class DummyMainItemPageController : ControllerBase
     {
         #region Properties
@@ -38,15 +38,15 @@ namespace Makc2022.Layer6.Sql.WebGrpcClient.Controllers.Pages.DummyMain.Item
         /// <summary>
         /// Получить.
         /// </summary>
-        /// <param name="queryCode">Код запроса.</param>
+        /// <param name="operationCode">Код операции.</param>
         /// <param name="entityId">Идентификатор сущности.</param>
         /// <returns>Задача на получение результата.</returns>
         [HttpGet, Route("{entityId}")]
-        public async Task<IActionResult> Get(string queryCode, int entityId)
+        public async Task<IActionResult> Get(string operationCode, int entityId)
         {
             DummyMainItemPageGetRequest request = new()
             {
-                QueryCode = queryCode,
+                OperationCode = operationCode,
                 Item = new()
                 {
                     EntityId = entityId

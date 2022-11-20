@@ -1,10 +1,10 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-using Makc2022.Layer1.Query;
-using Makc2022.Layer5.Sql.Server.Pages.DummyMain.List.Queries.Get;
-using DummyMainDomainListGetQueryInput = Makc2022.Layer4.Sql.Domains.DummyMain.Queries.List.Get.DomainListGetQueryInput;
-using DummyMainDomainListGetQueryOutput = Makc2022.Layer4.Sql.Domains.DummyMain.Queries.List.Get.DomainListGetQueryOutput;
-using IDummyMainDomainListGetQueryHandler = Makc2022.Layer4.Sql.Domains.DummyMain.Queries.List.Get.IDomainListGetQueryHandler;
+using Makc2022.Layer1.Operation;
+using Makc2022.Layer5.Sql.Server.Pages.DummyMain.List.Operations.Get;
+using DummyMainDomainListGetOperationInput = Makc2022.Layer4.Sql.Domains.DummyMain.Operations.List.Get.DomainListGetOperationInput;
+using DummyMainDomainListGetOperationOutput = Makc2022.Layer4.Sql.Domains.DummyMain.Operations.List.Get.DomainListGetOperationOutput;
+using IDummyMainDomainListGetOperationHandler = Makc2022.Layer4.Sql.Domains.DummyMain.Operations.List.Get.IDomainListGetOperationHandler;
 using IDummyMainDomainService = Makc2022.Layer4.Sql.Domains.DummyMain.IDomainService;
 
 namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.List
@@ -14,7 +14,7 @@ namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.List
     /// </summary>
     public class DummyMainListPageService : IDummyMainListPageService
     {
-        private IDummyMainDomainListGetQueryHandler HandlerOfMainDomainDomainListGetQuery { get; }
+        private IDummyMainDomainListGetOperationHandler HandlerOfMainDomainDomainListGetOperation { get; }
 
         private IDummyMainDomainService ServiceOfDummyMainDomain { get; }
 
@@ -23,14 +23,14 @@ namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.List
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="handlerOfMainDomainDomainListGetQuery">Обработчик запроса на получение списка в домене "DummyMain".</param>
+        /// <param name="handlerOfMainDomainDomainListGetOperation">Обработчик операции получения списка в домене "DummyMain".</param>
         /// <param name="serviceOfDummyMainDomain">Сервис домена "DummyMain".</param>
         public DummyMainListPageService(
-            IDummyMainDomainListGetQueryHandler handlerOfMainDomainDomainListGetQuery,
+            IDummyMainDomainListGetOperationHandler handlerOfMainDomainDomainListGetOperation,
             IDummyMainDomainService serviceOfDummyMainDomain
             )
         {
-            HandlerOfMainDomainDomainListGetQuery = handlerOfMainDomainDomainListGetQuery;
+            HandlerOfMainDomainDomainListGetOperation = handlerOfMainDomainDomainListGetOperation;
             ServiceOfDummyMainDomain = serviceOfDummyMainDomain;
         }
 
@@ -39,31 +39,31 @@ namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.List
         #region Public methods
 
         /// <inheritdoc/>
-        public async Task<QueryResultWithOutput<DummyMainListPageGetQueryOutput>> Get(
-            DummyMainListPageGetQueryInput input,
-            string? queryCode = null
+        public async Task<OperationResultWithOutput<DummyMainListPageGetOperationOutput>> Get(
+            DummyMainListPageGetOperationInput input,
+            string? operationCode = null
             )
         {
-            QueryResultWithOutput<DummyMainListPageGetQueryOutput> result = new();
+            OperationResultWithOutput<DummyMainListPageGetOperationOutput> result = new();
 
-            if (string.IsNullOrWhiteSpace(queryCode))
+            if (string.IsNullOrWhiteSpace(operationCode))
             {
-                queryCode = result.QueryCode;
+                operationCode = result.OperationCode;
             }
             else
             {
-                result.QueryCode = queryCode;
+                result.OperationCode = operationCode;
             }
 
-            DummyMainListPageGetQueryOutput output = new();
+            DummyMainListPageGetOperationOutput output = new();
 
-            List<QueryResult> queryResults = new();
+            List<OperationResult> queryResults = new();
 
             var list = input.List;
 
             await queryResults.AddWithOutputAsync(
-                () => GetListGetQueryResult(
-                    new DummyMainDomainListGetQueryInput
+                () => GetListGetOperationResult(
+                    new DummyMainDomainListGetOperationInput
                     {
                         PageNumber = list.PageNumber,
                         PageSize = list.PageSize,
@@ -71,7 +71,7 @@ namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.List
                         SortField = list.SortField,
                         EntityName = list.EntityName
                     },
-                    queryCode
+                    operationCode
                     ),
                 queryOutput => output.List = queryOutput
                 );
@@ -90,18 +90,18 @@ namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.List
 
         #region Private methods
 
-        private async Task<QueryResultWithOutput<DummyMainDomainListGetQueryOutput>> GetListGetQueryResult(
-            DummyMainDomainListGetQueryInput input,
-            string queryCode
+        private async Task<OperationResultWithOutput<DummyMainDomainListGetOperationOutput>> GetListGetOperationResult(
+            DummyMainDomainListGetOperationInput input,
+            string operationCode
             )
         {
-            var queryHandler = HandlerOfMainDomainDomainListGetQuery;
+            var queryHandler = HandlerOfMainDomainDomainListGetOperation;
 
             try
             {
-                queryHandler.OnStart(input, queryCode);
+                queryHandler.OnStart(input, operationCode);
 
-                var queryOutput = await ServiceOfDummyMainDomain.GetList(queryHandler.QueryInput!);
+                var queryOutput = await ServiceOfDummyMainDomain.GetList(queryHandler.OperationInput!);
 
                 queryHandler.OnSuccess(queryOutput);
             }
@@ -110,7 +110,7 @@ namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.List
                 queryHandler.OnError(ex);
             }
 
-            return queryHandler.QueryResult!;
+            return queryHandler.OperationResult!;
         }
 
         #endregion Private methods

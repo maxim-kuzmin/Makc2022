@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using DbSettingOptions = Makc2022.Layer2.Sql.Setting.SettingOptions;
+using DbSetupOptions = Makc2022.Layer2.Sql.Setup.SetupOptions;
 
 namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Db
 {
@@ -23,7 +23,7 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Db
 
         private IDbContextFactory<ClientDbContext>? DbContextFactory { get; }
 
-        private IOptionsMonitor<DbSettingOptions>? DbSettingOptions { get; }
+        private IOptionsMonitor<DbSetupOptions>? DbSetupOptions { get; }
 
         #endregion Properties
 
@@ -40,13 +40,13 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Db
         /// Конструктор.
         /// </summary>
         /// <param name="dbContextFactory">Фабрика базы данных.</param>
-        /// <param name="dbSettingOptions">Параметры настройки базы данных.</param>
+        /// <param name="dbSetupOptions">Параметры настройки базы данных.</param>
         public ClientDbFactory(
             IDbContextFactory<ClientDbContext> dbContextFactory,
-            IOptionsMonitor<DbSettingOptions> dbSettingOptions)
+            IOptionsMonitor<DbSetupOptions> dbSetupOptions)
         {
             DbContextFactory = dbContextFactory;
-            DbSettingOptions = dbSettingOptions;
+            DbSetupOptions = dbSetupOptions;
         }
 
         #endregion Constructors
@@ -60,12 +60,12 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Db
         /// <param name="connectionString">Строка подключения.</param>
         /// <param name="settingOptions">Параметры настройки.</param>
         /// <param name="logger">Регистратор.</param>
-        /// <param name="dbSettingOptions">Параметры настройки базы данных.</param>
+        /// <param name="dbSetupOptions">Параметры настройки базы данных.</param>
         public static void Configure(
             DbContextOptionsBuilder builder,
             string? connectionString,
             ILogger<ClientDbFactory>? logger,
-            IOptionsMonitor<DbSettingOptions>? dbSettingOptions)
+            IOptionsMonitor<DbSetupOptions>? dbSetupOptions)
         {
             if (builder.IsConfigured)
             {
@@ -86,11 +86,11 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Db
 
             if (logger != null)
             {
-                var currentDbSettingOptions = dbSettingOptions?.CurrentValue;
+                var currentDbSetupOptions = dbSetupOptions?.CurrentValue;
 
-                if (currentDbSettingOptions != null)
+                if (currentDbSetupOptions != null)
                 {
-                    builder.BuildLogging(logger, currentDbSettingOptions.LogLevel);
+                    builder.BuildLogging(logger, currentDbSetupOptions.LogLevel);
                 }
             }
 
@@ -119,16 +119,16 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Db
                 throw new NullVariableException(nameof(DbContextFactory));
             }
 
-            if (DbSettingOptions is null)
+            if (DbSetupOptions is null)
             {
-                throw new NullVariableException(nameof(DbSettingOptions));
+                throw new NullVariableException(nameof(DbSetupOptions));
             }
 
             var result = DbContextFactory.CreateDbContext();
 
-            var currentDbSettingOptions = DbSettingOptions.CurrentValue;
+            var currentDbSetupOptions = DbSetupOptions.CurrentValue;
 
-            int dbCommandTimeout = currentDbSettingOptions.DbCommandTimeout;
+            int dbCommandTimeout = currentDbSetupOptions.DbCommandTimeout;
 
             result.Database.SetCommandTimeout(dbCommandTimeout > 0 ? dbCommandTimeout : 3600);
 

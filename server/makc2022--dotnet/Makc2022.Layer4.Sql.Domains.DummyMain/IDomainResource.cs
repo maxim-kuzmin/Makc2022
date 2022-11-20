@@ -10,16 +10,16 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
         #region Methods
 
         /// <summary>
-        /// Получить имя запроса на получение элемента.
+        /// Получить имя операции получения элемента.
         /// </summary>
-        /// <returns>Имя запроса.</returns>
-        string GetItemGetQueryName();
+        /// <returns>Имя операции.</returns>
+        string GetItemGetOperationName();
 
         /// <summary>
-        /// Получить имя запроса на получение списка.
+        /// Получить имя операции получения списка.
         /// </summary>
-        /// <returns>Имя запроса.</returns>
-        string GetListGetQueryName();
+        /// <returns>Имя операции.</returns>
+        string GetListGetOperationName();
 
         #endregion Methods
     }

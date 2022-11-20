@@ -2,7 +2,7 @@
 
 using Grpc.Core;
 using Makc2022.Layer5.Sql.Server.Pages.DummyMain.Item;
-using Makc2022.Layer5.Sql.Server.Pages.DummyMain.Item.Queries.Get;
+using Makc2022.Layer5.Sql.Server.Pages.DummyMain.Item.Operations.Get;
 using Makc2022.Layer5.Sql.GrpcServer.Protos.Pages.DummyMain.Item;
 
 namespace Makc2022.Layer6.Sql.WebGrpcServer.Services.Pages.DummyMain.Item
@@ -41,13 +41,13 @@ namespace Makc2022.Layer6.Sql.WebGrpcServer.Services.Pages.DummyMain.Item
             ServerCallContext context
             )
         {
-            DummyMainItemPageGetQueryInput input = new();
+            DummyMainItemPageGetOperationInput input = new();
 
-            input.InputOfDummyMainDomainItemGetQuery.EntityId = request.Item.EntityId;
+            input.InputOfDummyMainDomainItemGetOperation.EntityId = request.Item.EntityId;
 
-            var queryResult = await Service.Get(input, request.QueryCode);
+            var queryResult = await Service.Get(input, request.OperationCode);
 
-            var objectOfDummyMainEntity = queryResult.Output?.OutputOfDummyMainDomainItemGetQuery?.ObjectOfDummyMainEntity;
+            var objectOfDummyMainEntity = queryResult.Output?.OutputOfDummyMainDomainItemGetOperation?.ObjectOfDummyMainEntity;
 
             return new DummyMainItemPageGetReply
             {
@@ -63,7 +63,7 @@ namespace Makc2022.Layer6.Sql.WebGrpcServer.Services.Pages.DummyMain.Item
                         } : null
                     }
                 },
-                QueryCode = queryResult.QueryCode
+                OperationCode = queryResult.OperationCode
             };
         }
 

@@ -11,7 +11,7 @@ namespace Makc2022.Layer6.Sql.WebGrpcClient.Controllers.Pages.DummyMain.List
     /// </summary>
     [Authorize]
     [ApiController]
-    [Route("api/pages/dummy-main/list/{queryCode}")]
+    [Route("api/pages/dummy-main/list/{operationCode}")]
     public class DummyMainListPageController : ControllerBase
     {
         #region Properties        
@@ -38,7 +38,7 @@ namespace Makc2022.Layer6.Sql.WebGrpcClient.Controllers.Pages.DummyMain.List
         /// <summary>
         /// Получить.
         /// </summary>
-        /// <param name="queryCode">Код запроса.</param>
+        /// <param name="operationCode">Код операции.</param>
         /// <param name="pageNumber">Номер страницы.</param>
         /// <param name="pageSize">Размер страницы.</param>
         /// <param name="sortDirection">Направление сортировки.</param>
@@ -47,7 +47,7 @@ namespace Makc2022.Layer6.Sql.WebGrpcClient.Controllers.Pages.DummyMain.List
         /// <returns>Задача на получение результата.</returns>
         [HttpGet]
         public async Task<IActionResult> Get(
-            string queryCode,
+            string operationCode,
             int pageNumber,
             int pageSize,
             string sortDirection,
@@ -57,7 +57,7 @@ namespace Makc2022.Layer6.Sql.WebGrpcClient.Controllers.Pages.DummyMain.List
         {
             DummyMainListPageGetRequest request = new()
             {
-                QueryCode = queryCode,
+                OperationCode = operationCode,
                 List = new()
                 {
                     PageNumber = pageNumber,
