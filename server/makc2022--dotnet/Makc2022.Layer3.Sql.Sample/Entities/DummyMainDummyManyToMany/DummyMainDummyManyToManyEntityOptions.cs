@@ -1,6 +1,6 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-using Makc2022.Layer1.Exceptions;
+using Makc2022.Layer1.Exceptions.VariableExceptions;
 using Makc2022.Layer3.Sql.Sample.Db;
 using Makc2022.Layer3.Sql.Sample.Entities.DummyMain;
 using Makc2022.Layer3.Sql.Sample.Entities.DummyManyToMany;
@@ -68,7 +68,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyMainDummyManyToMany
         {
             if (string.IsNullOrWhiteSpace(optionsOfDummyMainEntity.DbColumnForId))
             {
-                throw new NullOrWhiteSpaceStringException(
+                throw new NullOrWhiteSpaceStringVariableException<DummyMainDummyManyToManyEntityOptions>(
                     nameof(optionsOfDummyMainEntity),
                     nameof(optionsOfDummyMainEntity.DbColumnForId));
             }
@@ -79,7 +79,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyMainDummyManyToMany
 
             if (string.IsNullOrWhiteSpace(optionsOfDummyManyToManyEntity.DbColumnForId))
             {
-                throw new NullOrWhiteSpaceStringException(
+                throw new NullOrWhiteSpaceStringVariableException<DummyMainDummyManyToManyEntityOptions>(
                     nameof(optionsOfDummyManyToManyEntity),
                     nameof(optionsOfDummyManyToManyEntity.DbColumnForId));
             }

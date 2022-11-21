@@ -27,7 +27,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
 
         private EntitiesOptions EntitiesOptions { get; }
 
-        private IMapperDbFactory MapperDbFactory { get; }
+        private IMapperDbContextFactory MapperDbFactory { get; }
 
         #endregion Properties
 
@@ -42,7 +42,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
         public MapperService(            
             ICommonProvider сlientProvider,
             EntitiesOptions entitiesOptions,
-            IMapperDbFactory mapperDbFactory
+            IMapperDbContextFactory mapperDbFactory
             )
         {
             ClientProvider = сlientProvider;

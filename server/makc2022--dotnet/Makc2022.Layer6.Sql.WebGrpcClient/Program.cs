@@ -1,17 +1,18 @@
 // Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-using Makc2022.Layer1.Apps.WebApp.Logging;
+using Makc2022.Layer1.Apps.WebApp;
+using Makc2022.Layer1.Apps.WebApp.Setup;
 using Makc2022.Layer5.Sql.GrpcClient.Setup;
 
-using var loggingSetup = new WebAppLoggingSetup();
+using var appHandler = new WebAppHandler();
 
-loggingSetup.OnStart();
+appHandler.OnStart();
 
 try
 {
     var builder = WebApplication.CreateBuilder(args);
 
-    loggingSetup.Configure(builder);
+    builder.Configure();
 
     builder.Services.AddAppServices(builder.Configuration);
 
@@ -41,7 +42,7 @@ try
 }
 catch(Exception exception)
 {
-    loggingSetup.OnError(exception);
+    appHandler.OnError(exception);
 
     throw;
 }

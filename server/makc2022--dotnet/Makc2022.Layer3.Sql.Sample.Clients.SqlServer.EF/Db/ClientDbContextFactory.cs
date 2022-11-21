@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
 using System.Reflection;
-using Makc2022.Layer1.Exceptions;
+using Makc2022.Layer1.Exceptions.VariableExceptions;
 using Makc2022.Layer2.Sql.Mappers.EF.Db;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Db;
 using Microsoft.EntityFrameworkCore;
@@ -13,11 +13,11 @@ using DbSetupOptions = Makc2022.Layer2.Sql.Setup.SetupOptions;
 namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Db
 {
     /// <summary>
-    /// Фабрика базы данных клиента. Предназначена для выполнения команд dotnet ef, например:
+    /// Фабрика контекста базы данных клиента. Предназначена для выполнения команд dotnet ef, например:
     /// dotnet ef migrations add InitialCreate --configuration Debug -- "строка подключения к базе данных"
     /// dotnet ef database update --configuration Debug -- "строка подключения к базе данных"
     /// </summary>
-    public class ClientDbFactory : IMapperDbFactory, IDesignTimeDbContextFactory<ClientDbContext>
+    public class ClientDbContextFactory : IMapperDbContextFactory, IDesignTimeDbContextFactory<ClientDbContext>
     {
         #region Properties
 
@@ -32,7 +32,7 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Db
         /// <summary>
         /// Конструктор, необходимый для создания экземпляра, используемого в командах dotnet ef.
         /// </summary>
-        public ClientDbFactory()
+        public ClientDbContextFactory()
         {
         }
 
@@ -41,7 +41,7 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Db
         /// </summary>
         /// <param name="dbContextFactory">Фабрика базы данных.</param>
         /// <param name="dbSetupOptions">Параметры настройки базы данных.</param>
-        public ClientDbFactory(
+        public ClientDbContextFactory(
             IDbContextFactory<ClientDbContext> dbContextFactory,
             IOptionsMonitor<DbSetupOptions> dbSetupOptions)
         {
@@ -64,7 +64,7 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Db
         public static void Configure(
             DbContextOptionsBuilder builder,
             string? connectionString,
-            ILogger<ClientDbFactory>? logger,
+            ILogger<ClientDbContextFactory>? logger,
             IOptionsMonitor<DbSetupOptions>? dbSetupOptions)
         {
             if (builder.IsConfigured)
@@ -80,7 +80,7 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Db
                 }
                 else
                 {
-                    throw new NullOrWhiteSpaceStringException(nameof(connectionString));
+                    throw new NullOrWhiteSpaceStringVariableException<ClientDbContextFactory>(nameof(connectionString));
                 }
             }
 
@@ -112,16 +112,16 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Db
         }
 
         /// <inheritdoc/>
-        MapperDbContext IMapperDbFactory.CreateDbContext()
+        MapperDbContext IMapperDbContextFactory.CreateDbContext()
         {
             if (DbContextFactory is null)
             {
-                throw new NullVariableException(nameof(DbContextFactory));
+                throw new NullVariableException<ClientDbContextFactory>(nameof(DbContextFactory));
             }
 
             if (DbSetupOptions is null)
             {
-                throw new NullVariableException(nameof(DbSetupOptions));
+                throw new NullVariableException<ClientDbContextFactory>(nameof(DbSetupOptions));
             }
 
             var result = DbContextFactory.CreateDbContext();

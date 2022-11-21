@@ -1,6 +1,6 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-using Makc2022.Layer1.Exceptions;
+using Makc2022.Layer1.Exceptions.VariableExceptions;
 using Makc2022.Layer3.Sql.Sample.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -31,7 +31,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.UserRole
 
             if (options is null)
             {
-                throw new NullVariableException(nameof(options));
+                throw new NullVariableException<MapperUserRoleEntitySchema>(nameof(options));
             }
 
             builder.ToTable(options.DbTable, options.DbSchema);

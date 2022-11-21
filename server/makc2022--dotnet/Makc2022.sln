@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer1.Apps.WebApp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer1.Apps.ConsoleApp", "Makc2022.Layer1.Apps.ConsoleApp\Makc2022.Layer1.Apps.ConsoleApp.csproj", "{74FF9895-A662-400A-B5FF-DEB388E4F638}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Layer1-Infrastructure", "Layer1-Infrastructure", "{EA9A7F33-9986-462E-81AA-1D900561DF82}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Layer1-Core", "Layer1-Core", "{EA9A7F33-9986-462E-81AA-1D900561DF82}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Layer2-Data", "Layer2-Data", "{51DA2578-B1E2-4616-B28C-469072D45E98}"
 EndProject
@@ -43,21 +43,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer2.Sql.Mappers
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer3.Sql.Sample", "Makc2022.Layer3.Sql.Sample\Makc2022.Layer3.Sql.Sample.csproj", "{D83D1463-DC39-4790-A02D-2942D7796859}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer3.Sql.Sample.Clients.SqlServer", "Makc2022.Layer3.Sql.Sample.Clients.SqlServer\Makc2022.Layer3.Sql.Sample.Clients.SqlServer.csproj", "{B45EEA8B-83B4-40D0-9ECE-39265BE7DE22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer3.Sql.Sample.Clients.SqlServer", "Makc2022.Layer3.Sql.Sample.Clients.SqlServer\Makc2022.Layer3.Sql.Sample.Clients.SqlServer.csproj", "{B45EEA8B-83B4-40D0-9ECE-39265BE7DE22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer3.Sql.Sample.Mappers.EF", "Makc2022.Layer3.Sql.Sample.Mappers.EF\Makc2022.Layer3.Sql.Sample.Mappers.EF.csproj", "{5D6B11C2-1347-4506-96B6-CD912ACD8876}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer3.Sql.Sample.Mappers.EF", "Makc2022.Layer3.Sql.Sample.Mappers.EF\Makc2022.Layer3.Sql.Sample.Mappers.EF.csproj", "{5D6B11C2-1347-4506-96B6-CD912ACD8876}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF", "Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF\Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.csproj", "{AF2EB8CB-117C-42BE-B6B2-2E2D22ED460F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF", "Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF\Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.csproj", "{AF2EB8CB-117C-42BE-B6B2-2E2D22ED460F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer4.Sql.Domains.DummyMain", "Makc2022.Layer4.Sql.Domains.DummyMain\Makc2022.Layer4.Sql.Domains.DummyMain.csproj", "{15B76739-AF54-4074-8D30-0FEF519E39A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer4.Sql.Domains.DummyMain", "Makc2022.Layer4.Sql.Domains.DummyMain\Makc2022.Layer4.Sql.Domains.DummyMain.csproj", "{15B76739-AF54-4074-8D30-0FEF519E39A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer5.Sql.GrpcServer", "Makc2022.Layer5.Sql.GrpcServer\Makc2022.Layer5.Sql.GrpcServer.csproj", "{7C5A37F7-A7E5-4522-AFD7-ABAA08D5AE6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer5.Sql.GrpcServer", "Makc2022.Layer5.Sql.GrpcServer\Makc2022.Layer5.Sql.GrpcServer.csproj", "{7C5A37F7-A7E5-4522-AFD7-ABAA08D5AE6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer5.Sql.GrpcClient", "Makc2022.Layer5.Sql.GrpcClient\Makc2022.Layer5.Sql.GrpcClient.csproj", "{7B73DCBD-1161-4D11-B04D-2E34E035EF55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer5.Sql.GrpcClient", "Makc2022.Layer5.Sql.GrpcClient\Makc2022.Layer5.Sql.GrpcClient.csproj", "{7B73DCBD-1161-4D11-B04D-2E34E035EF55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer6.Sql.WebGrpcClient", "Makc2022.Layer6.Sql.WebGrpcClient\Makc2022.Layer6.Sql.WebGrpcClient.csproj", "{52517CB2-0804-4D72-82CC-C63A4FC0CAE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer6.Sql.WebGrpcClient", "Makc2022.Layer6.Sql.WebGrpcClient\Makc2022.Layer6.Sql.WebGrpcClient.csproj", "{52517CB2-0804-4D72-82CC-C63A4FC0CAE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makc2022.Layer6.Sql.WebGrpcServer", "Makc2022.Layer6.Sql.WebGrpcServer\Makc2022.Layer6.Sql.WebGrpcServer.csproj", "{5DA52E65-BF47-477B-8DCE-986794FBCC28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer6.Sql.WebGrpcServer", "Makc2022.Layer6.Sql.WebGrpcServer\Makc2022.Layer6.Sql.WebGrpcServer.csproj", "{5DA52E65-BF47-477B-8DCE-986794FBCC28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

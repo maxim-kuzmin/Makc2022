@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
 using Makc2022.Layer1.Exceptions;
+using Makc2022.Layer1.Exceptions.VariableExceptions;
 using Makc2022.Layer1.Operation;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.DummyMain;
 using Makc2022.Layer4.Sql.Domains.DummyMain.Operations.Item.Get;
@@ -109,14 +110,14 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
         {
             if (string.IsNullOrWhiteSpace(input.SortField))
             {
-                throw new NullOrWhiteSpaceStringException(nameof(input), nameof(input.SortField));
+                throw new NullOrWhiteSpaceStringVariableException(typeof(DomainExtension), nameof(input), nameof(input.SortField));
             }
 
             string sortField = input.SortField.ToLower();
 
             if (string.IsNullOrWhiteSpace(input.SortDirection))
             {
-                throw new NullOrWhiteSpaceStringException(nameof(input), nameof(input.SortDirection));
+                throw new NullOrWhiteSpaceStringVariableException(typeof(DomainExtension), nameof(input), nameof(input.SortDirection));
             }
 
             string sortDirection = input.SortDirection.ToLower();

@@ -3,7 +3,6 @@
 using Makc2022.Layer1.App;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 
 namespace Makc2022.Layer2.Sql.Setup
 {

@@ -1,6 +1,6 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-using Makc2022.Layer1.Exceptions;
+using Makc2022.Layer1.Exceptions.VariableExceptions;
 using Makc2022.Layer3.Sql.Sample.Db;
 using Makc2022.Layer3.Sql.Sample.Entity;
 
@@ -124,7 +124,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyTree
 
             if (string.IsNullOrWhiteSpace(defaults.DbColumnForName))
             {
-                throw new NullOrWhiteSpaceStringException(
+                throw new NullOrWhiteSpaceStringVariableException<DummyTreeEntityOptions>(
                     nameof(defaults),
                     nameof(defaults.DbColumnForName));
             }
@@ -133,7 +133,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyTree
 
             if (string.IsNullOrWhiteSpace(defaults.DbColumnForParentId))
             {
-                throw new NullOrWhiteSpaceStringException(
+                throw new NullOrWhiteSpaceStringVariableException<DummyTreeEntityOptions>(
                     nameof(defaults),
                     nameof(defaults.DbColumnForParentId));
             }
@@ -152,7 +152,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyTree
 
             if (string.IsNullOrWhiteSpace(defaults.DbColumnForTreeSort))
             {
-                throw new NullOrWhiteSpaceStringException(
+                throw new NullOrWhiteSpaceStringVariableException<DummyTreeEntityOptions>(
                     nameof(defaults),
                     nameof(defaults.DbColumnForTreeSort));
             }

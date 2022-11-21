@@ -1,6 +1,6 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-using Makc2022.Layer1.Exceptions;
+using Makc2022.Layer1.Exceptions.VariableExceptions;
 using Makc2022.Layer3.Sql.Sample.Db;
 using Makc2022.Layer3.Sql.Sample.Entity;
 
@@ -59,7 +59,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyManyToMany
 
             if (string.IsNullOrWhiteSpace(defaults.DbColumnForName))
             {
-                throw new NullOrWhiteSpaceStringException(
+                throw new NullOrWhiteSpaceStringVariableException<DummyManyToManyEntityOptions>(
                     nameof(defaults),
                     nameof(defaults.DbColumnForName));
             }

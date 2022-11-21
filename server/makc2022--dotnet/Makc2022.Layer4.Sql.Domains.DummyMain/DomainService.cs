@@ -8,7 +8,7 @@ using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.DummyOneToMany;
 using Makc2022.Layer4.Sql.Domains.DummyMain.Operations.Item.Get;
 using Makc2022.Layer4.Sql.Domains.DummyMain.Operations.List.Get;
 using Microsoft.EntityFrameworkCore;
-using IMapperDbFactoryForSample = Makc2022.Layer3.Sql.Sample.Mappers.EF.Db.IMapperDbFactory;
+using IMapperDbFactoryForSample = Makc2022.Layer3.Sql.Sample.Mappers.EF.Db.IMapperDbContextFactory;
 
 namespace Makc2022.Layer4.Sql.Domains.DummyMain
 {

@@ -23,14 +23,14 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Setup
         /// <inheritdoc/>
         public sealed override void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContextFactory<ClientDbContext>((x, options) => ClientDbFactory.Configure(
+            services.AddDbContextFactory<ClientDbContext>((x, options) => ClientDbContextFactory.Configure(
                 options,
                 x.GetRequiredService<IConfiguration>().GetConnectionString(
                     x.GetRequiredService<IOptions<DbSetupOptionsForSample>>().Value.ConnectionStringName),
-                x.GetRequiredService<ILogger<ClientDbFactory>>(),
+                x.GetRequiredService<ILogger<ClientDbContextFactory>>(),
                 x.GetRequiredService<IOptionsMonitor<DbSetupOptions>>()));
 
-            services.AddTransient<IMapperDbFactory>(x => new ClientDbFactory(
+            services.AddTransient<IMapperDbContextFactory>(x => new ClientDbContextFactory(
                 x.GetRequiredService<IDbContextFactory<ClientDbContext>>(),
                 x.GetRequiredService<IOptionsMonitor<DbSetupOptions>>()));
         }
@@ -41,7 +41,7 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Setup
             return new[]
             {
                 typeof(IDbContextFactory<ClientDbContext>),
-                typeof(IMapperDbFactory),
+                typeof(IMapperDbContextFactory),
             };
         }
 

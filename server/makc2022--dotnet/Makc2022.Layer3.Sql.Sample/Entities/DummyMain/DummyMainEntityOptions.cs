@@ -3,7 +3,7 @@
 using Makc2022.Layer3.Sql.Sample.Entity;
 using Makc2022.Layer3.Sql.Sample.Entities.DummyOneToMany;
 using Makc2022.Layer3.Sql.Sample.Db;
-using Makc2022.Layer1.Exceptions;
+using Makc2022.Layer1.Exceptions.VariableExceptions;
 
 namespace Makc2022.Layer3.Sql.Sample.Entities.DummyMain
 {
@@ -147,7 +147,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyMain
 
             if (string.IsNullOrWhiteSpace(defaults.DbColumnForName))
             {
-                throw new NullOrWhiteSpaceStringException(
+                throw new NullOrWhiteSpaceStringVariableException<DummyMainEntityOptions>(
                     nameof(defaults),
                     nameof(defaults.DbColumnForName));
             }
@@ -156,7 +156,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyMain
 
             if (string.IsNullOrWhiteSpace(optionsOfDummyOneToManyEntity.DbColumnForId))
             {
-                throw new NullOrWhiteSpaceStringException(
+                throw new NullOrWhiteSpaceStringVariableException<DummyMainEntityOptions>(
                     nameof(optionsOfDummyOneToManyEntity),
                     nameof(optionsOfDummyOneToManyEntity.DbColumnForId));
             }

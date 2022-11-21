@@ -21,7 +21,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Setup
             services.AddSingleton<IMapperService>(x => new MapperService(
                 x.GetRequiredService<ICommonProvider>(),
                 x.GetRequiredService<EntitiesOptions>(),
-                x.GetRequiredService<IMapperDbFactory>()
+                x.GetRequiredService<IMapperDbContextFactory>()
                 ));
         }
 
@@ -45,7 +45,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Setup
             {
                 typeof(EntitiesOptions),
                 typeof(ICommonProvider),
-                typeof(IMapperDbFactory),
+                typeof(IMapperDbContextFactory),
             };
         }
 

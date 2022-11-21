@@ -1,6 +1,6 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-using Makc2022.Layer1.Exceptions;
+using Makc2022.Layer1.Exceptions.VariableExceptions;
 using Makc2022.Layer3.Sql.Sample.Db;
 using Makc2022.Layer3.Sql.Sample.Entities.Role;
 using Makc2022.Layer3.Sql.Sample.Entities.User;
@@ -68,7 +68,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.UserRole
         {
             if (string.IsNullOrWhiteSpace(optionsOfRoleEntity.DbColumnForId))
             {
-                throw new NullOrWhiteSpaceStringException(
+                throw new NullOrWhiteSpaceStringVariableException<UserRoleEntityOptions>(
                     nameof(optionsOfRoleEntity),
                     nameof(optionsOfRoleEntity.DbColumnForId));
             }
@@ -77,7 +77,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.UserRole
 
             if (string.IsNullOrWhiteSpace(optionsOfUserEntity.DbColumnForId))
             {
-                throw new NullOrWhiteSpaceStringException(
+                throw new NullOrWhiteSpaceStringVariableException<UserRoleEntityOptions>(
                     nameof(optionsOfUserEntity),
                     nameof(optionsOfUserEntity.DbColumnForId));
             }

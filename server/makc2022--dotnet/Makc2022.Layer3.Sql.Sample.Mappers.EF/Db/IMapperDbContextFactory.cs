@@ -3,9 +3,9 @@
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Db
 {
     /// <summary>
-    /// Расширение базы данных сопоставителя.
+    /// Фабрика контекста базы данных сопоставителя.
     /// </summary>
-    public interface IMapperDbFactory
+    public interface IMapperDbContextFactory
     {
         #region Methods
 
