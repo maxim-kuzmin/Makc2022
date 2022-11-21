@@ -16,11 +16,11 @@ namespace Makc2022.Layer5.Sql.GrpcClient.Setup
         #region Public methods
 
         /// <summary>
-        /// Добавить сервисы приложения.
+        /// Добавить модули приложения.
         /// </summary>
         /// <param name="services">Сервисы.</param>
         /// <param name="configuration">Конфигурация.</param>
-        public static void AddAppServices(this IServiceCollection services, IConfiguration configuration)
+        public static void AddAppModules(this IServiceCollection services, IConfiguration configuration)
         {
             const string root = "Makc2022";
 

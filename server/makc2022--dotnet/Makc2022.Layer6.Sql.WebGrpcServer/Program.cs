@@ -16,7 +16,7 @@ try
 
     builder.Configure();
 
-    builder.Services.AddAppServices(builder.Configuration);
+    builder.Services.AddAppModules(builder.Configuration);
 
     builder.Services.AddGrpc();
 
