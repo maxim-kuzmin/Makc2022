@@ -1,7 +1,6 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
 using Makc2022.Layer2.Sql;
-using Makc2022.Layer2.Sql.Entity;
 using Makc2022.Layer3.Sql.Sample.Entities.User;
 
 namespace Makc2022.Layer3.Sql.Sample.Entities.UserLogin
@@ -9,7 +8,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.UserLogin
     /// <summary>
     /// Параметры сущности "UserLogin".
     /// </summary>
-    public class UserLoginEntityOptions : EntityOptions
+    public class UserLoginEntityOptions : TypeOptions
     {
         #region Properties
 

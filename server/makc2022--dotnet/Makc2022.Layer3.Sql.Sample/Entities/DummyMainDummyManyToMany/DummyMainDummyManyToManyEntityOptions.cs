@@ -2,7 +2,6 @@
 
 using Makc2022.Layer1.Exceptions.VariableExceptions;
 using Makc2022.Layer2.Sql;
-using Makc2022.Layer2.Sql.Entity;
 using Makc2022.Layer3.Sql.Sample.Entities.DummyMain;
 using Makc2022.Layer3.Sql.Sample.Entities.DummyManyToMany;
 
@@ -11,7 +10,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyMainDummyManyToMany
     /// <summary>
     /// Параметры сущности "DummyMainDummyManyToMany".
     /// </summary>
-    public class DummyMainDummyManyToManyEntityOptions : EntityOptions
+    public class DummyMainDummyManyToManyEntityOptions : TypeOptions
     {
         #region Properties
 

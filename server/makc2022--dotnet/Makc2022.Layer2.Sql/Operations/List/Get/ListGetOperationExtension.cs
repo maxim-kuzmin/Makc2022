@@ -10,7 +10,7 @@ namespace Makc2022.Layer2.Sql.Operations.List.Get
         #region Public methods
 
         /// <summary>
-        /// Применить пагинацию.
+        /// Применить разбиение на страницы.
         /// </summary>
         /// <typeparam name="T">Тип запрашиваемых данных.</typeparam>
         /// <param name="query">Запрос.</param>

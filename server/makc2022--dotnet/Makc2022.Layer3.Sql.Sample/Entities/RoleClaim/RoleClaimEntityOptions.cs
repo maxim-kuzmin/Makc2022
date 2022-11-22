@@ -2,7 +2,6 @@
 
 using Makc2022.Layer1.Exceptions.VariableExceptions;
 using Makc2022.Layer2.Sql;
-using Makc2022.Layer2.Sql.Entity;
 using Makc2022.Layer3.Sql.Sample.Entities.Role;
 
 namespace Makc2022.Layer3.Sql.Sample.Entities.RoleClaim
@@ -10,7 +9,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.RoleClaim
     /// <summary>
     /// Параметры сущности "RoleClaim".
     /// </summary>
-    public class RoleClaimEntityOptions : EntityOptions
+    public class RoleClaimEntityOptions : TypeOptions
     {
         #region Properties
 

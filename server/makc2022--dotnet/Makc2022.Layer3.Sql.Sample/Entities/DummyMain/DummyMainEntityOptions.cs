@@ -2,7 +2,6 @@
 
 using Makc2022.Layer1.Exceptions.VariableExceptions;
 using Makc2022.Layer2.Sql;
-using Makc2022.Layer2.Sql.Entity;
 using Makc2022.Layer3.Sql.Sample.Entities.DummyOneToMany;
 
 namespace Makc2022.Layer3.Sql.Sample.Entities.DummyMain
@@ -10,7 +9,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyMain
     /// <summary>
     /// Параметры сущности "DummyMain".
     /// </summary>
-    public class DummyMainEntityOptions : EntityOptions
+    public class DummyMainEntityOptions : TypeOptions
     {
         #region Properties
 

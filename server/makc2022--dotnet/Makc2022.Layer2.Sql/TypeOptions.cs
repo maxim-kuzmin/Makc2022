@@ -1,11 +1,11 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-namespace Makc2022.Layer2.Sql.Entity
+namespace Makc2022.Layer2.Sql
 {
     /// <summary>
-    /// Параметры сущности.
+    /// Параметры типа.
     /// </summary>
-    public class EntityOptions
+    public class TypeOptions
     {
         #region Properties
 
@@ -36,7 +36,7 @@ namespace Makc2022.Layer2.Sql.Entity
         /// <param name="defaults">Значения по умолчанию.</param>
         /// <param name="dbTable">Таблица в базе данных.</param>
         /// <param name="dbSchema">Схема в базе данных.</param>
-        public EntityOptions(IDefaults defaults, string dbTable, string? dbSchema = null)
+        public TypeOptions(IDefaults defaults, string dbTable, string? dbSchema = null)
         {
             Defaults = defaults;
             DbTable = dbTable;

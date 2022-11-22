@@ -1,7 +1,6 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
 using Makc2022.Layer2.Sql;
-using Makc2022.Layer2.Sql.Entity;
 using Makc2022.Layer3.Sql.Sample.Entities.DummyTree;
 
 namespace Makc2022.Layer3.Sql.Sample.Entities.DummyTreeLink
@@ -9,7 +8,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyTreeLink
     /// <summary>
     /// Параметры сущности "DummyTreeLink".
     /// </summary>
-    public class DummyTreeLinkEntityOptions : EntityOptions
+    public class DummyTreeLinkEntityOptions : TypeOptions
     {
         #region Properties
 

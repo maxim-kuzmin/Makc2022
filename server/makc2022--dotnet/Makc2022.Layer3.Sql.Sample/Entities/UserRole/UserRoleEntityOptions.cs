@@ -2,7 +2,6 @@
 
 using Makc2022.Layer1.Exceptions.VariableExceptions;
 using Makc2022.Layer2.Sql;
-using Makc2022.Layer2.Sql.Entity;
 using Makc2022.Layer3.Sql.Sample.Entities.Role;
 using Makc2022.Layer3.Sql.Sample.Entities.User;
 
@@ -11,7 +10,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.UserRole
     /// <summary>
     /// Параметры сущности "UserRole".
     /// </summary>
-    public class UserRoleEntityOptions : EntityOptions
+    public class UserRoleEntityOptions : TypeOptions
     {
         #region Properties
 
