@@ -1,8 +1,8 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
+using Makc2022.Layer2.Sql;
 using Makc2022.Layer2.Sql.Commands.Tree.Trigger;
 using Makc2022.Layer2.Sql.Commands.Trigger;
-using Makc2022.Layer2.Sql.Common;
 using Makc2022.Layer3.Sql.Sample.Entities;
 using Makc2022.Layer3.Sql.Sample.Entities.DummyTree;
 using Makc2022.Layer3.Sql.Sample.Entities.DummyTreeLink;
@@ -23,7 +23,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
     {
         #region Properties
 
-        private ICommonProvider ClientProvider { get; }
+        private IProvider ClientProvider { get; }
 
         private EntitiesOptions EntitiesOptions { get; }
 
@@ -40,7 +40,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
         /// <param name="entitiesOptions">Параметры сущностей.</param>        
         /// <param name="mapperDbFactory">Фабрика базы данных сопоставителя.</param>
         public MapperService(            
-            ICommonProvider сlientProvider,
+            IProvider сlientProvider,
             EntitiesOptions entitiesOptions,
             IMapperDbContextFactory mapperDbFactory
             )

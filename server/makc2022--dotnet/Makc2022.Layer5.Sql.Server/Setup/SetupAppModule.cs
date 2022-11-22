@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
 using Makc2022.Layer1.App;
-using Makc2022.Layer2.Sql.Common;
+using Makc2022.Layer2.Sql;
 using Makc2022.Layer5.Sql.Server.Pages.DummyMain.Item;
 using Makc2022.Layer5.Sql.Server.Pages.DummyMain.List;
 using Microsoft.Extensions.Configuration;
@@ -27,7 +27,7 @@ namespace Makc2022.Layer5.Sql.Server.Setup
         {
             services.AddLocalization(x => x.ConfigureLocalization());
 
-            services.AddSingleton<ICommonProvider>(x => x.GetRequiredService<IClientProviderForSqlServer>());
+            services.AddSingleton<IProvider>(x => x.GetRequiredService<IClientProviderForSqlServer>());
 
             services.AddScoped<IDummyMainItemPageService>(x => new DummyMainItemPageService(
                 x.GetRequiredService<IDummyMainDomainItemGetOperationHandler>(),
@@ -45,7 +45,7 @@ namespace Makc2022.Layer5.Sql.Server.Setup
         {
             return new[]
             {
-                typeof(ICommonProvider),
+                typeof(IProvider),
                 typeof(IConfiguration),
                 typeof(IDummyMainItemPageService),
                 typeof(IDummyMainListPageService),

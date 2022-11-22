@@ -1,8 +1,8 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-using Makc2022.Layer3.Sql.Sample.Db;
+using Makc2022.Layer2.Sql;
+using Makc2022.Layer2.Sql.Entity;
 using Makc2022.Layer3.Sql.Sample.Entities.DummyTree;
-using Makc2022.Layer3.Sql.Sample.Entity;
 
 namespace Makc2022.Layer3.Sql.Sample.Entities.DummyTreeLink
 {
@@ -46,7 +46,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.DummyTreeLink
         /// <param name="dbSchema">Схема в базе данных.</param>
         public DummyTreeLinkEntityOptions(
             DummyTreeEntityOptions optionsOfDummyTreeEntity,
-            DbDefaults defaults,
+            IDefaults defaults,
             string dbTable,
             string? dbSchema = null
             )

@@ -1,7 +1,6 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
 using Makc2022.Layer2.Sql.Clients.SqlServer.Filestream;
-using Makc2022.Layer2.Sql.Common;
 using Microsoft.Win32.SafeHandles;
 
 namespace Makc2022.Layer2.Sql.Clients.SqlServer
@@ -9,7 +8,7 @@ namespace Makc2022.Layer2.Sql.Clients.SqlServer
     /// <summary>
     ///  Интекрфейс поставщика клиента.
     /// </summary>
-    public interface IClientProvider : ICommonProvider
+    public interface IClientProvider : IProvider
     {
         #region Methods
 

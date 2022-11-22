@@ -1,10 +1,10 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
 using Makc2022.Layer1.Exceptions.VariableExceptions;
-using Makc2022.Layer3.Sql.Sample.Db;
+using Makc2022.Layer2.Sql;
+using Makc2022.Layer2.Sql.Entity;
 using Makc2022.Layer3.Sql.Sample.Entities.Role;
 using Makc2022.Layer3.Sql.Sample.Entities.User;
-using Makc2022.Layer3.Sql.Sample.Entity;
 
 namespace Makc2022.Layer3.Sql.Sample.Entities.UserRole
 {
@@ -60,7 +60,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.UserRole
         public UserRoleEntityOptions(
             RoleEntityOptions optionsOfRoleEntity,
             UserEntityOptions optionsOfUserEntity,
-            DbDefaults defaults,
+            IDefaults defaults,
             string dbTable,
             string? dbSchema = null
             )

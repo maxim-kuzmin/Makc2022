@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-using Makc2022.Layer3.Sql.Sample.Db;
-using Makc2022.Layer3.Sql.Sample.Entity;
+using Makc2022.Layer2.Sql;
+using Makc2022.Layer2.Sql.Entity;
 
 namespace Makc2022.Layer3.Sql.Sample.Entities.User
 {
@@ -120,7 +120,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.User
         /// <param name="dbColumnNameForNormalizedEmail">Колонка в базе данных для поля "NormalizedEmail".</param>
         /// <param name="dbColumnNameForNormalizedUserName">Колонка в базе данных для поля "NormalizedUserName".</param>
         public UserEntityOptions(
-            DbDefaults defaults,
+            IDefaults defaults,
             string dbTable,
             string? dbSchema = null,
             string? dbColumnNameForNormalizedEmail = null,

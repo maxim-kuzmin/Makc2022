@@ -5,12 +5,12 @@ using Makc2022.Layer2.Sql.Commands.Identity.Reseed;
 using Makc2022.Layer2.Sql.Commands.Tree.Calculate;
 using Makc2022.Layer2.Sql.Commands.Tree.Trigger;
 
-namespace Makc2022.Layer2.Sql.Common
+namespace Makc2022.Layer2.Sql
 {
     /// <summary>
-    /// Интерфейс общего поставщика.
+    /// Интерфейс поставщика.
     /// </summary>
-    public interface ICommonProvider
+    public interface IProvider
     {
         /// <summary>
         /// Создать параметр команды базы данных.

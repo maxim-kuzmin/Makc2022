@@ -1,98 +1,98 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-namespace Makc2022.Layer2.Sql.Common.Db
+namespace Makc2022.Layer2.Sql
 {
     /// <summary>
-    /// Общие значения по умолчанию в базе данных.
+    /// Интерфейс значений по умолчанию.
     /// </summary>
-    public class CommonDbDefaults
+    public interface IDefaults
     {
         #region Properties
 
         /// <summary>
         /// Колонка в базе данных для поля "Id".
         /// </summary>
-        public string? DbColumnForId { get; set; }
+        string DbColumnForId { get; }
 
         /// <summary>
         /// Колонка в базе данных для поля "Name".
         /// </summary>
-        public string? DbColumnForName { get; set; }
+        string DbColumnForName { get; }
 
         /// <summary>
         /// Колонка в базе данных для поля "ParentId".
         /// </summary>
-        public string? DbColumnForParentId { get; set; }
+        string DbColumnForParentId { get; }
 
         /// <summary>
         /// Колонка в базе данных для поля "TreeChildCount".
         /// </summary>
-        public string? DbColumnForTreeChildCount { get; set; }
+        string DbColumnForTreeChildCount { get; }
 
         /// <summary>
         /// Колонка в базе данных для поля "TreeDescendantCount".
         /// </summary>
-        public string? DbColumnForTreeDescendantCount { get; set; }
+        string DbColumnForTreeDescendantCount { get; }
 
         /// <summary>
         /// Колонка в базе данных для поля "TreeLevel".
         /// </summary>
-        public string? DbColumnForTreeLevel { get; set; }
+        string DbColumnForTreeLevel { get; }
 
         /// <summary>
         /// Колонка в базе данных для поля "TreePath".
         /// </summary>
-        public string? DbColumnForTreePath { get; set; }
+        string DbColumnForTreePath { get; }
 
         /// <summary>
         /// Колонка в базе данных для поля "TreePosition".
         /// </summary>
-        public string? DbColumnForTreePosition { get; set; }
+        string DbColumnForTreePosition { get; }
 
         /// <summary>
         /// Колонка в базе данных для поля "TreeSort".
         /// </summary>
-        public string? DbColumnForTreeSort { get; set; }
+        string DbColumnForTreeSort { get; }
 
         /// <summary>
         /// Разделитель частей имени колонки в базе данных.
         /// </summary>
-        public string? DbColumnPartsSeparator { get; set; }
+        string DbColumnPartsSeparator { get; }
 
         /// <summary>
         /// Префикс внешнего ключа в базе данных.
         /// </summary>
-        public string? DbForeignKeyPrefix { get; set; }
+        string DbForeignKeyPrefix { get; }
 
         /// <summary>
         /// Префикс индекса в базе данных.
         /// </summary>
-        public string? DbIndexPrefix { get; set; }
+        string DbIndexPrefix { get; }
 
         /// <summary>
         /// Префикс первичного ключа в базе данных.
         /// </summary>
-        public string? DbPrimaryKeyPrefix { get; set; }
+        string DbPrimaryKeyPrefix { get; }
 
         /// <summary>
         /// Схема в базе данных.
         /// </summary>
-        public string? DbSchema { get; set; }
+        string DbSchema { get; }
 
         /// <summary>
         /// Префикс уникального индекса в базе данных.
         /// </summary>
-        public string? DbUniqueIndexPrefix { get; set; }
+        string DbUniqueIndexPrefix { get; }
 
         /// <summary>
         /// Разделитель частей полного имени.
         /// </summary>
-        public string? FullNamePartsSeparator { get; set; }
+        string FullNamePartsSeparator { get; }
 
         /// <summary>
         /// Разделитель частей имени.
         /// </summary>
-        public string? NamePartsSeparator { get; set; }
+        string NamePartsSeparator { get; }
 
         #endregion Properties
     }

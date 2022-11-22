@@ -1,6 +1,6 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-using Makc2022.Layer3.Sql.Sample.Db;
+using Makc2022.Layer2.Sql.Clients.SqlServer;
 using Makc2022.Layer3.Sql.Sample.Entities;
 using Makc2022.Layer3.Sql.Sample.Entities.DummyMain;
 using Makc2022.Layer3.Sql.Sample.Entities.DummyMainDummyManyToMany;
@@ -42,57 +42,38 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.Entities
 
         private ClientEntitiesOptions()
         {
-            DbDefaults dbDefaults = new()
-            {
-                DbColumnForId = "Id",
-                DbColumnForName = "Name",
-                DbColumnForParentId = "ParentId",
-                DbColumnForTreeChildCount = "TreeChildCount",
-                DbColumnForTreeDescendantCount = "TreeDescendantCount",
-                DbColumnForTreeLevel = "TreeLevel",
-                DbColumnForTreePath = "TreePath",
-                DbColumnForTreePosition = "TreePosition",
-                DbColumnForTreeSort = "TreeSort",
-                DbColumnPartsSeparator = "",
-                DbForeignKeyPrefix = "FK",
-                DbIndexPrefix = "IX",
-                DbPrimaryKeyPrefix = "PK",
-                DbSchema = "dbo",
-                DbUniqueIndexPrefix = "UX",
-                FullNamePartsSeparator = ".",
-                NamePartsSeparator = "_"
-            };
+            var defaults = new ClientDefaults();
 
-            DummyOneToMany = new DummyOneToManyEntityOptions(dbDefaults, "DummyOneToMany");
+            DummyOneToMany = new DummyOneToManyEntityOptions(defaults, "DummyOneToMany");
 
-            DummyMain = new DummyMainEntityOptions(DummyOneToMany, dbDefaults, "DummyMain");
+            DummyMain = new DummyMainEntityOptions(DummyOneToMany, defaults, "DummyMain");
 
-            DummyManyToMany = new DummyManyToManyEntityOptions(dbDefaults, "DummyManyToMany");
+            DummyManyToMany = new DummyManyToManyEntityOptions(defaults, "DummyManyToMany");
 
             DummyMainDummyManyToMany = new DummyMainDummyManyToManyEntityOptions(
                 DummyMain,
                 DummyManyToMany,
-                dbDefaults,
+                defaults,
                 "DummyMainDummyManyToMany"
                 );
 
-            DummyTree = new DummyTreeEntityOptions(dbDefaults, "DummyTree");
+            DummyTree = new DummyTreeEntityOptions(defaults, "DummyTree");
 
-            DummyTreeLink = new DummyTreeLinkEntityOptions(DummyTree, dbDefaults, "DummyTreeLink");
+            DummyTreeLink = new DummyTreeLinkEntityOptions(DummyTree, defaults, "DummyTreeLink");
 
-            Role = new RoleEntityOptions(dbDefaults, "Role");
+            Role = new RoleEntityOptions(defaults, "Role");
 
-            RoleClaim = new RoleClaimEntityOptions(Role, dbDefaults, "RoleClaim");
+            RoleClaim = new RoleClaimEntityOptions(Role, defaults, "RoleClaim");
 
-            User = new UserEntityOptions(dbDefaults, "User");
+            User = new UserEntityOptions(defaults, "User");
 
-            UserClaim = new UserClaimEntityOptions(User, dbDefaults, "UserClaim");
+            UserClaim = new UserClaimEntityOptions(User, defaults, "UserClaim");
 
-            UserLogin = new UserLoginEntityOptions(User, dbDefaults, "UserLogin");
+            UserLogin = new UserLoginEntityOptions(User, defaults, "UserLogin");
 
-            UserRole = new UserRoleEntityOptions(Role, User, dbDefaults, "UserRole");
+            UserRole = new UserRoleEntityOptions(Role, User, defaults, "UserRole");
 
-            UserToken = new UserTokenEntityOptions(User, dbDefaults, "UserToken");
+            UserToken = new UserTokenEntityOptions(User, defaults, "UserToken");
         }
 
         #endregion Constructors     

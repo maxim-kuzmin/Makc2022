@@ -1,8 +1,8 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-using Makc2022.Layer3.Sql.Sample.Db;
+using Makc2022.Layer2.Sql;
+using Makc2022.Layer2.Sql.Entity;
 using Makc2022.Layer3.Sql.Sample.Entities.User;
-using Makc2022.Layer3.Sql.Sample.Entity;
 
 namespace Makc2022.Layer3.Sql.Sample.Entities.UserToken
 {
@@ -56,7 +56,7 @@ namespace Makc2022.Layer3.Sql.Sample.Entities.UserToken
         /// <param name="dbSchema">Схема в базе данных.</param>
         public UserTokenEntityOptions(
             UserEntityOptions settingOfUserEntity,
-            DbDefaults dbDefaults,
+            IDefaults dbDefaults,
             string dbTable,
             string? dbSchema = null
             )

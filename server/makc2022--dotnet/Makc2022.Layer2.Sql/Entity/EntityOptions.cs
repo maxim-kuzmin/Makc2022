@@ -1,19 +1,15 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-using Makc2022.Layer2.Sql.Common.Db;
-
 namespace Makc2022.Layer2.Sql.Entity
 {
     /// <summary>
     /// Параметры сущности.
     /// </summary>
-    /// <typeparam name="TDefaults">Тип значений по умолчанию.</typeparam>
-    public abstract class EntityOptions<TDefaults>
-        where TDefaults : CommonDbDefaults
+    public class EntityOptions
     {
         #region Properties
 
-        private TDefaults Defaults { get; set; }
+        private IDefaults Defaults { get; set; }
 
         /// <summary>
         /// Таблица в базе данных.
@@ -40,7 +36,7 @@ namespace Makc2022.Layer2.Sql.Entity
         /// <param name="defaults">Значения по умолчанию.</param>
         /// <param name="dbTable">Таблица в базе данных.</param>
         /// <param name="dbSchema">Схема в базе данных.</param>
-        public EntityOptions(TDefaults defaults, string dbTable, string? dbSchema = null)
+        public EntityOptions(IDefaults defaults, string dbTable, string? dbSchema = null)
         {
             Defaults = defaults;
             DbTable = dbTable;

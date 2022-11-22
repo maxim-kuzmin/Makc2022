@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
 using Makc2022.Layer1.App;
-using Makc2022.Layer2.Sql.Common;
+using Makc2022.Layer2.Sql;
 using Makc2022.Layer3.Sql.Sample.Entities;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Db;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,7 +19,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Setup
         public sealed override void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IMapperService>(x => new MapperService(
-                x.GetRequiredService<ICommonProvider>(),
+                x.GetRequiredService<IProvider>(),
                 x.GetRequiredService<EntitiesOptions>(),
                 x.GetRequiredService<IMapperDbContextFactory>()
                 ));
@@ -44,7 +44,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Setup
             return new[]
             {
                 typeof(EntitiesOptions),
-                typeof(ICommonProvider),
+                typeof(IProvider),
                 typeof(IMapperDbContextFactory),
             };
         }
