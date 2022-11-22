@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 namespace Makc2022.Layer3.Sql.Sample.Types.UserLogin
 {
     /// <summary>
-    /// Сущность типа "UserLogin".
+    /// Сущность типа "Вход пользователя".
     /// </summary>
     public class UserLoginTypeEntity : IdentityUserLogin<long>
     {

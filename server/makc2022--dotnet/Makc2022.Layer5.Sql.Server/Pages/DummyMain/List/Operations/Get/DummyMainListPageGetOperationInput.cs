@@ -5,7 +5,7 @@ using Makc2022.Layer4.Sql.Domains.DummyMain.Operations.List.Get;
 namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.List.Operations.Get
 {
     /// <summary>
-    /// Входные данные операции получения страницы сущностей "DummyMain".
+    /// Входные данные операции получения страницы сущностей "Фиктивное главное".
     /// </summary>
     public class DummyMainListPageGetOperationInput
     {

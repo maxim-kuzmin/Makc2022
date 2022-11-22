@@ -6,14 +6,14 @@ using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.User;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserLogin
 {
     /// <summary>
-    /// Сущность типа "UserLogin" сопоставителя.
+    /// Сущность типа "Вход пользователя" сопоставителя.
     /// </summary>
     public class MapperUserLoginTypeEntity : UserLoginTypeEntity
     {
         #region Properties
 
         /// <summary>
-        /// Сущность типа "User".
+        /// Сущность типа "Пользователь".
         /// </summary>
         public MapperUserTypeEntity? ObjectOfUserEntity { get; set; }
 

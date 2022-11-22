@@ -3,7 +3,7 @@
 namespace Makc2022.Layer3.Sql.Sample.Types.DummyTreeLink
 {
     /// <summary>
-    /// Сущность типа "DummyTreeLink".
+    /// Сущность типа "Связь фиктивного дерева".
     /// </summary>
     public class DummyTreeLinkTypeEntity
     {

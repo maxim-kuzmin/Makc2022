@@ -3,7 +3,7 @@
 namespace Makc2022.Layer3.Sql.Sample.Types.DummyMainDummyManyToMany
 {
     /// <summary>
-    /// Загрузчик типа "DummyMainDummyManyToMany".
+    /// Загрузчик типа "Фиктивное отношение многие ко многим фиктивного главного".
     /// </summary>
     public class DummyMainDummyManyToManyTypeLoader : TypeLoader<DummyMainDummyManyToManyTypeEntity>
     {

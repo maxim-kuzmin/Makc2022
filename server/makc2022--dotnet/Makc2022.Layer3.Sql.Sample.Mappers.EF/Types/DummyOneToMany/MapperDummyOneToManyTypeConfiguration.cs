@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyOneToMany
 {
     /// <summary>
-    /// Конфигурация типа "DummyOneToMany" сопоставителя.
+    /// Конфигурация типа "Фиктивное отношение один ко многим" сопоставителя.
     /// </summary>
     public class MapperDummyOneToManyTypeConfiguration : MapperTypeConfiguration<MapperDummyOneToManyTypeEntity>
     {

@@ -6,14 +6,14 @@ using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.Role;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.RoleClaim
 {
     /// <summary>
-    /// Сущность типа "RoleClaim" для сопоставителя.
+    /// Сущность типа "Утверждение роли" для сопоставителя.
     /// </summary>
     public class MapperRoleClaimTypeEntity : RoleClaimTypeEntity
     {
         #region Properties
 
         /// <summary>
-        /// Сущность типа "Role".
+        /// Сущность типа "Роль".
         /// </summary>
         public MapperRoleTypeEntity? ObjectOfRoleEntity { get; set; }
 

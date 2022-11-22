@@ -5,7 +5,7 @@ using Makc2022.Layer3.Sql.Sample.Types.DummyManyToMany;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyManyToMany
 {
     /// <summary>
-    /// Расширение типа "DummyManyToMany" сопоставителя.
+    /// Расширение типа "Фиктивное отношение многие ко многим" сопоставителя.
     /// </summary>
     public static class MapperDummyManyToManyTypeExtension
     {

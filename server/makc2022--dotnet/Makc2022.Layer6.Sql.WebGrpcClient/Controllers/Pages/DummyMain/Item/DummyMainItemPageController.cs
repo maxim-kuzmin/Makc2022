@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Makc2022.Layer6.Sql.WebGrpcClient.Controllers.Pages.DummyMain.Item
 {
     /// <summary>
-    /// Контроллер страницы сущности "DummyMain".
+    /// Контроллер страницы сущности "Фиктивное главное".
     /// </summary>
     [Authorize]
     [ApiController]

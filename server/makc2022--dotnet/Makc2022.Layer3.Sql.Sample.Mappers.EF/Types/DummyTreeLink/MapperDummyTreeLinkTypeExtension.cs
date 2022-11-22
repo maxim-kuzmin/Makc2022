@@ -5,7 +5,7 @@ using Makc2022.Layer3.Sql.Sample.Types.DummyTreeLink;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyTreeLink
 {
     /// <summary>
-    /// Расширение сущности "DummyTreeLink" сопоставителя.
+    /// Расширение сущности "Связь фиктивного дерева" сопоставителя.
     /// </summary>
     public static class MapperDummyTreeLinkTypeExtension
     {

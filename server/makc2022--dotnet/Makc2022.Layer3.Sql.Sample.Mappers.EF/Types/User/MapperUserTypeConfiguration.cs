@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.User
 {
     /// <summary>
-    /// Конфигурация типа "User" сопоставителя.
+    /// Конфигурация типа "Пользователь" сопоставителя.
     /// </summary>
     public class MapperUserTypeConfiguration : MapperTypeConfiguration<MapperUserTypeEntity>
     {

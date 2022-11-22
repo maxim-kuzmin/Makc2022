@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 namespace Makc2022.Layer3.Sql.Sample.Types.User
 {
     /// <summary>
-    /// Сущность типа "User".
+    /// Сущность типа "Пользователь".
     /// </summary>
     public class UserTypeEntity : IdentityUser<long>
     {

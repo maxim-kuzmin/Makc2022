@@ -7,7 +7,7 @@ using Makc2022.Layer3.Sql.Sample.Types.DummyOneToMany;
 namespace Makc2022.Layer3.Sql.Sample.Types.DummyMain
 {
     /// <summary>
-    /// Параметры типа "DummyMain".
+    /// Параметры типа "Фиктивное главное".
     /// </summary>
     public class DummyMainTypeOptions : TypeOptions
     {
@@ -24,7 +24,7 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyMain
         public string? DbColumnForName { get; set; }
 
         /// <summary>
-        /// Колонка в базе данных для поля идентификатора сущности "DummyOneToMany".
+        /// Колонка в базе данных для поля идентификатора сущности "Фиктивное отношение один ко многим".
         /// </summary>
         public string? DbColumnForDummyOneToManyEntityId { get; set; }
 
@@ -99,12 +99,12 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyMain
         public string? DbColumnForPropStringNullable { get; set; }
 
         /// <summary>
-        /// Внешний ключ в базе данных к сущности "DummyOneToMany".
+        /// Внешний ключ в базе данных к сущности "Фиктивное отношение один ко многим".
         /// </summary>
         public string? DbForeignKeyToDummyOneToManyEntity { get; set; }
 
         /// <summary>
-        /// Индекс в базе данных для поля идентификатора сущности "DummyOneToMany".
+        /// Индекс в базе данных для поля идентификатора сущности "Фиктивное отношение один ко многим".
         /// </summary>
         public string? DbIndexForDummyOneToManyEntityId { get; set; }
 
@@ -130,7 +130,7 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyMain
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="optionsOfDummyOneToManyType">Параметры типа "DummyOneToMany".</param>
+        /// <param name="optionsOfDummyOneToManyType">Параметры типа "Фиктивное отношение один ко многим".</param>
         /// <param name="defaults">Значения по умолчанию.</param>
         /// <param name="dbTable">Таблица в базе данных.</param>
         /// <param name="dbSchema">Схема в базе данных.</param>

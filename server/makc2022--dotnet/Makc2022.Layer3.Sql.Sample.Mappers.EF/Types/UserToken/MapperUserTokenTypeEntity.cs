@@ -6,14 +6,14 @@ using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.User;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserToken
 {
     /// <summary>
-    /// Сущность типа "UserToken" сопоставителя.
+    /// Сущность типа "Токен пользователя" сопоставителя.
     /// </summary>
     public class MapperUserTokenTypeEntity : UserTokenTypeEntity
     {
         #region Properties
 
         /// <summary>
-        /// Сущность типа "User".
+        /// Сущность типа "Пользователь".
         /// </summary>
         public MapperUserTypeEntity? ObjectOfUserEntity { get; set; }
 

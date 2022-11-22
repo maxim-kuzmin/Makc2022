@@ -5,7 +5,7 @@ using Makc2022.Layer3.Sql.Sample.Types.UserRole;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserRole
 {
     /// <summary>
-    /// Расширение сущности "UserRole" сопоставителя.
+    /// Расширение сущности "Роль пользователя" сопоставителя.
     /// </summary>
     public static class MapperUserRoleTypeExtension
     {

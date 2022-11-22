@@ -24,67 +24,67 @@ namespace Makc2022.Layer3.Sql.Sample
         #region Properties
 
         /// <summary>
-        /// Сущность "DummyMain".
+        /// Сущность "Фиктивное главное".
         /// </summary>
         public DummyMainTypeOptions? DummyMain { get; protected set; }
 
         /// <summary>
-        /// Сущность "DummyMainDummyManyToMany".
+        /// Сущность "Фиктивное отношение многие ко многим фиктивного главного".
         /// </summary>
         public DummyMainDummyManyToManyTypeOptions? DummyMainDummyManyToMany { get; protected set; }
 
         /// <summary>
-        /// Сущность "DummyManyToMany".
+        /// Сущность "Фиктивное отношение многие ко многим".
         /// </summary>
         public DummyManyToManyTypeOptions? DummyManyToMany { get; protected set; }
 
         /// <summary>
-        /// Сущность "DummyOneToMany".
+        /// Сущность "Фиктивное отношение один ко многим".
         /// </summary>
         public DummyOneToManyTypeOptions? DummyOneToMany { get; protected set; }
 
         /// <summary>
-        /// Сущность "DummyTree".
+        /// Сущность "Фиктивное дерево".
         /// </summary>
         public DummyTreeTypeOptions? DummyTree { get; protected set; }
 
         /// <summary>
-        /// Сущность "DummyTreeLink".
+        /// Сущность "Связь фиктивного дерева".
         /// </summary>
         public DummyTreeLinkTypeOptions? DummyTreeLink { get; protected set; }
 
         /// <summary>
-        /// Сущность "Role".
+        /// Сущность "Роль".
         /// </summary>
         public RoleTypeOptions? Role { get; protected set; }
 
         /// <summary>
-        /// Сущность "RoleClaim".
+        /// Сущность "Утверждение роли".
         /// </summary>
         public RoleClaimTypeOptions? RoleClaim { get; protected set; }
 
         /// <summary>
-        /// Сущность "User".
+        /// Сущность "Пользователь".
         /// </summary>
         public UserTypeOptions? User { get; protected set; }
 
         /// <summary>
-        /// Сущность "UserClaim".
+        /// Сущность "Утверждение пользователя".
         /// </summary>
         public UserClaimTypeOptions? UserClaim { get; protected set; }
 
         /// <summary>
-        /// Сущность "UserLogin".
+        /// Сущность "Вход пользователя".
         /// </summary>
         public UserLoginTypeOptions? UserLogin { get; protected set; }
 
         /// <summary>
-        /// Сущность "UserRole".
+        /// Сущность "Роль пользователя".
         /// </summary>
         public UserRoleTypeOptions? UserRole { get; protected set; }
 
         /// <summary>
-        /// Сущность "UserToken".
+        /// Сущность "Токен пользователя".
         /// </summary>
         public UserTokenTypeOptions? UserToken { get; protected set; }
 

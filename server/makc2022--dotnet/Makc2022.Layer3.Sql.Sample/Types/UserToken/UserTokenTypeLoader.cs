@@ -3,7 +3,7 @@
 namespace Makc2022.Layer3.Sql.Sample.Types.UserToken
 {
     /// <summary>
-    /// Загрузчик типа "UserToken".
+    /// Загрузчик типа "Токен пользователя".
     /// </summary>
     public class UserTokenTypeLoader : TypeLoader<UserTokenTypeEntity>
     {

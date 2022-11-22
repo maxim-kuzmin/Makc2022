@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 namespace Makc2022.Layer3.Sql.Sample.Types.UserRole
 {
     /// <summary>
-    /// Сущность типа "UserRole".
+    /// Сущность типа "Роль пользователя".
     /// </summary>
     public class UserRoleTypeEntity : IdentityUserRole<long>
     {

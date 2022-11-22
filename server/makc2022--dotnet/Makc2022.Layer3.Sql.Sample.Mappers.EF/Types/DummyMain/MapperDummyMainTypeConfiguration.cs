@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMain
 {
     /// <summary>
-    /// Конфигурация типа "DummyMain" сопоставителя.
+    /// Конфигурация типа "Фиктивное главное" сопоставителя.
     /// </summary>
     public class MapperDummyMainTypeConfiguration : MapperTypeConfiguration<MapperDummyMainTypeEntity>
     {

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserToken
 {
     /// <summary>
-    /// Конфигурация типа "UserToken" сопоставителя.
+    /// Конфигурация типа "Токен пользователя" сопоставителя.
     /// </summary>
     public class MapperUserTokenTypeConfiguration : MapperTypeConfiguration<MapperUserTokenTypeEntity>
     {

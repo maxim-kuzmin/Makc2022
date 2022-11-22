@@ -9,32 +9,32 @@ using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserToken;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.User
 {
     /// <summary>
-    /// Сущность типа "User" сопоставителя.
+    /// Сущность типа "Пользователь" сопоставителя.
     /// </summary>
     public class MapperUserTypeEntity : UserTypeEntity
     {
         #region Properties
 
         /// <summary>
-        /// Объекты сущности "UserClaim".
+        /// Объекты сущности "Утверждение пользователя".
         /// </summary>
         public List<MapperUserClaimTypeEntity> ObjectsOfUserClaimEntity { get; } =
             new List<MapperUserClaimTypeEntity>();
 
         /// <summary>
-        /// Объекты сущности "UserLogin".
+        /// Объекты сущности "Вход пользователя".
         /// </summary>
         public List<MapperUserLoginTypeEntity> ObjectsOfUserLoginEntity { get; } =
             new List<MapperUserLoginTypeEntity>();
 
         /// <summary>
-        /// Объекты сущности "UserRole".
+        /// Объекты сущности "Роль пользователя".
         /// </summary>
         public List<MapperUserRoleTypeEntity> ObjectsOfUserRoleEntity { get; } =
             new List<MapperUserRoleTypeEntity>();
 
         /// <summary>
-        /// Объекты сущности "UserToken".
+        /// Объекты сущности "Токен пользователя".
         /// </summary>
         public List<MapperUserTokenTypeEntity> ObjectsOfUserTokenEntity { get; } =
             new List<MapperUserTokenTypeEntity>();

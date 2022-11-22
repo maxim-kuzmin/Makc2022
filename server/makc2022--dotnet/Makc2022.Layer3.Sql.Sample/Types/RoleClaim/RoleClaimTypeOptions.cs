@@ -7,7 +7,7 @@ using Makc2022.Layer3.Sql.Sample.Types.Role;
 namespace Makc2022.Layer3.Sql.Sample.Types.RoleClaim
 {
     /// <summary>
-    /// Параметры типа "RoleClaim".
+    /// Параметры типа "Утверждение роли".
     /// </summary>
     public class RoleClaimTypeOptions : TypeOptions
     {
@@ -29,12 +29,12 @@ namespace Makc2022.Layer3.Sql.Sample.Types.RoleClaim
         public string? DbColumnForId { get; set; }
 
         /// <summary>
-        /// Колонка в базе данных для поля идентификатора сущности "Role".
+        /// Колонка в базе данных для поля идентификатора сущности "Роль".
         /// </summary>
         public string? DbColumnForRoleEntityId { get; set; }
 
         /// <summary>
-        /// Внешний ключ в базе данных к сущности "Role".
+        /// Внешний ключ в базе данных к сущности "Роль".
         /// </summary>
         public string? DbForeignKeyToRoleEntity { get; set; }
 
@@ -44,7 +44,7 @@ namespace Makc2022.Layer3.Sql.Sample.Types.RoleClaim
         public string? DbPrimaryKey { get; set; }
 
         /// <summary>
-        /// Индекс в базе данных для поля идентификатора сущности "Role".
+        /// Индекс в базе данных для поля идентификатора сущности "Роль".
         /// </summary>
         public string? DbUniqueIndexForRoleEntityId { get; set; }
 
@@ -55,7 +55,7 @@ namespace Makc2022.Layer3.Sql.Sample.Types.RoleClaim
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="optionsOfRoleType">Параметры типа "Role".</param>
+        /// <param name="optionsOfRoleType">Параметры типа "Роль".</param>
         /// <param name="defaults">Значения по умолчанию.</param>
         /// <param name="dbTable">Таблица в базе данных.</param>
         /// <param name="dbSchema">Схема в базе данных.</param>

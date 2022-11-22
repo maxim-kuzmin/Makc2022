@@ -6,7 +6,7 @@ using Makc2022.Layer5.Sql.Server.Pages.DummyMain.Item.Operations.Get;
 namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.Item
 {
     /// <summary>
-    /// Интерфейс сервиса страницы сущности "DummyMain".
+    /// Интерфейс сервиса страницы сущности "Фиктивное главное".
     /// </summary>
     public interface IDummyMainItemPageService
     {

@@ -6,7 +6,7 @@ using Makc2022.Layer3.Sql.Sample.Types.User;
 namespace Makc2022.Layer3.Sql.Sample.Types.UserToken
 {
     /// <summary>
-    /// Параметры типа "UserToken".
+    /// Параметры типа "Токен пользователя".
     /// </summary>
     public class UserTokenTypeOptions : TypeOptions
     {
@@ -23,7 +23,7 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserToken
         public string? DbColumnForName { get; set; }
 
         /// <summary>
-        /// Колонка в базе данных для поля идентификатора сущности "User".
+        /// Колонка в базе данных для поля идентификатора сущности "Пользователь".
         /// </summary>
         public string? DbColumnForUserEntityId { get; set; }
 
@@ -33,7 +33,7 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserToken
         public string? DbColumnForValue { get; set; }
 
         /// <summary>
-        /// Внешний ключ в базе данных к сущности "User".
+        /// Внешний ключ в базе данных к сущности "Пользователь".
         /// </summary>
         public string? DbForeignKeyToUserEntity { get; set; }
 
@@ -49,7 +49,7 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserToken
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="optionsOfUserType">Параметры типа "User".</param>
+        /// <param name="optionsOfUserType">Параметры типа "Пользователь".</param>
         /// <param name="dbDefaults">Значения по умолчанию в базе данных.</param>
         /// <param name="dbTable">Таблица в базе данных.</param>
         /// <param name="dbSchema">Схема в базе данных.</param>

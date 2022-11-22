@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 namespace Makc2022.Layer3.Sql.Sample.Types.UserClaim
 {
     /// <summary>
-    /// Сущность типа "UserClaim".
+    /// Сущность типа "Утверждение пользователя".
     /// </summary>
     public class UserClaimTypeEntity : IdentityUserClaim<long>
     {

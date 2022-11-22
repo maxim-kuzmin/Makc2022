@@ -6,7 +6,7 @@ using Makc2022.Layer3.Sql.Sample.Types.DummyTree;
 namespace Makc2022.Layer3.Sql.Sample.Types.DummyTreeLink
 {
     /// <summary>
-    /// Параметры типа "DummyTreeLink".
+    /// Параметры типа "Связь фиктивного дерева".
     /// </summary>
     public class DummyTreeLinkTypeOptions : TypeOptions
     {
@@ -23,7 +23,7 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyTreeLink
         public string? DbColumnForDummyTreeEntityParentId { get; set; }
 
         /// <summary>
-        /// Внешний ключ в базе данных к сущности "DummyTree".
+        /// Внешний ключ в базе данных к сущности "Фиктивное дерево".
         /// </summary>
         public string? DbForeignKeyToDummyTreeEntity { get; set; }
 
@@ -39,7 +39,7 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyTreeLink
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="optionsOfDummyTreeType">Параметры типа "DummyTree".</param>
+        /// <param name="optionsOfDummyTreeType">Параметры типа "Фиктивное дерево".</param>
         /// <param name="defaults">Значения по умолчанию в базе данных.</param>
         /// <param name="dbTable">Таблица в базе данных.</param>
         /// <param name="dbSchema">Схема в базе данных.</param>

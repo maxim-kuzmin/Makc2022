@@ -5,7 +5,7 @@ using Makc2022.Layer3.Sql.Sample.Types.UserClaim;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserClaim
 {
     /// <summary>
-    /// Расширение сущности "UserClaim" сопоставителя.
+    /// Расширение сущности "Утверждение пользователя" сопоставителя.
     /// </summary>
     public static class MapperUserClaimTypeExtension
     {

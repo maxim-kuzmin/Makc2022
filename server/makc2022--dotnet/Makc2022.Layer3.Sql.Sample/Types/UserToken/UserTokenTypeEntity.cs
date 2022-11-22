@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 namespace Makc2022.Layer3.Sql.Sample.Types.UserToken
 {
     /// <summary>
-    /// Сущность типа "UserToken".
+    /// Сущность типа "Токен пользователя".
     /// </summary>
     public class UserTokenTypeEntity : IdentityUserToken<long>
     {

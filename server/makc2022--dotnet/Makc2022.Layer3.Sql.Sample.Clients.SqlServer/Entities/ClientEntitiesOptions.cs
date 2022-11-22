@@ -43,36 +43,36 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.Entities
         {
             var defaults = new ClientDefaults();
 
-            DummyOneToMany = new DummyOneToManyTypeOptions(defaults, "DummyOneToMany");
+            DummyOneToMany = new DummyOneToManyTypeOptions(defaults, "Фиктивное отношение один ко многим");
 
-            DummyMain = new DummyMainTypeOptions(DummyOneToMany, defaults, "DummyMain");
+            DummyMain = new DummyMainTypeOptions(DummyOneToMany, defaults, "Фиктивное главное");
 
-            DummyManyToMany = new DummyManyToManyTypeOptions(defaults, "DummyManyToMany");
+            DummyManyToMany = new DummyManyToManyTypeOptions(defaults, "Фиктивное отношение многие ко многим");
 
             DummyMainDummyManyToMany = new DummyMainDummyManyToManyTypeOptions(
                 DummyMain,
                 DummyManyToMany,
                 defaults,
-                "DummyMainDummyManyToMany"
+                "Фиктивное отношение многие ко многим фиктивного главного"
                 );
 
-            DummyTree = new DummyTreeTypeOptions(defaults, "DummyTree");
+            DummyTree = new DummyTreeTypeOptions(defaults, "Фиктивное дерево");
 
-            DummyTreeLink = new DummyTreeLinkTypeOptions(DummyTree, defaults, "DummyTreeLink");
+            DummyTreeLink = new DummyTreeLinkTypeOptions(DummyTree, defaults, "Связь фиктивного дерева");
 
-            Role = new RoleTypeOptions(defaults, "Role");
+            Role = new RoleTypeOptions(defaults, "Роль");
 
-            RoleClaim = new RoleClaimTypeOptions(Role, defaults, "RoleClaim");
+            RoleClaim = new RoleClaimTypeOptions(Role, defaults, "Утверждение роли");
 
-            User = new UserTypeOptions(defaults, "User");
+            User = new UserTypeOptions(defaults, "Пользователь");
 
-            UserClaim = new UserClaimTypeOptions(User, defaults, "UserClaim");
+            UserClaim = new UserClaimTypeOptions(User, defaults, "Утверждение пользователя");
 
-            UserLogin = new UserLoginTypeOptions(User, defaults, "UserLogin");
+            UserLogin = new UserLoginTypeOptions(User, defaults, "Вход пользователя");
 
-            UserRole = new UserRoleTypeOptions(Role, User, defaults, "UserRole");
+            UserRole = new UserRoleTypeOptions(Role, User, defaults, "Роль пользователя");
 
-            UserToken = new UserTokenTypeOptions(User, defaults, "UserToken");
+            UserToken = new UserTokenTypeOptions(User, defaults, "Токен пользователя");
         }
 
         #endregion Constructors     

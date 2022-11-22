@@ -7,19 +7,19 @@ using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.User;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserRole
 {
     /// <summary>
-    /// Сущность типа "UserRole" сопоставителя.
+    /// Сущность типа "Роль пользователя" сопоставителя.
     /// </summary>
     public class MapperUserRoleTypeEntity : UserRoleTypeEntity
     {
         #region Properties
 
         /// <summary>
-        /// Сущность типа "Role".
+        /// Сущность типа "Роль".
         /// </summary>
         public MapperRoleTypeEntity? ObjectOfRoleEntity { get; set; }
 
         /// <summary>
-        /// Сущность типа "User".
+        /// Сущность типа "Пользователь".
         /// </summary>
         public MapperUserTypeEntity? ObjectOfUserEntity { get; set; }
 

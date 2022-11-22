@@ -5,7 +5,7 @@ using Makc2022.Layer3.Sql.Sample.Types.Role;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.Role
 {
     /// <summary>
-    /// Расширение сущности "Role" сопоставителя.
+    /// Расширение сущности "Роль" сопоставителя.
     /// </summary>
     public static class MapperRoleTypeExtension
     {

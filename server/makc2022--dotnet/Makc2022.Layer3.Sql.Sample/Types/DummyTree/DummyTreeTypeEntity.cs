@@ -3,7 +3,7 @@
 namespace Makc2022.Layer3.Sql.Sample.Types.DummyTree
 {
     /// <summary>
-    /// Сущность типа "DummyTree".
+    /// Сущность типа "Фиктивное дерево".
     /// </summary>
     public class DummyTreeTypeEntity
     {

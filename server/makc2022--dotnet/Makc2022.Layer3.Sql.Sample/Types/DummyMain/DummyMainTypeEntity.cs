@@ -3,7 +3,7 @@
 namespace Makc2022.Layer3.Sql.Sample.Types.DummyMain
 {
     /// <summary>
-    /// Сущность типа "DummyMain".
+    /// Сущность типа "Фиктивное главное".
     /// </summary>
     public class DummyMainTypeEntity
     {
@@ -20,7 +20,7 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyMain
         public string? Name { get; set; }
 
         /// <summary>
-        /// Идентификатор сущности "DummyOneToMany".
+        /// Идентификатор сущности "Фиктивное отношение один ко многим".
         /// </summary>
         public long IdOfDummyOneToManyEntity { get; set; }
 

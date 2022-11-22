@@ -6,14 +6,14 @@ using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMainDummyManyToMany;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyManyToMany
 {
     /// <summary>
-    /// Сущность типа "DummyManyToMany" сопоставителя.
+    /// Сущность типа "Фиктивное отношение многие ко многим" сопоставителя.
     /// </summary>
     public class MapperDummyManyToManyTypeEntity : DummyManyToManyTypeEntity
     {
         #region Properties
 
         /// <summary>
-        /// Объекты сущности "DummyMainDummyManyToMany".
+        /// Объекты сущности "Фиктивное отношение многие ко многим фиктивного главного".
         /// </summary>
         public List<MapperDummyMainDummyManyToManyTypeEntity> ObjectsOfDummyMainDummyManyToManyEntity { get; } =
             new List<MapperDummyMainDummyManyToManyTypeEntity>();

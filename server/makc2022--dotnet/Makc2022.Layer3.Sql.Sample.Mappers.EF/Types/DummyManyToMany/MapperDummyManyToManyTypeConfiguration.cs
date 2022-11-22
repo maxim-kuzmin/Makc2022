@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyManyToMany
 {
     /// <summary>
-    /// Конфигурация типа "DummyManyToMany" сопоставителя.
+    /// Конфигурация типа "Фиктивное отношение многие ко многим" сопоставителя.
     /// </summary>
     public class MapperDummyManyToManyTypeConfiguration : MapperTypeConfiguration<MapperDummyManyToManyTypeEntity>
     {

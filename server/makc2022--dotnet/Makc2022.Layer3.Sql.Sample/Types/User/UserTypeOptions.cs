@@ -5,7 +5,7 @@ using Makc2022.Layer2.Sql;
 namespace Makc2022.Layer3.Sql.Sample.Types.User
 {
     /// <summary>
-    /// Параметры типа "User".
+    /// Параметры типа "Пользователь".
     /// </summary>
     public class UserTypeOptions : TypeOptions
     {

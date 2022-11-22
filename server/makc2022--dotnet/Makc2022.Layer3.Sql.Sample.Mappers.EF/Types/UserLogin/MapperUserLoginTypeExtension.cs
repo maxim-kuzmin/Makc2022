@@ -5,7 +5,7 @@ using Makc2022.Layer3.Sql.Sample.Types.UserLogin;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserLogin
 {
     /// <summary>
-    /// Расширение сущности "UserLogin" сопоставителя.
+    /// Расширение сущности "Вход пользователя" сопоставителя.
     /// </summary>
     public static class MapperUserLoginTypeExtension
     {

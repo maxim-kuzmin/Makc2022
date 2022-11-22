@@ -6,14 +6,14 @@ using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyTree;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyTreeLink
 {
     /// <summary>
-    /// Сущность типа "DummyTreeLink" сопоставителя.
+    /// Сущность типа "Связь фиктивного дерева" сопоставителя.
     /// </summary>
     public class MapperDummyTreeLinkTypeEntity : DummyTreeLinkTypeEntity
     {
         #region Properties
 
         /// <summary>
-        /// Сущность типа "DummyTree".
+        /// Сущность типа "Фиктивное дерево".
         /// </summary>
         public MapperDummyTreeTypeEntity? ObjectOfDummyTreeEntity { get; set; }
 

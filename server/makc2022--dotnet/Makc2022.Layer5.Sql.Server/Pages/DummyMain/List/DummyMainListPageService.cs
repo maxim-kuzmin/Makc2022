@@ -10,7 +10,7 @@ using IDummyMainDomainService = Makc2022.Layer4.Sql.Domains.DummyMain.IDomainSer
 namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.List
 {
     /// <summary>
-    /// Сервис страницы сущностей "DummyMain".
+    /// Сервис страницы сущностей "Фиктивное главное".
     /// </summary>
     public class DummyMainListPageService : IDummyMainListPageService
     {
@@ -23,8 +23,8 @@ namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.List
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="handlerOfMainDomainDomainListGetOperation">Обработчик операции получения списка в домене "DummyMain".</param>
-        /// <param name="serviceOfDummyMainDomain">Сервис домена "DummyMain".</param>
+        /// <param name="handlerOfMainDomainDomainListGetOperation">Обработчик операции получения списка в домене "Фиктивное главное".</param>
+        /// <param name="serviceOfDummyMainDomain">Сервис домена "Фиктивное главное".</param>
         public DummyMainListPageService(
             IDummyMainDomainListGetOperationHandler handlerOfMainDomainDomainListGetOperation,
             IDummyMainDomainService serviceOfDummyMainDomain

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 namespace Makc2022.Layer3.Sql.Sample.Types.RoleClaim
 {
     /// <summary>
-    /// Сущность типа "RoleClaim".
+    /// Сущность типа "Утверждение роли".
     /// </summary>
     public class RoleClaimTypeEntity : IdentityRoleClaim<long>
     {

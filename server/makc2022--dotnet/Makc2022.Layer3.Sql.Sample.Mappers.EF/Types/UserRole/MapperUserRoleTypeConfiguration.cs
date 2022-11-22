@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserRole
 {
     /// <summary>
-    /// Конфигурация типа "UserRole" сопоставителя.
+    /// Конфигурация типа "Роль пользователя" сопоставителя.
     /// </summary>
     public class MapperUserRoleTypeConfiguration : MapperTypeConfiguration<MapperUserRoleTypeEntity>
     {

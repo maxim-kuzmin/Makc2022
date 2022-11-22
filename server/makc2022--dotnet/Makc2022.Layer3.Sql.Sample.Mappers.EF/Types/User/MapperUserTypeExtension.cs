@@ -5,7 +5,7 @@ using Makc2022.Layer3.Sql.Sample.Types.User;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.User
 {
     /// <summary>
-    /// Расширение сущности "User" сопоставителя.
+    /// Расширение сущности "Пользователь" сопоставителя.
     /// </summary>
     public static class MapperUserTypeExtension
     {

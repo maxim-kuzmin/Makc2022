@@ -8,29 +8,29 @@ using Makc2022.Layer3.Sql.Sample.Types.User;
 namespace Makc2022.Layer3.Sql.Sample.Types.UserRole
 {
     /// <summary>
-    /// Параметры типа "UserRole".
+    /// Параметры типа "Роль пользователя".
     /// </summary>
     public class UserRoleTypeOptions : TypeOptions
     {
         #region Properties
 
         /// <summary>
-        /// Колонка в базе данных для поля идентификатора сущности "Role".
+        /// Колонка в базе данных для поля идентификатора сущности "Роль".
         /// </summary>
         public string? DbColumnForRoleEntityId { get; set; }
 
         /// <summary>
-        /// Колонка в базе данных для поля идентификатора сущности "User".
+        /// Колонка в базе данных для поля идентификатора сущности "Пользователь".
         /// </summary>
         public string? DbColumnForUserEntityId { get; set; }
 
         /// <summary>
-        /// Внешний ключ в базе данных к сущности "Role".
+        /// Внешний ключ в базе данных к сущности "Роль".
         /// </summary>
         public string? DbForeignKeyToRoleEntity { get; set; }
 
         /// <summary>
-        /// Внешний ключ в базе данных к сущности "User".
+        /// Внешний ключ в базе данных к сущности "Пользователь".
         /// </summary>
         public string? DbForeignKeyToUserEntity { get; set; }
 
@@ -51,8 +51,8 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserRole
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="optionsOfRoleType">Параметры типа "Role".</param>
-        /// <param name="optionsOfUserType">Параметры типа "User".</param>
+        /// <param name="optionsOfRoleType">Параметры типа "Роль".</param>
+        /// <param name="optionsOfUserType">Параметры типа "Пользователь".</param>
         /// <param name="defaults">Значения по умолчанию.</param>
         /// <param name="dbTable">Таблица в базе данных.</param>
         /// <param name="dbSchema">Схема в базе данных.</param>

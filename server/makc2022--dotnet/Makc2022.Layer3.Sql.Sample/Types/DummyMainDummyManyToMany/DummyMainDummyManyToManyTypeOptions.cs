@@ -8,34 +8,34 @@ using Makc2022.Layer3.Sql.Sample.Types.DummyManyToMany;
 namespace Makc2022.Layer3.Sql.Sample.Types.DummyMainDummyManyToMany
 {
     /// <summary>
-    /// Параметры типа "DummyMainDummyManyToMany".
+    /// Параметры типа "Фиктивное отношение многие ко многим фиктивного главного".
     /// </summary>
     public class DummyMainDummyManyToManyTypeOptions : TypeOptions
     {
         #region Properties
 
         /// <summary>
-        /// Колонка в базе данных для поля идентификатора сущности "DummyMain".
+        /// Колонка в базе данных для поля идентификатора сущности "Фиктивное главное".
         /// </summary>
         public string? DbColumnForDummyMainEntityId { get; set; }
 
         /// <summary>
-        /// Колонка в базе данных для поля идентификатора сущности "DummyManyToMany".
+        /// Колонка в базе данных для поля идентификатора сущности "Фиктивное отношение многие ко многим".
         /// </summary>
         public string? DbColumnForDummyManyToManyEntityId { get; set; }
 
         /// <summary>
-        /// Внешний ключ в базе данных к сущности "DummyMain".
+        /// Внешний ключ в базе данных к сущности "Фиктивное главное".
         /// </summary>
         public string? DbForeignKeyToDummyMainEntity { get; set; }
 
         /// <summary>
-        /// Внешний ключ в базе данных к сущности "DummyManyToMany".
+        /// Внешний ключ в базе данных к сущности "Фиктивное отношение многие ко многим".
         /// </summary>
         public string? DbForeignKeyToDummyManyToManyEntity { get; set; }
 
         /// <summary>
-        /// Индекс в базе данных для поля идентификатора сущности "DummyManyToMany".
+        /// Индекс в базе данных для поля идентификатора сущности "Фиктивное отношение многие ко многим".
         /// </summary>
         public string? DbIndexForDummyManyToManyEntityId { get; set; }
 
@@ -51,8 +51,8 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyMainDummyManyToMany
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="optionsOfDummyMainType">Параметры типа "DummyMain".</param>
-        /// <param name="optionsOfDummyManyToManyType">Параметры типа "DummyManyToMany".</param>
+        /// <param name="optionsOfDummyMainType">Параметры типа "Фиктивное главное".</param>
+        /// <param name="optionsOfDummyManyToManyType">Параметры типа "Фиктивное отношение многие ко многим".</param>
         /// <param name="defaults">Значения по умолчанию.</param>
         /// <param name="dbTable">Таблица в базе данных.</param>
         /// <param name="dbSchema">Схема в базе данных.</param>

@@ -6,7 +6,7 @@ using Makc2022.Layer2.Sql;
 namespace Makc2022.Layer3.Sql.Sample.Types.DummyManyToMany
 {
     /// <summary>
-    /// Параметры типа "DummyManyToMany".
+    /// Параметры типа "Фиктивное отношение многие ко многим".
     /// </summary>
     public class DummyManyToManyTypeOptions : TypeOptions
     {

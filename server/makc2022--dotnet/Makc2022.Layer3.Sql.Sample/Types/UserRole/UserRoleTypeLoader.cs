@@ -3,7 +3,7 @@
 namespace Makc2022.Layer3.Sql.Sample.Types.UserRole
 {
     /// <summary>
-    /// Загрузчик типа "UserRole".
+    /// Загрузчик типа "Роль пользователя".
     /// </summary>
     public class UserRoleTypeLoader : TypeLoader<UserRoleTypeEntity>
     {

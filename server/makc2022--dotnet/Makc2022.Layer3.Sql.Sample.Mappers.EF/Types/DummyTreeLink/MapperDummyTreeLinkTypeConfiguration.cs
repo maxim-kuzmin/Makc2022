@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyTreeLink
 {
     /// <summary>
-    /// Конфигурация типа "DummyTreeLink" сопоставителя.
+    /// Конфигурация типа "Связь фиктивного дерева" сопоставителя.
     /// </summary>
     public class MapperDummyTreeLinkTypeConfiguration : MapperTypeConfiguration<MapperDummyTreeLinkTypeEntity>
     {

@@ -6,7 +6,7 @@ using Makc2022.Layer2.Sql;
 namespace Makc2022.Layer3.Sql.Sample.Types.DummyTree
 {
     /// <summary>
-    /// Параметры типа "DummyTree".
+    /// Параметры типа "Фиктивное дерево".
     /// </summary>
     public class DummyTreeTypeOptions : TypeOptions
     {
@@ -23,7 +23,7 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyTree
         public string? DbColumnForName { get; set; }
 
         /// <summary>
-        /// Колонка в базе данных для поля идентификатора родителя сущности "DummyTree".
+        /// Колонка в базе данных для поля идентификатора родителя сущности "Фиктивное дерево".
         /// </summary>
         public string? DbColumnForDummyTreeEntityParentId { get; set; }
 
@@ -58,7 +58,7 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyTree
         public string? DbColumnForTreeSort { get; set; }
 
         /// <summary>
-        /// Внешний ключ в базе данных к родителю сущности "DummyTree".
+        /// Внешний ключ в базе данных к родителю сущности "Фиктивное дерево".
         /// </summary>
         public string? DbForeignKeyToDummyTreeEntityParent { get; set; }
 
@@ -68,7 +68,7 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyTree
         public string? DbIndexForName { get; set; }
 
         /// <summary>
-        /// Индекс в базе данных для поля идентификатора родителя сущности "DummyTree".
+        /// Индекс в базе данных для поля идентификатора родителя сущности "Фиктивное дерево".
         /// </summary>
         public string? DbIndexForDummyTreeEntityParentId { get; set; }
 
@@ -98,7 +98,7 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyTree
         public string? DbPrimaryKey { get; set; }
 
         /// <summary>
-        /// Индекс в базе данных для полей идентификатора родителя сущности "DummyTree" и "Name".
+        /// Индекс в базе данных для полей идентификатора родителя сущности "Фиктивное дерево" и "Name".
         /// </summary>
         public string? DbUniqueIndexForDummyTreeEntityParentIdAndName { get; set; }
 

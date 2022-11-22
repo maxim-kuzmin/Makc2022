@@ -3,7 +3,7 @@
 namespace Makc2022.Layer3.Sql.Sample.Types.DummyTreeLink
 {
     /// <summary>
-    /// Загрузчик типа "DummyTreeLink".
+    /// Загрузчик типа "Связь фиктивного дерева".
     /// </summary>
     public class DummyTreeLinkTypeLoader : TypeLoader<DummyTreeLinkTypeEntity>
     {

@@ -5,7 +5,7 @@ using Makc2022.Layer3.Sql.Sample.Types.UserToken;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserToken
 {
     /// <summary>
-    /// Расширение сущности "UserToken" сопоставителя.
+    /// Расширение сущности "Токен пользователя" сопоставителя.
     /// </summary>
     public static class MapperUserTokenTypeExtension
     {

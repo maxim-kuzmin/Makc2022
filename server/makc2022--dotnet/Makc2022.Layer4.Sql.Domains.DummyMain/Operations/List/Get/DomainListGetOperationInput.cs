@@ -30,22 +30,22 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain.Operations.List.Get
         public string? EntityName { get; set; }
 
         /// <summary>
-        /// Идентификатор сущности "DummyOneToMany".
+        /// Идентификатор сущности "Фиктивное отношение один ко многим".
         /// </summary>
         public long IdOfDummyOneToManyEntity { get; set; }
 
         /// <summary>
-        /// Идентификаторы сущности "DummyOneToMany".
+        /// Идентификаторы сущности "Фиктивное отношение один ко многим".
         /// </summary>
         public long[]? IdsOfDummyOneToManyEntity { get; set; }
 
         /// <summary>
-        /// Строка идентификаторов сущности "DummyOneToMany".
+        /// Строка идентификаторов сущности "Фиктивное отношение один ко многим".
         /// </summary>
         public string? IdsStringOfDummyOneToManyEntity { get; set; }
 
         /// <summary>
-        /// Имя сущности "DummyOneToMany".
+        /// Имя сущности "Фиктивное отношение один ко многим".
         /// </summary>
         public string? NameOfDummyOneToManyEntity { get; set; }
 

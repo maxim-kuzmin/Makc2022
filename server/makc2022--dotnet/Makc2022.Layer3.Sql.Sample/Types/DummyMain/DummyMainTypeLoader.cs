@@ -3,7 +3,7 @@
 namespace Makc2022.Layer3.Sql.Sample.Types.DummyMain
 {
     /// <summary>
-    /// Загрузчик типа "DummyMain".
+    /// Загрузчик типа "Фиктивное главное".
     /// </summary>
     public class DummyMainTypeLoader : TypeLoader<DummyMainTypeEntity>
     {

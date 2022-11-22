@@ -36,32 +36,32 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Db
         #region Properties        
 
         /// <summary>
-        /// Сущность "DummyMain".
+        /// Сущность "Фиктивное главное".
         /// </summary>
         public DbSet<MapperDummyMainTypeEntity>? DummyMain { get; set; }
 
         /// <summary>
-        /// Сущность "DummyManyToMany".
+        /// Сущность "Фиктивное отношение многие ко многим".
         /// </summary>
         public DbSet<MapperDummyManyToManyTypeEntity>? DummyManyToMany { get; set; }
 
         /// <summary>
-        /// Сущность "DummyMainDummyManyToMany".
+        /// Сущность "Фиктивное отношение многие ко многим фиктивного главного".
         /// </summary>
         public DbSet<MapperDummyMainDummyManyToManyTypeEntity>? DummyMainDummyManyToMany { get; set; }
 
         /// <summary>
-        /// Сущность "DummyOneToMany".
+        /// Сущность "Фиктивное отношение один ко многим".
         /// </summary>
         public DbSet<MapperDummyOneToManyTypeEntity>? DummyOneToMany { get; set; }
 
         /// <summary>
-        /// Сущность "DummyTree".
+        /// Сущность "Фиктивное дерево".
         /// </summary>
         public DbSet<MapperDummyTreeTypeEntity>? DummyTree { get; set; }
 
         /// <summary>
-        /// Сущность "DummyTreeLink".
+        /// Сущность "Связь фиктивного дерева".
         /// </summary>
         public DbSet<MapperDummyTreeLinkTypeEntity>? DummyTreeLink { get; set; }
 

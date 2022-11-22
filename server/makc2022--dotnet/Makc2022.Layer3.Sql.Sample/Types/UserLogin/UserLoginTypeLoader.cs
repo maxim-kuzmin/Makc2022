@@ -3,7 +3,7 @@
 namespace Makc2022.Layer3.Sql.Sample.Types.UserLogin
 {
     /// <summary>
-    /// Загрузчик типа "UserLogin".
+    /// Загрузчик типа "Вход пользователя".
     /// </summary>
     public class UserLoginTypeLoader : TypeLoader<UserLoginTypeEntity>
     {

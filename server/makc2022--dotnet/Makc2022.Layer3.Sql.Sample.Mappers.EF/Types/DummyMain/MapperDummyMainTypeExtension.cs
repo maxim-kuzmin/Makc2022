@@ -5,7 +5,7 @@ using Makc2022.Layer3.Sql.Sample.Types.DummyMain;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMain
 {
     /// <summary>
-    /// Расширение типа "DummyMain" сопоставителя.
+    /// Расширение типа "Фиктивное главное" сопоставителя.
     /// </summary>
     public static class MapperDummyMainTypeExtension
     {

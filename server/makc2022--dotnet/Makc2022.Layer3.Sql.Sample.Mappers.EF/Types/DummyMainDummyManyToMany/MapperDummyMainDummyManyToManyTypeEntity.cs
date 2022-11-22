@@ -7,19 +7,19 @@ using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyManyToMany;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMainDummyManyToMany
 {
     /// <summary>
-    /// Сущность типа "DummyMainDummyManyToMany" сопоставителя.
+    /// Сущность типа "Фиктивное отношение многие ко многим фиктивного главного" сопоставителя.
     /// </summary>
     public class MapperDummyMainDummyManyToManyTypeEntity : DummyMainDummyManyToManyTypeEntity
     {
         #region Properties
 
         /// <summary>
-        /// Сущность типа "DummyMain".
+        /// Сущность типа "Фиктивное главное".
         /// </summary>
         public MapperDummyMainTypeEntity? ObjectOfDummyMainEntity { get; set; }
 
         /// <summary>
-        /// Сущность типа "DummyManyToMany".
+        /// Сущность типа "Фиктивное отношение многие ко многим".
         /// </summary>
         public MapperDummyManyToManyTypeEntity? ObjectOfDummyManyToManyEntity { get; set; }
 

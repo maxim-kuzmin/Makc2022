@@ -3,7 +3,7 @@
 namespace Makc2022.Layer3.Sql.Sample.Types.Role
 {
     /// <summary>
-    /// Загрузчик типа "Role".
+    /// Загрузчик типа "Роль".
     /// </summary>
     public class RoleTypeLoader : TypeLoader<RoleTypeEntity>
     {

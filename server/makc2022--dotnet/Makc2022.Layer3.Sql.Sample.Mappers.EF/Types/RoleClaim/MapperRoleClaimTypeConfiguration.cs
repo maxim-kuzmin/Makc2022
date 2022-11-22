@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.RoleClaim
 {
     /// <summary>
-    /// Конфигурация типа "RoleClaim" для сопоставителя.
+    /// Конфигурация типа "Утверждение роли" для сопоставителя.
     /// </summary>
     public class MapperRoleClaimTypeConfiguration : MapperTypeConfiguration<MapperRoleClaimTypeEntity>
     {

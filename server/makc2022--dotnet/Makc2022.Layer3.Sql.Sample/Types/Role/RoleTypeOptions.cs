@@ -5,7 +5,7 @@ using Makc2022.Layer2.Sql;
 namespace Makc2022.Layer3.Sql.Sample.Types.Role
 {
     /// <summary>
-    /// Параметры типа "Role".
+    /// Параметры типа "Роль".
     /// </summary>
     public class RoleTypeOptions : TypeOptions
     {

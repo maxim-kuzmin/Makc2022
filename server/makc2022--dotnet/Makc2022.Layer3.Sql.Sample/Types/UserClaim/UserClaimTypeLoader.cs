@@ -3,7 +3,7 @@
 namespace Makc2022.Layer3.Sql.Sample.Types.UserClaim
 {
     /// <summary>
-    /// Загрузчик типа "UserClaim".
+    /// Загрузчик типа "Утверждение пользователя".
     /// </summary>
     public class UserClaimTypeLoader : TypeLoader<UserClaimTypeEntity>
     {

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserLogin
 {
     /// <summary>
-    /// Конфигурация типа "UserLogin" сопоставителя.
+    /// Конфигурация типа "Вход пользователя" сопоставителя.
     /// </summary>
     public class MapperUserLoginTypeConfiguration : MapperTypeConfiguration<MapperUserLoginTypeEntity>
     {

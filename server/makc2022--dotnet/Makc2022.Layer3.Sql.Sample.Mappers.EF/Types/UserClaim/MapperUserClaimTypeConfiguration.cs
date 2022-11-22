@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserClaim
 {
     /// <summary>
-    /// Конфигурация типа "UserClaim" сопоставителя.
+    /// Конфигурация типа "Утверждение пользователя" сопоставителя.
     /// </summary>
     public class MapperUserClaimTypeConfiguration : MapperTypeConfiguration<MapperUserClaimTypeEntity>
     {

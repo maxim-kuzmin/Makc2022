@@ -5,14 +5,14 @@ using DummyMainDomainItemGetOperationInput = Makc2022.Layer4.Sql.Domains.DummyMa
 namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.Item.Operations.Get
 {
     /// <summary>
-    /// Входные данные операции получения страницы сущности "DummyMain".
+    /// Входные данные операции получения страницы сущности "Фиктивное главное".
     /// </summary>
     public class DummyMainItemPageGetOperationInput
     {
         #region Properties
 
         /// <summary>
-        /// Входные данные операции получения элемента в домене "DummyMain".
+        /// Входные данные операции получения элемента в домене "Фиктивное главное".
         /// </summary>
         public DummyMainDomainItemGetOperationInput InputOfDummyMainDomainItemGetOperation { get; } = new();
 

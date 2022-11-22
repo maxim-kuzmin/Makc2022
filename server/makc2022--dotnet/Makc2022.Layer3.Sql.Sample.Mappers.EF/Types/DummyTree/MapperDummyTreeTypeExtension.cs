@@ -5,7 +5,7 @@ using Makc2022.Layer3.Sql.Sample.Types.DummyTree;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyTree
 {
     /// <summary>
-    /// Расширение сущности "DummyTree" сопоставителя.
+    /// Расширение сущности "Фиктивное дерево" сопоставителя.
     /// </summary>
     public static class MapperDummyTreeTypeExtension
     {

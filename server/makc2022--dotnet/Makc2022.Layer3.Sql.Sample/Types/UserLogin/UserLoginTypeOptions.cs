@@ -6,7 +6,7 @@ using Makc2022.Layer3.Sql.Sample.Types.User;
 namespace Makc2022.Layer3.Sql.Sample.Types.UserLogin
 {
     /// <summary>
-    /// Параметры типа "UserLogin".
+    /// Параметры типа "Вход пользователя".
     /// </summary>
     public class UserLoginTypeOptions : TypeOptions
     {
@@ -28,17 +28,17 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserLogin
         public string? DbColumnForProviderDisplayName { get; set; }
 
         /// <summary>
-        /// Колонка в базе данных для поля идентификатора сущности "User".
+        /// Колонка в базе данных для поля идентификатора сущности "Пользователь".
         /// </summary>
         public string? DbColumnForUserEntityId { get; set; }
 
         /// <summary>
-        /// Внешний ключ в базе данных к сущности "User".
+        /// Внешний ключ в базе данных к сущности "Пользователь".
         /// </summary>
         public string? DbForeignKeyToUserEntity { get; set; }
 
         /// <summary>
-        /// Индекс в базе данных для поля идентификатора сущности "User".
+        /// Индекс в базе данных для поля идентификатора сущности "Пользователь".
         /// </summary>
         public string? DbIndexForUserEntityId { get; set; }
 
@@ -54,7 +54,7 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserLogin
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="optionsOfUserType">Параметры типа "User".</param>
+        /// <param name="optionsOfUserType">Параметры типа "Пользователь".</param>
         /// <param name="defaults">Значения по умолчанию.</param>
         /// <param name="dbTable">Таблица в базе данных.</param>
         /// <param name="dbSchema">Схема в базе данных.</param>
