@@ -6,9 +6,9 @@ using Makc2022.Layer2.Sql.Commands.Identity.Reseed;
 namespace Makc2022.Layer2.Sql.Clients.PostgreSql.Commands.Identity.Reseed
 {
     /// <summary>
-    /// Построитель команды на повторное заполнение идентичности у клиента.
+    /// Построитель команды на повторное заполнение идентичности клиента.
     /// </summary>
-    public class IdentityReseedCommandClientBuilder : IdentityReseedCommandBuilder
+    public class ClientIdentityReseedCommandBuilder : IdentityReseedCommandBuilder
     {
         #region Public methods
 

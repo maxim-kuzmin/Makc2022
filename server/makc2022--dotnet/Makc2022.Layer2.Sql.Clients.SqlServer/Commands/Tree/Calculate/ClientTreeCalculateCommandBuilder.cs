@@ -6,9 +6,9 @@ using Makc2022.Layer2.Sql.Commands.Tree.Calculate;
 namespace Makc2022.Layer2.Sql.Clients.SqlServer.Commands.Tree.Calculate
 {
     /// <summary>
-    /// Построитель команды на вычисление дерева у клиента.
+    /// Построитель команды на вычисление дерева клиента.
     /// </summary>
-    public class TreeCalculateCommandClientBuilder : TreeCalculateCommandBuilder
+    public class ClientTreeCalculateCommandBuilder : TreeCalculateCommandBuilder
     {
         #region Public methods
 

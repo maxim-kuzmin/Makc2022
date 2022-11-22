@@ -90,19 +90,19 @@ namespace Makc2022.Layer2.Sql.Clients.SqlServer
         /// <inheritdoc/>
         public IdentityReseedCommandBuilder CreateQueryIdentityReseedBuilder()
         {
-            return new IdentityReseedCommandClientBuilder();
+            return new ClientIdentityReseedCommandBuilder();
         }
 
         /// <inheritdoc/>
         public TreeCalculateCommandBuilder CreateQueryTreeCalculateBuilder()
         {
-            return new TreeCalculateCommandClientBuilder();
+            return new ClientTreeCalculateCommandBuilder();
         }
 
         /// <inheritdoc/>
         public TreeTriggerCommandBuilder CreateQueryTreeTriggerBuilder()
         {
-            return new TreeTriggerCommandClientBuilder();
+            return new ClientTreeTriggerCommandBuilder();
         }
 
         /// <inheritdoc/>

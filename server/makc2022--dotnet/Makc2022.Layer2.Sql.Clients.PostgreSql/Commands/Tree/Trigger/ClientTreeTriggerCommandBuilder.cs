@@ -8,9 +8,9 @@ using Makc2022.Layer2.Sql.Commands.Trigger;
 namespace Makc2022.Layer2.Sql.Clients.PostgreSql.Commands.Tree.Trigger
 {
     /// <summary>
-    /// Построитель команды на срабатывание триггера дерева у клиента.
+    /// Построитель команды на срабатывание триггера дерева клиента.
     /// </summary>
-    public class TreeTriggerCommandClientBuilder : TreeTriggerCommandBuilder
+    public class ClientTreeTriggerCommandBuilder : TreeTriggerCommandBuilder
     {
         #region Public methods
 
@@ -323,7 +323,7 @@ end $$;
 
         private string CreateSqlForCalculate(string sqlForIdsSelectQuery)
         {
-            return new TreeCalculateCommandClientBuilder
+            return new ClientTreeCalculateCommandBuilder
             {
                 LinkTableFieldNameForId = LinkTableFieldNameForId,
                 LinkTableFieldNameForParentId = LinkTableFieldNameForParentId,
