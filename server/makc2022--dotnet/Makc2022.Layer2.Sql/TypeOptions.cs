@@ -9,22 +9,22 @@ namespace Makc2022.Layer2.Sql
     {
         #region Properties
 
-        private IDefaults Defaults { get; set; }
+        private IDefaults Defaults { get; init; }
 
         /// <summary>
         /// Таблица в базе данных.
         /// </summary>
-        public string DbTable { get; private set; }
+        public string DbTable { get; init; }
 
         /// <summary>
         /// Схема в базе данных.
         /// </summary>
-        public string? DbSchema { get; private set; }
+        public string DbSchema { get; init; }
 
         /// <summary>
         /// Таблица со схемой в базе данных.
         /// </summary>
-        public string DbTableWithSchema { get; private set; }
+        public string DbTableWithSchema { get; init; }
 
         #endregion Properties
 
@@ -107,7 +107,7 @@ namespace Makc2022.Layer2.Sql
         /// </summary>
         /// <param name="parts">Части имени.</param>
         /// <returns>Имя схемы в базе данных.</returns>
-        protected string? CreateDbSchemaName(params string[] parts)
+        protected string CreateDbSchemaName(params string[] parts)
         {
             return parts.Length > 0 ? CreateName(null, parts) : Defaults.DbSchema;
         }

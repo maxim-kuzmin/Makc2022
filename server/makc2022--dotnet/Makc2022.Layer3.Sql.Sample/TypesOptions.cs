@@ -26,67 +26,67 @@ namespace Makc2022.Layer3.Sql.Sample
         /// <summary>
         /// Сущность "Фиктивное главное".
         /// </summary>
-        public DummyMainTypeOptions? DummyMain { get; protected set; }
+        public DummyMainTypeOptions DummyMain { get; protected set; } = null!;
 
         /// <summary>
         /// Сущность "Фиктивное отношение многие ко многим фиктивного главного".
         /// </summary>
-        public DummyMainDummyManyToManyTypeOptions? DummyMainDummyManyToMany { get; protected set; }
+        public DummyMainDummyManyToManyTypeOptions DummyMainDummyManyToMany { get; protected set; } = null!;
 
         /// <summary>
         /// Сущность "Фиктивное отношение многие ко многим".
         /// </summary>
-        public DummyManyToManyTypeOptions? DummyManyToMany { get; protected set; }
+        public DummyManyToManyTypeOptions DummyManyToMany { get; protected set; } = null!;
 
         /// <summary>
         /// Сущность "Фиктивное отношение один ко многим".
         /// </summary>
-        public DummyOneToManyTypeOptions? DummyOneToMany { get; protected set; }
+        public DummyOneToManyTypeOptions DummyOneToMany { get; protected set; } = null!;
 
         /// <summary>
         /// Сущность "Фиктивное дерево".
         /// </summary>
-        public DummyTreeTypeOptions? DummyTree { get; protected set; }
+        public DummyTreeTypeOptions DummyTree { get; protected set; } = null!;
 
         /// <summary>
         /// Сущность "Связь фиктивного дерева".
         /// </summary>
-        public DummyTreeLinkTypeOptions? DummyTreeLink { get; protected set; }
+        public DummyTreeLinkTypeOptions DummyTreeLink { get; protected set; } = null!;
 
         /// <summary>
         /// Сущность "Роль".
         /// </summary>
-        public RoleTypeOptions? Role { get; protected set; }
+        public RoleTypeOptions Role { get; protected set; } = null!;
 
         /// <summary>
         /// Сущность "Утверждение роли".
         /// </summary>
-        public RoleClaimTypeOptions? RoleClaim { get; protected set; }
+        public RoleClaimTypeOptions RoleClaim { get; protected set; } = null!;
 
         /// <summary>
         /// Сущность "Пользователь".
         /// </summary>
-        public UserTypeOptions? User { get; protected set; }
+        public UserTypeOptions User { get; protected set; } = null!;
 
         /// <summary>
         /// Сущность "Утверждение пользователя".
         /// </summary>
-        public UserClaimTypeOptions? UserClaim { get; protected set; }
+        public UserClaimTypeOptions UserClaim { get; protected set; } = null!;
 
         /// <summary>
         /// Сущность "Вход пользователя".
         /// </summary>
-        public UserLoginTypeOptions? UserLogin { get; protected set; }
+        public UserLoginTypeOptions UserLogin { get; protected set; } = null!;
 
         /// <summary>
         /// Сущность "Роль пользователя".
         /// </summary>
-        public UserRoleTypeOptions? UserRole { get; protected set; }
+        public UserRoleTypeOptions UserRole { get; protected set; } = null!;
 
         /// <summary>
         /// Сущность "Токен пользователя".
         /// </summary>
-        public UserTokenTypeOptions? UserToken { get; protected set; }
+        public UserTokenTypeOptions UserToken { get; protected set; } = null!;
 
         #endregion Properties
     }
