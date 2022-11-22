@@ -2,7 +2,6 @@
 
 using Makc2022.Layer1.App;
 using Makc2022.Layer3.Sql.Sample.Clients.SqlServer.Entities;
-using Makc2022.Layer3.Sql.Sample.Entities;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.Setup
@@ -25,7 +24,7 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.Setup
         {
             return new[]
             {
-                typeof(EntitiesOptions)
+                typeof(TypesOptions)
             };
         }
 

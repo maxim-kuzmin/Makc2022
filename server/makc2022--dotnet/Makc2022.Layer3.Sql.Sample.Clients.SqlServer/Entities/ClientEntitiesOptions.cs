@@ -1,31 +1,30 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
 using Makc2022.Layer2.Sql.Clients.SqlServer;
-using Makc2022.Layer3.Sql.Sample.Entities;
-using Makc2022.Layer3.Sql.Sample.Entities.DummyMain;
-using Makc2022.Layer3.Sql.Sample.Entities.DummyMainDummyManyToMany;
-using Makc2022.Layer3.Sql.Sample.Entities.DummyManyToMany;
-using Makc2022.Layer3.Sql.Sample.Entities.DummyOneToMany;
-using Makc2022.Layer3.Sql.Sample.Entities.DummyTree;
-using Makc2022.Layer3.Sql.Sample.Entities.DummyTreeLink;
-using Makc2022.Layer3.Sql.Sample.Entities.Role;
-using Makc2022.Layer3.Sql.Sample.Entities.RoleClaim;
-using Makc2022.Layer3.Sql.Sample.Entities.User;
-using Makc2022.Layer3.Sql.Sample.Entities.UserClaim;
-using Makc2022.Layer3.Sql.Sample.Entities.UserLogin;
-using Makc2022.Layer3.Sql.Sample.Entities.UserRole;
-using Makc2022.Layer3.Sql.Sample.Entities.UserToken;
+using Makc2022.Layer3.Sql.Sample.Types.DummyMain;
+using Makc2022.Layer3.Sql.Sample.Types.DummyMainDummyManyToMany;
+using Makc2022.Layer3.Sql.Sample.Types.DummyManyToMany;
+using Makc2022.Layer3.Sql.Sample.Types.DummyOneToMany;
+using Makc2022.Layer3.Sql.Sample.Types.DummyTree;
+using Makc2022.Layer3.Sql.Sample.Types.DummyTreeLink;
+using Makc2022.Layer3.Sql.Sample.Types.Role;
+using Makc2022.Layer3.Sql.Sample.Types.RoleClaim;
+using Makc2022.Layer3.Sql.Sample.Types.User;
+using Makc2022.Layer3.Sql.Sample.Types.UserClaim;
+using Makc2022.Layer3.Sql.Sample.Types.UserLogin;
+using Makc2022.Layer3.Sql.Sample.Types.UserRole;
+using Makc2022.Layer3.Sql.Sample.Types.UserToken;
 
 namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.Entities
 {
     /// <summary>
     /// Параметры сущностей клиента.
     /// </summary>
-    public class ClientEntitiesOptions : EntitiesOptions
+    public class ClientEntitiesOptions : TypesOptions
     {
         #region Fields
 
-        private static readonly Lazy<EntitiesOptions> _lazy = new(() => new ClientEntitiesOptions());
+        private static readonly Lazy<TypesOptions> _lazy = new(() => new ClientEntitiesOptions());
 
         #endregion Fields
 
@@ -34,7 +33,7 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.Entities
         /// <summary>
         /// Экземпляр.
         /// </summary>
-        public static EntitiesOptions Instance => _lazy.Value;
+        public static TypesOptions Instance => _lazy.Value;
 
         #endregion Properties
 
@@ -44,36 +43,36 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.Entities
         {
             var defaults = new ClientDefaults();
 
-            DummyOneToMany = new DummyOneToManyEntityOptions(defaults, "DummyOneToMany");
+            DummyOneToMany = new DummyOneToManyTypeOptions(defaults, "DummyOneToMany");
 
-            DummyMain = new DummyMainEntityOptions(DummyOneToMany, defaults, "DummyMain");
+            DummyMain = new DummyMainTypeOptions(DummyOneToMany, defaults, "DummyMain");
 
-            DummyManyToMany = new DummyManyToManyEntityOptions(defaults, "DummyManyToMany");
+            DummyManyToMany = new DummyManyToManyTypeOptions(defaults, "DummyManyToMany");
 
-            DummyMainDummyManyToMany = new DummyMainDummyManyToManyEntityOptions(
+            DummyMainDummyManyToMany = new DummyMainDummyManyToManyTypeOptions(
                 DummyMain,
                 DummyManyToMany,
                 defaults,
                 "DummyMainDummyManyToMany"
                 );
 
-            DummyTree = new DummyTreeEntityOptions(defaults, "DummyTree");
+            DummyTree = new DummyTreeTypeOptions(defaults, "DummyTree");
 
-            DummyTreeLink = new DummyTreeLinkEntityOptions(DummyTree, defaults, "DummyTreeLink");
+            DummyTreeLink = new DummyTreeLinkTypeOptions(DummyTree, defaults, "DummyTreeLink");
 
-            Role = new RoleEntityOptions(defaults, "Role");
+            Role = new RoleTypeOptions(defaults, "Role");
 
-            RoleClaim = new RoleClaimEntityOptions(Role, defaults, "RoleClaim");
+            RoleClaim = new RoleClaimTypeOptions(Role, defaults, "RoleClaim");
 
-            User = new UserEntityOptions(defaults, "User");
+            User = new UserTypeOptions(defaults, "User");
 
-            UserClaim = new UserClaimEntityOptions(User, defaults, "UserClaim");
+            UserClaim = new UserClaimTypeOptions(User, defaults, "UserClaim");
 
-            UserLogin = new UserLoginEntityOptions(User, defaults, "UserLogin");
+            UserLogin = new UserLoginTypeOptions(User, defaults, "UserLogin");
 
-            UserRole = new UserRoleEntityOptions(Role, User, defaults, "UserRole");
+            UserRole = new UserRoleTypeOptions(Role, User, defaults, "UserRole");
 
-            UserToken = new UserTokenEntityOptions(User, defaults, "UserToken");
+            UserToken = new UserTokenTypeOptions(User, defaults, "UserToken");
         }
 
         #endregion Constructors     

@@ -3,15 +3,14 @@
 using Makc2022.Layer2.Sql;
 using Makc2022.Layer2.Sql.Commands.Tree.Trigger;
 using Makc2022.Layer2.Sql.Commands.Trigger;
-using Makc2022.Layer3.Sql.Sample.Entities;
-using Makc2022.Layer3.Sql.Sample.Entities.DummyTree;
-using Makc2022.Layer3.Sql.Sample.Entities.DummyTreeLink;
+using Makc2022.Layer3.Sql.Sample.Types.DummyTree;
+using Makc2022.Layer3.Sql.Sample.Types.DummyTreeLink;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Db;
-using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.DummyMain;
-using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.DummyMainDummyManyToMany;
-using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.DummyManyToMany;
-using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.DummyOneToMany;
-using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.DummyTree;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMain;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMainDummyManyToMany;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyManyToMany;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyOneToMany;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyTree;
 using Microsoft.EntityFrameworkCore;
 
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
@@ -25,7 +24,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
 
         private IProvider ClientProvider { get; }
 
-        private EntitiesOptions EntitiesOptions { get; }
+        private TypesOptions EntitiesOptions { get; }
 
         private IMapperDbContextFactory MapperDbFactory { get; }
 
@@ -37,16 +36,16 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
         /// Конструктор.
         /// </summary>        
         /// <param name="сlientProvider">Поставщик клиента.</param>
-        /// <param name="entitiesOptions">Параметры сущностей.</param>        
+        /// <param name="typesOptions">Параметры сущностей.</param>        
         /// <param name="mapperDbFactory">Фабрика базы данных сопоставителя.</param>
         public MapperService(            
             IProvider сlientProvider,
-            EntitiesOptions entitiesOptions,
+            TypesOptions typesOptions,
             IMapperDbContextFactory mapperDbFactory
             )
         {
             ClientProvider = сlientProvider;
-            EntitiesOptions = entitiesOptions;
+            EntitiesOptions = typesOptions;
             MapperDbFactory = mapperDbFactory;
         }
 
@@ -106,8 +105,8 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
 
         private static void InitQueryBuilder(
             TreeTriggerCommandBuilder builder,
-            DummyTreeLinkEntityOptions? linkOptions,
-            DummyTreeEntityOptions? treeOptions
+            DummyTreeLinkTypeOptions? linkOptions,
+            DummyTreeTypeOptions? treeOptions
             )
         {
             if (linkOptions is null)
@@ -139,9 +138,9 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
             builder.TreeTableSchema = treeOptions.DbSchema;
         }
 
-        private static MapperDummyMainEntityObject CreateTestDataItemForDummyMain(
+        private static MapperDummyMainTypeEntity CreateTestDataItemForDummyMain(
             long index,
-            IEnumerable<MapperDummyOneToManyEntityObject> itemsOfDummyOneToMany
+            IEnumerable<MapperDummyOneToManyTypeEntity> itemsOfDummyOneToMany
             )
         {
             bool isEven = index % 2 == 0;
@@ -157,7 +156,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
 
             int indexOfDummyOneToMany = GetRandomIndex(itemsOfDummyOneToMany);
 
-            return new MapperDummyMainEntityObject
+            return new MapperDummyMainTypeEntity
             {
                 Name = $"Name-{index}",
                 IdOfDummyOneToManyEntity = itemsOfDummyOneToMany.ElementAt(indexOfDummyOneToMany).Id,
@@ -178,12 +177,12 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
             };
         }
 
-        private static List<MapperDummyMainDummyManyToManyEntityObject> CreateTestDataItemsForDummyMainDummyManyToMany(
-            MapperDummyMainEntityObject itemOfDummyMain,
-            IEnumerable<MapperDummyManyToManyEntityObject> itemsOfDummyManyToMany
+        private static List<MapperDummyMainDummyManyToManyTypeEntity> CreateTestDataItemsForDummyMainDummyManyToMany(
+            MapperDummyMainTypeEntity itemOfDummyMain,
+            IEnumerable<MapperDummyManyToManyTypeEntity> itemsOfDummyManyToMany
             )
         {
-            var result = new List<MapperDummyMainDummyManyToManyEntityObject>();
+            var result = new List<MapperDummyMainDummyManyToManyTypeEntity>();
 
             foreach (var itemOfDummyManyToMany in itemsOfDummyManyToMany)
             {
@@ -191,7 +190,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
 
                 if (isEven) continue;
 
-                var item = new MapperDummyMainDummyManyToManyEntityObject
+                var item = new MapperDummyMainDummyManyToManyTypeEntity
                 {
                     IdOfDummyMainEntity = itemOfDummyMain.Id,
                     IdOfDummyManyToManyEntity = itemOfDummyManyToMany.Id
@@ -204,7 +203,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
             {
                 int index = GetRandomIndex(itemsOfDummyManyToMany);
 
-                var item = new MapperDummyMainDummyManyToManyEntityObject
+                var item = new MapperDummyMainDummyManyToManyTypeEntity
                 {
                     IdOfDummyMainEntity = itemOfDummyMain.Id,
                     IdOfDummyManyToManyEntity = itemsOfDummyManyToMany.ElementAt(index).Id
@@ -216,27 +215,27 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
             return result;
         }
 
-        private static MapperDummyManyToManyEntityObject CreateTestDataItemForDummyManyToMany(long index)
+        private static MapperDummyManyToManyTypeEntity CreateTestDataItemForDummyManyToMany(long index)
         {
-            return new MapperDummyManyToManyEntityObject
+            return new MapperDummyManyToManyTypeEntity
             {
                 Name = $"Name-{index}"
             };
         }
 
-        private static MapperDummyOneToManyEntityObject CreateTestDataItemForDummyOneToMany(long index)
+        private static MapperDummyOneToManyTypeEntity CreateTestDataItemForDummyOneToMany(long index)
         {
-            return new MapperDummyOneToManyEntityObject
+            return new MapperDummyOneToManyTypeEntity
             {
                 Name = $"Name-{index}"
             };
         }
 
-        private static MapperDummyTreeEntityObject CreateTestDataItemForDummyTree(IEnumerable<int> indexes, long? parentId)
+        private static MapperDummyTreeTypeEntity CreateTestDataItemForDummyTree(IEnumerable<int> indexes, long? parentId)
         {
             string suffix = indexes.Any() ? "-" + string.Join("-", indexes) : string.Empty;
 
-            return new MapperDummyTreeEntityObject
+            return new MapperDummyTreeTypeEntity
             {
                 Name = $"Name{suffix}",
                 ParentId = parentId
@@ -250,7 +249,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
 
         private async Task SaveTestDataListForDummyTree(
             MapperDbContext dbContext,
-            List<MapperDummyTreeEntityObject> list,
+            List<MapperDummyTreeTypeEntity> list,
             List<int> parentIndexes,
             long? parentId
             )
@@ -285,9 +284,9 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
             }
         }
 
-        private static async Task<IEnumerable<MapperDummyMainEntityObject>> SeedTestDataForDummyMain(
+        private static async Task<IEnumerable<MapperDummyMainTypeEntity>> SeedTestDataForDummyMain(
             MapperDbContext dbContext,
-            IEnumerable<MapperDummyOneToManyEntityObject> itemsOfDummyOneToMany
+            IEnumerable<MapperDummyOneToManyTypeEntity> itemsOfDummyOneToMany
             )
         {
             var result = Enumerable.Range(1, 100)
@@ -301,13 +300,13 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
             return result;
         }
 
-        private static async Task<IEnumerable<MapperDummyMainDummyManyToManyEntityObject>> SeedTestDataForDummyMainDummyManyToMany(
+        private static async Task<IEnumerable<MapperDummyMainDummyManyToManyTypeEntity>> SeedTestDataForDummyMainDummyManyToMany(
             MapperDbContext dbContext,
-            IEnumerable<MapperDummyMainEntityObject> itemsOfDummyMain,
-            IEnumerable<MapperDummyManyToManyEntityObject> itemsOfDummyManyToMany
+            IEnumerable<MapperDummyMainTypeEntity> itemsOfDummyMain,
+            IEnumerable<MapperDummyManyToManyTypeEntity> itemsOfDummyManyToMany
             )
         {
-            var result = new List<MapperDummyMainDummyManyToManyEntityObject>();
+            var result = new List<MapperDummyMainDummyManyToManyTypeEntity>();
 
             foreach (var itemOfDummyMain in itemsOfDummyMain)
             {
@@ -329,7 +328,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
             return result;
         }
 
-        private static async Task<IEnumerable<MapperDummyManyToManyEntityObject>> SeedTestDataForDummyManyToMany(
+        private static async Task<IEnumerable<MapperDummyManyToManyTypeEntity>> SeedTestDataForDummyManyToMany(
             MapperDbContext dbContext
             )
         {
@@ -344,7 +343,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
             return result;
         }
 
-        private static async Task<IEnumerable<MapperDummyOneToManyEntityObject>> SeedTestDataForDummyOneToMany(
+        private static async Task<IEnumerable<MapperDummyOneToManyTypeEntity>> SeedTestDataForDummyOneToMany(
             MapperDbContext dbContext)
         {
             var result = Enumerable.Range(1, 10)
@@ -358,11 +357,11 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
             return result;
         }
 
-        private async Task<IEnumerable<MapperDummyTreeEntityObject>> SeedTestDataForDummyTree(
+        private async Task<IEnumerable<MapperDummyTreeTypeEntity>> SeedTestDataForDummyTree(
             MapperDbContext dbContext
             )
         {
-            var result = new List<MapperDummyTreeEntityObject>();
+            var result = new List<MapperDummyTreeTypeEntity>();
 
             await SaveTestDataListForDummyTree(dbContext, result, new List<int>(), null);
 

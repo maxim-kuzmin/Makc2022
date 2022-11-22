@@ -1,10 +1,10 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
 using Makc2022.Layer2.Sql.Operations.List.Get;
-using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.DummyMain;
-using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.DummyMainDummyManyToMany;
-using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.DummyManyToMany;
-using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.DummyOneToMany;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMain;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMainDummyManyToMany;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyManyToMany;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyOneToMany;
 using Makc2022.Layer4.Sql.Domains.DummyMain.Operations.Item.Get;
 using Makc2022.Layer4.Sql.Domains.DummyMain.Operations.List.Get;
 using Microsoft.EntityFrameworkCore;
@@ -139,18 +139,18 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
 
         #region Private methods
 
-        private static DomainItemGetOperationOutput CreateItem(MapperDummyMainEntityObject entity)
+        private static DomainItemGetOperationOutput CreateItem(MapperDummyMainTypeEntity entity)
         {
             var result = new DomainItemGetOperationOutput
             {
-                ObjectOfDummyMainEntity = entity.FromMapperToEntityObject(),
-                ObjectOfDummyOneToManyEntity = entity.ObjectOfDummyOneToManyEntity!.FromMapperToEntityObject()
+                ObjectOfDummyMainEntity = entity.ToEntity(),
+                ObjectOfDummyOneToManyEntity = entity.ObjectOfDummyOneToManyEntity!.ToEntity()
             };
 
             if (entity.ObjectsOfDummyMainDummyManyToManyEntity.Any())
             {
                 result.ObjectsOfDummyMainDummyManyToManyEntity = entity.ObjectsOfDummyMainDummyManyToManyEntity
-                    .Select(x => x.FromMapperToEntityObject())
+                    .Select(x => x.ToEntity())
                     .ToArray();
             }
 
@@ -159,30 +159,30 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
 
         private static void InitItemDummyManyToMany(
             DomainItemGetOperationOutput item,
-            IEnumerable<MapperDummyManyToManyEntityObject> enities
+            IEnumerable<MapperDummyManyToManyTypeEntity> enities
             )
         {
             item.ObjectsOfDummyManyToManyEntity = enities
                 .OrderBy(x => x.Name)
                 .ThenBy(x => x.Id)
-                .Select(x => x.FromMapperToEntityObject())
+                .Select(x => x.ToEntity())
                 .ToArray();
         }
 
         private static void InitItemDummyManyToMany(
             DomainItemGetOperationOutput item,
-            IDictionary<long, MapperDummyManyToManyEntityObject> lookup
+            IDictionary<long, MapperDummyManyToManyTypeEntity> lookup
             )
         {
             long[] ids = item.ObjectsOfDummyMainDummyManyToManyEntity!
                 .Select(x => x.IdOfDummyManyToManyEntity)
                 .ToArray();
 
-            var entities = new List<MapperDummyManyToManyEntityObject>();
+            var entities = new List<MapperDummyManyToManyTypeEntity>();
 
             foreach (long id in ids)
             {
-                if (lookup.TryGetValue(id, out MapperDummyManyToManyEntityObject? entity))
+                if (lookup.TryGetValue(id, out MapperDummyManyToManyTypeEntity? entity))
                 {
                     entities.Add(entity);
                 }

@@ -1,9 +1,9 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-using Makc2022.Layer3.Sql.Sample.Entities.DummyMain;
-using Makc2022.Layer3.Sql.Sample.Entities.DummyMainDummyManyToMany;
-using Makc2022.Layer3.Sql.Sample.Entities.DummyManyToMany;
-using Makc2022.Layer3.Sql.Sample.Entities.DummyOneToMany;
+using Makc2022.Layer3.Sql.Sample.Types.DummyMain;
+using Makc2022.Layer3.Sql.Sample.Types.DummyMainDummyManyToMany;
+using Makc2022.Layer3.Sql.Sample.Types.DummyManyToMany;
+using Makc2022.Layer3.Sql.Sample.Types.DummyOneToMany;
 
 namespace Makc2022.Layer4.Sql.Domains.DummyMain.Operations.Item.Get
 {
@@ -15,24 +15,24 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain.Operations.Item.Get
         #region Properties
 
         /// <summary>
-        /// Объект сущности "DummyMain".
+        /// Сущность типа "DummyMain".
         /// </summary>
-        public DummyMainEntityObject? ObjectOfDummyMainEntity { get; set; }
+        public DummyMainTypeEntity? ObjectOfDummyMainEntity { get; set; }
 
         /// <summary>
         /// Объекты сущности "DummyManyToMany".
         /// </summary>
-        public DummyManyToManyEntityObject[]? ObjectsOfDummyManyToManyEntity { get; set; }
+        public DummyManyToManyTypeEntity[]? ObjectsOfDummyManyToManyEntity { get; set; }
 
         /// <summary>
         /// Объекты сущности "DummyMainDummyManyToMany".
         /// </summary>
-        public DummyMainDummyManyToManyEntityObject[]? ObjectsOfDummyMainDummyManyToManyEntity { get; set; }
+        public DummyMainDummyManyToManyTypeEntity[]? ObjectsOfDummyMainDummyManyToManyEntity { get; set; }
 
         /// <summary>
-        /// Объект сущности "DummyOneToMany".
+        /// Сущность типа "DummyOneToMany".
         /// </summary>
-        public DummyOneToManyEntityObject? ObjectOfDummyOneToManyEntity { get; set; }
+        public DummyOneToManyTypeEntity? ObjectOfDummyOneToManyEntity { get; set; }
 
         #endregion Properties
     }

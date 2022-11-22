@@ -3,7 +3,7 @@
 using Makc2022.Layer1.Converting;
 using Makc2022.Layer1.Operation;
 using Makc2022.Layer2.Sql.Operations.List.Get;
-using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.DummyMain;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMain;
 
 namespace Makc2022.Layer4.Sql.Domains.DummyMain.Operations.List.Get
 {
@@ -60,7 +60,7 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain.Operations.List.Get
 
             if (string.IsNullOrWhiteSpace(SortField))
             {
-                SortField = nameof(MapperDummyMainEntityObject.Id);
+                SortField = nameof(MapperDummyMainTypeEntity.Id);
             }
 
             if (string.IsNullOrWhiteSpace(SortDirection))

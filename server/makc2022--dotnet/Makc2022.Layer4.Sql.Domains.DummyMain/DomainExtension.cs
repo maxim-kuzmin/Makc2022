@@ -3,7 +3,7 @@
 using Makc2022.Layer1.Exceptions;
 using Makc2022.Layer1.Exceptions.VariableExceptions;
 using Makc2022.Layer1.Operation;
-using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.DummyMain;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMain;
 using Makc2022.Layer4.Sql.Domains.DummyMain.Operations.Item.Get;
 using Makc2022.Layer4.Sql.Domains.DummyMain.Operations.List.Get;
 
@@ -22,8 +22,8 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
         /// <param name="query">Запрос.</param>
         /// <param name="input">Входные данные.</param>
         /// <returns>Запрос с учётом фильтрации.</returns>
-        public static IQueryable<MapperDummyMainEntityObject> ApplyFiltering(
-            this IQueryable<MapperDummyMainEntityObject> query,
+        public static IQueryable<MapperDummyMainTypeEntity> ApplyFiltering(
+            this IQueryable<MapperDummyMainTypeEntity> query,
             DomainItemGetOperationInput input
             )
         {
@@ -46,8 +46,8 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
         /// <param name="query">Запрос.</param>
         /// <param name="input">Входные данные.</param>
         /// <returns>Запрос с учётом фильтрации.</returns>
-        public static IQueryable<MapperDummyMainEntityObject> ApplyFiltering(
-            this IQueryable<MapperDummyMainEntityObject> query,
+        public static IQueryable<MapperDummyMainTypeEntity> ApplyFiltering(
+            this IQueryable<MapperDummyMainTypeEntity> query,
             DomainListGetOperationInput input
             )
         {
@@ -103,8 +103,8 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
         /// <param name="query">Запрос.</param>
         /// <param name="input">Входные данные.</param>
         /// <returns>Запрос с учётом сортировки.</returns>
-        public static IQueryable<MapperDummyMainEntityObject> ApplySorting(
-            this IQueryable<MapperDummyMainEntityObject> query,
+        public static IQueryable<MapperDummyMainTypeEntity> ApplySorting(
+            this IQueryable<MapperDummyMainTypeEntity> query,
             DomainListGetOperationInput input
             )
         {
@@ -122,7 +122,7 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
 
             string sortDirection = input.SortDirection.ToLower();
 
-            MapperDummyMainEntityObject obj;
+            MapperDummyMainTypeEntity obj;
 
             string sortFieldForId = nameof(obj.Id).ToLower();
             string sortFieldForName = nameof(obj.Name).ToLower();
@@ -193,7 +193,7 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
 
             if (!string.IsNullOrWhiteSpace(sortField) && sortField != sortFieldForId)
             {
-                query = ((IOrderedQueryable<MapperDummyMainEntityObject>)query).ThenBy(x => x.Id);
+                query = ((IOrderedQueryable<MapperDummyMainTypeEntity>)query).ThenBy(x => x.Id);
             }
 
             return query;

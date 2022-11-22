@@ -2,7 +2,6 @@
 
 using Makc2022.Layer1.App;
 using Makc2022.Layer2.Sql;
-using Makc2022.Layer3.Sql.Sample.Entities;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Db;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -20,7 +19,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Setup
         {
             services.AddSingleton<IMapperService>(x => new MapperService(
                 x.GetRequiredService<IProvider>(),
-                x.GetRequiredService<EntitiesOptions>(),
+                x.GetRequiredService<TypesOptions>(),
                 x.GetRequiredService<IMapperDbContextFactory>()
                 ));
         }
@@ -43,7 +42,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Setup
         {
             return new[]
             {
-                typeof(EntitiesOptions),
+                typeof(TypesOptions),
                 typeof(IProvider),
                 typeof(IMapperDbContextFactory),
             };

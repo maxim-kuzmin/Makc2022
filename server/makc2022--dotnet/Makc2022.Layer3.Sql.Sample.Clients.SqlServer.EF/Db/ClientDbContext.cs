@@ -2,19 +2,19 @@
 
 using Makc2022.Layer3.Sql.Sample.Clients.SqlServer.Entities;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Db;
-using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.DummyMain;
-using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.DummyMainDummyManyToMany;
-using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.DummyManyToMany;
-using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.DummyOneToMany;
-using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.DummyTree;
-using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.DummyTreeLink;
-using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.Role;
-using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.RoleClaim;
-using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.User;
-using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.UserClaim;
-using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.UserLogin;
-using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.UserRole;
-using Makc2022.Layer3.Sql.Sample.Mappers.EF.Entities.UserToken;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMain;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMainDummyManyToMany;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyManyToMany;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyOneToMany;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyTree;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyTreeLink;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.Role;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.RoleClaim;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.User;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserClaim;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserLogin;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserRole;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserToken;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -42,23 +42,23 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Db
         {
             base.OnModelCreating(modelBuilder);
 
-            var entitiesOptions = ClientEntitiesOptions.Instance;
+            var typesOptions = ClientEntitiesOptions.Instance;
 
-            modelBuilder.ApplyConfiguration(new MapperDummyMainEntitySchema(entitiesOptions));
-            modelBuilder.ApplyConfiguration(new MapperDummyManyToManyEntitySchema(entitiesOptions));
-            modelBuilder.ApplyConfiguration(new MapperDummyMainDummyManyToManyEntitySchema(entitiesOptions));
-            modelBuilder.ApplyConfiguration(new MapperDummyOneToManyEntitySchema(entitiesOptions));
-            modelBuilder.ApplyConfiguration(new MapperDummyTreeEntitySchema(entitiesOptions));
-            modelBuilder.ApplyConfiguration(new MapperDummyTreeLinkEntitySchema(entitiesOptions));
+            modelBuilder.ApplyConfiguration(new MapperDummyMainTypeConfiguration(typesOptions));
+            modelBuilder.ApplyConfiguration(new MapperDummyManyToManyTypeConfiguration(typesOptions));
+            modelBuilder.ApplyConfiguration(new MapperDummyMainDummyManyToManyTypeConfiguration(typesOptions));
+            modelBuilder.ApplyConfiguration(new MapperDummyOneToManyTypeConfiguration(typesOptions));
+            modelBuilder.ApplyConfiguration(new MapperDummyTreeTypeConfiguration(typesOptions));
+            modelBuilder.ApplyConfiguration(new MapperDummyTreeLinkTypeConfiguration(typesOptions));
 
-            modelBuilder.ApplyConfiguration(new MapperRoleEntitySchema(entitiesOptions));
-            modelBuilder.ApplyConfiguration(new MapperRoleClaimEntitySchema(entitiesOptions));
+            modelBuilder.ApplyConfiguration(new MapperRoleTypeConfiguration(typesOptions));
+            modelBuilder.ApplyConfiguration(new MapperRoleClaimTypeConfiguration(typesOptions));
 
-            modelBuilder.ApplyConfiguration(new MapperUserEntitySchema(entitiesOptions));
-            modelBuilder.ApplyConfiguration(new MapperUserClaimEntitySchema(entitiesOptions));
-            modelBuilder.ApplyConfiguration(new MapperUserLoginEntitySchema(entitiesOptions));
-            modelBuilder.ApplyConfiguration(new MapperUserRoleEntitySchema(entitiesOptions));
-            modelBuilder.ApplyConfiguration(new MapperUserTokenEntitySchema(entitiesOptions));
+            modelBuilder.ApplyConfiguration(new MapperUserTypeConfiguration(typesOptions));
+            modelBuilder.ApplyConfiguration(new MapperUserClaimTypeConfiguration(typesOptions));
+            modelBuilder.ApplyConfiguration(new MapperUserLoginTypeConfiguration(typesOptions));
+            modelBuilder.ApplyConfiguration(new MapperUserRoleTypeConfiguration(typesOptions));
+            modelBuilder.ApplyConfiguration(new MapperUserTokenTypeConfiguration(typesOptions));
         }
 
         #endregion Protected methods
