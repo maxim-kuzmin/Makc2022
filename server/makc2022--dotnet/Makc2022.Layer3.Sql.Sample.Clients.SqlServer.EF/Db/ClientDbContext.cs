@@ -1,6 +1,5 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-using Makc2022.Layer3.Sql.Sample.Clients.SqlServer.Entities;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Db;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMain;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMainDummyManyToMany;
@@ -42,7 +41,7 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Db
         {
             base.OnModelCreating(modelBuilder);
 
-            var typesOptions = ClientEntitiesOptions.Instance;
+            var typesOptions = ClientTypesOptions.Instance;
 
             modelBuilder.ApplyConfiguration(new MapperDummyMainTypeConfiguration(typesOptions));
             modelBuilder.ApplyConfiguration(new MapperDummyManyToManyTypeConfiguration(typesOptions));

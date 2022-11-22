@@ -1,7 +1,6 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
 using Makc2022.Layer1.App;
-using Makc2022.Layer3.Sql.Sample.Clients.SqlServer.Entities;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.Setup
@@ -16,7 +15,7 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.Setup
         /// <inheritdoc/>
         public sealed override void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton(x => ClientEntitiesOptions.Instance); // EntitiesOptions
+            services.AddSingleton(x => ClientTypesOptions.Instance); // EntitiesOptions
         }
 
         /// <inheritdoc/>
