@@ -18,8 +18,8 @@ namespace Makc2022.Layer2.Sql.Operations.List.Get
         /// <returns>Запрос страницы.</returns>
         public static IQueryable<T> ApplyPagination<T>(this IQueryable<T> query, ListGetOperationInput input)
         {
-            return input.PageSize > 0 ?
-                query.Skip((input.PageNumber - 1) * input.PageSize).Take(input.PageSize)
+            return input.PageSize > 0
+                ? query.Skip((input.PageNumber - 1) * input.PageSize).Take(input.PageSize)
                 : query;
         }
 
