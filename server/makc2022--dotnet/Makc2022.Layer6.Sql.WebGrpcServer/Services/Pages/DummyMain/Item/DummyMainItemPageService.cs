@@ -43,27 +43,27 @@ namespace Makc2022.Layer6.Sql.WebGrpcServer.Services.Pages.DummyMain.Item
         {
             DummyMainItemPageGetOperationInput input = new();
 
-            input.InputOfDummyMainDomainItemGetOperation.Id = request.Item.EntityId;
+            input.DummyMainDomainItemGetOperationInput.Id = request.Item.Id;
 
-            var queryResult = await Service.Get(input, request.OperationCode);
+            var operationResult = await Service.Get(input, request.OperationCode);
 
-            var objectOfDummyMainEntity = queryResult.Output?.OutputOfDummyMainDomainItemGetOperation?.ObjectOfDummyMainEntity;
+            var entity = operationResult.Output?.DummyMainDomainItemGetOperationOutput?.DummyMain;
 
             return new DummyMainItemPageGetReply
             {
-                IsOk = queryResult.IsOk,
+                IsOk = operationResult.IsOk,
                 Output = new()
                 {
                     Item = new()
                     {
-                        ObjectOfDummyMainEntity = objectOfDummyMainEntity != null ? new()
+                        DummyMain = entity != null ? new()
                         {
-                            Id = objectOfDummyMainEntity.Id,
-                            Name = objectOfDummyMainEntity.Name
+                            Id = entity.Id,
+                            Name = entity.Name
                         } : null
                     }
                 },
-                OperationCode = queryResult.OperationCode
+                OperationCode = operationResult.OperationCode
             };
         }
 

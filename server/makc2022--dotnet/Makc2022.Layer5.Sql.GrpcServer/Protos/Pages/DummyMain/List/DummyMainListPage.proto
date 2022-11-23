@@ -33,16 +33,16 @@ message DummyMainDomainListGetOperationInput {
     int32 page_size = 2;
     google.protobuf.StringValue sort_direction = 3;
     google.protobuf.StringValue sort_field = 4;
-    google.protobuf.StringValue entity_name = 5;
+    google.protobuf.StringValue name = 5;
 }
 
-message DummyMainEntityObject {
+message DummyMainTypeEntity {
 	int64 id = 1;
 	string name = 2;
 }
 
 message DummyMainDomainItemGetOperationOutput {
-	DummyMainEntityObject object_of_dummy_main_entity = 1;	
+	DummyMainTypeEntity dummy_main = 1;	
 }
 
 message DummyMainDomainListGetOperationOutput {

@@ -39,17 +39,17 @@ namespace Makc2022.Layer6.Sql.WebGrpcClient.Controllers.Pages.DummyMain.Item
         /// Получить.
         /// </summary>
         /// <param name="operationCode">Код операции.</param>
-        /// <param name="entityId">Идентификатор сущности.</param>
+        /// <param name="id">Идентификатор.</param>
         /// <returns>Задача на получение результата.</returns>
-        [HttpGet, Route("{entityId}")]
-        public async Task<IActionResult> Get(string operationCode, int entityId)
+        [HttpGet, Route("{id}")]
+        public async Task<IActionResult> Get(string operationCode, int id)
         {
             DummyMainItemPageGetRequest request = new()
             {
                 OperationCode = operationCode,
                 Item = new()
                 {
-                    EntityId = entityId
+                    Id = id
                 }
             };
 

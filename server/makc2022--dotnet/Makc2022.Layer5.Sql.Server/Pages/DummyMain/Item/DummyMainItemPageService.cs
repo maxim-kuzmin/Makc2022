@@ -16,9 +16,9 @@ namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.Item
     {
         #region Properties
 
-        private IDummyMainDomainItemGetOperationHandler HandlerOfDummyMainDomainItemGetOperation { get; }
+        private IDummyMainDomainItemGetOperationHandler DummyMainDomainItemGetOperationHandler { get; }
 
-        private IDummyMainDomainService ServiceOfDummyMainDomain { get; }
+        private IDummyMainDomainService DummyMainDomainService { get; }
 
         #endregion Properties
 
@@ -27,15 +27,15 @@ namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.Item
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="handlerOfDummyMainDomainItemGetOperation">Обработчик операции получения элемента в домене "Фиктивное главное".</param>
-        /// <param name="serviceOfDummyMainDomain">Сервис домена "Фиктивное главное".</param>
+        /// <param name="dummyMainDomainItemGetOperationHandler">Обработчик операции получения элемента в домене "Фиктивное главное".</param>
+        /// <param name="dummyMainDomainService">Сервис домена "Фиктивное главное".</param>
         public DummyMainItemPageService(
-            IDummyMainDomainItemGetOperationHandler handlerOfDummyMainDomainItemGetOperation,
-            IDummyMainDomainService serviceOfDummyMainDomain
+            IDummyMainDomainItemGetOperationHandler dummyMainDomainItemGetOperationHandler,
+            IDummyMainDomainService dummyMainDomainService
             )
         {
-            HandlerOfDummyMainDomainItemGetOperation = handlerOfDummyMainDomainItemGetOperation;
-            ServiceOfDummyMainDomain = serviceOfDummyMainDomain;
+            DummyMainDomainItemGetOperationHandler = dummyMainDomainItemGetOperationHandler;
+            DummyMainDomainService = dummyMainDomainService;
         }
 
         #endregion Constructors
@@ -61,11 +61,11 @@ namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.Item
 
             DummyMainItemPageGetOperationOutput output = new();
 
-            List<OperationResult> queryResults = new();
+            List<OperationResult> operationResults = new();
 
-            var item = input.InputOfDummyMainDomainItemGetOperation;
+            var item = input.DummyMainDomainItemGetOperationInput;
 
-            await queryResults.AddWithOutputAsync(
+            await operationResults.AddWithOutputAsync(
                 () => GetItemGetOperationResult(
                     new DummyMainDomainItemGetOperationInput
                     {
@@ -73,9 +73,9 @@ namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.Item
                     },
                     operationCode
                     ),
-                queryOutput => output.OutputOfDummyMainDomainItemGetOperation = queryOutput);
+                operationOutput => output.DummyMainDomainItemGetOperationOutput = operationOutput);
 
-            result.Load(queryResults);
+            result.Load(operationResults);
 
             if (result.IsOk)
             {
@@ -94,22 +94,22 @@ namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.Item
             string operationCode
             )
         {
-            var queryHandler = HandlerOfDummyMainDomainItemGetOperation;
+            var operationHandler = DummyMainDomainItemGetOperationHandler;
 
             try
             {
-                queryHandler.OnStart(input, operationCode);
+                operationHandler.OnStart(input, operationCode);
 
-                var queryOutput = await ServiceOfDummyMainDomain.GetItem(queryHandler.OperationInput!);
+                var operationOutput = await DummyMainDomainService.GetItem(operationHandler.OperationInput!);
 
-                queryHandler.OnSuccess(queryOutput);
+                operationHandler.OnSuccess(operationOutput);
             }
             catch (Exception ex)
             {
-                queryHandler.OnError(ex);
+                operationHandler.OnError(ex);
             }
 
-            return queryHandler.OperationResult!;
+            return operationHandler.OperationResult!;
         }
 
         #endregion Private methods

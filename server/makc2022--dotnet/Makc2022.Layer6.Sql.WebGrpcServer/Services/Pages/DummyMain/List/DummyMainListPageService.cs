@@ -47,15 +47,15 @@ namespace Makc2022.Layer6.Sql.WebGrpcServer.Services.Pages.DummyMain.List
             input.List.PageSize = request.List.PageSize;
             input.List.SortDirection = request.List.SortDirection;
             input.List.SortField = request.List.SortField;
-            input.List.Name = request.List.EntityName;
+            input.List.Name = request.List.Name;
 
-            var queryResult = await Service.Get(input, request.OperationCode);
+            var operationResult = await Service.Get(input, request.OperationCode);
 
-            var list = queryResult.Output?.List;
+            var list = operationResult.Output?.List;
 
             var result = new DummyMainListPageGetReply
             {
-                IsOk = queryResult.IsOk,
+                IsOk = operationResult.IsOk,
                 Output = new()
                 {
                     List = list != null ? new()
@@ -63,21 +63,21 @@ namespace Makc2022.Layer6.Sql.WebGrpcServer.Services.Pages.DummyMain.List
                         TotalCount = list.TotalCount
                     } : null
                 },
-                OperationCode = queryResult.OperationCode
+                OperationCode = operationResult.OperationCode
             };
 
-            result.ErrorMessages.AddRange(queryResult.ErrorMessages);            
-            result.WarningMessages.AddRange(queryResult.WarningMessages);
-            result.SuccessMessages.AddRange(queryResult.SuccessMessages);
+            result.ErrorMessages.AddRange(operationResult.ErrorMessages);            
+            result.WarningMessages.AddRange(operationResult.WarningMessages);
+            result.SuccessMessages.AddRange(operationResult.SuccessMessages);
 
             result.Output.List?.Items.AddRange(
                 list?.Items?.Select(x =>
                     new DummyMainDomainItemGetOperationOutput
                     {
-                        ObjectOfDummyMainEntity = x.ObjectOfDummyMainEntity != null ? new()
+                        DummyMain = x.DummyMain != null ? new()
                         {
-                            Id = x.ObjectOfDummyMainEntity.Id,
-                            Name = x.ObjectOfDummyMainEntity.Name
+                            Id = x.DummyMain.Id,
+                            Name = x.DummyMain.Name
                         } : null
                     })
                 );

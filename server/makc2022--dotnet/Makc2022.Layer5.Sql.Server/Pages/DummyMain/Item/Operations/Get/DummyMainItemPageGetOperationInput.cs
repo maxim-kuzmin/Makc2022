@@ -14,7 +14,7 @@ namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.Item.Operations.Get
         /// <summary>
         /// Входные данные операции получения элемента в домене "Фиктивное главное".
         /// </summary>
-        public DummyMainDomainItemGetOperationInput InputOfDummyMainDomainItemGetOperation { get; } = new();
+        public DummyMainDomainItemGetOperationInput DummyMainDomainItemGetOperationInput { get; } = new();
 
         #endregion Properties
     }

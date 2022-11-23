@@ -59,7 +59,7 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain.Operations.Item.Get
 
         private DomainItemGetOperationOutput? TransformOperationOutput(DomainItemGetOperationOutput output)
         {
-            return output.ObjectOfDummyMainEntity != null ? output : null;
+            return output.DummyMain != null ? output : null;
         }
 
         #endregion Private methods

@@ -15,24 +15,24 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain.Operations.Item.Get
         #region Properties
 
         /// <summary>
-        /// Сущность типа "Фиктивное главное".
+        /// Экземпляр сущности "Фиктивное главное".
         /// </summary>
-        public DummyMainTypeEntity? ObjectOfDummyMainEntity { get; set; }
+        public DummyMainTypeEntity? DummyMain { get; set; }
 
         /// <summary>
-        /// Объекты сущности "Фиктивное отношение многие ко многим".
+        /// Список экземпляров сущности "Фиктивное отношение многие ко многим фиктивного главного".
         /// </summary>
-        public DummyManyToManyTypeEntity[]? ObjectsOfDummyManyToManyEntity { get; set; }
+        public DummyMainDummyManyToManyTypeEntity[]? DummyMainDummyManyToManyList { get; set; }
 
         /// <summary>
-        /// Объекты сущности "Фиктивное отношение многие ко многим фиктивного главного".
+        /// Список экземпляров сущности "Фиктивное отношение многие ко многим".
         /// </summary>
-        public DummyMainDummyManyToManyTypeEntity[]? ObjectsOfDummyMainDummyManyToManyEntity { get; set; }
+        public DummyManyToManyTypeEntity[]? DummyManyToManyList { get; set; }
 
         /// <summary>
-        /// Сущность типа "Фиктивное отношение один ко многим".
+        /// Экземпляр сущности "Фиктивное отношение один ко многим".
         /// </summary>
-        public DummyOneToManyTypeEntity? ObjectOfDummyOneToManyEntity { get; set; }
+        public DummyOneToManyTypeEntity? DummyOneToMany { get; set; }
 
         #endregion Properties
     }

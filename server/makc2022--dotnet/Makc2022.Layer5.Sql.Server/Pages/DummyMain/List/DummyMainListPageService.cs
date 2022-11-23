@@ -14,24 +14,24 @@ namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.List
     /// </summary>
     public class DummyMainListPageService : IDummyMainListPageService
     {
-        private IDummyMainDomainListGetOperationHandler HandlerOfMainDomainDomainListGetOperation { get; }
+        private IDummyMainDomainListGetOperationHandler DummyMainDomainListGetOperationHandler { get; }
 
-        private IDummyMainDomainService ServiceOfDummyMainDomain { get; }
+        private IDummyMainDomainService DummyMainDomainService { get; }
 
         #region Constructors
 
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="handlerOfMainDomainDomainListGetOperation">Обработчик операции получения списка в домене "Фиктивное главное".</param>
-        /// <param name="serviceOfDummyMainDomain">Сервис домена "Фиктивное главное".</param>
+        /// <param name="dummyMainDomainListGetOperationHandler">Обработчик операции получения списка в домене "Фиктивное главное".</param>
+        /// <param name="dummyMainDomainService">Сервис домена "Фиктивное главное".</param>
         public DummyMainListPageService(
-            IDummyMainDomainListGetOperationHandler handlerOfMainDomainDomainListGetOperation,
-            IDummyMainDomainService serviceOfDummyMainDomain
+            IDummyMainDomainListGetOperationHandler dummyMainDomainListGetOperationHandler,
+            IDummyMainDomainService dummyMainDomainService
             )
         {
-            HandlerOfMainDomainDomainListGetOperation = handlerOfMainDomainDomainListGetOperation;
-            ServiceOfDummyMainDomain = serviceOfDummyMainDomain;
+            DummyMainDomainListGetOperationHandler = dummyMainDomainListGetOperationHandler;
+            DummyMainDomainService = dummyMainDomainService;
         }
 
         #endregion Constructors
@@ -57,11 +57,11 @@ namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.List
 
             DummyMainListPageGetOperationOutput output = new();
 
-            List<OperationResult> queryResults = new();
+            List<OperationResult> operationResults = new();
 
             var list = input.List;
 
-            await queryResults.AddWithOutputAsync(
+            await operationResults.AddWithOutputAsync(
                 () => GetListGetOperationResult(
                     new DummyMainDomainListGetOperationInput
                     {
@@ -73,10 +73,10 @@ namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.List
                     },
                     operationCode
                     ),
-                queryOutput => output.List = queryOutput
+                operationOutput => output.List = operationOutput
                 );
 
-            result.Load(queryResults);
+            result.Load(operationResults);
 
             if (result.IsOk)
             {
@@ -95,22 +95,22 @@ namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.List
             string operationCode
             )
         {
-            var queryHandler = HandlerOfMainDomainDomainListGetOperation;
+            var operationHandler = DummyMainDomainListGetOperationHandler;
 
             try
             {
-                queryHandler.OnStart(input, operationCode);
+                operationHandler.OnStart(input, operationCode);
 
-                var queryOutput = await ServiceOfDummyMainDomain.GetList(queryHandler.OperationInput!);
+                var operationOutput = await DummyMainDomainService.GetList(operationHandler.OperationInput!);
 
-                queryHandler.OnSuccess(queryOutput);
+                operationHandler.OnSuccess(operationOutput);
             }
             catch (Exception ex)
             {
-                queryHandler.OnError(ex);
+                operationHandler.OnError(ex);
             }
 
-            return queryHandler.OperationResult!;
+            return operationHandler.OperationResult!;
         }
 
         #endregion Private methods

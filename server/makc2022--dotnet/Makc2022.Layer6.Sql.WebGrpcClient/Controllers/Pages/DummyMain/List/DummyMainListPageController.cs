@@ -43,7 +43,7 @@ namespace Makc2022.Layer6.Sql.WebGrpcClient.Controllers.Pages.DummyMain.List
         /// <param name="pageSize">Размер страницы.</param>
         /// <param name="sortDirection">Направление сортировки.</param>
         /// <param name="sortField">Поле сортировки.</param>
-        /// <param name="entityName">Имя сущности.</param>
+        /// <param name="name">Имя.</param>
         /// <returns>Задача на получение результата.</returns>
         [HttpGet]
         public async Task<IActionResult> Get(
@@ -52,7 +52,7 @@ namespace Makc2022.Layer6.Sql.WebGrpcClient.Controllers.Pages.DummyMain.List
             int pageSize,
             string sortDirection,
             string sortField,
-            string entityName
+            string name
             )
         {
             DummyMainListPageGetRequest request = new()
@@ -64,7 +64,7 @@ namespace Makc2022.Layer6.Sql.WebGrpcClient.Controllers.Pages.DummyMain.List
                     PageSize = pageSize,
                     SortDirection = sortDirection,
                     SortField = sortField,
-                    EntityName = entityName
+                    Name = name
                 }
             };
 

@@ -45,31 +45,31 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
 
             using var dbContext = MapperDbFactoryForSample.CreateDbContext();
 
-            var entityOfDummyMain = await dbContext.DummyMain!
+            var entity = await dbContext.DummyMain!
                 .Include(x => x.DummyOneToMany)
                 .Include(x => x.DummyMainDummyManyToManyList)
                 .ApplyFiltering(input)
                 .FirstOrDefaultAsync();
 
-            if (entityOfDummyMain != null)
+            if (entity != null)
             {
-                result = CreateItem(entityOfDummyMain);
+                result = CreateItem(entity);
 
-                if (result.ObjectsOfDummyMainDummyManyToManyEntity != null)
+                if (result.DummyMainDummyManyToManyList != null)
                 {
-                    long[] idsOfDummyManyToMany = result.ObjectsOfDummyMainDummyManyToManyEntity
+                    long[] ids = result.DummyMainDummyManyToManyList
                         .Select(x => x.DummyManyToManyId)
                         .ToArray();
 
-                    if (idsOfDummyManyToMany.Any())
+                    if (ids.Any())
                     {
-                        var enitiesOfDummyManyToMany = await dbContext.DummyManyToMany!
-                            .Where(x => idsOfDummyManyToMany.Contains(x.Id))
+                        var enities = await dbContext.DummyManyToMany!
+                            .Where(x => ids.Contains(x.Id))
                             .ToArrayAsync();
 
-                        if (enitiesOfDummyManyToMany.Any())
+                        if (enities.Any())
                         {
-                            InitItemDummyManyToMany(result, enitiesOfDummyManyToMany);
+                            InitItemDummyManyToMany(result, enities);
                         }
                     }
                 }
@@ -86,46 +86,46 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
             using var dbContext = MapperDbFactoryForSample.CreateDbContext();
             using var dbContextForTotalCount = MapperDbFactoryForSample.CreateDbContext();
 
-            var queryOfItems = dbContext.DummyMain!
+            var itemsQuery = dbContext.DummyMain!
                 .Include(x => x.DummyOneToMany)
                 .Include(x => x.DummyMainDummyManyToManyList)
                 .ApplyFiltering(input)
                 .ApplySorting(input)
                 .ApplyPagination(input);
 
-            var queryOfTotalCount = dbContextForTotalCount.DummyMain!
+            var totalCountQuery = dbContextForTotalCount.DummyMain!
                 .ApplyFiltering(input);
 
-            var taskOfItems = queryOfItems.ToArrayAsync();
-            var taskOfTotalCount = queryOfTotalCount.CountAsync();
+            var itemsTask = itemsQuery.ToArrayAsync();
+            var totalCountTask = totalCountQuery.CountAsync();
 
-            await Task.WhenAll(taskOfItems, taskOfTotalCount);
+            await Task.WhenAll(itemsTask, totalCountTask);
 
-            result.Items = taskOfItems.Result.Select(x => CreateItem(x)).ToArray();
-            result.TotalCount = taskOfTotalCount.Result;
+            result.Items = itemsTask.Result.Select(x => CreateItem(x)).ToArray();
+            result.TotalCount = totalCountTask.Result;
 
             if (result.Items.Any())
             {
-                long[] idsDummyManyToMany = result.Items
-                    .Where(x => x.ObjectsOfDummyMainDummyManyToManyEntity != null)
-                    .SelectMany(x => x.ObjectsOfDummyMainDummyManyToManyEntity!)
+                long[] ids = result.Items
+                    .Where(x => x.DummyMainDummyManyToManyList != null)
+                    .SelectMany(x => x.DummyMainDummyManyToManyList!)
                     .Select(x => x.DummyManyToManyId)
                     .Distinct()
                     .ToArray();
 
-                if (idsDummyManyToMany.Any())
+                if (ids.Any())
                 {
-                    var lookupOfDummyManyToMany = await dbContext.DummyManyToMany!
-                        .Where(x => idsDummyManyToMany.Contains(x.Id))
+                    var lookup = await dbContext.DummyManyToMany!
+                        .Where(x => ids.Contains(x.Id))
                         .ToDictionaryAsync(x => x.Id);
 
-                    if (lookupOfDummyManyToMany.Any())
+                    if (lookup.Any())
                     {
                         foreach (var item in result.Items)
                         {
-                            if (item.ObjectsOfDummyMainDummyManyToManyEntity != null)
+                            if (item.DummyMainDummyManyToManyList != null)
                             {
-                                InitItemDummyManyToMany(item, lookupOfDummyManyToMany);
+                                InitItemDummyManyToMany(item, lookup);
                             }
                         }
                     }
@@ -143,13 +143,13 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
         {
             var result = new DomainItemGetOperationOutput
             {
-                ObjectOfDummyMainEntity = entity.ToEntity(),
-                ObjectOfDummyOneToManyEntity = entity.DummyOneToMany!.ToEntity()
+                DummyMain = entity.ToEntity(),
+                DummyOneToMany = entity.DummyOneToMany!.ToEntity()
             };
 
             if (entity.DummyMainDummyManyToManyList.Any())
             {
-                result.ObjectsOfDummyMainDummyManyToManyEntity = entity.DummyMainDummyManyToManyList
+                result.DummyMainDummyManyToManyList = entity.DummyMainDummyManyToManyList
                     .Select(x => x.ToEntity())
                     .ToArray();
             }
@@ -162,7 +162,7 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
             IEnumerable<MapperDummyManyToManyTypeEntity> enities
             )
         {
-            item.ObjectsOfDummyManyToManyEntity = enities
+            item.DummyManyToManyList = enities
                 .OrderBy(x => x.Name)
                 .ThenBy(x => x.Id)
                 .Select(x => x.ToEntity())
@@ -174,7 +174,7 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
             IDictionary<long, MapperDummyManyToManyTypeEntity> lookup
             )
         {
-            long[] ids = item.ObjectsOfDummyMainDummyManyToManyEntity!
+            long[] ids = item.DummyMainDummyManyToManyList!
                 .Select(x => x.DummyManyToManyId)
                 .ToArray();
 
