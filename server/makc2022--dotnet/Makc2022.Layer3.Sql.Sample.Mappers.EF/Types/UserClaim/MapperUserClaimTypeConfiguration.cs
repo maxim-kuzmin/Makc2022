@@ -47,14 +47,14 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserClaim
                 .HasColumnName(options.DbColumnForId);
 
             builder.Property(x => x.UserId)
-                .HasColumnName(options.DbColumnForUserEntityId);
+                .HasColumnName(options.DbColumnForUserId);
 
-            builder.HasIndex(x => x.UserId).HasDatabaseName(options.DbIndexForUserEntityId);
+            builder.HasIndex(x => x.UserId).HasDatabaseName(options.DbIndexForUserId);
 
             builder.HasOne(x => x.User)
                 .WithMany(x => x.UserClaimList)
                 .HasForeignKey(x => x.UserId)
-                .HasConstraintName(options.DbForeignKeyToUserEntity);
+                .HasConstraintName(options.DbForeignKeyToUser);
         }
 
         #endregion Public methods    

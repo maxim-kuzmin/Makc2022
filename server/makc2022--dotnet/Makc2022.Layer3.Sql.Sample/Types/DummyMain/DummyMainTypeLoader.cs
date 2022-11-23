@@ -61,14 +61,14 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyMain
                 Entity.PropDateNullable = entity.PropDateNullable;
             }
 
-            if (result.Contains(nameof(Entity.PropDateTimeOffset)))
+            if (result.Contains(nameof(Entity.PropDateTime)))
             {
-                Entity.PropDateTimeOffset = entity.PropDateTimeOffset;
+                Entity.PropDateTime = entity.PropDateTime;
             }
 
-            if (result.Contains(nameof(Entity.PropDateTimeOffsetNullable)))
+            if (result.Contains(nameof(Entity.PropDateTimeNullable)))
             {
-                Entity.PropDateTimeOffsetNullable = entity.PropDateTimeOffsetNullable;
+                Entity.PropDateTimeNullable = entity.PropDateTimeNullable;
             }
 
             if (result.Contains(nameof(Entity.PropDecimal)))
@@ -130,8 +130,8 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyMain
                 nameof(Entity.PropBooleanNullable),
                 nameof(Entity.PropDate),
                 nameof(Entity.PropDateNullable),
-                nameof(Entity.PropDateTimeOffset),
-                nameof(Entity.PropDateTimeOffsetNullable),
+                nameof(Entity.PropDateTime),
+                nameof(Entity.PropDateTimeNullable),
                 nameof(Entity.PropDecimal),
                 nameof(Entity.PropDecimalNullable),
                 nameof(Entity.PropInt32),

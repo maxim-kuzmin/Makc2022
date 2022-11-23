@@ -118,13 +118,13 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
             }
 
             builder.LinkTableFieldNameForId = linkOptions.DbColumnForId;
-            builder.LinkTableFieldNameForParentId = linkOptions.DbColumnForDummyTreeEntityParentId;
+            builder.LinkTableFieldNameForParentId = linkOptions.DbColumnForParentId;
 
             builder.LinkTableNameWithoutSchema = linkOptions.DbTable;
             builder.LinkTableSchema = linkOptions.DbSchema;
 
             builder.TreeTableFieldNameForId = treeOptions.DbColumnForId;
-            builder.TreeTableFieldNameForParentId = treeOptions.DbColumnForDummyTreeEntityParentId;
+            builder.TreeTableFieldNameForParentId = treeOptions.DbColumnForParentId;
             builder.TreeTableFieldNameForTreeChildCount = treeOptions.DbColumnForTreeChildCount;
             builder.TreeTableFieldNameForTreeDescendantCount = treeOptions.DbColumnForTreeDescendantCount;
             builder.TreeTableFieldNameForTreeLevel = treeOptions.DbColumnForTreeLevel;
@@ -161,8 +161,8 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
                 PropBooleanNullable = isEven ? new bool?(!isEven) : null,
                 PropDate = new DateTime(2018, 01, day),
                 PropDateNullable = isEven ? new DateTime?(new DateTime(2018, 02, day)) : null,
-                PropDateTimeOffset = dateAndOffsetLocal,
-                PropDateTimeOffsetNullable = isEven ? new DateTimeOffset?(dateAndOffsetLocal) : null,
+                PropDateTime = dateAndOffsetLocal,
+                PropDateTimeNullable = isEven ? new DateTimeOffset?(dateAndOffsetLocal) : null,
                 PropDecimal = 1000M + index + (index / 100M),
                 PropDecimalNullable = isEven ? new decimal?(2000M + index + (index / 200M)) : null,
                 PropInt32 = 1000 + (int)index,

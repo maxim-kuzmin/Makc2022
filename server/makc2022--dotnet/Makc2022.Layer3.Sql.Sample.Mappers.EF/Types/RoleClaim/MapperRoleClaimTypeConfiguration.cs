@@ -47,14 +47,14 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.RoleClaim
                 .HasColumnName(options.DbColumnForId);
 
             builder.Property(x => x.RoleId)
-                .HasColumnName(options.DbColumnForRoleEntityId);
+                .HasColumnName(options.DbColumnForRoleId);
 
-            builder.HasIndex(x => x.RoleId).IsUnique().HasDatabaseName(options.DbUniqueIndexForRoleEntityId);
+            builder.HasIndex(x => x.RoleId).IsUnique().HasDatabaseName(options.DbUniqueIndexForRoleId);
 
             builder.HasOne(x => x.Role)
                 .WithMany(x => x.RoleClaimList)
                 .HasForeignKey(x => x.RoleId)
-                .HasConstraintName(options.DbForeignKeyToRoleEntity);
+                .HasConstraintName(options.DbForeignKeyToRole);
         }
 
         #endregion Public methods    

@@ -23,9 +23,9 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserToken
         public string? DbColumnForName { get; set; }
 
         /// <summary>
-        /// Колонка в базе данных для поля идентификатора сущности "Пользователь".
+        /// Колонка в базе данных для поля "UserId".
         /// </summary>
-        public string? DbColumnForUserEntityId { get; set; }
+        public string? DbColumnForUserId { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля "Value".
@@ -33,9 +33,9 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserToken
         public string? DbColumnForValue { get; set; }
 
         /// <summary>
-        /// Внешний ключ в базе данных к сущности "Пользователь".
+        /// Внешний ключ в базе данных к типу "Пользователь".
         /// </summary>
-        public string? DbForeignKeyToUserEntity { get; set; }
+        public string? DbForeignKeyToUser { get; set; }
 
         /// <summary>
         /// Первичный ключ в базе данных.
@@ -63,7 +63,7 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserToken
         {
             DbColumnForName = dbDefaults.DbColumnForName;
 
-            DbForeignKeyToUserEntity = CreateDbForeignKeyName(DbTable, userTypeOptions.DbTable);
+            DbForeignKeyToUser = CreateDbForeignKeyName(DbTable, userTypeOptions.DbTable);
 
             DbPrimaryKey = CreateDbPrimaryKeyName(DbTable);
         }

@@ -47,12 +47,12 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyMain
         /// <summary>
         /// Свойство, содержащее дату и время с часовым поясом.
         /// </summary>
-        public DateTimeOffset PropDateTimeOffset { get; set; }
+        public DateTimeOffset PropDateTime { get; set; }
 
         /// <summary>
         /// Свойство, содержащее дату и время с часовым поясом или NULL.
         /// </summary>
-        public DateTimeOffset? PropDateTimeOffsetNullable { get; set; }
+        public DateTimeOffset? PropDateTimeNullable { get; set; }
 
         /// <summary>
         /// Свойство, содержащее десятичную дробь.

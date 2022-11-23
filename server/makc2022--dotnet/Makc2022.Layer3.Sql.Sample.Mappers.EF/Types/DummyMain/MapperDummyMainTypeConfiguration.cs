@@ -49,7 +49,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMain
 
             builder.Property(x => x.DummyOneToManyId)
                 .IsRequired()
-                .HasColumnName(options.DbColumnForDummyOneToManyEntityId);
+                .HasColumnName(options.DbColumnForDummyOneToManyId);
 
             builder.Property(x => x.PropBoolean)
                 .IsRequired()
@@ -65,12 +65,12 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMain
             builder.Property(x => x.PropDateNullable)
                 .HasColumnName(options.DbColumnForPropDateNullable);
 
-            builder.Property(x => x.PropDateTimeOffset)
+            builder.Property(x => x.PropDateTime)
                 .IsRequired()
-                .HasColumnName(options.DbColumnForPropDateTimeOffset);
+                .HasColumnName(options.DbColumnForPropDateTime);
 
-            builder.Property(x => x.PropDateTimeOffsetNullable)
-                .HasColumnName(options.DbColumnForPropDateTimeOffsetNullable);
+            builder.Property(x => x.PropDateTimeNullable)
+                .HasColumnName(options.DbColumnForPropDateTimeNullable);
 
             builder.Property(x => x.PropDecimal)
                 .IsRequired()
@@ -103,12 +103,12 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMain
                 .HasColumnName(options.DbColumnForPropStringNullable);
 
             builder.HasIndex(x => x.Name).IsUnique().HasDatabaseName(options.DbUniqueIndexForName);
-            builder.HasIndex(x => x.DummyOneToManyId).HasDatabaseName(options.DbIndexForDummyOneToManyEntityId);
+            builder.HasIndex(x => x.DummyOneToManyId).HasDatabaseName(options.DbIndexForDummyOneToManyId);
 
             builder.HasOne(x => x.DummyOneToMany)
                 .WithMany(x => x.DummyMainList)
                 .HasForeignKey(x => x.DummyOneToManyId)
-                .HasConstraintName(options.DbForeignKeyToDummyOneToManyEntity);
+                .HasConstraintName(options.DbForeignKeyToDummyOneToMany);
         }
 
         #endregion Public methods

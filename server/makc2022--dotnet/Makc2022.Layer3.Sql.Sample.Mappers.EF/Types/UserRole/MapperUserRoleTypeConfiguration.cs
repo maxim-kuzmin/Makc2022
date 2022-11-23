@@ -39,23 +39,23 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserRole
 
             builder.Property(x => x.UserId)
                 .IsRequired()
-                .HasColumnName(options.DbColumnForUserEntityId);
+                .HasColumnName(options.DbColumnForUserId);
 
             builder.Property(x => x.RoleId)
                 .IsRequired()
-                .HasColumnName(options.DbColumnForRoleEntityId);
+                .HasColumnName(options.DbColumnForRoleId);
 
-            builder.HasIndex(x => x.RoleId).HasDatabaseName(options.DbIndexForRoleEntityId);
+            builder.HasIndex(x => x.RoleId).HasDatabaseName(options.DbIndexForRoleId);
 
             builder.HasOne(x => x.User)
                 .WithMany(x => x.UserRoleList)
                 .HasForeignKey(x => x.UserId)
-                .HasConstraintName(options.DbForeignKeyToUserEntity);
+                .HasConstraintName(options.DbForeignKeyToUser);
 
             builder.HasOne(x => x.Role)
                 .WithMany(x => x.UserRoleList)
                 .HasForeignKey(x => x.RoleId)
-                .HasConstraintName(options.DbForeignKeyToRoleEntity);
+                .HasConstraintName(options.DbForeignKeyToRole);
         }
 
         #endregion Public methods    

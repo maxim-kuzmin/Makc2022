@@ -29,14 +29,14 @@ namespace Makc2022.Layer3.Sql.Sample.Types.RoleClaim
         public string? DbColumnForId { get; set; }
 
         /// <summary>
-        /// Колонка в базе данных для поля идентификатора сущности "Роль".
+        /// Колонка в базе данных для поля "RoleId".
         /// </summary>
-        public string? DbColumnForRoleEntityId { get; set; }
+        public string? DbColumnForRoleId { get; set; }
 
         /// <summary>
-        /// Внешний ключ в базе данных к сущности "Роль".
+        /// Внешний ключ в базе данных к типу "Роль".
         /// </summary>
-        public string? DbForeignKeyToRoleEntity { get; set; }
+        public string? DbForeignKeyToRole { get; set; }
 
         /// <summary>
         /// Первичный ключ в базе данных.
@@ -44,9 +44,9 @@ namespace Makc2022.Layer3.Sql.Sample.Types.RoleClaim
         public string? DbPrimaryKey { get; set; }
 
         /// <summary>
-        /// Индекс в базе данных для поля идентификатора сущности "Роль".
+        /// Индекс в базе данных для поля "RoleId".
         /// </summary>
-        public string? DbUniqueIndexForRoleEntityId { get; set; }
+        public string? DbUniqueIndexForRoleId { get; set; }
 
         #endregion Properties
 
@@ -76,14 +76,14 @@ namespace Makc2022.Layer3.Sql.Sample.Types.RoleClaim
                     nameof(roleTypeOptions.DbColumnForId));
             }
 
-            DbColumnForRoleEntityId = CreateDbColumnName(
+            DbColumnForRoleId = CreateDbColumnName(
                 roleTypeOptions.DbTable,
                 roleTypeOptions.DbColumnForId
                 );
 
-            DbForeignKeyToRoleEntity = CreateDbForeignKeyName(DbTable, roleTypeOptions.DbTable);
+            DbForeignKeyToRole = CreateDbForeignKeyName(DbTable, roleTypeOptions.DbTable);
 
-            DbUniqueIndexForRoleEntityId = CreateDbUniqueIndexName(DbTable, DbColumnForRoleEntityId);
+            DbUniqueIndexForRoleId = CreateDbUniqueIndexName(DbTable, DbColumnForRoleId);
 
             DbPrimaryKey = CreateDbPrimaryKeyName(DbTable);
         }

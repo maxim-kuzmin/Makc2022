@@ -28,9 +28,9 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserClaim
         public string? DbColumnForId { get; set; }
 
         /// <summary>
-        /// Колонка в базе данных для поля идентификатора сущности "Пользователь".
+        /// Колонка в базе данных для поля "UserId".
         /// </summary>
-        public string? DbColumnForUserEntityId { get; set; }
+        public string? DbColumnForUserId { get; set; }
 
         /// <summary>
         /// Первичный ключ в базе данных.
@@ -38,14 +38,14 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserClaim
         public string? DbPrimaryKey { get; set; }
 
         /// <summary>
-        /// Внешний ключ в базе данных к сущности "Пользователь".
+        /// Внешний ключ в базе данных к типу "Пользователь".
         /// </summary>
-        public string? DbForeignKeyToUserEntity { get; set; }
+        public string? DbForeignKeyToUser { get; set; }
 
         /// <summary>
-        /// Индекс в базе данных для поля идентификатора сущности "Пользователь".
+        /// Индекс в базе данных для поля "UserId".
         /// </summary>
-        public string? DbIndexForUserEntityId { get; set; }
+        public string? DbIndexForUserId { get; set; }
 
         #endregion Properties
 
@@ -70,11 +70,11 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserClaim
         {
             DbColumnForId = defaults.DbColumnForId;
 
-            DbColumnForUserEntityId = dbColumnNameForUserId ?? nameof(UserClaimTypeEntity.UserId);
+            DbColumnForUserId = dbColumnNameForUserId ?? nameof(UserClaimTypeEntity.UserId);
 
-            DbForeignKeyToUserEntity = CreateDbForeignKeyName(DbTable, userTypeOptions.DbTable);
+            DbForeignKeyToUser = CreateDbForeignKeyName(DbTable, userTypeOptions.DbTable);
 
-            DbIndexForUserEntityId = CreateDbIndexName(DbTable, DbColumnForUserEntityId);
+            DbIndexForUserId = CreateDbIndexName(DbTable, DbColumnForUserId);
 
             DbPrimaryKey = CreateDbPrimaryKeyName(DbTable);
         }

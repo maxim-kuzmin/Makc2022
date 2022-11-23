@@ -15,29 +15,29 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserRole
         #region Properties
 
         /// <summary>
-        /// Колонка в базе данных для поля идентификатора сущности "Роль".
+        /// Колонка в базе данных для поля "RoleId".
         /// </summary>
-        public string? DbColumnForRoleEntityId { get; set; }
+        public string? DbColumnForRoleId { get; set; }
 
         /// <summary>
-        /// Колонка в базе данных для поля идентификатора сущности "Пользователь".
+        /// Колонка в базе данных для поля "UserId".
         /// </summary>
-        public string? DbColumnForUserEntityId { get; set; }
+        public string? DbColumnForUserId { get; set; }
 
         /// <summary>
-        /// Внешний ключ в базе данных к сущности "Роль".
+        /// Внешний ключ в базе данных к типу "Роль".
         /// </summary>
-        public string? DbForeignKeyToRoleEntity { get; set; }
+        public string? DbForeignKeyToRole { get; set; }
 
         /// <summary>
-        /// Внешний ключ в базе данных к сущности "Пользователь".
+        /// Внешний ключ в базе данных к типу "Пользователь".
         /// </summary>
-        public string? DbForeignKeyToUserEntity { get; set; }
+        public string? DbForeignKeyToUser { get; set; }
 
         /// <summary>
-        /// Индекс в базе данных для поля идентификатора сущности "RoleId".
+        /// Индекс в базе данных для поля "RoleId".
         /// </summary>
-        public string? DbIndexForRoleEntityId { get; set; }
+        public string? DbIndexForRoleId { get; set; }
 
         /// <summary>
         /// Первичный ключ в базе данных.
@@ -72,7 +72,7 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserRole
                     nameof(roleTypeOptions.DbColumnForId));
             }
 
-            DbColumnForRoleEntityId = CreateDbColumnName(roleTypeOptions.DbTable, roleTypeOptions.DbColumnForId);
+            DbColumnForRoleId = CreateDbColumnName(roleTypeOptions.DbTable, roleTypeOptions.DbColumnForId);
 
             if (string.IsNullOrWhiteSpace(userTypeOptions.DbColumnForId))
             {
@@ -81,13 +81,13 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserRole
                     nameof(userTypeOptions.DbColumnForId));
             }
 
-            DbColumnForUserEntityId = CreateDbColumnName(userTypeOptions.DbTable, userTypeOptions.DbColumnForId);
+            DbColumnForUserId = CreateDbColumnName(userTypeOptions.DbTable, userTypeOptions.DbColumnForId);
 
-            DbForeignKeyToRoleEntity = CreateDbForeignKeyName(DbTable, roleTypeOptions.DbTable);
+            DbForeignKeyToRole = CreateDbForeignKeyName(DbTable, roleTypeOptions.DbTable);
 
-            DbForeignKeyToUserEntity = CreateDbForeignKeyName(DbTable, userTypeOptions.DbTable);
+            DbForeignKeyToUser = CreateDbForeignKeyName(DbTable, userTypeOptions.DbTable);
 
-            DbIndexForRoleEntityId = CreateDbIndexName(DbTable, DbColumnForRoleEntityId);
+            DbIndexForRoleId = CreateDbIndexName(DbTable, DbColumnForRoleId);
 
             DbPrimaryKey = CreateDbPrimaryKeyName(DbTable);
         }

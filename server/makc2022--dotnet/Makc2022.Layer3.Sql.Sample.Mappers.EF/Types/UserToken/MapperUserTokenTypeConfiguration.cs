@@ -47,12 +47,12 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserToken
                 .HasColumnName(options.DbColumnForValue);
 
             builder.Property(x => x.UserId)
-                .HasColumnName(options.DbColumnForUserEntityId);
+                .HasColumnName(options.DbColumnForUserId);
 
             builder.HasOne(x => x.User)
                 .WithMany(x => x.UserTokenList)
                 .HasForeignKey(x => x.UserId)
-                .HasConstraintName(options.DbForeignKeyToUserEntity);
+                .HasConstraintName(options.DbForeignKeyToUser);
         }
 
         #endregion Public methods    

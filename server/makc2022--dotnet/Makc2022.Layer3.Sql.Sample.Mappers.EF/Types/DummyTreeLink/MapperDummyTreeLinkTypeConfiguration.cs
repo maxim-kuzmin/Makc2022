@@ -43,12 +43,12 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyTreeLink
 
             builder.Property(x => x.ParentId)
                 .IsRequired()
-                .HasColumnName(options.DbColumnForDummyTreeEntityParentId);
+                .HasColumnName(options.DbColumnForParentId);
 
             builder.HasOne(x => x.DummyTreeById)
                 .WithMany(x => x.DummyTreeLinkByIdList)
                 .HasForeignKey(x => x.Id)
-                .HasConstraintName(options.DbForeignKeyToDummyTreeEntity);
+                .HasConstraintName(options.DbForeignKeyToDummyTree);
         }
 
         #endregion Public methods

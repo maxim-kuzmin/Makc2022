@@ -15,29 +15,29 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyMainDummyManyToMany
         #region Properties
 
         /// <summary>
-        /// Колонка в базе данных для поля идентификатора сущности "Фиктивное главное".
+        /// Колонка в базе данных для поля "DummyMainId".
         /// </summary>
-        public string? DbColumnForDummyMainEntityId { get; set; }
+        public string? DbColumnForDummyMainId { get; set; }
 
         /// <summary>
-        /// Колонка в базе данных для поля идентификатора сущности "Фиктивное отношение многие ко многим".
+        /// Колонка в базе данных для поля "DummyManyToManyId".
         /// </summary>
-        public string? DbColumnForDummyManyToManyEntityId { get; set; }
+        public string? DbColumnForDummyManyToManyId { get; set; }
 
         /// <summary>
-        /// Внешний ключ в базе данных к сущности "Фиктивное главное".
+        /// Внешний ключ в базе данных к типу "Фиктивное главное".
         /// </summary>
-        public string? DbForeignKeyToDummyMainEntity { get; set; }
+        public string? DbForeignKeyToDummyMain { get; set; }
 
         /// <summary>
-        /// Внешний ключ в базе данных к сущности "Фиктивное отношение многие ко многим".
+        /// Внешний ключ в базе данных к типу "Фиктивное отношение многие ко многим".
         /// </summary>
-        public string? DbForeignKeyToDummyManyToManyEntity { get; set; }
+        public string? DbForeignKeyToDummyManyToMany { get; set; }
 
         /// <summary>
-        /// Индекс в базе данных для поля идентификатора сущности "Фиктивное отношение многие ко многим".
+        /// Индекс в базе данных для поля "DummyManyToManyId".
         /// </summary>
-        public string? DbIndexForDummyManyToManyEntityId { get; set; }
+        public string? DbIndexForDummyManyToManyId { get; set; }
 
         /// <summary>
         /// Первичный ключ в базе данных.
@@ -72,7 +72,7 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyMainDummyManyToMany
                     nameof(dummyMainTypeOptions.DbColumnForId));
             }
 
-            DbColumnForDummyMainEntityId = CreateDbColumnName(
+            DbColumnForDummyMainId = CreateDbColumnName(
                 dummyMainTypeOptions.DbTable,
                 dummyMainTypeOptions.DbColumnForId);
 
@@ -83,16 +83,16 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyMainDummyManyToMany
                     nameof(dummyManyToManyTypeOptions.DbColumnForId));
             }
 
-            DbColumnForDummyManyToManyEntityId = CreateDbColumnName(
+            DbColumnForDummyManyToManyId = CreateDbColumnName(
                 dummyManyToManyTypeOptions.DbTable,
                 dummyManyToManyTypeOptions.DbColumnForId);
 
 
-            DbForeignKeyToDummyMainEntity = CreateDbForeignKeyName(DbTable, dummyMainTypeOptions.DbTable);
+            DbForeignKeyToDummyMain = CreateDbForeignKeyName(DbTable, dummyMainTypeOptions.DbTable);
 
-            DbForeignKeyToDummyManyToManyEntity = CreateDbForeignKeyName(DbTable, dummyManyToManyTypeOptions.DbTable);
+            DbForeignKeyToDummyManyToMany = CreateDbForeignKeyName(DbTable, dummyManyToManyTypeOptions.DbTable);
 
-            DbIndexForDummyManyToManyEntityId = CreateDbIndexName(DbTable, DbColumnForDummyManyToManyEntityId);
+            DbIndexForDummyManyToManyId = CreateDbIndexName(DbTable, DbColumnForDummyManyToManyId);
 
             DbPrimaryKey = CreateDbPrimaryKeyName(DbTable);
         }

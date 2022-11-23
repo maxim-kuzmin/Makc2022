@@ -39,23 +39,23 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMainDummyManyToMany
 
             builder.Property(x => x.DummyMainId)
                 .IsRequired()
-                .HasColumnName(options.DbColumnForDummyMainEntityId);
+                .HasColumnName(options.DbColumnForDummyMainId);
 
             builder.Property(x => x.DummyManyToManyId)
                 .IsRequired()
-                .HasColumnName(options.DbColumnForDummyManyToManyEntityId);
+                .HasColumnName(options.DbColumnForDummyManyToManyId);
 
-            builder.HasIndex(x => x.DummyManyToManyId).HasDatabaseName(options.DbIndexForDummyManyToManyEntityId);
+            builder.HasIndex(x => x.DummyManyToManyId).HasDatabaseName(options.DbIndexForDummyManyToManyId);
 
             builder.HasOne(x => x.DummyMain)
                 .WithMany(x => x.DummyMainDummyManyToManyList)
                 .HasForeignKey(x => x.DummyMainId)
-                .HasConstraintName(options.DbForeignKeyToDummyMainEntity);
+                .HasConstraintName(options.DbForeignKeyToDummyMain);
 
             builder.HasOne(x => x.DummyManyToMany)
                 .WithMany(x => x.DummyMainDummyManyToManyList)
                 .HasForeignKey(x => x.DummyManyToManyId)
-                .HasConstraintName(options.DbForeignKeyToDummyManyToManyEntity);
+                .HasConstraintName(options.DbForeignKeyToDummyManyToMany);
         }
 
         #endregion Public methods

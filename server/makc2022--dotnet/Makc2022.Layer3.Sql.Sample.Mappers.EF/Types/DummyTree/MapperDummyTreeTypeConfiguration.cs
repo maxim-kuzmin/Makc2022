@@ -48,7 +48,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyTree
                 .HasColumnName(options.DbColumnForName);
 
             builder.Property(x => x.ParentId)
-                .HasColumnName(options.DbColumnForDummyTreeEntityParentId);
+                .HasColumnName(options.DbColumnForParentId);
 
             builder.Property(x => x.TreeChildCount)
                 .IsRequired()
@@ -85,17 +85,17 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyTree
                 .HasColumnName(options.DbColumnForTreeSort);
 
             builder.HasIndex(x => x.Name).HasDatabaseName(options.DbIndexForName);
-            builder.HasIndex(x => x.ParentId).HasDatabaseName(options.DbIndexForDummyTreeEntityParentId);
+            builder.HasIndex(x => x.ParentId).HasDatabaseName(options.DbIndexForParentId);
             builder.HasIndex(x => x.TreeSort).HasDatabaseName(options.DbIndexForTreeSort);
 
             builder.HasIndex(x => new { x.ParentId, x.Name })
                 .IsUnique()
-                .HasDatabaseName(options.DbUniqueIndexForDummyTreeEntityParentIdAndName);
+                .HasDatabaseName(options.DbUniqueIndexForParentIdAndName);
 
             builder.HasOne(x => x.DummyTreeParent)
                 .WithMany(x => x.DummyTreeChildList)
                 .HasForeignKey(x => x.ParentId)
-                .HasConstraintName(options.DbForeignKeyToDummyTreeEntityParent);
+                .HasConstraintName(options.DbForeignKeyToDummyTreeParent);
         }
 
         #endregion Public methods

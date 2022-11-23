@@ -23,9 +23,9 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyTree
         public string? DbColumnForName { get; set; }
 
         /// <summary>
-        /// Колонка в базе данных для поля идентификатора родителя сущности "Фиктивное дерево".
+        /// Колонка в базе данных для поля "ParentId".
         /// </summary>
-        public string? DbColumnForDummyTreeEntityParentId { get; set; }
+        public string? DbColumnForParentId { get; set; }
 
         /// <summary>
         /// Колонка в базе данных для поля "TreeChildCount".
@@ -58,9 +58,9 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyTree
         public string? DbColumnForTreeSort { get; set; }
 
         /// <summary>
-        /// Внешний ключ в базе данных к родителю сущности "Фиктивное дерево".
+        /// Внешний ключ в базе данных к родительскому типу "Фиктивное дерево".
         /// </summary>
-        public string? DbForeignKeyToDummyTreeEntityParent { get; set; }
+        public string? DbForeignKeyToDummyTreeParent { get; set; }
 
         /// <summary>
         /// Индекс в базе данных для поля "Name".
@@ -68,9 +68,9 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyTree
         public string? DbIndexForName { get; set; }
 
         /// <summary>
-        /// Индекс в базе данных для поля идентификатора родителя сущности "Фиктивное дерево".
+        /// Индекс в базе данных для поля "ParentId".
         /// </summary>
-        public string? DbIndexForDummyTreeEntityParentId { get; set; }
+        public string? DbIndexForParentId { get; set; }
 
         /// <summary>
         /// Индекс в базе данных для поля "TreeSort".
@@ -98,9 +98,9 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyTree
         public string? DbPrimaryKey { get; set; }
 
         /// <summary>
-        /// Индекс в базе данных для полей идентификатора родителя сущности "Фиктивное дерево" и "Name".
+        /// Индекс в базе данных для полей "ParentId" и "Name".
         /// </summary>
-        public string? DbUniqueIndexForDummyTreeEntityParentIdAndName { get; set; }
+        public string? DbUniqueIndexForParentIdAndName { get; set; }
 
         #endregion Properties
 
@@ -137,7 +137,7 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyTree
                     nameof(defaults.DbColumnForParentId));
             }
 
-            DbColumnForDummyTreeEntityParentId = defaults.DbColumnForParentId;
+            DbColumnForParentId = defaults.DbColumnForParentId;
             
             DbColumnForTreeChildCount = defaults.DbColumnForTreeChildCount;
 
@@ -158,11 +158,11 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyTree
 
             DbColumnForTreeSort = defaults.DbColumnForTreeSort;
 
-            DbForeignKeyToDummyTreeEntityParent = CreateDbForeignKeyName(DbTable, DbTable, DbColumnForDummyTreeEntityParentId);
+            DbForeignKeyToDummyTreeParent = CreateDbForeignKeyName(DbTable, DbTable, DbColumnForParentId);
 
             DbIndexForName = CreateDbIndexName(DbTable, DbColumnForName);
             
-            DbIndexForDummyTreeEntityParentId = CreateDbIndexName(DbTable, DbColumnForDummyTreeEntityParentId);
+            DbIndexForParentId = CreateDbIndexName(DbTable, DbColumnForParentId);
             
             DbIndexForTreeSort = CreateDbIndexName(DbTable, DbColumnForTreeSort);
 
@@ -174,9 +174,9 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyTree
 
             DbPrimaryKey = CreateDbPrimaryKeyName(DbTable);
 
-            DbUniqueIndexForDummyTreeEntityParentIdAndName = CreateDbUniqueIndexName(
+            DbUniqueIndexForParentIdAndName = CreateDbUniqueIndexName(
                 DbTable,
-                DbColumnForDummyTreeEntityParentId,
+                DbColumnForParentId,
                 DbColumnForName);
         }
 

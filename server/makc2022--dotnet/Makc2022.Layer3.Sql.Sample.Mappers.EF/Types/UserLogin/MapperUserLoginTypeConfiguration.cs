@@ -48,14 +48,14 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserLogin
                 .HasColumnName(options.DbColumnForProviderKey);
 
             builder.Property(x => x.UserId)
-                .HasColumnName(options.DbColumnForUserEntityId);
+                .HasColumnName(options.DbColumnForUserId);
 
-            builder.HasIndex(x => x.UserId).HasDatabaseName(options.DbIndexForUserEntityId);
+            builder.HasIndex(x => x.UserId).HasDatabaseName(options.DbIndexForUserId);
 
             builder.HasOne(x => x.User)
                 .WithMany(x => x.UserLoginList)
                 .HasForeignKey(x => x.UserId)
-                .HasConstraintName(options.DbForeignKeyToUserEntity);
+                .HasConstraintName(options.DbForeignKeyToUser);
         }
 
         #endregion Public methods    
