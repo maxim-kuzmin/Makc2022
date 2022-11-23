@@ -69,7 +69,7 @@ namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.Item
                 () => GetItemGetOperationResult(
                     new DummyMainDomainItemGetOperationInput
                     {
-                        EntityId = item.EntityId
+                        Id = item.Id
                     },
                     operationCode
                     ),

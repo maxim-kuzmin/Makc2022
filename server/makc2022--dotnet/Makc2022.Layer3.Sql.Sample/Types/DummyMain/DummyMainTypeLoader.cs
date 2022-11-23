@@ -31,9 +31,9 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyMain
                 Entity.Id = entity.Id;
             }
 
-            if (result.Contains(nameof(Entity.IdOfDummyOneToManyEntity)))
+            if (result.Contains(nameof(Entity.DummyOneToManyId)))
             {
-                Entity.IdOfDummyOneToManyEntity = entity.IdOfDummyOneToManyEntity;
+                Entity.DummyOneToManyId = entity.DummyOneToManyId;
             }
 
             if (result.Contains(nameof(Entity.Name)))
@@ -125,7 +125,7 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyMain
             {
                 nameof(Entity.Id),
                 nameof(Entity.Name),
-                nameof(Entity.IdOfDummyOneToManyEntity),
+                nameof(Entity.DummyOneToManyId),
                 nameof(Entity.PropBoolean),
                 nameof(Entity.PropBooleanNullable),
                 nameof(Entity.PropDate),

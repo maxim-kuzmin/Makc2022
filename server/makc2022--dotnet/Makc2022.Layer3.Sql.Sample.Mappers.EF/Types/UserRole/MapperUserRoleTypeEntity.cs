@@ -11,18 +11,18 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserRole
     /// </summary>
     public class MapperUserRoleTypeEntity : UserRoleTypeEntity
     {
-        #region Properties
+        #region Navigation properties
 
         /// <summary>
-        /// Сущность типа "Роль".
+        /// Экземпляр сущности "Роль".
         /// </summary>
-        public MapperRoleTypeEntity? ObjectOfRoleEntity { get; set; }
+        public MapperRoleTypeEntity? Role { get; set; }
 
         /// <summary>
-        /// Сущность типа "Пользователь".
+        /// Экземпляр сущности "Пользователь".
         /// </summary>
-        public MapperUserTypeEntity? ObjectOfUserEntity { get; set; }
+        public MapperUserTypeEntity? User { get; set; }
 
-        #endregion Properties
+        #endregion Navigation properties
     }
 }

@@ -12,9 +12,9 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain.Operations.Item.Get
         #region Properties
 
         /// <summary>
-        /// Имя сущности.
+        /// Имя.
         /// </summary>
-        public string? EntityName { get; set; }
+        public string? Name { get; set; }
 
         #endregion Properties
 
@@ -25,9 +25,9 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain.Operations.Item.Get
         {
             base.Normalize();
 
-            if (EntityId > 0)
+            if (Id > 0)
             {
-                EntityName = null;
+                Name = null;
             }
         }
 
@@ -38,13 +38,13 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain.Operations.Item.Get
 
             if (result.Any())
             {
-                if (EntityName != null)
+                if (Name != null)
                 {
                     result.Clear();
                 }
                 else
                 {
-                    result.Add(nameof(EntityName));
+                    result.Add(nameof(Name));
                 }
             }
 

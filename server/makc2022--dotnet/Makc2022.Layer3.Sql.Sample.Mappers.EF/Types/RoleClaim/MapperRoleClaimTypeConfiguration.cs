@@ -51,8 +51,8 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.RoleClaim
 
             builder.HasIndex(x => x.RoleId).IsUnique().HasDatabaseName(options.DbUniqueIndexForRoleEntityId);
 
-            builder.HasOne(x => x.ObjectOfRoleEntity)
-                .WithMany(x => x.ObjectsOfRoleClaimEntity)
+            builder.HasOne(x => x.Role)
+                .WithMany(x => x.RoleClaimList)
                 .HasForeignKey(x => x.RoleId)
                 .HasConstraintName(options.DbForeignKeyToRoleEntity);
         }

@@ -43,7 +43,7 @@ namespace Makc2022.Layer6.Sql.WebGrpcServer.Services.Pages.DummyMain.Item
         {
             DummyMainItemPageGetOperationInput input = new();
 
-            input.InputOfDummyMainDomainItemGetOperation.EntityId = request.Item.EntityId;
+            input.InputOfDummyMainDomainItemGetOperation.Id = request.Item.EntityId;
 
             var queryResult = await Service.Get(input, request.OperationCode);
 

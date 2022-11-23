@@ -15,39 +15,39 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain.Operations.List.Get
         #region Properties
 
         /// <summary>
-        /// Идентификаторы сущности.
+        /// Идентификаторы.
         /// </summary>
-        public long[]? EntityIds { get; set; }
+        public long[]? Ids { get; set; }
 
         /// <summary>
-        /// Строка идентификаторов сущности.
+        /// Строка идентификаторов.
         /// </summary>
-        public string? EntityIdsString { get; set; }
+        public string? IdsString { get; set; }
 
         /// <summary>
-        /// Имя сущности.
+        /// Имя.
         /// </summary>
-        public string? EntityName { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
-        /// Идентификатор сущности "Фиктивное отношение один ко многим".
+        /// Идентификатор экземпляра сущности "Фиктивное отношение один ко многим".
         /// </summary>
-        public long IdOfDummyOneToManyEntity { get; set; }
+        public long DummyOneToManyId { get; set; }
 
         /// <summary>
-        /// Идентификаторы сущности "Фиктивное отношение один ко многим".
+        /// Идентификаторы экземпляров сущности "Фиктивное отношение один ко многим".
         /// </summary>
-        public long[]? IdsOfDummyOneToManyEntity { get; set; }
+        public long[]? DummyOneToManyIds { get; set; }
 
         /// <summary>
-        /// Строка идентификаторов сущности "Фиктивное отношение один ко многим".
+        /// Строка идентификаторов экземпляров сущности "Фиктивное отношение один ко многим".
         /// </summary>
-        public string? IdsStringOfDummyOneToManyEntity { get; set; }
+        public string? DummyOneToManyIdsString { get; set; }
 
         /// <summary>
-        /// Имя сущности "Фиктивное отношение один ко многим".
+        /// Имя экземпляра сущности "Фиктивное отношение один ко многим".
         /// </summary>
-        public string? NameOfDummyOneToManyEntity { get; set; }
+        public string? DummyOneToManyName { get; set; }
 
         #endregion Properties
 
@@ -68,20 +68,20 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain.Operations.List.Get
                 SortDirection = OperationOptions.SORT_DIRECTION_DESC;
             }
 
-            if (!string.IsNullOrWhiteSpace(EntityIdsString) && (EntityIds == null || !EntityIds.Any()))
+            if (!string.IsNullOrWhiteSpace(IdsString) && (Ids == null || !Ids.Any()))
             {
-                EntityIds = EntityIdsString.FromStringToNumericInt64Array();
+                Ids = IdsString.FromStringToNumericInt64Array();
             }
 
-            if (!string.IsNullOrWhiteSpace(IdsStringOfDummyOneToManyEntity)
+            if (!string.IsNullOrWhiteSpace(DummyOneToManyIdsString)
                 &&
                 (
-                    IdsOfDummyOneToManyEntity == null
+                    DummyOneToManyIds == null
                     ||
-                    !IdsOfDummyOneToManyEntity.Any()
+                    !DummyOneToManyIds.Any()
                 ))
             {
-                IdsOfDummyOneToManyEntity = IdsStringOfDummyOneToManyEntity.FromStringToNumericInt64Array();
+                DummyOneToManyIds = DummyOneToManyIdsString.FromStringToNumericInt64Array();
             }
         }
 

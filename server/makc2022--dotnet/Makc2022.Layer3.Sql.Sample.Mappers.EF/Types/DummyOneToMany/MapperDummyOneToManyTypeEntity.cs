@@ -10,14 +10,13 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyOneToMany
     /// </summary>
     public class MapperDummyOneToManyTypeEntity : DummyOneToManyTypeEntity
     {
-        #region Properties
+        #region Navigation properties
 
         /// <summary>
-        /// Объекты сущности "Фиктивное главное".
+        /// Список экземпляров сущности "Фиктивное главное".
         /// </summary>
-        public List<MapperDummyMainTypeEntity> ObjectsOfDummyMainEntity { get; } =
-            new List<MapperDummyMainTypeEntity>();
+        public List<MapperDummyMainTypeEntity> DummyMainList { get; } = new();
 
-        #endregion Properties
+        #endregion Navigation properties
     }
 }

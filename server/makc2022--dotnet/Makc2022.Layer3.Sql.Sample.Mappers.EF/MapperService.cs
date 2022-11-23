@@ -159,7 +159,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
             return new MapperDummyMainTypeEntity
             {
                 Name = $"Name-{index}",
-                IdOfDummyOneToManyEntity = itemsOfDummyOneToMany.ElementAt(indexOfDummyOneToMany).Id,
+                DummyOneToManyId = itemsOfDummyOneToMany.ElementAt(indexOfDummyOneToMany).Id,
                 PropBoolean = isEven,
                 PropBooleanNullable = isEven ? new bool?(!isEven) : null,
                 PropDate = new DateTime(2018, 01, day),
@@ -192,8 +192,8 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
 
                 var item = new MapperDummyMainDummyManyToManyTypeEntity
                 {
-                    IdOfDummyMainEntity = itemOfDummyMain.Id,
-                    IdOfDummyManyToManyEntity = itemOfDummyManyToMany.Id
+                    DummyMainId = itemOfDummyMain.Id,
+                    DummyManyToManyId = itemOfDummyManyToMany.Id
                 };
 
                 result.Add(item);
@@ -205,8 +205,8 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
 
                 var item = new MapperDummyMainDummyManyToManyTypeEntity
                 {
-                    IdOfDummyMainEntity = itemOfDummyMain.Id,
-                    IdOfDummyManyToManyEntity = itemsOfDummyManyToMany.ElementAt(index).Id
+                    DummyMainId = itemOfDummyMain.Id,
+                    DummyManyToManyId = itemsOfDummyManyToMany.ElementAt(index).Id
                 };
 
                 result.Add(item);

@@ -92,8 +92,8 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyTree
                 .IsUnique()
                 .HasDatabaseName(options.DbUniqueIndexForDummyTreeEntityParentIdAndName);
 
-            builder.HasOne(x => x.ObjectOfDummyTreeEntityParent)
-                .WithMany(x => x.ObjectsOfDummyTreeEntityChild)
+            builder.HasOne(x => x.DummyTreeParent)
+                .WithMany(x => x.DummyTreeChildList)
                 .HasForeignKey(x => x.ParentId)
                 .HasConstraintName(options.DbForeignKeyToDummyTreeEntityParent);
         }

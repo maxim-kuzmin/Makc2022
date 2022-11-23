@@ -69,7 +69,7 @@ namespace Makc2022.Layer5.Sql.Server.Pages.DummyMain.List
                         PageSize = list.PageSize,
                         SortDirection = list.SortDirection,
                         SortField = list.SortField,
-                        EntityName = list.EntityName
+                        Name = list.Name
                     },
                     operationCode
                     ),

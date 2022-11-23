@@ -7,24 +7,22 @@ using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserRole;
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.Role
 {
     /// <summary>
-    /// Сущность типа "Роль" для сопоставителя.
+    /// Сущность типа "Роль" сопоставителя.
     /// </summary>
     public class MapperRoleTypeEntity : RoleTypeEntity
     {
-        #region Properties
+        #region Navigation properties
 
         /// <summary>
-        /// Объекты сущности "Утверждение роли".
+        /// Список экземпляров сущности "Утверждение роли".
         /// </summary>
-        public List<MapperRoleClaimTypeEntity> ObjectsOfRoleClaimEntity { get; } =
-            new List<MapperRoleClaimTypeEntity>();
+        public List<MapperRoleClaimTypeEntity> RoleClaimList { get; } = new();
 
         /// <summary>
-        /// Объекты сущности "Роль пользователя".
+        /// Список экземпляров сущности "Роль пользователя".
         /// </summary>
-        public List<MapperUserRoleTypeEntity> ObjectsOfUserRoleEntity { get; } =
-            new List<MapperUserRoleTypeEntity>();
+        public List<MapperUserRoleTypeEntity> UserRoleList { get; } = new();
 
-        #endregion Properties
+        #endregion Navigation properties
     }
 }

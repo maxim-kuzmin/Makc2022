@@ -26,14 +26,14 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyMainDummyManyToMany
         {
             var result = base.Load(entity, loadableProperties);
 
-            if (result.Contains(nameof(Entity.IdOfDummyMainEntity)))
+            if (result.Contains(nameof(Entity.DummyMainId)))
             {
-                Entity.IdOfDummyMainEntity = entity.IdOfDummyMainEntity;
+                Entity.DummyMainId = entity.DummyMainId;
             }
 
-            if (result.Contains(nameof(Entity.IdOfDummyManyToManyEntity)))
+            if (result.Contains(nameof(Entity.DummyManyToManyId)))
             {
-                Entity.IdOfDummyManyToManyEntity = entity.IdOfDummyManyToManyEntity;
+                Entity.DummyManyToManyId = entity.DummyManyToManyId;
             }
 
             return result;
@@ -48,8 +48,8 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyMainDummyManyToMany
         {
             return new HashSet<string>
             {
-                nameof(Entity.IdOfDummyMainEntity),
-                nameof(Entity.IdOfDummyManyToManyEntity)
+                nameof(Entity.DummyMainId),
+                nameof(Entity.DummyManyToManyId)
             };
         }
 

@@ -10,25 +10,28 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyTree
     /// </summary>
     public class MapperDummyTreeTypeEntity : DummyTreeTypeEntity
     {
-        #region Properties
+        #region Navigation properties
 
         /// <summary>
-        /// Объект родителя сущности "Фиктивное дерево".
+        /// Список дочерних экземпляров сущности "Фиктивное дерево".
         /// </summary>
-        public MapperDummyTreeTypeEntity? ObjectOfDummyTreeEntityParent { get; set; }
+        public List<MapperDummyTreeTypeEntity> DummyTreeChildList { get; } = new();
 
         /// <summary>
-        /// Объекты ребёнка сущности "Фиктивное дерево".
+        /// Список экземпляров сущности "Связь фиктивного дерева" по идентификатору.
         /// </summary>
-        public List<MapperDummyTreeTypeEntity> ObjectsOfDummyTreeEntityChild { get; } =
-            new List<MapperDummyTreeTypeEntity>();
+        public List<MapperDummyTreeLinkTypeEntity> DummyTreeLinkByIdList { get; } = new();
 
         /// <summary>
-        /// Объекты сущности "Связь фиктивного дерева".
+        /// Список экземпляров сущности "Связь фиктивного дерева" по идентификатору родителя.
         /// </summary>
-        public List<MapperDummyTreeLinkTypeEntity> ObjectsOfDummyTreeLinkEntity { get; } =
-            new List<MapperDummyTreeLinkTypeEntity>();
+        public List<MapperDummyTreeLinkTypeEntity>? DummyTreeLinkByParentIdList { get; } = new();
 
-        #endregion Properties
+        /// <summary>
+        /// Родительский экземпляр сущности "Фиктивное дерево".
+        /// </summary>
+        public MapperDummyTreeTypeEntity? DummyTreeParent { get; set; }
+
+        #endregion Navigation properties
     }
 }

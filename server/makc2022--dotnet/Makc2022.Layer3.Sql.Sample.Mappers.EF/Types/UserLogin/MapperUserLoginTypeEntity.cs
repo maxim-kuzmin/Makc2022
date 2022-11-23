@@ -10,13 +10,13 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserLogin
     /// </summary>
     public class MapperUserLoginTypeEntity : UserLoginTypeEntity
     {
-        #region Properties
+        #region Navigation properties
 
         /// <summary>
-        /// Сущность типа "Пользователь".
+        /// Экземпляр сущности "Пользователь".
         /// </summary>
-        public MapperUserTypeEntity? ObjectOfUserEntity { get; set; }
+        public MapperUserTypeEntity? User { get; set; }
 
-        #endregion Properties
+        #endregion Navigation properties
     }
 }

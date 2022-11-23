@@ -11,18 +11,18 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMainDummyManyToMany
     /// </summary>
     public class MapperDummyMainDummyManyToManyTypeEntity : DummyMainDummyManyToManyTypeEntity
     {
-        #region Properties
+        #region Navigation properties
 
         /// <summary>
-        /// Сущность типа "Фиктивное главное".
+        /// Экземпляр сущности "Фиктивное главное".
         /// </summary>
-        public MapperDummyMainTypeEntity? ObjectOfDummyMainEntity { get; set; }
+        public MapperDummyMainTypeEntity? DummyMain { get; set; }
 
         /// <summary>
-        /// Сущность типа "Фиктивное отношение многие ко многим".
+        /// Экземпляр сущности "Фиктивное отношение многие ко многим".
         /// </summary>
-        public MapperDummyManyToManyTypeEntity? ObjectOfDummyManyToManyEntity { get; set; }
+        public MapperDummyManyToManyTypeEntity? DummyManyToMany { get; set; }
 
-        #endregion Properties
+        #endregion Navigation properties
     }
 }

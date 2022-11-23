@@ -10,14 +10,14 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyMainDummyManyToMany
         #region Properties
 
         /// <summary>
-        /// Идентификатор сущности "Фиктивное главное".
+        /// Идентификатор экземпляра сущности "Фиктивное главное".
         /// </summary>
-        public long IdOfDummyMainEntity { get; set; }
+        public long DummyMainId { get; set; }
 
         /// <summary>
-        /// Идентификатор сущности "Фиктивное отношение многие ко многим".
+        /// Идентификатор экземпляра сущности "Фиктивное отношение многие ко многим".
         /// </summary>
-        public long IdOfDummyManyToManyEntity { get; set; }
+        public long DummyManyToManyId { get; set; }
 
         #endregion Properties
     }

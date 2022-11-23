@@ -35,26 +35,26 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMainDummyManyToMany
 
             builder.ToTable(options.DbTable, options.DbSchema);
 
-            builder.HasKey(x => new { x.IdOfDummyMainEntity, x.IdOfDummyManyToManyEntity }).HasName(options.DbPrimaryKey);
+            builder.HasKey(x => new { x.DummyMainId, x.DummyManyToManyId }).HasName(options.DbPrimaryKey);
 
-            builder.Property(x => x.IdOfDummyMainEntity)
+            builder.Property(x => x.DummyMainId)
                 .IsRequired()
                 .HasColumnName(options.DbColumnForDummyMainEntityId);
 
-            builder.Property(x => x.IdOfDummyManyToManyEntity)
+            builder.Property(x => x.DummyManyToManyId)
                 .IsRequired()
                 .HasColumnName(options.DbColumnForDummyManyToManyEntityId);
 
-            builder.HasIndex(x => x.IdOfDummyManyToManyEntity).HasDatabaseName(options.DbIndexForDummyManyToManyEntityId);
+            builder.HasIndex(x => x.DummyManyToManyId).HasDatabaseName(options.DbIndexForDummyManyToManyEntityId);
 
-            builder.HasOne(x => x.ObjectOfDummyMainEntity)
-                .WithMany(x => x.ObjectsOfDummyMainDummyManyToManyEntity)
-                .HasForeignKey(x => x.IdOfDummyMainEntity)
+            builder.HasOne(x => x.DummyMain)
+                .WithMany(x => x.DummyMainDummyManyToManyList)
+                .HasForeignKey(x => x.DummyMainId)
                 .HasConstraintName(options.DbForeignKeyToDummyMainEntity);
 
-            builder.HasOne(x => x.ObjectOfDummyManyToManyEntity)
-                .WithMany(x => x.ObjectsOfDummyMainDummyManyToManyEntity)
-                .HasForeignKey(x => x.IdOfDummyManyToManyEntity)
+            builder.HasOne(x => x.DummyManyToMany)
+                .WithMany(x => x.DummyMainDummyManyToManyList)
+                .HasForeignKey(x => x.DummyManyToManyId)
                 .HasConstraintName(options.DbForeignKeyToDummyManyToManyEntity);
         }
 

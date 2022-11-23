@@ -47,7 +47,7 @@ namespace Makc2022.Layer6.Sql.WebGrpcServer.Services.Pages.DummyMain.List
             input.List.PageSize = request.List.PageSize;
             input.List.SortDirection = request.List.SortDirection;
             input.List.SortField = request.List.SortField;
-            input.List.EntityName = request.List.EntityName;
+            input.List.Name = request.List.EntityName;
 
             var queryResult = await Service.Get(input, request.OperationCode);
 

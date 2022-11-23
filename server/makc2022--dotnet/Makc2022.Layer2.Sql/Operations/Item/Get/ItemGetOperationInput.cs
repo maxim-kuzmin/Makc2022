@@ -12,9 +12,9 @@ namespace Makc2022.Layer2.Sql.Operations.Item.Get
         #region Properties
 
         /// <summary>
-        /// Идентификатор сущности.
+        /// Идентификатор.
         /// </summary>
-        public long EntityId { get; set; }
+        public long Id { get; set; }
 
         #endregion Properties
 
@@ -25,9 +25,9 @@ namespace Makc2022.Layer2.Sql.Operations.Item.Get
         /// </summary>
         public virtual void Normalize()
         {
-            if (EntityId < 0)
+            if (Id < 0)
             {
-                EntityId = 0;
+                Id = 0;
             }
         }
 
@@ -36,9 +36,9 @@ namespace Makc2022.Layer2.Sql.Operations.Item.Get
         {
             var result = base.GetInvalidProperties();
 
-            if (EntityId < 1)
+            if (Id < 1)
             {
-                result.Add(nameof(EntityId));
+                result.Add(nameof(Id));
             }
 
             return result;

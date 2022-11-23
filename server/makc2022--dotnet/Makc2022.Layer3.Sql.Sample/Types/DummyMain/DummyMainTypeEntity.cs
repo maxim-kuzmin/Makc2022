@@ -20,9 +20,9 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyMain
         public string? Name { get; set; }
 
         /// <summary>
-        /// Идентификатор сущности "Фиктивное отношение один ко многим".
+        /// Идентификатор экземпляра сущности "Фиктивное отношение один ко многим".
         /// </summary>
-        public long IdOfDummyOneToManyEntity { get; set; }
+        public long DummyOneToManyId { get; set; }
 
         /// <summary>
         /// Свойство, содержащее логическое значение.

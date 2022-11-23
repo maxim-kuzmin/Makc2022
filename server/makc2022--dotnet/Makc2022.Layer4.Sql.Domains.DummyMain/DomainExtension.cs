@@ -27,14 +27,14 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
             DomainItemGetOperationInput input
             )
         {
-            if (input.EntityId > 0)
+            if (input.Id > 0)
             {
-                query = query.Where(x => x.Id == input.EntityId);
+                query = query.Where(x => x.Id == input.Id);
             }
 
-            if (input.EntityName != null)
+            if (input.Name != null)
             {
-                query = query.Where(x => x.Name == input.EntityName);
+                query = query.Where(x => x.Name == input.Name);
             }
 
             return query;
@@ -51,47 +51,47 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
             DomainListGetOperationInput input
             )
         {
-            if (!string.IsNullOrWhiteSpace(input.EntityName))
+            if (!string.IsNullOrWhiteSpace(input.Name))
             {
-                query = query.Where(x => x.Name!.Contains(input.EntityName));
+                query = query.Where(x => x.Name!.Contains(input.Name));
             }
 
-            if (input.EntityIds != null && input.EntityIds.Any())
+            if (input.Ids != null && input.Ids.Any())
             {
-                if (input.EntityIds.Length > 1)
+                if (input.Ids.Length > 1)
                 {
-                    query = query.Where(x => input.EntityIds.Contains(x.Id));
+                    query = query.Where(x => input.Ids.Contains(x.Id));
                 }
                 else
                 {
-                    long entityId = input.EntityIds[0];
+                    long entityId = input.Ids[0];
 
                     query = query.Where(x => x.Id == entityId);
                 }
             }
 
-            if (input.IdOfDummyOneToManyEntity > 0)
+            if (input.DummyOneToManyId > 0)
             {
-                query = query.Where(x => x.IdOfDummyOneToManyEntity == input.IdOfDummyOneToManyEntity);
+                query = query.Where(x => x.DummyOneToManyId == input.DummyOneToManyId);
             }
 
-            if (input.IdsOfDummyOneToManyEntity != null && input.IdsOfDummyOneToManyEntity.Any())
+            if (input.DummyOneToManyIds != null && input.DummyOneToManyIds.Any())
             {
-                if (input.IdsOfDummyOneToManyEntity.Length > 1)
+                if (input.DummyOneToManyIds.Length > 1)
                 {
-                    query = query.Where(x => input.IdsOfDummyOneToManyEntity.Contains(x.IdOfDummyOneToManyEntity));
+                    query = query.Where(x => input.DummyOneToManyIds.Contains(x.DummyOneToManyId));
                 }
                 else
                 {
-                    long objectIdOfDummyOneToManyEntity = input.IdsOfDummyOneToManyEntity[0];
+                    long id = input.DummyOneToManyIds[0];
 
-                    query = query.Where(x => x.IdOfDummyOneToManyEntity == objectIdOfDummyOneToManyEntity);
+                    query = query.Where(x => x.DummyOneToManyId == id);
                 }
             }
 
-            if (!string.IsNullOrWhiteSpace(input.NameOfDummyOneToManyEntity))
+            if (!string.IsNullOrWhiteSpace(input.DummyOneToManyName))
             {
-                query = query.Where(x => x.ObjectOfDummyOneToManyEntity!.Name!.Contains(input.NameOfDummyOneToManyEntity));
+                query = query.Where(x => x.DummyOneToMany!.Name!.Contains(input.DummyOneToManyName));
             }
 
             return query;
@@ -126,7 +126,7 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
 
             string sortFieldForId = nameof(obj.Id).ToLower();
             string sortFieldForName = nameof(obj.Name).ToLower();
-            string sortFieldForObjectDummyOneToMany = nameof(obj.ObjectOfDummyOneToManyEntity).ToLower();
+            string sortFieldForObjectDummyOneToMany = nameof(obj.DummyOneToMany).ToLower();
             string sortFieldForPropDate = nameof(obj.PropDate).ToLower();
             string sortFieldForPropBoolean = nameof(obj.PropBoolean).ToLower();
 
@@ -159,10 +159,10 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
                 switch (sortDirection)
                 {
                     case OperationOptions.SORT_DIRECTION_ASC:
-                        query = query.OrderBy(x => x.ObjectOfDummyOneToManyEntity!.Name);
+                        query = query.OrderBy(x => x.DummyOneToMany!.Name);
                         break;
                     case OperationOptions.SORT_DIRECTION_DESC:
-                        query = query.OrderByDescending(x => x.ObjectOfDummyOneToManyEntity!.Name);
+                        query = query.OrderByDescending(x => x.DummyOneToMany!.Name);
                         break;
                 }
             }

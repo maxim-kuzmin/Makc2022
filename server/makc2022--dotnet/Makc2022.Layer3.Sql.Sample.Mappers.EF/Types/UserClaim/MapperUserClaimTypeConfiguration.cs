@@ -51,8 +51,8 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserClaim
 
             builder.HasIndex(x => x.UserId).HasDatabaseName(options.DbIndexForUserEntityId);
 
-            builder.HasOne(x => x.ObjectOfUserEntity)
-                .WithMany(x => x.ObjectsOfUserClaimEntity)
+            builder.HasOne(x => x.User)
+                .WithMany(x => x.UserClaimList)
                 .HasForeignKey(x => x.UserId)
                 .HasConstraintName(options.DbForeignKeyToUserEntity);
         }

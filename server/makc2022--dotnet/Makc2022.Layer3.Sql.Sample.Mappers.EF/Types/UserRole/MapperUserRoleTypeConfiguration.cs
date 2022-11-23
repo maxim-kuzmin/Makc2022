@@ -47,13 +47,13 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserRole
 
             builder.HasIndex(x => x.RoleId).HasDatabaseName(options.DbIndexForRoleEntityId);
 
-            builder.HasOne(x => x.ObjectOfUserEntity)
-                .WithMany(x => x.ObjectsOfUserRoleEntity)
+            builder.HasOne(x => x.User)
+                .WithMany(x => x.UserRoleList)
                 .HasForeignKey(x => x.UserId)
                 .HasConstraintName(options.DbForeignKeyToUserEntity);
 
-            builder.HasOne(x => x.ObjectOfRoleEntity)
-                .WithMany(x => x.ObjectsOfUserRoleEntity)
+            builder.HasOne(x => x.Role)
+                .WithMany(x => x.UserRoleList)
                 .HasForeignKey(x => x.RoleId)
                 .HasConstraintName(options.DbForeignKeyToRoleEntity);
         }

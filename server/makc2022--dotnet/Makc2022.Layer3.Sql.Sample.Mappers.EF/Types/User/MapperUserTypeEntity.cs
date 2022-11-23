@@ -13,32 +13,28 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.User
     /// </summary>
     public class MapperUserTypeEntity : UserTypeEntity
     {
-        #region Properties
+        #region Navigation properties
 
         /// <summary>
-        /// Объекты сущности "Утверждение пользователя".
+        /// Список экземпляров сущности "Утверждение пользователя".
         /// </summary>
-        public List<MapperUserClaimTypeEntity> ObjectsOfUserClaimEntity { get; } =
-            new List<MapperUserClaimTypeEntity>();
+        public List<MapperUserClaimTypeEntity> UserClaimList { get; } = new();
 
         /// <summary>
-        /// Объекты сущности "Вход пользователя".
+        /// Список экземпляров сущности "Вход пользователя".
         /// </summary>
-        public List<MapperUserLoginTypeEntity> ObjectsOfUserLoginEntity { get; } =
-            new List<MapperUserLoginTypeEntity>();
+        public List<MapperUserLoginTypeEntity> UserLoginList { get; } = new();
 
         /// <summary>
-        /// Объекты сущности "Роль пользователя".
+        /// Список экземпляров сущности "Роль пользователя".
         /// </summary>
-        public List<MapperUserRoleTypeEntity> ObjectsOfUserRoleEntity { get; } =
-            new List<MapperUserRoleTypeEntity>();
+        public List<MapperUserRoleTypeEntity> UserRoleList { get; } = new();
 
         /// <summary>
-        /// Объекты сущности "Токен пользователя".
+        /// Список экземпляров сущности "Токен пользователя".
         /// </summary>
-        public List<MapperUserTokenTypeEntity> ObjectsOfUserTokenEntity { get; } =
-            new List<MapperUserTokenTypeEntity>();
+        public List<MapperUserTokenTypeEntity> UserTokenList { get; } = new();
 
-        #endregion Properties
+        #endregion Navigation properties
     }
 }

@@ -10,13 +10,18 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyTreeLink
     /// </summary>
     public class MapperDummyTreeLinkTypeEntity : DummyTreeLinkTypeEntity
     {
-        #region Properties
+        #region Navigation properties
 
         /// <summary>
-        /// Сущность типа "Фиктивное дерево".
+        ///  Экземпляр сущности "Фиктивное дерево" по идентификатору.
         /// </summary>
-        public MapperDummyTreeTypeEntity? ObjectOfDummyTreeEntity { get; set; }
+        public MapperDummyTreeTypeEntity? DummyTreeById { get; set; }
 
-        #endregion Properties
+        /// <summary>
+        ///  Экземпляр сущности "Фиктивное дерево" по идентификатору родителя.
+        /// </summary>
+        public MapperDummyTreeTypeEntity? DummyTreeByParentId { get; set; }
+
+        #endregion Navigation properties
     }
 }
