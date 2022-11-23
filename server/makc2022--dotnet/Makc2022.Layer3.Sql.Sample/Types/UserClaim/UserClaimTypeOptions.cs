@@ -54,13 +54,13 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserClaim
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="optionsOfUserType">Параметры типа "Пользователь".</param>
+        /// <param name="userTypeOptions">Параметры типа "Пользователь".</param>
         /// <param name="defaults">Значения по умолчанию.</param>
         /// <param name="dbTable">Таблица в базе данных.</param>
         /// <param name="dbSchema">Схема в базе данных.</param>
         /// <param name="dbColumnNameForUserId">Колонка в базе данных для поля "UserId".</param>
         public UserClaimTypeOptions(
-            UserTypeOptions optionsOfUserType,
+            UserTypeOptions userTypeOptions,
             IDefaults defaults,
             string dbTable,
             string? dbSchema = null,
@@ -72,7 +72,7 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserClaim
 
             DbColumnForUserEntityId = dbColumnNameForUserId ?? nameof(UserClaimTypeEntity.UserId);
 
-            DbForeignKeyToUserEntity = CreateDbForeignKeyName(DbTable, optionsOfUserType.DbTable);
+            DbForeignKeyToUserEntity = CreateDbForeignKeyName(DbTable, userTypeOptions.DbTable);
 
             DbIndexForUserEntityId = CreateDbIndexName(DbTable, DbColumnForUserEntityId);
 

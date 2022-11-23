@@ -18,12 +18,12 @@ namespace Makc2022.Layer1.App
         /// Добавить модули приложения.
         /// </summary>
         /// <param name="services">Сервисы.</param>
-        /// <param name="appModules">Модули приложения.</param>
-        public static void AddAppModules(this IServiceCollection services, IEnumerable<AppModule> appModules)
+        /// <param name="modules">Модули.</param>
+        public static void AddAppModules(this IServiceCollection services, IEnumerable<AppModule> modules)
         {
             var exports = Enumerable.Empty<Type>();
 
-            foreach (var module in appModules)
+            foreach (var module in modules)
             {
                 exports = exports.Union(module.GetExports());
 
@@ -39,13 +39,13 @@ namespace Makc2022.Layer1.App
 
             var notImportedTypes = Enumerable.Empty<Type>();
 
-            foreach (var module in appModules)
+            foreach (var module in modules)
             {
-                var notImportedtTypesOfModule = module.GetNotImportedtTypes(allExports);
+                var moduleNotImportedtTypes = module.GetNotImportedtTypes(allExports);
 
-                if (notImportedtTypesOfModule.Any())
+                if (moduleNotImportedtTypes.Any())
                 {
-                    notImportedTypes = notImportedTypes.Union(notImportedtTypesOfModule);
+                    notImportedTypes = notImportedTypes.Union(moduleNotImportedtTypes);
                 }
             }
 
@@ -54,7 +54,7 @@ namespace Makc2022.Layer1.App
                 ThrowExceptionForNotImportedTypes(notImportedTypes);
             }
 
-            foreach (var module in appModules)
+            foreach (var module in modules)
             {
                 module.ConfigureServices(services);
             }

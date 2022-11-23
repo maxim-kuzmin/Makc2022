@@ -49,12 +49,12 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserToken
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="optionsOfUserType">Параметры типа "Пользователь".</param>
+        /// <param name="userTypeOptions">Параметры типа "Пользователь".</param>
         /// <param name="dbDefaults">Значения по умолчанию в базе данных.</param>
         /// <param name="dbTable">Таблица в базе данных.</param>
         /// <param name="dbSchema">Схема в базе данных.</param>
         public UserTokenTypeOptions(
-            UserTypeOptions optionsOfUserType,
+            UserTypeOptions userTypeOptions,
             IDefaults dbDefaults,
             string dbTable,
             string? dbSchema = null
@@ -63,7 +63,7 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserToken
         {
             DbColumnForName = dbDefaults.DbColumnForName;
 
-            DbForeignKeyToUserEntity = CreateDbForeignKeyName(DbTable, optionsOfUserType.DbTable);
+            DbForeignKeyToUserEntity = CreateDbForeignKeyName(DbTable, userTypeOptions.DbTable);
 
             DbPrimaryKey = CreateDbPrimaryKeyName(DbTable);
         }

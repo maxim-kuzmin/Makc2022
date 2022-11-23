@@ -51,41 +51,41 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserRole
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="optionsOfRoleType">Параметры типа "Роль".</param>
-        /// <param name="optionsOfUserType">Параметры типа "Пользователь".</param>
+        /// <param name="roleTypeOptions">Параметры типа "Роль".</param>
+        /// <param name="userTypeOptions">Параметры типа "Пользователь".</param>
         /// <param name="defaults">Значения по умолчанию.</param>
         /// <param name="dbTable">Таблица в базе данных.</param>
         /// <param name="dbSchema">Схема в базе данных.</param>
         public UserRoleTypeOptions(
-            RoleTypeOptions optionsOfRoleType,
-            UserTypeOptions optionsOfUserType,
+            RoleTypeOptions roleTypeOptions,
+            UserTypeOptions userTypeOptions,
             IDefaults defaults,
             string dbTable,
             string? dbSchema = null
             )
             : base(defaults, dbTable, dbSchema)
         {
-            if (string.IsNullOrWhiteSpace(optionsOfRoleType.DbColumnForId))
+            if (string.IsNullOrWhiteSpace(roleTypeOptions.DbColumnForId))
             {
                 throw new NullOrWhiteSpaceStringVariableException<UserRoleTypeOptions>(
-                    nameof(optionsOfRoleType),
-                    nameof(optionsOfRoleType.DbColumnForId));
+                    nameof(roleTypeOptions),
+                    nameof(roleTypeOptions.DbColumnForId));
             }
 
-            DbColumnForRoleEntityId = CreateDbColumnName(optionsOfRoleType.DbTable, optionsOfRoleType.DbColumnForId);
+            DbColumnForRoleEntityId = CreateDbColumnName(roleTypeOptions.DbTable, roleTypeOptions.DbColumnForId);
 
-            if (string.IsNullOrWhiteSpace(optionsOfUserType.DbColumnForId))
+            if (string.IsNullOrWhiteSpace(userTypeOptions.DbColumnForId))
             {
                 throw new NullOrWhiteSpaceStringVariableException<UserRoleTypeOptions>(
-                    nameof(optionsOfUserType),
-                    nameof(optionsOfUserType.DbColumnForId));
+                    nameof(userTypeOptions),
+                    nameof(userTypeOptions.DbColumnForId));
             }
 
-            DbColumnForUserEntityId = CreateDbColumnName(optionsOfUserType.DbTable, optionsOfUserType.DbColumnForId);
+            DbColumnForUserEntityId = CreateDbColumnName(userTypeOptions.DbTable, userTypeOptions.DbColumnForId);
 
-            DbForeignKeyToRoleEntity = CreateDbForeignKeyName(DbTable, optionsOfRoleType.DbTable);
+            DbForeignKeyToRoleEntity = CreateDbForeignKeyName(DbTable, roleTypeOptions.DbTable);
 
-            DbForeignKeyToUserEntity = CreateDbForeignKeyName(DbTable, optionsOfUserType.DbTable);
+            DbForeignKeyToUserEntity = CreateDbForeignKeyName(DbTable, userTypeOptions.DbTable);
 
             DbIndexForRoleEntityId = CreateDbIndexName(DbTable, DbColumnForRoleEntityId);
 

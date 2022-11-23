@@ -54,12 +54,12 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserLogin
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="optionsOfUserType">Параметры типа "Пользователь".</param>
+        /// <param name="userTypeOptions">Параметры типа "Пользователь".</param>
         /// <param name="defaults">Значения по умолчанию.</param>
         /// <param name="dbTable">Таблица в базе данных.</param>
         /// <param name="dbSchema">Схема в базе данных.</param>
         public UserLoginTypeOptions(
-            UserTypeOptions optionsOfUserType,
+            UserTypeOptions userTypeOptions,
             IDefaults defaults,
             string dbTable,
             string? dbSchema = null,
@@ -69,7 +69,7 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserLogin
         {
             DbColumnForUserEntityId = dbColumnNameForUserId ?? nameof(UserLoginTypeEntity.UserId);
 
-            DbForeignKeyToUserEntity = CreateDbForeignKeyName(DbTable, optionsOfUserType.DbTable);
+            DbForeignKeyToUserEntity = CreateDbForeignKeyName(DbTable, userTypeOptions.DbTable);
 
             DbIndexForUserEntityId = CreateDbIndexName(DbTable, DbColumnForUserEntityId);
 

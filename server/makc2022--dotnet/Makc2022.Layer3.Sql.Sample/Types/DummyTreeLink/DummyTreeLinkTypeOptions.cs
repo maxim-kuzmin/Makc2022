@@ -39,12 +39,12 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyTreeLink
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="optionsOfDummyTreeType">Параметры типа "Фиктивное дерево".</param>
+        /// <param name="dummyTreeTypeOptions">Параметры типа "Фиктивное дерево".</param>
         /// <param name="defaults">Значения по умолчанию в базе данных.</param>
         /// <param name="dbTable">Таблица в базе данных.</param>
         /// <param name="dbSchema">Схема в базе данных.</param>
         public DummyTreeLinkTypeOptions(
-            DummyTreeTypeOptions optionsOfDummyTreeType,
+            DummyTreeTypeOptions dummyTreeTypeOptions,
             IDefaults defaults,
             string dbTable,
             string? dbSchema = null
@@ -55,7 +55,7 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyTreeLink
 
             DbColumnForDummyTreeEntityParentId = defaults.DbColumnForParentId;
 
-            DbForeignKeyToDummyTreeEntity = CreateDbForeignKeyName(DbTable, optionsOfDummyTreeType.DbTable);
+            DbForeignKeyToDummyTreeEntity = CreateDbForeignKeyName(DbTable, dummyTreeTypeOptions.DbTable);
 
             DbPrimaryKey = CreateDbPrimaryKeyName(DbTable);
         }

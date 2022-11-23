@@ -55,12 +55,12 @@ namespace Makc2022.Layer3.Sql.Sample.Types.RoleClaim
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="optionsOfRoleType">Параметры типа "Роль".</param>
+        /// <param name="roleTypeOptions">Параметры типа "Роль".</param>
         /// <param name="defaults">Значения по умолчанию.</param>
         /// <param name="dbTable">Таблица в базе данных.</param>
         /// <param name="dbSchema">Схема в базе данных.</param>
         public RoleClaimTypeOptions(
-            RoleTypeOptions optionsOfRoleType,
+            RoleTypeOptions roleTypeOptions,
             IDefaults defaults,
             string dbTable,
             string? dbSchema = null
@@ -69,19 +69,19 @@ namespace Makc2022.Layer3.Sql.Sample.Types.RoleClaim
         {
             DbColumnForId = defaults.DbColumnForId;
 
-            if (string.IsNullOrWhiteSpace(optionsOfRoleType.DbColumnForId))
+            if (string.IsNullOrWhiteSpace(roleTypeOptions.DbColumnForId))
             {
                 throw new NullOrWhiteSpaceStringVariableException<RoleClaimTypeOptions>(
-                    nameof(optionsOfRoleType),
-                    nameof(optionsOfRoleType.DbColumnForId));
+                    nameof(roleTypeOptions),
+                    nameof(roleTypeOptions.DbColumnForId));
             }
 
             DbColumnForRoleEntityId = CreateDbColumnName(
-                optionsOfRoleType.DbTable,
-                optionsOfRoleType.DbColumnForId
+                roleTypeOptions.DbTable,
+                roleTypeOptions.DbColumnForId
                 );
 
-            DbForeignKeyToRoleEntity = CreateDbForeignKeyName(DbTable, optionsOfRoleType.DbTable);
+            DbForeignKeyToRoleEntity = CreateDbForeignKeyName(DbTable, roleTypeOptions.DbTable);
 
             DbUniqueIndexForRoleEntityId = CreateDbUniqueIndexName(DbTable, DbColumnForRoleEntityId);
 
