@@ -1,17 +1,19 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
+using Makc2022.Layer1;
+
 namespace Makc2022.Layer3.Sql.Sample.Types.UserToken
 {
     /// <summary>
     /// Загрузчик типа "Токен пользователя".
     /// </summary>
-    public class UserTokenTypeLoader : TypeLoader<UserTokenTypeEntity>
+    public class UserTokenTypeLoader : Loader<UserTokenTypeEntity>
     {
         #region Constructors
 
         /// <inheritdoc/>
-        public UserTokenTypeLoader(UserTokenTypeEntity? entity = null)
-            : base(entity ?? new UserTokenTypeEntity())
+        public UserTokenTypeLoader(UserTokenTypeEntity? target = null)
+            : base(target ?? new UserTokenTypeEntity())
         {
         }
 
@@ -21,29 +23,29 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserToken
 
         /// <inheritdoc/>
         public sealed override HashSet<string> Load(
-            UserTokenTypeEntity entity,
+            UserTokenTypeEntity source,
             HashSet<string>? loadableProperties = null)
         {
-            var result = base.Load(entity, loadableProperties);
+            var result = base.Load(source, loadableProperties);
 
-            if (result.Contains(nameof(Entity.LoginProvider)))
+            if (result.Contains(nameof(Target.LoginProvider)))
             {
-                Entity.LoginProvider = entity.LoginProvider;
+                Target.LoginProvider = source.LoginProvider;
             }
 
-            if (result.Contains(nameof(Entity.Name)))
+            if (result.Contains(nameof(Target.Name)))
             {
-                Entity.Name = entity.Name;
+                Target.Name = source.Name;
             }
 
-            if (result.Contains(nameof(Entity.UserId)))
+            if (result.Contains(nameof(Target.UserId)))
             {
-                Entity.UserId = entity.UserId;
+                Target.UserId = source.UserId;
             }
 
-            if (result.Contains(nameof(Entity.Value)))
+            if (result.Contains(nameof(Target.Value)))
             {
-                Entity.Value = entity.Value;
+                Target.Value = source.Value;
             }
 
             return result;
@@ -58,10 +60,10 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserToken
         {
             return new HashSet<string>
             {
-                nameof(Entity.LoginProvider),
-                nameof(Entity.Name),
-                nameof(Entity.UserId),
-                nameof(Entity.Value)
+                nameof(Target.LoginProvider),
+                nameof(Target.Name),
+                nameof(Target.UserId),
+                nameof(Target.Value)
             };
         }
 

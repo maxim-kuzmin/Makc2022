@@ -1,17 +1,19 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
+using Makc2022.Layer1;
+
 namespace Makc2022.Layer3.Sql.Sample.Types.UserLogin
 {
     /// <summary>
     /// Загрузчик типа "Вход пользователя".
     /// </summary>
-    public class UserLoginTypeLoader : TypeLoader<UserLoginTypeEntity>
+    public class UserLoginTypeLoader : Loader<UserLoginTypeEntity>
     {
         #region Constructors
 
         /// <inheritdoc/>
-        public UserLoginTypeLoader(UserLoginTypeEntity? entity = null)
-            : base(entity ?? new UserLoginTypeEntity())
+        public UserLoginTypeLoader(UserLoginTypeEntity? target = null)
+            : base(target ?? new UserLoginTypeEntity())
         {
         }
 
@@ -21,29 +23,29 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserLogin
 
         /// <inheritdoc/>
         public sealed override HashSet<string> Load(
-            UserLoginTypeEntity entity,
+            UserLoginTypeEntity source,
             HashSet<string>? loadableProperties = null)
         {
-            var result = base.Load(entity, loadableProperties);
+            var result = base.Load(source, loadableProperties);
 
-            if (result.Contains(nameof(Entity.LoginProvider)))
+            if (result.Contains(nameof(Target.LoginProvider)))
             {
-                Entity.LoginProvider = entity.LoginProvider;
+                Target.LoginProvider = source.LoginProvider;
             }
 
-            if (result.Contains(nameof(Entity.ProviderDisplayName)))
+            if (result.Contains(nameof(Target.ProviderDisplayName)))
             {
-                Entity.ProviderDisplayName = entity.ProviderDisplayName;
+                Target.ProviderDisplayName = source.ProviderDisplayName;
             }
 
-            if (result.Contains(nameof(Entity.ProviderKey)))
+            if (result.Contains(nameof(Target.ProviderKey)))
             {
-                Entity.ProviderKey = entity.ProviderKey;
+                Target.ProviderKey = source.ProviderKey;
             }
 
-            if (result.Contains(nameof(Entity.UserId)))
+            if (result.Contains(nameof(Target.UserId)))
             {
-                Entity.UserId = entity.UserId;
+                Target.UserId = source.UserId;
             }
 
             return result;
@@ -58,10 +60,10 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserLogin
         {
             return new HashSet<string>
             {
-                nameof(Entity.LoginProvider),
-                nameof(Entity.ProviderDisplayName),
-                nameof(Entity.ProviderKey),
-                nameof(Entity.UserId)
+                nameof(Target.LoginProvider),
+                nameof(Target.ProviderDisplayName),
+                nameof(Target.ProviderKey),
+                nameof(Target.UserId)
             };
         }
 

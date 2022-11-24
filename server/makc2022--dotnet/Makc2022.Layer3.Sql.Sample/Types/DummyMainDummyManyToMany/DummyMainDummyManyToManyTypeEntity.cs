@@ -4,6 +4,9 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyMainDummyManyToMany
 {
     /// <summary>
     /// Сущность типа "Фиктивное отношение многие ко многим фиктивного главного".
+    /// 
+    /// Служит для соединения экземпляров сущностей "Фиктивное главное" и
+    /// "Фиктивное отношение многие ко многим".
     /// </summary>
     public class DummyMainDummyManyToManyTypeEntity
     {

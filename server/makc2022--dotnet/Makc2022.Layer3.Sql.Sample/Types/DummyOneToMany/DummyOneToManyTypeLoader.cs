@@ -1,17 +1,19 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
+using Makc2022.Layer1;
+
 namespace Makc2022.Layer3.Sql.Sample.Types.DummyOneToMany
 {
     /// <summary>
     /// Загрузчик типа "Фиктивное отношение один ко многим".
     /// </summary>
-    public class DummyOneToManyTypeLoader : TypeLoader<DummyOneToManyTypeEntity>
+    public class DummyOneToManyTypeLoader : Loader<DummyOneToManyTypeEntity>
     {
         #region Constructors
 
         /// <inheritdoc/>
-        public DummyOneToManyTypeLoader(DummyOneToManyTypeEntity? entity = null)
-            : base(entity ?? new DummyOneToManyTypeEntity())
+        public DummyOneToManyTypeLoader(DummyOneToManyTypeEntity? target = null)
+            : base(target ?? new DummyOneToManyTypeEntity())
         {
         }
 
@@ -21,19 +23,19 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyOneToMany
 
         /// <inheritdoc/>
         public sealed override HashSet<string> Load(
-            DummyOneToManyTypeEntity entity,
+            DummyOneToManyTypeEntity source,
             HashSet<string>? loadableProperties = null)
         {
-            var result = base.Load(entity, loadableProperties);
+            var result = base.Load(source, loadableProperties);
 
-            if (result.Contains(nameof(Entity.Id)))
+            if (result.Contains(nameof(Target.Id)))
             {
-                Entity.Id = entity.Id;
+                Target.Id = source.Id;
             }
 
-            if (result.Contains(nameof(Entity.Name)))
+            if (result.Contains(nameof(Target.Name)))
             {
-                Entity.Name = entity.Name;
+                Target.Name = source.Name;
             }
 
             return result;
@@ -48,8 +50,8 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyOneToMany
         {
             return new HashSet<string>
             {
-                nameof(Entity.Id),
-                nameof(Entity.Name)
+                nameof(Target.Id),
+                nameof(Target.Name)
             };
         }
 

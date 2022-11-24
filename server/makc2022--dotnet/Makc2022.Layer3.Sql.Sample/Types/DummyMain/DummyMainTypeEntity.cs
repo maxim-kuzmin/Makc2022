@@ -4,6 +4,8 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyMain
 {
     /// <summary>
     /// Сущность типа "Фиктивное главное".
+    /// 
+    /// Содержит в себе свойства наиболее распространённых типов данных.
     /// </summary>
     public class DummyMainTypeEntity
     {

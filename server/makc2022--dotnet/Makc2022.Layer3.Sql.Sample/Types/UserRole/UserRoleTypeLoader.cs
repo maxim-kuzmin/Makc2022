@@ -1,17 +1,19 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
+using Makc2022.Layer1;
+
 namespace Makc2022.Layer3.Sql.Sample.Types.UserRole
 {
     /// <summary>
     /// Загрузчик типа "Роль пользователя".
     /// </summary>
-    public class UserRoleTypeLoader : TypeLoader<UserRoleTypeEntity>
+    public class UserRoleTypeLoader : Loader<UserRoleTypeEntity>
     {
         #region Constructors
 
         /// <inheritdoc/>
-        public UserRoleTypeLoader(UserRoleTypeEntity? entity = null)
-            : base(entity ?? new UserRoleTypeEntity())
+        public UserRoleTypeLoader(UserRoleTypeEntity? target = null)
+            : base(target ?? new UserRoleTypeEntity())
         {
         }
 
@@ -21,19 +23,19 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserRole
 
         /// <inheritdoc/>
         public sealed override HashSet<string> Load(
-            UserRoleTypeEntity entity,
+            UserRoleTypeEntity source,
             HashSet<string>? loadableProperties = null)
         {
-            var result = base.Load(entity, loadableProperties);
+            var result = base.Load(source, loadableProperties);
 
-            if (result.Contains(nameof(Entity.UserId)))
+            if (result.Contains(nameof(Target.UserId)))
             {
-                Entity.UserId = entity.UserId;
+                Target.UserId = source.UserId;
             }
 
-            if (result.Contains(nameof(Entity.RoleId)))
+            if (result.Contains(nameof(Target.RoleId)))
             {
-                Entity.RoleId = entity.RoleId;
+                Target.RoleId = source.RoleId;
             }
 
             return result;
@@ -48,8 +50,8 @@ namespace Makc2022.Layer3.Sql.Sample.Types.UserRole
         {
             return new HashSet<string>
             {
-                nameof(Entity.UserId),
-                nameof(Entity.RoleId)
+                nameof(Target.UserId),
+                nameof(Target.RoleId)
             };
         }
 

@@ -1,17 +1,19 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
+using Makc2022.Layer1;
+
 namespace Makc2022.Layer3.Sql.Sample.Types.Role
 {
     /// <summary>
     /// Загрузчик типа "Роль".
     /// </summary>
-    public class RoleTypeLoader : TypeLoader<RoleTypeEntity>
+    public class RoleTypeLoader : Loader<RoleTypeEntity>
     {
         #region Constructors
 
         /// <inheritdoc/>
-        public RoleTypeLoader(RoleTypeEntity? entity = null)
-            : base(entity ?? new RoleTypeEntity())
+        public RoleTypeLoader(RoleTypeEntity? target = null)
+            : base(target ?? new RoleTypeEntity())
         {
         }
 
@@ -21,29 +23,29 @@ namespace Makc2022.Layer3.Sql.Sample.Types.Role
 
         /// <inheritdoc/>
         public sealed override HashSet<string> Load(
-            RoleTypeEntity entity,
+            RoleTypeEntity source,
             HashSet<string>? loadableProperties = null)
         {
-            var result = base.Load(entity, loadableProperties);
+            var result = base.Load(source, loadableProperties);
 
-            if (result.Contains(nameof(Entity.ConcurrencyStamp)))
+            if (result.Contains(nameof(Target.ConcurrencyStamp)))
             {
-                Entity.ConcurrencyStamp = entity.ConcurrencyStamp;
+                Target.ConcurrencyStamp = source.ConcurrencyStamp;
             }
 
-            if (result.Contains(nameof(Entity.Id)))
+            if (result.Contains(nameof(Target.Id)))
             {
-                Entity.Id = entity.Id;
+                Target.Id = source.Id;
             }
 
-            if (result.Contains(nameof(Entity.Name)))
+            if (result.Contains(nameof(Target.Name)))
             {
-                Entity.Name = entity.Name;
+                Target.Name = source.Name;
             }
 
-            if (result.Contains(nameof(Entity.NormalizedName)))
+            if (result.Contains(nameof(Target.NormalizedName)))
             {
-                Entity.NormalizedName = entity.NormalizedName;
+                Target.NormalizedName = source.NormalizedName;
             }
 
             return result;
@@ -58,10 +60,10 @@ namespace Makc2022.Layer3.Sql.Sample.Types.Role
         {
             return new HashSet<string>
             {
-                nameof(Entity.ConcurrencyStamp),
-                nameof(Entity.Id),
-                nameof(Entity.Name),
-                nameof(Entity.NormalizedName)
+                nameof(Target.ConcurrencyStamp),
+                nameof(Target.Id),
+                nameof(Target.Name),
+                nameof(Target.NormalizedName)
             };
         }
 

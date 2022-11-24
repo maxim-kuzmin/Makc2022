@@ -1,17 +1,19 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
+using Makc2022.Layer1;
+
 namespace Makc2022.Layer3.Sql.Sample.Types.RoleClaim
 {
     /// <summary>
     /// Загрузчик типа "Утверждение роли".
     /// </summary>
-    public class RoleClaimTypeLoader : TypeLoader<RoleClaimTypeEntity>
+    public class RoleClaimTypeLoader : Loader<RoleClaimTypeEntity>
     {
         #region Constructors
 
         /// <inheritdoc/>
-        public RoleClaimTypeLoader(RoleClaimTypeEntity? entity = null)
-            : base(entity ?? new RoleClaimTypeEntity())
+        public RoleClaimTypeLoader(RoleClaimTypeEntity? target = null)
+            : base(target ?? new RoleClaimTypeEntity())
         {
         }
 
@@ -21,29 +23,29 @@ namespace Makc2022.Layer3.Sql.Sample.Types.RoleClaim
 
         /// <inheritdoc/>
         public sealed override HashSet<string> Load(
-            RoleClaimTypeEntity entity,
+            RoleClaimTypeEntity source,
             HashSet<string>? loadableProperties = null)
         {
-            var result = base.Load(entity, loadableProperties);
+            var result = base.Load(source, loadableProperties);
 
-            if (result.Contains(nameof(Entity.ClaimType)))
+            if (result.Contains(nameof(Target.ClaimType)))
             {
-                Entity.ClaimType = entity.ClaimType;
+                Target.ClaimType = source.ClaimType;
             }
 
-            if (result.Contains(nameof(Entity.ClaimValue)))
+            if (result.Contains(nameof(Target.ClaimValue)))
             {
-                Entity.ClaimValue = entity.ClaimValue;
+                Target.ClaimValue = source.ClaimValue;
             }
 
-            if (result.Contains(nameof(Entity.Id)))
+            if (result.Contains(nameof(Target.Id)))
             {
-                Entity.Id = entity.Id;
+                Target.Id = source.Id;
             }
 
-            if (result.Contains(nameof(Entity.RoleId)))
+            if (result.Contains(nameof(Target.RoleId)))
             {
-                Entity.RoleId = entity.RoleId;
+                Target.RoleId = source.RoleId;
             }
 
             return result;
@@ -58,10 +60,10 @@ namespace Makc2022.Layer3.Sql.Sample.Types.RoleClaim
         {
             return new HashSet<string>
             {
-                nameof(Entity.ClaimType),
-                nameof(Entity.ClaimValue),
-                nameof(Entity.Id),
-                nameof(Entity.RoleId)
+                nameof(Target.ClaimType),
+                nameof(Target.ClaimValue),
+                nameof(Target.Id),
+                nameof(Target.RoleId)
             };
         }
 

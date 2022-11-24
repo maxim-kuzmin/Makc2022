@@ -1,17 +1,19 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
+using Makc2022.Layer1;
+
 namespace Makc2022.Layer3.Sql.Sample.Types.DummyTreeLink
 {
     /// <summary>
     /// Загрузчик типа "Связь фиктивного дерева".
     /// </summary>
-    public class DummyTreeLinkTypeLoader : TypeLoader<DummyTreeLinkTypeEntity>
+    public class DummyTreeLinkTypeLoader : Loader<DummyTreeLinkTypeEntity>
     {
         #region Constructors
 
         /// <inheritdoc/>
-        public DummyTreeLinkTypeLoader(DummyTreeLinkTypeEntity? entity = null)
-            : base(entity ?? new DummyTreeLinkTypeEntity())
+        public DummyTreeLinkTypeLoader(DummyTreeLinkTypeEntity? target = null)
+            : base(target ?? new DummyTreeLinkTypeEntity())
         {
         }
 
@@ -21,19 +23,19 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyTreeLink
 
         /// <inheritdoc/>
         public sealed override HashSet<string> Load(
-            DummyTreeLinkTypeEntity entity,
+            DummyTreeLinkTypeEntity source,
             HashSet<string>? loadableProperties = null)
         {
-            var result = base.Load(entity, loadableProperties);
+            var result = base.Load(source, loadableProperties);
 
-            if (result.Contains(nameof(Entity.Id)))
+            if (result.Contains(nameof(Target.Id)))
             {
-                Entity.Id = entity.Id;
+                Target.Id = source.Id;
             }
 
-            if (result.Contains(nameof(Entity.ParentId)))
+            if (result.Contains(nameof(Target.ParentId)))
             {
-                Entity.ParentId = entity.ParentId;
+                Target.ParentId = source.ParentId;
             }
 
             return result;
@@ -48,8 +50,8 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyTreeLink
         {
             return new HashSet<string>
             {
-                nameof(Entity.Id),
-                nameof(Entity.ParentId)
+                nameof(Target.Id),
+                nameof(Target.ParentId)
             };
         }
 

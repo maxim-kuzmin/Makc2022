@@ -4,6 +4,8 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyTree
 {
     /// <summary>
     /// Сущность типа "Фиктивное дерево".
+    /// 
+    /// Служит для демонстрации иерархической структуры данных.
     /// </summary>
     public class DummyTreeTypeEntity
     {

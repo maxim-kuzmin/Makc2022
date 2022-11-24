@@ -36,7 +36,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.User
 
             loader.Load(mapperEntity);
 
-            return loader.Entity;
+            return loader.Target;
         }
 
         #endregion Public methods

@@ -3,17 +3,17 @@
 namespace Makc2022.Layer1
 {
     /// <summary>
-    /// Загрузчик типа.
+    /// Загрузчик.
     /// </summary>
-    /// <typeparam name="TEntity">Тип сущности.</typeparam>
-    public abstract class TypeLoader<TEntity>
+    /// <typeparam name="TLoadable">Загружаемый тип.</typeparam>
+    public abstract class Loader<TLoadable>
     {
         #region Properties
 
         /// <summary>
-        /// Сущность.
+        /// Цель.
         /// </summary>
-        public TEntity Entity { get; set; }
+        public TLoadable Target { get; set; }
 
         #endregion Properties
 
@@ -22,10 +22,10 @@ namespace Makc2022.Layer1
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="entity">Cущность.</param>
-        public TypeLoader(TEntity entity)
+        /// <param name="target">Цель.</param>
+        public Loader(TLoadable target)
         {
-            Entity = entity;
+            Target = target;
         }
 
         #endregion Constructors
@@ -35,10 +35,10 @@ namespace Makc2022.Layer1
         /// <summary>
         /// Загрузить.
         /// </summary>
-        /// <param name="entity">Cущность.</param>
+        /// <param name="source">Источник.</param>
         /// <param name="loadableProperties">Загружаемые свойства.</param>
         /// <returns>Загруженные свойства.</returns>
-        public virtual HashSet<string> Load(TEntity entity, HashSet<string>? loadableProperties = null)
+        public virtual HashSet<string> Load(TLoadable source, HashSet<string>? loadableProperties = null)
         {
             return loadableProperties ?? CreateAllPropertiesToLoad();
         }

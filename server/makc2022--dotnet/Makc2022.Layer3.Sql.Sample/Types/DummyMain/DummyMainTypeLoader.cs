@@ -1,17 +1,19 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
+using Makc2022.Layer1;
+
 namespace Makc2022.Layer3.Sql.Sample.Types.DummyMain
 {
     /// <summary>
     /// Загрузчик типа "Фиктивное главное".
     /// </summary>
-    public class DummyMainTypeLoader : TypeLoader<DummyMainTypeEntity>
+    public class DummyMainTypeLoader : Loader<DummyMainTypeEntity>
     {
         #region Constructors
 
         /// <inheritdoc/>
-        public DummyMainTypeLoader(DummyMainTypeEntity? entity = null)
-            : base(entity ?? new DummyMainTypeEntity())
+        public DummyMainTypeLoader(DummyMainTypeEntity? target = null)
+            : base(target ?? new DummyMainTypeEntity())
         {
         }
 
@@ -21,94 +23,94 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyMain
 
         /// <inheritdoc/>
         public sealed override HashSet<string> Load(
-            DummyMainTypeEntity entity,
+            DummyMainTypeEntity source,
             HashSet<string>? loadableProperties = null)
         {
-            var result = base.Load(entity, loadableProperties);
+            var result = base.Load(source, loadableProperties);
 
-            if (result.Contains(nameof(Entity.Id)))
+            if (result.Contains(nameof(Target.Id)))
             {
-                Entity.Id = entity.Id;
+                Target.Id = source.Id;
             }
 
-            if (result.Contains(nameof(Entity.DummyOneToManyId)))
+            if (result.Contains(nameof(Target.DummyOneToManyId)))
             {
-                Entity.DummyOneToManyId = entity.DummyOneToManyId;
+                Target.DummyOneToManyId = source.DummyOneToManyId;
             }
 
-            if (result.Contains(nameof(Entity.Name)))
+            if (result.Contains(nameof(Target.Name)))
             {
-                Entity.Name = entity.Name ?? string.Empty;
+                Target.Name = source.Name ?? string.Empty;
             }
 
-            if (result.Contains(nameof(Entity.PropBoolean)))
+            if (result.Contains(nameof(Target.PropBoolean)))
             {
-                Entity.PropBoolean = entity.PropBoolean;
+                Target.PropBoolean = source.PropBoolean;
             }
 
-            if (result.Contains(nameof(Entity.PropBooleanNullable)))
+            if (result.Contains(nameof(Target.PropBooleanNullable)))
             {
-                Entity.PropBooleanNullable = entity.PropBooleanNullable;
+                Target.PropBooleanNullable = source.PropBooleanNullable;
             }
 
-            if (result.Contains(nameof(Entity.PropDate)))
+            if (result.Contains(nameof(Target.PropDate)))
             {
-                Entity.PropDate = entity.PropDate;
+                Target.PropDate = source.PropDate;
             }
 
-            if (result.Contains(nameof(Entity.PropDateNullable)))
+            if (result.Contains(nameof(Target.PropDateNullable)))
             {
-                Entity.PropDateNullable = entity.PropDateNullable;
+                Target.PropDateNullable = source.PropDateNullable;
             }
 
-            if (result.Contains(nameof(Entity.PropDateTime)))
+            if (result.Contains(nameof(Target.PropDateTime)))
             {
-                Entity.PropDateTime = entity.PropDateTime;
+                Target.PropDateTime = source.PropDateTime;
             }
 
-            if (result.Contains(nameof(Entity.PropDateTimeNullable)))
+            if (result.Contains(nameof(Target.PropDateTimeNullable)))
             {
-                Entity.PropDateTimeNullable = entity.PropDateTimeNullable;
+                Target.PropDateTimeNullable = source.PropDateTimeNullable;
             }
 
-            if (result.Contains(nameof(Entity.PropDecimal)))
+            if (result.Contains(nameof(Target.PropDecimal)))
             {
-                Entity.PropDecimal = entity.PropDecimal;
+                Target.PropDecimal = source.PropDecimal;
             }
 
-            if (result.Contains(nameof(Entity.PropDecimalNullable)))
+            if (result.Contains(nameof(Target.PropDecimalNullable)))
             {
-                Entity.PropDecimalNullable = entity.PropDecimalNullable;
+                Target.PropDecimalNullable = source.PropDecimalNullable;
             }
 
-            if (result.Contains(nameof(Entity.PropInt32)))
+            if (result.Contains(nameof(Target.PropInt32)))
             {
-                Entity.PropInt32 = entity.PropInt32;
+                Target.PropInt32 = source.PropInt32;
             }
 
-            if (result.Contains(nameof(Entity.PropInt32Nullable)))
+            if (result.Contains(nameof(Target.PropInt32Nullable)))
             {
-                Entity.PropInt32Nullable = entity.PropInt32Nullable;
+                Target.PropInt32Nullable = source.PropInt32Nullable;
             }
 
-            if (result.Contains(nameof(Entity.PropInt64)))
+            if (result.Contains(nameof(Target.PropInt64)))
             {
-                Entity.PropInt64 = entity.PropInt64;
+                Target.PropInt64 = source.PropInt64;
             }
 
-            if (result.Contains(nameof(Entity.PropInt64Nullable)))
+            if (result.Contains(nameof(Target.PropInt64Nullable)))
             {
-                Entity.PropInt64Nullable = entity.PropInt64Nullable;
+                Target.PropInt64Nullable = source.PropInt64Nullable;
             }
 
-            if (result.Contains(nameof(Entity.PropString)))
+            if (result.Contains(nameof(Target.PropString)))
             {
-                Entity.PropString = entity.PropString ?? string.Empty;
+                Target.PropString = source.PropString ?? string.Empty;
             }
 
-            if (result.Contains(nameof(Entity.PropStringNullable)))
+            if (result.Contains(nameof(Target.PropStringNullable)))
             {
-                Entity.PropStringNullable = entity.PropStringNullable;
+                Target.PropStringNullable = source.PropStringNullable;
             }
 
             return result;
@@ -123,23 +125,23 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyMain
         {
             return new HashSet<string>
             {
-                nameof(Entity.Id),
-                nameof(Entity.Name),
-                nameof(Entity.DummyOneToManyId),
-                nameof(Entity.PropBoolean),
-                nameof(Entity.PropBooleanNullable),
-                nameof(Entity.PropDate),
-                nameof(Entity.PropDateNullable),
-                nameof(Entity.PropDateTime),
-                nameof(Entity.PropDateTimeNullable),
-                nameof(Entity.PropDecimal),
-                nameof(Entity.PropDecimalNullable),
-                nameof(Entity.PropInt32),
-                nameof(Entity.PropInt32Nullable),
-                nameof(Entity.PropInt64),
-                nameof(Entity.PropInt64Nullable),
-                nameof(Entity.PropString),
-                nameof(Entity.PropStringNullable)
+                nameof(Target.Id),
+                nameof(Target.Name),
+                nameof(Target.DummyOneToManyId),
+                nameof(Target.PropBoolean),
+                nameof(Target.PropBooleanNullable),
+                nameof(Target.PropDate),
+                nameof(Target.PropDateNullable),
+                nameof(Target.PropDateTime),
+                nameof(Target.PropDateTimeNullable),
+                nameof(Target.PropDecimal),
+                nameof(Target.PropDecimalNullable),
+                nameof(Target.PropInt32),
+                nameof(Target.PropInt32Nullable),
+                nameof(Target.PropInt64),
+                nameof(Target.PropInt64Nullable),
+                nameof(Target.PropString),
+                nameof(Target.PropStringNullable)
             };
         }
 

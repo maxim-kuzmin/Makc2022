@@ -1,17 +1,19 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
+using Makc2022.Layer1;
+
 namespace Makc2022.Layer3.Sql.Sample.Types.DummyTree
 {
     /// <summary>
     /// Загрузчик типа "Фиктивное дерево".
     /// </summary>
-    public class DummyTreeTypeLoader : TypeLoader<DummyTreeTypeEntity>
+    public class DummyTreeTypeLoader : Loader<DummyTreeTypeEntity>
     {
         #region Constructors
 
         /// <inheritdoc/>
-        public DummyTreeTypeLoader(DummyTreeTypeEntity? entity = null)
-            : base(entity ?? new DummyTreeTypeEntity())
+        public DummyTreeTypeLoader(DummyTreeTypeEntity? target = null)
+            : base(target ?? new DummyTreeTypeEntity())
         {
         }
 
@@ -21,54 +23,54 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyTree
 
         /// <inheritdoc/>
         public sealed override HashSet<string> Load(
-            DummyTreeTypeEntity entity,
+            DummyTreeTypeEntity source,
             HashSet<string>? loadableProperties = null)
         {
-            var result = base.Load(entity, loadableProperties);
+            var result = base.Load(source, loadableProperties);
 
-            if (result.Contains(nameof(Entity.Id)))
+            if (result.Contains(nameof(Target.Id)))
             {
-                Entity.Id = entity.Id;
+                Target.Id = source.Id;
             }
 
-            if (result.Contains(nameof(Entity.Name)))
+            if (result.Contains(nameof(Target.Name)))
             {
-                Entity.Name = entity.Name;
+                Target.Name = source.Name;
             }
 
-            if (result.Contains(nameof(Entity.ParentId)))
+            if (result.Contains(nameof(Target.ParentId)))
             {
-                Entity.ParentId = entity.ParentId;
+                Target.ParentId = source.ParentId;
             }
 
-            if (result.Contains(nameof(Entity.TreeChildCount)))
+            if (result.Contains(nameof(Target.TreeChildCount)))
             {
-                Entity.TreeChildCount = entity.TreeChildCount;
+                Target.TreeChildCount = source.TreeChildCount;
             }
 
-            if (result.Contains(nameof(Entity.TreeDescendantCount)))
+            if (result.Contains(nameof(Target.TreeDescendantCount)))
             {
-                Entity.TreeDescendantCount = entity.TreeDescendantCount;
+                Target.TreeDescendantCount = source.TreeDescendantCount;
             }
 
-            if (result.Contains(nameof(Entity.TreeLevel)))
+            if (result.Contains(nameof(Target.TreeLevel)))
             {
-                Entity.TreeLevel = entity.TreeLevel;
+                Target.TreeLevel = source.TreeLevel;
             }
 
-            if (result.Contains(nameof(Entity.TreePath)))
+            if (result.Contains(nameof(Target.TreePath)))
             {
-                Entity.TreePath = entity.TreePath;
+                Target.TreePath = source.TreePath;
             }
 
-            if (result.Contains(nameof(Entity.TreePosition)))
+            if (result.Contains(nameof(Target.TreePosition)))
             {
-                Entity.TreePosition = entity.TreePosition;
+                Target.TreePosition = source.TreePosition;
             }
 
-            if (result.Contains(nameof(Entity.TreeSort)))
+            if (result.Contains(nameof(Target.TreeSort)))
             {
-                Entity.TreeSort = entity.TreeSort;
+                Target.TreeSort = source.TreeSort;
             }
 
             return result;
@@ -83,14 +85,14 @@ namespace Makc2022.Layer3.Sql.Sample.Types.DummyTree
         {
             return new HashSet<string>
             {
-                nameof(Entity.Id),
-                nameof(Entity.Name),
-                nameof(Entity.ParentId),
-                nameof(Entity.TreeChildCount),
-                nameof(Entity.TreeDescendantCount),
-                nameof(Entity.TreeLevel),
-                nameof(Entity.TreePath),
-                nameof(Entity.TreeSort)
+                nameof(Target.Id),
+                nameof(Target.Name),
+                nameof(Target.ParentId),
+                nameof(Target.TreeChildCount),
+                nameof(Target.TreeDescendantCount),
+                nameof(Target.TreeLevel),
+                nameof(Target.TreePath),
+                nameof(Target.TreeSort)
             };
         }
 
