@@ -15,7 +15,7 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.Setup
         /// <inheritdoc/>
         public sealed override void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton(x => ClientTypesOptions.Instance); // EntitiesOptions
+            services.AddSingleton(x => ClientTypesOptions.Instance);
         }
 
         /// <inheritdoc/>

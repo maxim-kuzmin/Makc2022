@@ -47,7 +47,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer3.Sql.Sample.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer3.Sql.Sample.Mappers.EF", "Makc2022.Layer3.Sql.Sample.Mappers.EF\Makc2022.Layer3.Sql.Sample.Mappers.EF.csproj", "{5D6B11C2-1347-4506-96B6-CD912ACD8876}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF", "Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF\Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.csproj", "{AF2EB8CB-117C-42BE-B6B2-2E2D22ED460F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer3.Sql.Sample.Mappers.EF.Clients.SqlServer", "Makc2022.Layer3.Sql.Sample.Mappers.EF.Clients.SqlServer\Makc2022.Layer3.Sql.Sample.Mappers.EF.Clients.SqlServer.csproj", "{AF2EB8CB-117C-42BE-B6B2-2E2D22ED460F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Makc2022.Layer4.Sql.Domains.DummyMain", "Makc2022.Layer4.Sql.Domains.DummyMain\Makc2022.Layer4.Sql.Domains.DummyMain.csproj", "{15B76739-AF54-4074-8D30-0FEF519E39A6}"
 EndProject

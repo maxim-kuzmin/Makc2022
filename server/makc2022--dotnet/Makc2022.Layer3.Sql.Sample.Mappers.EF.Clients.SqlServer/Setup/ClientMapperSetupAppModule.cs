@@ -1,7 +1,8 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
 using Makc2022.Layer1.App;
-using Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Db;
+using Makc2022.Layer1.Exceptions.VariableExceptions;
+using Makc2022.Layer3.Sql.Sample.Mappers.EF.Clients.SqlServer.Db;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -11,27 +12,26 @@ using Microsoft.Extensions.Options;
 using DbSetupOptions = Makc2022.Layer2.Sql.Setup.SetupOptions;
 using DbSetupOptionsForSample = Makc2022.Layer3.Sql.Sample.Setup.SetupOptions;
 
-namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Setup
+namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Clients.SqlServer.Setup
 {
     /// <summary>
-    /// Модуль настройки приложения клиента.
+    /// Модуль настройки приложения сопоставителя клиента.
     /// </summary>
-    public class ClientSetupAppModule : AppModule
+    public class ClientMapperSetupAppModule : AppModule
     {
         #region Public methods
 
         /// <inheritdoc/>
         public sealed override void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContextFactory<ClientDbContext>((x, options) => ClientDbContextFactory.Configure(
+            services.AddDbContextFactory<ClientMapperDbContext>((x, options) => ClientMapperDbContextFactory.Configure(
                 options,
-                x.GetRequiredService<IConfiguration>().GetConnectionString(
-                    x.GetRequiredService<IOptions<DbSetupOptionsForSample>>().Value.ConnectionStringName),
-                x.GetRequiredService<ILogger<ClientDbContextFactory>>(),
+                x.GetRequiredService<IConfiguration>().GetConnectionString(GetConnectionStringName(x)),
+                x.GetRequiredService<ILogger<ClientMapperDbContextFactory>>(),
                 x.GetRequiredService<IOptionsMonitor<DbSetupOptions>>()));
 
-            services.AddTransient<IMapperDbContextFactory>(x => new ClientDbContextFactory(
-                x.GetRequiredService<IDbContextFactory<ClientDbContext>>(),
+            services.AddTransient<IMapperDbContextFactory>(x => new ClientMapperDbContextFactory(
+                x.GetRequiredService<IDbContextFactory<ClientMapperDbContext>>(),
                 x.GetRequiredService<IOptionsMonitor<DbSetupOptions>>()));
         }
 
@@ -40,7 +40,7 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Setup
         {
             return new[]
             {
-                typeof(IDbContextFactory<ClientDbContext>),
+                typeof(IDbContextFactory<ClientMapperDbContext>),
                 typeof(IMapperDbContextFactory),
             };
         }
@@ -62,5 +62,24 @@ namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Setup
         }
 
         #endregion Protected methods
+
+        #region Private methods
+
+        private string GetConnectionStringName(IServiceProvider serviceProvider)
+        {
+            string? result = serviceProvider.GetRequiredService<IOptions<DbSetupOptionsForSample>>()
+                .Value
+                .ConnectionStringName;
+
+            if (string.IsNullOrWhiteSpace(result))
+            {
+                throw new NullOrWhiteSpaceStringVariableException<DbSetupOptionsForSample>
+                    (nameof(DbSetupOptionsForSample.ConnectionStringName));
+            }
+
+            return result;
+        }
+
+        #endregion Private methods
     }
 }

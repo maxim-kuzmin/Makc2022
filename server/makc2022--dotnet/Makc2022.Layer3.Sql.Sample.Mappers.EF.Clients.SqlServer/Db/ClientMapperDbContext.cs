@@ -1,5 +1,6 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
+using Makc2022.Layer3.Sql.Sample.Clients.SqlServer;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Db;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMain;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMainDummyManyToMany;
@@ -17,17 +18,17 @@ using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.UserToken;
 
 using Microsoft.EntityFrameworkCore;
 
-namespace Makc2022.Layer3.Sql.Sample.Clients.SqlServer.EF.Db
+namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Clients.SqlServer.Db
 {
     /// <summary>
-    /// Контекст базы данных клиента.
+    /// Контекст базы данных сопоставителя клиента.
     /// </summary>
-    public sealed class ClientDbContext : MapperDbContext
+    public sealed class ClientMapperDbContext : MapperDbContext
     {
         #region Constructors
 
         /// <inheritdoc/>
-        public ClientDbContext(DbContextOptions<ClientDbContext> options)
+        public ClientMapperDbContext(DbContextOptions<ClientMapperDbContext> options)
             : base(options)
         {
         }
