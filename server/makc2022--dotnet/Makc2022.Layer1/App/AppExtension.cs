@@ -1,5 +1,6 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
+using Makc2022.Layer1.Exceptions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -87,7 +88,7 @@ namespace Makc2022.Layer1.App
 
             var resource = new AppResource(localizer);
 
-            throw new Exception(resource.GetErrorMessageForNotImportedTypes(types));
+            throw new LocalizedException(resource.GetErrorMessageForNotImportedTypes(types));
         }
 
         #endregion Private methods
