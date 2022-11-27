@@ -3,6 +3,7 @@
 using Makc2022.Layer1.App;
 using Makc2022.Layer2.Sql;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Db;
+using Makc2022.Layer3.Sql.Sample.Setup;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Setup
@@ -17,7 +18,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Setup
         /// <inheritdoc/>
         public sealed override void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IMapperService>(x => new MapperService(
+            services.AddSingleton<ISetupService>(x => new MapperSetupService(
                 x.GetRequiredService<IProvider>(),
                 x.GetRequiredService<TypesOptions>(),
                 x.GetRequiredService<IMapperDbContextFactory>()
@@ -29,7 +30,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Setup
         {
             return new[]
             {
-                typeof(IMapperService)
+                typeof(ISetupService)
             };
         }
 

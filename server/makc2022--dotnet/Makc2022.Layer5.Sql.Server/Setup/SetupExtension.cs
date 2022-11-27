@@ -10,7 +10,7 @@ using Layer3SqlModuleForSample = Makc2022.Layer3.Sql.Sample.Setup.SetupAppModule
 using Layer3SqlModuleForSampleClientSqlServer = Makc2022.Layer3.Sql.Sample.Clients.SqlServer.Setup.ClientSetupAppModule;
 using Layer3SqlModuleForSampleClientSqlServerEF = Makc2022.Layer3.Sql.Sample.Mappers.EF.Clients.SqlServer.Setup.ClientMapperSetupAppModule;
 using Layer3SqlModuleForSampleMapperEF = Makc2022.Layer3.Sql.Sample.Mappers.EF.Setup.MapperSetupAppModule;
-using IMapperServiceForSample = Makc2022.Layer3.Sql.Sample.Mappers.EF.IMapperService;
+using ISetupServiceForSample = Makc2022.Layer3.Sql.Sample.Setup.ISetupService;
 using Layer4SqlModuleForDomainDummyMain = Makc2022.Layer4.Sql.Domains.DummyMain.Setup.DomainSetupAppModule;
 using Layer5SqlModuleForServer = Makc2022.Layer5.Sql.Server.Setup.SetupAppModule;
 
@@ -52,11 +52,11 @@ namespace Makc2022.Layer5.Sql.Server.Setup
         /// <param name="serviceProvider">Поставщик сервисов.</param>
         public static void UseAppServices(this IServiceProvider serviceProvider)
         {
-            var mapperServiceForSample = serviceProvider.GetRequiredService<IMapperServiceForSample>();
+            var setupServiceForSample = serviceProvider.GetRequiredService<ISetupServiceForSample>();
 
-            mapperServiceForSample.MigrateDatabase().Wait();
+            setupServiceForSample.MigrateDatabase().Wait();
 
-            mapperServiceForSample.SeedTestData().Wait();
+            setupServiceForSample.SeedTestData().Wait();
         }
 
         #endregion Public methods

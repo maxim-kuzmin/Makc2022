@@ -3,22 +3,23 @@
 using Makc2022.Layer2.Sql;
 using Makc2022.Layer2.Sql.Commands.Tree.Trigger;
 using Makc2022.Layer2.Sql.Commands.Trigger;
-using Makc2022.Layer3.Sql.Sample.Types.DummyTree;
-using Makc2022.Layer3.Sql.Sample.Types.DummyTreeLink;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Db;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMain;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMainDummyManyToMany;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyManyToMany;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyOneToMany;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyTree;
+using Makc2022.Layer3.Sql.Sample.Setup;
+using Makc2022.Layer3.Sql.Sample.Types.DummyTree;
+using Makc2022.Layer3.Sql.Sample.Types.DummyTreeLink;
 using Microsoft.EntityFrameworkCore;
 
-namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
+namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Setup
 {
     /// <summary>
-    /// Сервис сопоставителя.
+    /// Сервис настройки сопоставителя.
     /// </summary>
-    public class MapperService : IMapperService
+    public class MapperSetupService : ISetupService
     {
         #region Properties
 
@@ -38,7 +39,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
         /// <param name="сlientProvider">Поставщик клиента.</param>
         /// <param name="typesOptions">Параметры сущностей.</param>        
         /// <param name="mapperDbFactory">Фабрика базы данных сопоставителя.</param>
-        public MapperService(            
+        public MapperSetupService(
             IProvider сlientProvider,
             TypesOptions typesOptions,
             IMapperDbContextFactory mapperDbFactory
@@ -163,8 +164,8 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF
                 PropDateNullable = isEven ? new DateTime?(new DateTime(2018, 02, day)) : null,
                 PropDateTime = dateAndOffsetLocal,
                 PropDateTimeNullable = isEven ? new DateTimeOffset?(dateAndOffsetLocal) : null,
-                PropDecimal = 1000M + index + (index / 100M),
-                PropDecimalNullable = isEven ? new decimal?(2000M + index + (index / 200M)) : null,
+                PropDecimal = 1000M + index + index / 100M,
+                PropDecimalNullable = isEven ? new decimal?(2000M + index + index / 200M) : null,
                 PropInt32 = 1000 + (int)index,
                 PropInt32Nullable = isEven ? new int?(1000 + (int)index) : null,
                 PropInt64 = 3000 + index,
