@@ -1,6 +1,5 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-using Makc2022.Layer1.Exceptions;
 using Makc2022.Layer1.Exceptions.VariableExceptions;
 using Makc2022.Layer1.Operation;
 using Makc2022.Layer3.Sql.Sample.Mappers.EF.Types.DummyMain;

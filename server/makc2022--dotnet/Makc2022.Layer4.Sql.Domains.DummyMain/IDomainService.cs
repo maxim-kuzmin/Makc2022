@@ -1,6 +1,5 @@
 ﻿// Copyright (c) 2022 Maxim Kuzmin. All rights reserved. Licensed under the MIT License.
 
-using System.Threading.Tasks;
 using Makc2022.Layer4.Sql.Domains.DummyMain.Operations.Item.Get;
 using Makc2022.Layer4.Sql.Domains.DummyMain.Operations.List.Get;
 

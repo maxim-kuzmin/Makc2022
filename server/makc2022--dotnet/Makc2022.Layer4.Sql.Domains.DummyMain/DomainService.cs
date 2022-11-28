@@ -101,7 +101,7 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
 
             await Task.WhenAll(itemsTask, totalCountTask);
 
-            result.Items = itemsTask.Result.Select(x => CreateItem(x)).ToArray();
+            result.Items = itemsTask.Result.Select(CreateItem).ToArray();
             result.TotalCount = totalCountTask.Result;
 
             if (result.Items.Any())
