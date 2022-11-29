@@ -69,7 +69,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Setup
 
             using var transaction = await dbContext.Database.BeginTransactionAsync();
 
-            bool isOk = await dbContext.DummyMain!.AnyAsync();
+            bool isOk = await dbContext.DummyMain.AnyAsync();
 
             if (!isOk)
             {
@@ -272,7 +272,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Setup
 
                 dummyTreeList.Add(dummyTree);
 
-                dbContext.DummyTree!.Add(dummyTree);
+                dbContext.DummyTree.Add(dummyTree);
 
                 await dbContext.SaveChangesAsync();
 
@@ -290,7 +290,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Setup
                 .Select(index => CreateTestDummyMain(index, dummyOneToManyList))
                 .ToArray();
 
-            dbContext.DummyMain!.AddRange(result);
+            dbContext.DummyMain.AddRange(result);
 
             await dbContext.SaveChangesAsync();
 
@@ -330,7 +330,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Setup
                 .Select(index => CreateTestDummyManyToMany(index))
                 .ToArray();
 
-            dbContext.DummyManyToMany!.AddRange(result);
+            dbContext.DummyManyToMany.AddRange(result);
 
             await dbContext.SaveChangesAsync();
 
@@ -344,7 +344,7 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Setup
                 .Select(index => CreateTestDummyOneToMany(index))
                 .ToArray();
 
-            dbContext.DummyOneToMany!.AddRange(result);
+            dbContext.DummyOneToMany.AddRange(result);
 
             await dbContext.SaveChangesAsync();
 

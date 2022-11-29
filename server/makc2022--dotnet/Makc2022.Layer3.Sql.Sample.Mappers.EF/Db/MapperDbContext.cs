@@ -38,32 +38,32 @@ namespace Makc2022.Layer3.Sql.Sample.Mappers.EF.Db
         /// <summary>
         /// Тип "Фиктивное главное".
         /// </summary>
-        public DbSet<MapperDummyMainTypeEntity>? DummyMain { get; set; }
+        public DbSet<MapperDummyMainTypeEntity> DummyMain { get; set; } = null!;
 
         /// <summary>
         /// Тип "Фиктивное отношение многие ко многим".
         /// </summary>
-        public DbSet<MapperDummyManyToManyTypeEntity>? DummyManyToMany { get; set; }
+        public DbSet<MapperDummyManyToManyTypeEntity> DummyManyToMany { get; set; } = null!;
 
         /// <summary>
         /// Тип "Фиктивное отношение многие ко многим фиктивного главного".
         /// </summary>
-        public DbSet<MapperDummyMainDummyManyToManyTypeEntity>? DummyMainDummyManyToMany { get; set; }
+        public DbSet<MapperDummyMainDummyManyToManyTypeEntity> DummyMainDummyManyToMany { get; set; } = null!;
 
         /// <summary>
         /// Тип "Фиктивное отношение один ко многим".
         /// </summary>
-        public DbSet<MapperDummyOneToManyTypeEntity>? DummyOneToMany { get; set; }
+        public DbSet<MapperDummyOneToManyTypeEntity> DummyOneToMany { get; set; } = null!;
 
         /// <summary>
         /// Тип "Фиктивное дерево".
         /// </summary>
-        public DbSet<MapperDummyTreeTypeEntity>? DummyTree { get; set; }
+        public DbSet<MapperDummyTreeTypeEntity> DummyTree { get; set; } = null!;
 
         /// <summary>
         /// Тип "Связь фиктивного дерева".
         /// </summary>
-        public DbSet<MapperDummyTreeLinkTypeEntity>? DummyTreeLink { get; set; }
+        public DbSet<MapperDummyTreeLinkTypeEntity> DummyTreeLink { get; set; } = null!;
 
         #endregion Properties
 

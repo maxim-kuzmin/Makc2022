@@ -45,26 +45,26 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
 
             using var dbContext = MapperDbFactoryForSample.CreateDbContext();
 
-            var entity = await dbContext.DummyMain!
+            var mapperDummyMain = await dbContext.DummyMain
                 .Include(x => x.DummyOneToMany)
                 .Include(x => x.DummyMainDummyManyToManyList)
                 .ApplyFiltering(input)
-                .FirstOrDefaultAsync();
+                .SingleOrDefaultAsync();
 
-            if (entity != null)
+            if (mapperDummyMain != null)
             {
-                result = CreateItem(entity);
+                result = CreateItem(mapperDummyMain);
 
                 if (result.DummyMainDummyManyToManyList != null)
                 {
-                    long[] ids = result.DummyMainDummyManyToManyList
+                    long[] mapperDummyManyToManyIds = result.DummyMainDummyManyToManyList
                         .Select(x => x.DummyManyToManyId)
                         .ToArray();
 
-                    if (ids.Any())
+                    if (mapperDummyManyToManyIds.Any())
                     {
-                        var enities = await dbContext.DummyManyToMany!
-                            .Where(x => ids.Contains(x.Id))
+                        var enities = await dbContext.DummyManyToMany
+                            .Where(x => mapperDummyManyToManyIds.Contains(x.Id))
                             .ToArrayAsync();
 
                         if (enities.Any())
@@ -86,46 +86,47 @@ namespace Makc2022.Layer4.Sql.Domains.DummyMain
             using var dbContext = MapperDbFactoryForSample.CreateDbContext();
             using var dbContextForTotalCount = MapperDbFactoryForSample.CreateDbContext();
 
-            var itemsQuery = dbContext.DummyMain!
+            var queryForItems = dbContext.DummyMain
                 .Include(x => x.DummyOneToMany)
                 .Include(x => x.DummyMainDummyManyToManyList)
                 .ApplyFiltering(input)
                 .ApplySorting(input)
                 .ApplyPagination(input);
 
-            var totalCountQuery = dbContextForTotalCount.DummyMain!
+            var queryForTotalCount = dbContextForTotalCount.DummyMain
                 .ApplyFiltering(input);
 
-            var itemsTask = itemsQuery.ToArrayAsync();
-            var totalCountTask = totalCountQuery.CountAsync();
+            var taskForItems = queryForItems.ToArrayAsync();
+            var taskForTotalCount = queryForTotalCount.CountAsync();
 
-            await Task.WhenAll(itemsTask, totalCountTask);
+            await Task.WhenAll(taskForItems, taskForTotalCount);
 
-            result.Items = itemsTask.Result.Select(CreateItem).ToArray();
-            result.TotalCount = totalCountTask.Result;
+            var mapperDummyMainList = taskForItems.Result;
 
-            if (result.Items.Any())
+            result.Items = mapperDummyMainList.Select(CreateItem).ToArray();
+            result.TotalCount = taskForTotalCount.Result;
+
+            if (mapperDummyMainList.Any())
             {
-                long[] ids = result.Items
-                    .Where(x => x.DummyMainDummyManyToManyList != null)
-                    .SelectMany(x => x.DummyMainDummyManyToManyList!)
+                long[] mapperDummyManyToManyIds = mapperDummyMainList
+                    .SelectMany(x => x.DummyMainDummyManyToManyList)
                     .Select(x => x.DummyManyToManyId)
                     .Distinct()
                     .ToArray();
 
-                if (ids.Any())
+                if (mapperDummyManyToManyIds.Any())
                 {
-                    var lookup = await dbContext.DummyManyToMany!
-                        .Where(x => ids.Contains(x.Id))
+                    var mapperDummyManyToManyLookup = await dbContext.DummyManyToMany
+                        .Where(x => mapperDummyManyToManyIds.Contains(x.Id))
                         .ToDictionaryAsync(x => x.Id);
 
-                    if (lookup.Any())
+                    if (mapperDummyManyToManyLookup.Any())
                     {
                         foreach (var item in result.Items)
                         {
                             if (item.DummyMainDummyManyToManyList != null)
                             {
-                                InitItemDummyManyToMany(item, lookup);
+                                InitItemDummyManyToMany(item, mapperDummyManyToManyLookup);
                             }
                         }
                     }
